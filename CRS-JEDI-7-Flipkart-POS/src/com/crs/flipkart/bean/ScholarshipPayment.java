@@ -1,5 +1,5 @@
 package com.crs.flipkart.bean;
 
-public class ScholarshipPayment {
+public class ScholarshipPayment extends Payment{
 
 }

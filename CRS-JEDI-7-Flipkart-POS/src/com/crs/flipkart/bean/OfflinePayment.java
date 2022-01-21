@@ -7,6 +7,6 @@ package com.crs.flipkart.bean;
  * @author hardik.kothari
  *
  */
-public class OfflinePayment {
+public class OfflinePayment extends Payment{
 
 }
