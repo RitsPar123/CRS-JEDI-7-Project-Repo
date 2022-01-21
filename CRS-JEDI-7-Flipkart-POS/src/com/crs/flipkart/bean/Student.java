@@ -7,10 +7,10 @@ package com.crs.flipkart.bean;
  * @author harsh
  *
  */
-public class Student extends User{
-	
+public class Student extends User {
+
 	public Student(String id, String password) {
-		super(id, password);
+		super(id, password, 1);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -18,5 +18,5 @@ public class Student extends User{
 		// TODO Auto-generated constructor stub
 		super(id);
 	}
-	
+
 }
