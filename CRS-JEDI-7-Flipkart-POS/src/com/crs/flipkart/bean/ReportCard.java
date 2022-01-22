@@ -4,6 +4,7 @@
 package com.crs.flipkart.bean;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author harsh
@@ -14,12 +15,25 @@ public class ReportCard {
 	// String , double
 	// gpa
 	
-	int id;
-	HashMap<String,Double> m; // Subject Code, gpa
-	double gpa;
+	private int id;
+	private HashMap<String,Double> m; // Subject Code, gpa
+	private double gpa;
 	/**
 	 * @return the id
 	 */
+	
+	//gpa range 0-5 and subject range 100-107
+	public ReportCard(int id,List<String> subjectcode,List<Double> grade){
+		this.id = id;
+		float temp=0;
+		this.m = new HashMap<String,Double>();
+		for(int i=0;i < grade.size();i++) {
+			m.put(subjectcode.get(i),grade.get(i));
+			temp+=grade.get(i);
+		}
+		this.gpa = temp/grade.size();
+	}
+	
 	public int getId() {
 		return id;
 	}
