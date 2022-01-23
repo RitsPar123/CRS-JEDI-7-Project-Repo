@@ -37,7 +37,7 @@ public class StudentApplication {
 			// case 4:
 			// studentService.showNotifications();
 			case 5:
-				studentService.payFees();
+				studentService.payFees(id);
 				break;
 			default:
 		}

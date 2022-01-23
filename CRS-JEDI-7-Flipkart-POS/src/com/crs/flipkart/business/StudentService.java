@@ -146,8 +146,8 @@ public class StudentService {
 	public void showPaymentNotification(Payment pay) {
 		System.out.println("Payment of fees done. Payment Details:");
 		System.out.println("PaymentID "+ pay.getPaymentId());
-		System.out.println("Amount" + pay.getAmount());
-		System.out.println("DateOfTransaction" + pay.getDateOfTransaction());
+		System.out.println("Amount " + pay.getAmount());
+		System.out.println("DateOfTransaction " + pay.getDateOfTransaction());
 
 	}
 
