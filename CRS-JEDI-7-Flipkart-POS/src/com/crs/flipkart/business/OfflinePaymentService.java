@@ -7,10 +7,10 @@ import com.crs.flipkart.bean.ChequePayment;
 import com.crs.flipkart.bean.OfflinePayment;
 
 public class OfflinePaymentService {
-	
+
 	public OfflinePayment offlineMode()
 	{
-		System.out.println("Choose mode of Offline payment:");
+		System.out.println("Choose mode of Offlline payment:");
 		System.out.println("1.Cash");
 		System.out.println("2.Cheque");
 		Scanner sc = new Scanner(System.in);
@@ -19,14 +19,15 @@ public class OfflinePaymentService {
 		switch(option)
 		{
 		case 1:
-			
+
 			System.out.println("Enter Receipt Id :");
 			String receiptId = sc.next();
 			pay=new CashPayment(receiptId);
+
 			break;
-			
+
 		case 2:
-			
+
 			System.out.println("Enter Bank Name :");
 			String bankName = sc.next();
 			System.out.println("Enter Cheque Number :");
@@ -34,9 +35,11 @@ public class OfflinePaymentService {
 			pay=new ChequePayment(bankName,chequeNumber);
 			break;
 		default:
-				break;
+
+			System.out.println("Sorry you entered the wrong choice!!");
+			break;
 		}
-		
+
 		return pay;
 	}
 
