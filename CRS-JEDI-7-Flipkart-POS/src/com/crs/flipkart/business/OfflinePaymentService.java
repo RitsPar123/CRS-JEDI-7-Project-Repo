@@ -35,7 +35,9 @@ public class OfflinePaymentService {
 			pay=new ChequePayment(bankName,chequeNumber);
 			break;
 		default:
-				break;
+			
+			System.out.println("Sorry you entered the wrong choice!!");
+			break;
 		}
 		
 		return pay;

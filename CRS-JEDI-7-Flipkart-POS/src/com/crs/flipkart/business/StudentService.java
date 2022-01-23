@@ -1,9 +1,11 @@
 package com.crs.flipkart.business;
 
 import java.util.Scanner;
+import java.util.UUID;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.OfflinePayment;
+import com.crs.flipkart.bean.OnlinePayment;
 import com.crs.flipkart.bean.Payment;
 import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.bean.ReportCard;
@@ -39,16 +41,16 @@ public class StudentService {
 	public void payFees(String id) {
 		
 		
-		//fetch fees to be paid
 		// add check for already paid fees
 		
 		
-		Payment pay=new Payment();
-		pay.setDateOfTransaction(java.time.LocalDateTime.now().toString());
+		Payment payment=new Payment();
+		payment.setStudentId(id);
+		payment.setDateOfTransaction(java.time.LocalDate.now().toString());
+		payment.setPaymentId(UUID.randomUUID().toString());
 		
 		//fetch amount that needs to be paid
-		
-		pay.setAmount(1);
+		payment.setAmount(1000);
 		
 		
 		
@@ -65,21 +67,35 @@ public class StudentService {
 		case 1:
 			
 			OnlinePaymentService ol= new OnlinePaymentService();
-			ol.onlineMode();
+			OnlinePayment onlinePayment= ol.onlineMode();
+			if(onlinePayment!=null)
+			{
+				payment.setStatus(true);
+			}
 			break;
 		case 2:
 			OfflinePaymentService of= new OfflinePaymentService();
-			OfflinePayment op = of.offlineMode();
+			OfflinePayment offlinePayment = of.offlineMode();
+			if(offlinePayment!=null)
+			{
+				payment.setStatus(true);
+			}
 			break;
 
 		default:
+			System.out.println("Sorry you entered the wrong choice!!");
+			payment.setStatus(false);
 			break;
 			
 			
 		
 		}
+		
 		//if payment done show notif
-		showNotification(pay);
+		if(payment.getStatus()==true)
+			{
+			showPaymentNotification(payment);
+			}
 		
 		
 		
@@ -87,11 +103,11 @@ public class StudentService {
 		
 	}
 	
-	public void showNotification(Payment pay) {
+	public void showPaymentNotification(Payment pay) {
 		System.out.println("Payment of fees done. Payment Details:");
 		System.out.println("PaymentID "+ pay.getPaymentId());
 		System.out.println("Amount" + pay.getAmount());
-		System.out.println("DateOfTransaction" + pay.getDateOfTransaction()+pay.get);
+		System.out.println("DateOfTransaction" + pay.getDateOfTransaction());
 		 
 	}
 	
