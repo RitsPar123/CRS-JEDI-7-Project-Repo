@@ -20,7 +20,7 @@ public class StudentApplication {
 		System.out.println("2. View Report Card");
 		System.out.println("3. View Registered Courses");
 		System.out.println("4. Show Notifications");
-		System.out.println("5. Pay Fees")
+		System.out.println("5. Pay Fees");
 		System.out.println("Enter your option"); 
 		Scanner sc = new Scanner(System.in);
 		int option = sc.nextInt();

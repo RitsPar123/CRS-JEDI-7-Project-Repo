@@ -23,6 +23,7 @@ public class OfflinePaymentService {
 			System.out.println("Enter Receipt Id :");
 			String receiptId = sc.next();
 			pay=new CashPayment(receiptId);
+			
 			break;
 			
 		case 2:
