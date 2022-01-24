@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import com.crs.flipkart.bean.CourseCatalog;
 import com.crs.flipkart.business.StudentService;
+import com.crs.flipkart.business.StudentServiceInterface;
 
 /**
  * @author harsh
@@ -14,7 +15,7 @@ import com.crs.flipkart.business.StudentService;
  */
 public class StudentApplication {
 	public void studentLoggedin(String id, CourseCatalog courseCatalog) {
-		StudentService studentService = new StudentService();
+		StudentServiceInterface studentService = new StudentService();
 		System.out.println("1. Registration");
 		System.out.println("2. View Report Card");
 		System.out.println("3. View Registered Courses");

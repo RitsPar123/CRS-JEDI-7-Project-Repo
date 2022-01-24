@@ -11,4 +11,8 @@ public class RegisteredCoursesService {
 	void generateReportCard() {
 		
 	}
+	void calculateGpa()
+	{
+		
+	}
 }

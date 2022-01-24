@@ -15,7 +15,7 @@ import com.crs.flipkart.bean.UpiPayment;
  * @author hardik.kothari
  *
  */
-public class OnlinePaymentService {
+public class OnlinePaymentService implements OnlinePaymentServiceInterface {
 
 
 	public OnlinePayment onlineMode()

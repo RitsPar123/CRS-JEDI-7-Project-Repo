@@ -13,7 +13,7 @@ public class Course {
 	private int courseId;
 	private String professor;
 	private boolean isOffered;
-	private double subGpa;
+	private double marks;
 
 	public Course(int count, String courseName, int courseId, String professor) {
 		this.count = count;
@@ -92,4 +92,19 @@ public class Course {
 		this.isOffered = isOffered;
 	}
 
+	/**
+	 * @return the marks
+	 */
+	public double getMarks() {
+		return marks;
+	}
+
+	/**
+	 * @param marks the marks to set
+	 */
+	public void setMarks(double marks) {
+		this.marks = marks;
+	}
+
+	
 }

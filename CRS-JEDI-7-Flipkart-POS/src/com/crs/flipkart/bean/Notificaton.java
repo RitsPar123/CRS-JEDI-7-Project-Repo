@@ -8,18 +8,18 @@ package com.crs.flipkart.bean;
  *
  */
 public class Notificaton {
-	private int studentId;
+	private String studentId;
 	private String message;
 	/**
 	 * @return the studentId
 	 */
-	public int getStudentId() {
+	public String getStudentId() {
 		return studentId;
 	}
 	/**
 	 * @param studentId the studentId to set
 	 */
-	public void setStudentId(int studentId) {
+	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
 	/**
@@ -34,7 +34,6 @@ public class Notificaton {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
 	
 
 }

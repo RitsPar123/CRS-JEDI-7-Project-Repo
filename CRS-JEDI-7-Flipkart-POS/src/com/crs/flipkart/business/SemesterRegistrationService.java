@@ -13,7 +13,7 @@ import com.crs.flipkart.bean.SemesterRegistration;
  * @author harsh
  *
  */
-public class SemesterRegistrationService {
+public class SemesterRegistrationService implements SemesterRegistrationServiceInterface{
     Scanner sc = new Scanner(System.in);
 
     public void addCourse(SemesterRegistration semesterRegistration) {

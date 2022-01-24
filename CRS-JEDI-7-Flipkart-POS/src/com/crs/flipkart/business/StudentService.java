@@ -18,7 +18,7 @@ import com.crs.flipkart.bean.ReportCard;
 import com.crs.flipkart.bean.SemesterRegistration;
 import com.crs.flipkart.bean.Student;
 
-public class StudentService {
+public class StudentService implements StudentServiceInterface{
 	List<Course> selectedCourses = new ArrayList<>();
 	Scanner sc = new Scanner(System.in);
 
@@ -106,7 +106,7 @@ public class StudentService {
 		switch(option) {
 		case 1:
 
-			OnlinePaymentService ol= new OnlinePaymentService();
+			OnlinePaymentServiceInterface ol= new OnlinePaymentService();
 			OnlinePayment onlinePayment= ol.onlineMode();
 			if(onlinePayment!=null)
 			{
@@ -114,7 +114,7 @@ public class StudentService {
 			}
 			break;
 		case 2:
-			OfflinePaymentService of= new OfflinePaymentService();
+			OfflinePaymentServiceInterface of= new OfflinePaymentService();
 			OfflinePayment offlinePayment = of.offlineMode();
 			if(offlinePayment!=null)
 			{

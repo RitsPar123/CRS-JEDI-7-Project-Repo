@@ -6,7 +6,7 @@ import com.crs.flipkart.bean.CashPayment;
 import com.crs.flipkart.bean.ChequePayment;
 import com.crs.flipkart.bean.OfflinePayment;
 
-public class OfflinePaymentService {
+public class OfflinePaymentService implements OfflinePaymentServiceInterface{
 
 	public OfflinePayment offlineMode()
 	{

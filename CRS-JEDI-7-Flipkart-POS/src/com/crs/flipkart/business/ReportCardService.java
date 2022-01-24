@@ -14,7 +14,7 @@ import com.crs.flipkart.bean.ReportCard;
  * @author srini
  *
  */
-public class ReportCardService {
+public class ReportCardService implements ReportCardServiceInterface {
 	/*
 	int id;
 	HashMap<String,Double> m; // Subject Code, gpa
@@ -36,4 +36,7 @@ public class ReportCardService {
 		}
 		System.out.println("Final GPA : "+String.format("%.4f", ViewCard.getGpa()));
 	}
+
+	
+	
 }
