@@ -3,8 +3,11 @@
  */
 package com.crs.flipkart.business;
 
+import java.util.List;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
+import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.dao.AdminDaoInterface;
 import com.crs.flipkart.dao.AdminDaoOperation;
 
@@ -31,9 +34,14 @@ public class AdminService implements AdminServiceInterface {
 		return adminDaoOp.addProfessor(professor);
 	}
 	@Override
-	public void approveStudent(String studentId) {
+	public boolean approveStudent(String studentId) {
 		// TODO Auto-generated method stub
-		adminDaoOp.approveStudent(studentId);
+		return adminDaoOp.approveStudent(studentId);
+	}
+	@Override
+	public List<Student> viewPendingApproval() {
+		// TODO Auto-generated method stub
+		return adminDaoOp.viewPendingApproval();
 	}
 
 }

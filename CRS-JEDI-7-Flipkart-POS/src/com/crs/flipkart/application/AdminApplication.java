@@ -3,9 +3,11 @@
  */
 package com.crs.flipkart.application;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.business.AdminService;
 import com.crs.flipkart.business.AdminServiceInterface;
@@ -41,6 +43,10 @@ public class AdminApplication {
                     break;
                 case 4:
                 	// add Professor
+                	viewPendingApproval();
+                    break;
+                case 5:
+                	// add Professor
                 	approveRegistration();
                     break;
                 default:
@@ -52,11 +58,13 @@ public class AdminApplication {
 		
 	}
 
+
 	public void CreateMenu() {
 			System.out.println("1  Add Course");
 			System.out.println("2  Delete Course");
 			System.out.println("3  Add Professor");
-			System.out.println("4  Approve Student Registration");
+			System.out.println("4  View Pending Approval Registration");
+			System.out.println("5  Approve Student Registration");
 			System.out.println("5  Approve Student Semester Registration");
 			System.out.println("6  Activate Grade Card");
 			System.out.println("7  View Students Data");
@@ -86,7 +94,9 @@ public class AdminApplication {
 		 
 		 boolean deleted = false;
 		 deleted = adminInterface.deleteCourse(courseId);
-		 System.out.println(deleted);
+		 
+		 if(deleted)
+			 System.out.println("Course is Deleted");
 	 }
 	 
 	 public void addProfessor() {
@@ -115,6 +125,17 @@ public class AdminApplication {
 		 System.out.print("Enter Student's ID");
 		 String studentUserId = sc.next();
 		 
-		 adminInterface.approveStudent(studentUserId);
-	}
+		 boolean isApprove = adminInterface.approveStudent(studentUserId);
+		 
+		 if(isApprove) System.out.println("Student Registration is being Approved");
+	  }
+	 
+	  private void viewPendingApproval() {
+			
+			List <Student> studentList = adminInterface.viewPendingApproval();
+			
+			for(Student s:studentList) {
+				System.out.println("Student Id " + s.getId() + "  Student Branch  " + s.getBranch());
+			}
+	  }
 }

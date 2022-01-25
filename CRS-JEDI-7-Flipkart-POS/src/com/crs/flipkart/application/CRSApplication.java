@@ -113,6 +113,8 @@ public class CRSApplication {
             switch (loggedIn) {
                 // Student
                 case 1: {
+                	boolean isApproved = userInterface.verifyApproval(id);
+                	System.out.println(isApproved);
                     StudentApplication studentApp = new StudentApplication();
                     studentApp.studentLoggedin(id,courseCatalog);
                 }
