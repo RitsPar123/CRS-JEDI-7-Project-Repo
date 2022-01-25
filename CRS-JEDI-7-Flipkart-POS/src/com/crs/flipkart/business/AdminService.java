@@ -13,8 +13,10 @@ import com.crs.flipkart.dao.AdminDaoOperation;
  *
  */
 public class AdminService implements AdminServiceInterface {
-	
+
 	AdminDaoInterface adminDaoOp = new AdminDaoOperation();
+	
+    
 	public boolean addCourse(Course course) {
 		return adminDaoOp.addCourse(course);
 	}
@@ -27,6 +29,11 @@ public class AdminService implements AdminServiceInterface {
 	public boolean addProfessor(Professor professor) {
 		// TODO Auto-generated method stub
 		return adminDaoOp.addProfessor(professor);
+	}
+	@Override
+	public void approveStudent(String studentId) {
+		// TODO Auto-generated method stub
+		adminDaoOp.approveStudent(studentId);
 	}
 
 }

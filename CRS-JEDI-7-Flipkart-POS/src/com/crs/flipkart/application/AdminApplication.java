@@ -26,7 +26,7 @@ public class AdminApplication {
 		
 		int userInput = sc.nextInt();
 		
-        while (userInput != 4) {
+        while (userInput != 6) {
             switch (userInput) {
                 case 1:
                     addCourse();
@@ -39,6 +39,10 @@ public class AdminApplication {
                 	// add Professor
                     addProfessor();
                     break;
+                case 4:
+                	// add Professor
+                	approveRegistration();
+                    break;
                 default:
                     System.out.println("Invalid Input");
             }
@@ -47,18 +51,17 @@ public class AdminApplication {
         }
 		
 	}
-	
-	 public void CreateMenu() {
+
+	public void CreateMenu() {
 			System.out.println("1  Add Course");
 			System.out.println("2  Delete Course");
 			System.out.println("3  Add Professor");
-			System.out.println("4  Delete Professor");
-			System.out.println("5  Approve Student Registration");
-			System.out.println("6  Approve Student Semester Registration");
-			System.out.println("7  Activate Grade Card");
-			System.out.println("8  View Students Data");
-			System.out.println("7  View All Courses");
-			System.out.println("Student Course Allocation");
+			System.out.println("4  Approve Student Registration");
+			System.out.println("5  Approve Student Semester Registration");
+			System.out.println("6  Activate Grade Card");
+			System.out.println("7  View Students Data");
+			System.out.println("8  View All Courses");
+			System.out.println("9  Student Course Allocation");
 
 	 }
 	 
@@ -89,10 +92,10 @@ public class AdminApplication {
 	 public void addProfessor() {
 		    System.out.println("Enter details of the Professor to be added: ");
 
-		    System.out.println("Enter ProfessorId - ");
+		    System.out.println("Enter ProfessorId ");
 	        String id = sc.next();
 
-	        System.out.println("Enter Department - ");
+	        System.out.println("Enter Department ");
 	        String department = sc.next();
 	        
 	        Professor professor = new Professor();
@@ -106,4 +109,12 @@ public class AdminApplication {
 	        	System.out.println("Professor created successfully.");
 	        }
 	 }
+	 
+	 private void approveRegistration() {
+		// TODO Auto-generated method stub
+		 System.out.print("Enter Student's ID");
+		 String studentUserId = sc.next();
+		 
+		 adminInterface.approveStudent(studentUserId);
+	}
 }

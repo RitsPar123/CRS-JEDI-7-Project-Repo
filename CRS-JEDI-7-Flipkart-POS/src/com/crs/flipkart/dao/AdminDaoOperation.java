@@ -18,29 +18,26 @@ import com.crs.flipkart.utils.CRSDb;
  */
 public class AdminDaoOperation implements AdminDaoInterface {
 	
-	Connection connection = CRSDb.getConnect();
-	
 	public boolean addCourse(Course course) {
-		
-		Connection connection = CRSDb.getConnect();
+		Connection conn = CRSDb.getConnect();
 		try {
-			   if(connection!=null) System.out.println("vsdvsdc");
-				PreparedStatement pstmtCourse = connection.prepareStatement(SQLQueriesConstant.ADD_COURSE);
-				System.out.println(course.getCourseId()+" gdfgetrgtgtr "+course.getProfessor() + " "+course.getCourseName());
-				pstmtCourse.setString(1,course.getCourseId());
-				pstmtCourse.setString(2,course.getProfessor());
-				pstmtCourse.setString(3,course.getCourseName());
-				System.out.println(course.getCourseId()+" "+course.getProfessor() + " "+course.getCourseName());
-//				int row = pstmtCourse.executeUpdate();
-//				
-//				if(row == 1) return true;
-//
-//				return false;
-				return pstmtCourse.executeUpdate() == 1;
+			    PreparedStatement stmt;
+				stmt = conn.prepareStatement(SQLQueriesConstant.ADD_COURSE);
+				stmt.setString(1,course.getCourseId());
+				stmt.setString(2,course.getProfessor());
+				stmt.setString(3,course.getCourseName());
+
+				return stmt.executeUpdate() == 1;
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.getMessage();
+				e.printStackTrace();
+			}finally {
+				try {
+					conn.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		 return false;
 	}
@@ -48,13 +45,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	@Override
 	public boolean deleteCourse(String id) {
 		// TODO Auto-generated method stub
-		
+		Connection conn = CRSDb.getConnect();
 		try {
-			PreparedStatement pstmtCourseD = connection.prepareStatement(SQLQueriesConstant.DELETE_COURSE);
+			PreparedStatement stmt;
+			stmt = conn.prepareStatement(SQLQueriesConstant.DELETE_COURSE);
+			stmt.setString(1, id);
 			
-			pstmtCourseD.setString(1, id);
-			
-			int row = pstmtCourseD.executeUpdate();
+			int row = stmt.executeUpdate();
 			
 			if(row == 1) {
 				return true;
@@ -63,7 +60,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			return false;
 			
 		}catch(SQLException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return false;
 	}
@@ -71,10 +74,10 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	@Override
 	public boolean addProfessor(Professor professor) {
 		// TODO Auto-generated method stub
-		Connection connection = CRSDb.getConnect();
-
+		Connection conn = CRSDb.getConnect();
         try {
-			PreparedStatement pstmtP = connection.prepareStatement(SQLQueriesConstant.ADD_PROFESSOR);
+        	PreparedStatement pstmtP;
+        	pstmtP = conn.prepareStatement(SQLQueriesConstant.ADD_PROFESSOR);
 			
 			pstmtP.setString(1,professor.getId());
 			pstmtP.setString(2,professor.getDepartment());
@@ -91,13 +94,42 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			e.printStackTrace();
 		}finally {
 			try {
-				connection.close();
+				conn.close();
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}
 		}
         
 		return false;
+	}
+
+	@Override
+	public void approveStudent(String SId) {
+		// TODO Auto-generated method stub
+		Connection conn = CRSDb.getConnect();
+		try {
+        	PreparedStatement pstmtP;
+        	pstmtP = conn.prepareStatement(SQLQueriesConstant.APPROVE_STUDENT);
+			
+			pstmtP.setString(1,SId);
+		
+	        int result = pstmtP.executeUpdate();
+
+	        if(result == 1)
+	        	return;
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+        
+		return;
 	}
 	}
 

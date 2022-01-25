@@ -16,4 +16,5 @@ public class SQLQueriesConstant {
 	public static final String ADD_COURSE = "insert into course (CourseId,PId,CourseName) values(?,?,?)";
 	public static final String DELETE_COURSE = "delete from course where id = ?";
 	public static final String ADD_PROFESSOR = "insert into professor(PId,Department) values(?,?)";
+	public static final String APPROVE_STUDENT = "update student set IsApproved = 1 where SId = ?";
 }

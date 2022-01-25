@@ -14,4 +14,5 @@ public interface AdminServiceInterface {
 	public boolean addCourse(Course course);
 	public boolean deleteCourse(String id);
 	public boolean addProfessor(Professor professor);
+	public void approveStudent(String studentUserId);
 }
