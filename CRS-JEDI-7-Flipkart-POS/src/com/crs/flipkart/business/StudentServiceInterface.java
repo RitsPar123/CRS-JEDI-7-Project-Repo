@@ -16,7 +16,7 @@ public interface StudentServiceInterface {
     	void viewReportCard(String id);
     	void viewRegisteredCourses(String id);
     	void payFees(String id);
-    	void showPaymentNotification(Payment pay);
+		void showNotifications();
 
 
 }

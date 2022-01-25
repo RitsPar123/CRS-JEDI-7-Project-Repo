@@ -7,7 +7,7 @@ package com.crs.flipkart.bean;
  * @author hardik.kothari
  *
  */
-public class Notificaton {
+public class Notification {
 	private String studentId;
 	private String message;
 	/**

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import com.crs.flipkart.bean.CourseCatalog;
+import com.crs.flipkart.bean.Notification;
 import com.crs.flipkart.bean.OfflinePayment;
 import java.util.Scanner;
 import java.util.UUID;
@@ -104,51 +105,44 @@ public class StudentService implements StudentServiceInterface{
 
 
 		switch(option) {
-		case 1:
+			case 1:
 
-			OnlinePaymentServiceInterface ol= new OnlinePaymentService();
-			OnlinePayment onlinePayment= ol.onlineMode();
-			if(onlinePayment!=null)
-			{
-				payment.setStatus(true);
-			}
-			break;
-		case 2:
-			OfflinePaymentServiceInterface of= new OfflinePaymentService();
-			OfflinePayment offlinePayment = of.offlineMode();
-			if(offlinePayment!=null)
-			{
-				payment.setStatus(true);
-			}
-			break;
+				OnlinePaymentServiceInterface ol= new OnlinePaymentService();
+				OnlinePayment onlinePayment= ol.onlineMode();
+				if(onlinePayment!=null) {
+					payment.setStatus(true);
+				}
+				break;
+			case 2:
+				OfflinePaymentServiceInterface of= new OfflinePaymentService();
+				OfflinePayment offlinePayment = of.offlineMode();
+				if(offlinePayment!=null) {
+					payment.setStatus(true);
+				}
+				break;
 
-		default:
-			System.out.println("Sorry you entered the wrong choice!!");
-			payment.setStatus(false);
-			break;
-
-
+			default:
+				System.out.println("Sorry you entered the wrong choice!!");
+				payment.setStatus(false);
+				break;
 
 		}
 
-		//if payment done show notif
-		if(payment.getStatus()==true)
-			{
-			showPaymentNotification(payment);
-			}
 
-
-
-
-
-	}
-
-	public void showPaymentNotification(Payment pay) {
-		System.out.println("Payment of fees done. Payment Details:");
-		System.out.println("PaymentID "+ pay.getPaymentId());
-		System.out.println("Amount " + pay.getAmount());
-		System.out.println("DateOfTransaction " + pay.getDateOfTransaction());
+		if(payment.getStatus()==true) {
+			NotificationService notificationService = new NotificationService();
+			
+			Notification notification = notificationService.generatePaymentNotification(payment);
+			// TODO: Push notification to DB for studentId
+			
+			notification = notificationService.generateRegistrationNotification(payment.getStudentId());
+			// TODO: Push successfull notification to DB for studentId
+		}
 
 	}
 
+	public void showNotifications() {
+		// TODO: Print all the messages of the student
+	}
+	
 }
