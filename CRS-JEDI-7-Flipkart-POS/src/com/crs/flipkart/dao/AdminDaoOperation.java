@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.crs.flipkart.Dao;
+package com.crs.flipkart.dao;
 
 /**
  * @author Abhinav
