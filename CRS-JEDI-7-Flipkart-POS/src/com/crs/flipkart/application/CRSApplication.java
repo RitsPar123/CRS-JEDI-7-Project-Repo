@@ -136,6 +136,10 @@ public class CRSApplication {
 				}
 					break;
 				case 2:
+					
+					ProfessorApplication professorApplication = new ProfessorApplication();
+					professorApplication.professorLoggedIn(u.getId());
+					
 					// Professor
 					break;
 				case 3:
