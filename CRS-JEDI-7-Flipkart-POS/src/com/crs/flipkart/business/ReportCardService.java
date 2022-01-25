@@ -29,12 +29,16 @@ public class ReportCardService implements ReportCardServiceInterface {
 	}
 	
 	public void ViewReportCard(String id) {
-		ReportCard ViewCard = report.get(id); 
-		System.out.println("Subject Code \t Grade");
-		for(Map.Entry<String,Double> entry : ViewCard.getM().entrySet()) {
-			System.out.println("Course ID: "+entry.getKey()+"\tGrade: "+entry.getValue());
+		if(report.containsKey(id)) {
+			ReportCard ViewCard = report.get(id); 
+			System.out.println("Subject Code \t Grade");
+			for(Map.Entry<String,Double> entry : ViewCard.getM().entrySet()) {
+				System.out.println("Course ID: "+entry.getKey()+"\tGrade: "+entry.getValue());
+			}
+			System.out.println("Final GPA : "+String.format("%.4f", ViewCard.getGpa()));
+		} else {
+			System.out.println("Report card still ungenerated!");
 		}
-		System.out.println("Final GPA : "+String.format("%.4f", ViewCard.getGpa()));
 	}
 
 	
