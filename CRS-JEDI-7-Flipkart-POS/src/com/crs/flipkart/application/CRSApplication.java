@@ -13,6 +13,8 @@ import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.bean.User;
 import com.crs.flipkart.business.CourseCatalogService;
 import com.crs.flipkart.business.CourseCatalogServiceInterface;
+import com.crs.flipkart.business.StudentService;
+import com.crs.flipkart.business.StudentServiceInterface;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.business.UserServiceInterface;
 
@@ -77,13 +79,24 @@ public class CRSApplication {
 
 		System.out.println("Enter Id:");
 		String id = sc.next();
+		
+		System.out.println("Enter Name:");
+		String name = sc.next();
 
 		System.out.println("Enter Password:");
 		String password = sc.next();
+		
+		System.out.println("Enter Branch:");
+		String branch = sc.next();
+		int role = 1;
+		
+		StudentServiceInterface studentInterface = new StudentService();
+		
+		studentInterface.signup(id,password,branch,name,role);
 
-		Student newapplication = new Student(id, password);
-
-		studentMap.put(id,newapplication );
+//		Student newapplication = new Student(id, password);
+//
+//		studentMap.put(id,newapplication );
 
 
 	}

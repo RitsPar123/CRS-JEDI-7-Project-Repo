@@ -20,7 +20,7 @@ public class CRSDb {
 	        if (connection != null) {
 	            return connection;
 	        } else {
-	        	Class.forName("com.mysql.cj.jdbc.Driver");
+	        	Class.forName("com.mysql.jdbc.Driver");
 	            String url = "jdbc:mysql://localhost:3306/crsdatabase";
 	            String username = "root";
 	            String password = "root";
