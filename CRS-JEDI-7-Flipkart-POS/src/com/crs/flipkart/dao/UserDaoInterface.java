@@ -8,5 +8,7 @@ package com.crs.flipkart.dao;
  *
  */
 public interface UserDaoInterface {
-
+	public int verifyUser(String id,String Password);
+	public boolean updatePassword(String id,String Password);
+	
 }

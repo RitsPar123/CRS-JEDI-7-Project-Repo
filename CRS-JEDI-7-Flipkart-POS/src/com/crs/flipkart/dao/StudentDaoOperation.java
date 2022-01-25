@@ -30,16 +30,32 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			pstmt.setString(3,student.getPassword());
 			pstmt.setInt(4,student.getRole());
 			
-	         pstmt.executeUpdate();
+	        int result = pstmt.executeUpdate();
 
-	          System.out.println("Data is Inserted");
+	        if(result == 1) {
+	        	PreparedStatement pstmtStudent;
+	        	pstmtStudent = connection.prepareStatement(SQLQueriesConstant.ADD_STUDENT);
+				
+				pstmtStudent.setString(1,student.getId());
+				pstmtStudent.setString(2,student.getBranch());
+				
+		        int result2 = pstmtStudent.executeUpdate();
+		        
+		        if(result2 == 1) {
+		        	studentId = student.getId();
+		        }
 
-	          connection.close();
+	        }
 			
-			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
 		}
         
 		return studentId;
