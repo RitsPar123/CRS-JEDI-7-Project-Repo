@@ -6,6 +6,7 @@ package com.crs.flipkart.application;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.business.AdminService;
 import com.crs.flipkart.business.AdminServiceInterface;
 
@@ -35,8 +36,8 @@ public class AdminApplication {
                     deleteCourse();
                     break;
                 case 3:
-                	// update Password
-                    CRSApplication.updatePassword();
+                	// add Professor
+                    addProfessor();
                     break;
                 default:
                     System.out.println("Invalid Input");
@@ -73,10 +74,36 @@ public class AdminApplication {
 		 boolean added = false;
 		 added = adminInterface.addCourse(course);
 		 System.out.println(added);
-		 return;
 	 }
 	 
 	 public void deleteCourse() {
+		 System.out.println("Enter Course Code");
+		 String courseId = sc.next();
 		 
+		 
+		 boolean deleted = false;
+		 deleted = adminInterface.deleteCourse(courseId);
+		 System.out.println(deleted);
+	 }
+	 
+	 public void addProfessor() {
+		    System.out.println("Enter details of the Professor to be added: ");
+
+		    System.out.println("Enter ProfessorId - ");
+	        String id = sc.next();
+
+	        System.out.println("Enter Department - ");
+	        String department = sc.next();
+	        
+	        Professor professor = new Professor();
+	        
+	        professor.setDepartment(department);
+	        professor.setId(id);
+	        
+	        boolean isProfessorAdded = adminInterface.addProfessor(professor);
+
+	        if (isProfessorAdded) {
+	        	System.out.println("Professor created successfully.");
+	        }
 	 }
 }
