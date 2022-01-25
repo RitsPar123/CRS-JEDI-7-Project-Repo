@@ -4,6 +4,7 @@
 package com.crs.flipkart.business;
 
 import com.crs.flipkart.dao.ProfessorDaoInterface;
+import com.crs.flipkart.dao.ProfessorDaoOperation;
 
 /**
  * @author hardik.kothari
@@ -11,7 +12,7 @@ import com.crs.flipkart.dao.ProfessorDaoInterface;
  */
 public class ProfessorService {
 	
-	ProfessorDaoInterface professorDaoInterface = new ProfessorDaoInterface();
+	ProfessorDaoInterface professorDaoInterface = new ProfessorDaoOperation();
 
 	public void selectCourse(String profId,String courseid,String coursename) {
 		professorDaoInterface.selectCourse(profId,courseid,coursename);
