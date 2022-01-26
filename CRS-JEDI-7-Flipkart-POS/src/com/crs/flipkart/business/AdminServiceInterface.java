@@ -4,6 +4,7 @@
 package com.crs.flipkart.business;
 
 import java.util.List;
+import java.util.Set;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
@@ -20,4 +21,7 @@ public interface AdminServiceInterface {
 	public boolean approveStudent(String studentUserId);
 	public List<Student> viewPendingApproval();
 	public List<Course> viewCourse();
+	public Set<String> viewSelectedCourse(String studentId);
+	public int getCouseList(String c);
+	public boolean updateRegistered(String studentId);
 }

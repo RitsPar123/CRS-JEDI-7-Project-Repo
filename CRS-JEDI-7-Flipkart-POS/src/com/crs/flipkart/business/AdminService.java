@@ -4,6 +4,7 @@
 package com.crs.flipkart.business;
 
 import java.util.List;
+import java.util.Set;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
@@ -47,6 +48,21 @@ public class AdminService implements AdminServiceInterface {
 	public List<Course> viewCourse() {
 		// TODO Auto-generated method stub
 		return adminDaoOp.viewCourse();
+	}
+	@Override
+	public Set<String> viewSelectedCourse(String studentId) {
+		// TODO Auto-generated method stub
+		return adminDaoOp.viewSelectedCourse(studentId);
+	}
+	@Override
+	public int getCouseList(String courseId) {
+		// TODO Auto-generated method stub
+		return adminDaoOp.getCourseList(courseId);
+	}
+	@Override
+	public boolean updateRegistered(String studentId) {
+		// TODO Auto-generated method stub
+		return adminDaoOp.updateRegistered(studentId);
 	}
 
 }
