@@ -11,7 +11,7 @@ import com.crs.flipkart.bean.OnlinePayment;
  */
 public interface OnlinePaymentServiceInterface {
 
-	public OnlinePayment onlineMode();
+	public Boolean onlineMode();
 
 
 }

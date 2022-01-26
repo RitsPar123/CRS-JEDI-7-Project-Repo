@@ -18,7 +18,7 @@ import com.crs.flipkart.bean.UpiPayment;
 public class OnlinePaymentService implements OnlinePaymentServiceInterface {
 
 
-	public OnlinePayment onlineMode()
+	public Boolean onlineMode()
 	{
 		System.out.println("Choose mode of payment:");
 		System.out.println("1.NetBanking");
@@ -52,7 +52,7 @@ public class OnlinePaymentService implements OnlinePaymentServiceInterface {
 			System.out.println("Sorry you entered the wrong choice!!");
 				break;
 		}
-		return pay;
+		return true;
 
 	}
 
