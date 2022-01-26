@@ -9,4 +9,6 @@ package com.crs.flipkart.dao;
  */
 public interface NotificationDaoInterface {
 
+	public boolean sendNotification(String studentId, String message);
+
 }

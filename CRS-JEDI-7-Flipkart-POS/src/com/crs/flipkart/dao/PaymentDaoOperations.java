@@ -35,16 +35,10 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
 	            stmt.executeUpdate();
 	            conn.close();
 
-	           
-
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
 	        }
-	       
-	    
-
-		
 
       
 	}

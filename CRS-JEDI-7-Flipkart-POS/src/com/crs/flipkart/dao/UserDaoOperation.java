@@ -91,7 +91,7 @@ public class UserDaoOperation implements UserDaoInterface {
 	public boolean verifyApproval(String id) {
 		// TODO Auto-generated method stub
 		
-Connection connection = CRSDb.getConnect();
+		Connection connection = CRSDb.getConnect();
 		
 		try {
 			PreparedStatement pstmtUpdate = connection.prepareStatement(SQLQueriesConstant.VERIFY_APPROVAL);

@@ -5,12 +5,16 @@ package com.crs.flipkart.business;
 
 import com.crs.flipkart.bean.Notification;
 import com.crs.flipkart.bean.Payment;
+import com.crs.flipkart.dao.NotificationDaoInterface;
+import com.crs.flipkart.dao.NotificationDaoOperation;
 
 /**
  * @author harsh
  *
  */
-public class NotificationService {
+public class NotificationService implements NotificationServiceInterface {
+	NotificationDaoInterface notificationDaoOp = new NotificationDaoOperation();
+	
 	public Notification generatePaymentNotification(Payment p) {
 		// Send notification message to studentId
 		
@@ -22,14 +26,8 @@ public class NotificationService {
 		
 	}
 	
-	public Notification generateRegistrationNotification(String studentId) {
-		Notification notification = new Notification();
-		
-		notification.setStudentId(studentId); 
-		notification.setMessage("Registration for id " + studentId + " successfull.");
-		
-		return notification;
-		
+	public boolean sendNotification(String studentId,String message) {		
+		return notificationDaoOp.sendNotification(studentId,message);	
 	}
 	
 }

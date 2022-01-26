@@ -8,6 +8,8 @@ package com.crs.flipkart.application;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.CourseCatalog;
+import com.crs.flipkart.business.NotificationService;
+import com.crs.flipkart.business.NotificationServiceInterface;
 import com.crs.flipkart.business.StudentService;
 import com.crs.flipkart.business.StudentServiceInterface;
 import com.crs.flipkart.business.UserService;
@@ -85,8 +87,7 @@ public class CRSApplication {
         StudentServiceInterface studentInterface = new StudentService();
 
         String newUserID = studentInterface.signup(id, password, branch, name, role);
-        
-        //notification
+
     }
 
     public static void loginUser() {
