@@ -6,7 +6,6 @@ package com.crs.flipkart.application;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.CourseCatalog;
-import com.crs.flipkart.business.StudentService;
 import com.crs.flipkart.business.StudentServiceInterface;
 
 /**
@@ -16,7 +15,7 @@ import com.crs.flipkart.business.StudentServiceInterface;
 
 public class StudentApplication {
 	public void studentLoggedin(String id, CourseCatalog courseCatalog) {
-		StudentServiceInterface studentService = new StudentService();
+		//StudentServiceInterface studentService = new StudentService();
 
 		while(true) {
 			System.out.println("1. Registration");
@@ -29,18 +28,18 @@ public class StudentApplication {
 			int option = sc.nextInt();
 			switch (option) {
 				case 1:
-					studentService.register(id, courseCatalog);
+					//studentService.register(id, courseCatalog);
 					break;
 				case 2:
-					studentService.viewReportCard(id);
+					//studentService.viewReportCard(id);
 					break;
 				case 3:
-					studentService.viewRegisteredCourses(id);
+					//studentService.viewRegisteredCourses(id);
 					break;
 				 case 4:
-					 studentService.showNotifications();
+					// studentService.showNotifications();
 				case 5:
-					studentService.payFees(id);
+					//studentService.payFees(id);
 					break;
 				default:
 					System.out.println("Enter valid option");

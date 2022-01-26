@@ -4,16 +4,10 @@
  */
 package com.crs.flipkart.application;
 
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Scanner;
 
-import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.CourseCatalog;
-import com.crs.flipkart.bean.Student;
-import com.crs.flipkart.bean.User;
-import com.crs.flipkart.business.CourseCatalogService;
-import com.crs.flipkart.business.CourseCatalogServiceInterface;
 import com.crs.flipkart.business.StudentService;
 import com.crs.flipkart.business.StudentServiceInterface;
 import com.crs.flipkart.business.UserService;
@@ -83,12 +77,14 @@ public class CRSApplication {
 
         System.out.println("Enter Branch:");
         String branch = sc.next();
+        
         int role = 1;
 
         StudentServiceInterface studentInterface = new StudentService();
 
         String newUserID = studentInterface.signup(id, password, branch, name, role);
-
+        
+        //notification
     }
 
     public static void loginUser() {
@@ -111,10 +107,18 @@ public class CRSApplication {
             switch (loggedIn) {
                 // Student
                 case 1: {
-                    StudentApplication studentApp = new StudentApplication();
-                    studentApp.studentLoggedin(id,courseCatalog);
+                	boolean isApproved = userInterface.verifyApproval(id);
+                	if(isApproved) {
+                		System.out.println("Student Has Been Logged In\n");
+//                		StudentApplication studentApp = new StudentApplication();
+//                        studentApp.studentLoggedin(id,courseCatalog);
+                	}else {
+                		System.out.println("You Have Not Been Approved By Admin");
+                	}
+                    
                 }
                     break;
+                    
                 case 2:
                     System.out.println("Professor");
                     break;
@@ -123,6 +127,9 @@ public class CRSApplication {
                     adminCRS.showMenu();
                     break;
             }
+        }else {
+        	System.out.println("Wrong Id / Password... Try Again\n");
+        	return;
         }
     }
     

@@ -87,4 +87,37 @@ public class UserDaoOperation implements UserDaoInterface {
 		return false;
 	}
 
+	@Override
+	public boolean verifyApproval(String id) {
+		// TODO Auto-generated method stub
+		
+Connection connection = CRSDb.getConnect();
+		
+		try {
+			PreparedStatement pstmtUpdate = connection.prepareStatement(SQLQueriesConstant.VERIFY_APPROVAL);
+			
+			pstmtUpdate.setString(1,id);
+			
+			ResultSet resultSet = pstmtUpdate.executeQuery();
+			Boolean isApproved = false;
+			
+			if(resultSet.next()) 
+				isApproved = resultSet.getBoolean("IsApproved");
+			
+			if(isApproved == true) return true;
+	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return false;
+	}
+
 }

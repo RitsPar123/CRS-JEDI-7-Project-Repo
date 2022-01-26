@@ -17,5 +17,6 @@ public interface UserServiceInterface {
 	public void forgotPassword();
 	public void resetPassword();
 	public void updateDetails();
+	public boolean verifyApproval(String id);
 
 }

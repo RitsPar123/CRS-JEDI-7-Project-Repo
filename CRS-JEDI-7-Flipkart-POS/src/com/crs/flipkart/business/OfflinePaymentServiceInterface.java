@@ -15,6 +15,6 @@ public interface OfflinePaymentServiceInterface {
 	  * @input : None 
 	  * @Return : offlinePayment object
 	  */
-	public OfflinePayment offlineMode();
+	public Boolean offlineMode();
 
 }

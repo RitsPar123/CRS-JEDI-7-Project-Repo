@@ -46,10 +46,8 @@ public class StudentService implements StudentServiceInterface{
 		return studentId;
 	}
 	
-	
-	List<Course> selectedCourses = new ArrayList<>();
-	Scanner sc = new Scanner(System.in);
 
+<<<<<<< HEAD
 	public void register(String studentId, CourseCatalog courseCatalog) {
 		
 		// Get registrationStatus and feepaid status
@@ -198,5 +196,7 @@ public class StudentService implements StudentServiceInterface{
 	public void showNotifications() {
 		// TODO: Print all the messages of the student
 	}
+=======
+>>>>>>> 5906df70e161e2e26ef745be379a7f3743b912ff
 	
 }

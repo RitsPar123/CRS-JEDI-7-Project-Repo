@@ -17,7 +17,7 @@ public class CRSDb {
 	public static Connection getConnect() {
 		
 		try {
-	        if (connection != null) {
+	        if (connection != null && !connection.isClosed()) {
 	            return connection;
 	        } else {
 	        	Class.forName("com.mysql.jdbc.Driver");

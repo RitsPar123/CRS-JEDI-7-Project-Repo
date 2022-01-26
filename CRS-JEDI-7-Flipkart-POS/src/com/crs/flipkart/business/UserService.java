@@ -35,5 +35,11 @@ public class UserService implements UserServiceInterface{
 		// TODO Auto-generated method stub
 		return userDaoInterface.updatePassword(id,Password);
 	}
+
+	@Override
+	public boolean verifyApproval(String id) {
+		// TODO Auto-generated method stub
+		return userDaoInterface.verifyApproval(id);
+	}
 	
 }

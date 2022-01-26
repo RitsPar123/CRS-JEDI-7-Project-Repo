@@ -15,6 +15,7 @@ public class Course {
 	private boolean isOffered;
 	private double marks;
 
+<<<<<<< HEAD
 	public Course() {
 		
 	}
@@ -24,6 +25,9 @@ public class Course {
 		this.courseName = courseName;
 		this.courseId = courseId;
 	}
+=======
+	public Course() {}
+>>>>>>> 5906df70e161e2e26ef745be379a7f3743b912ff
 	
 	public Course(int count, String courseName, String courseId, String professor) {
 		this.count = count;
