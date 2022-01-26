@@ -24,6 +24,7 @@ public class Course {
 		this.professor = professor;
 	}
 
+
 	/**
 	 * @return the count
 	 */
@@ -108,5 +109,6 @@ public class Course {
 		this.marks = marks;
 	}
 
+	
 	
 }
