@@ -26,7 +26,6 @@ public class CRSApplication {
      */
 
     static UserServiceInterface userInterface = new UserService();
-    static CourseCatalog courseCatalog = new CourseCatalog();
     static StudentApplication studentApplication = new StudentApplication();
     static Scanner sc = new Scanner(System.in);
 
@@ -113,8 +112,8 @@ public class CRSApplication {
                 	boolean isApproved = userInterface.verifyApproval(id);
                 	if(isApproved) {
                 		System.out.println("Student Has Been Logged In\n");
-//                		StudentApplication studentApp = new StudentApplication();
-//                        studentApp.studentLoggedin(id,courseCatalog);
+                		StudentApplication studentApp = new StudentApplication();
+                        studentApp.studentLoggedin(id);
                 	}else {
                 		System.out.println("You Have Not Been Approved By Admin");
                 	}
@@ -125,6 +124,7 @@ public class CRSApplication {
                 case 2:
                     System.out.println("Professor");
                     break;
+                    
                 case 3:
                     AdminApplication adminCRS = new AdminApplication();
                     adminCRS.showMenu();

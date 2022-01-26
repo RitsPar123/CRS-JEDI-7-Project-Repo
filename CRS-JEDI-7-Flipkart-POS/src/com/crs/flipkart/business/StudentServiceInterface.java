@@ -14,5 +14,4 @@ public interface StudentServiceInterface {
 	
 		public String signup(String id,String password,String branch,String name,int role);
 
-
 }

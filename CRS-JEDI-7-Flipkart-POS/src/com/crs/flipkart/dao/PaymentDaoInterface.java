@@ -10,7 +10,7 @@ import com.crs.flipkart.bean.Payment;
  */
 public interface PaymentDaoInterface {
 	
-	public void payFees(Payment pay);
+	public boolean payFees(Payment pay);
 	
 
 }

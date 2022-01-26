@@ -8,24 +8,27 @@ package com.crs.flipkart.bean;
  *
  */
 public class Payment {
+
 	private String studentId;
 	private	String  paymentId;
+	private String paymentMethod;
 	private double amount;
 	private String dateOfTransaction;
 	private Boolean status;
-	private String method;
 	/**
 	 * @return the method
 	 */
-	public String getMethod() {
-		return method;
+	
+	public Payment(String Id,String paymentId,String method,double amount,String dateT,Boolean status){
+		this.studentId = Id;
+		this.paymentId = paymentId;
+		this.paymentMethod = method;
+		this.amount = amount;
+		this.dateOfTransaction = dateT;
+		this.status = status;
 	}
-	/**
-	 * @param method the method to set
-	 */
-	public void setMethod(String method) {
-		this.method = method;
-	}
+	
+
 	/**
 	 * @return the studentId
 	 */
@@ -87,8 +90,13 @@ public class Payment {
 		this.status = status;
 	}
 	
-	
-	
-	
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
 
 }

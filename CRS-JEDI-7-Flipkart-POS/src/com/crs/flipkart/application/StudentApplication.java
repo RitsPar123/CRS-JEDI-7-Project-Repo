@@ -6,7 +6,12 @@ package com.crs.flipkart.application;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.CourseCatalog;
+import com.crs.flipkart.business.PaymentService;
+import com.crs.flipkart.business.PaymentServiceInterface;
+import com.crs.flipkart.business.StudentService;
 import com.crs.flipkart.business.StudentServiceInterface;
+import com.crs.flipkart.dao.PaymentDaoInterface;
+import com.crs.flipkart.dao.PaymentDaoOperations;
 
 /**
  * @author harsh
@@ -14,8 +19,10 @@ import com.crs.flipkart.business.StudentServiceInterface;
  */
 
 public class StudentApplication {
-	public void studentLoggedin(String id, CourseCatalog courseCatalog) {
-		//StudentServiceInterface studentService = new StudentService();
+	PaymentServiceInterface paymentInterface = new PaymentService();
+	
+	public void studentLoggedin(String id) {
+		StudentServiceInterface studentService = new StudentService();
 
 		while(true) {
 			System.out.println("1. Registration");
@@ -39,7 +46,7 @@ public class StudentApplication {
 				 case 4:
 					// studentService.showNotifications();
 				case 5:
-					//studentService.payFees(id);
+					paymentInterface.showMenu(id);
 					break;
 				default:
 					System.out.println("Enter valid option");
