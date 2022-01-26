@@ -60,4 +60,31 @@ public class StudentDaoOperation implements StudentDaoInterface {
         
 		return studentId;
 	}
+	
+	
+	public int getRegistrationStatus(String id) {
+		Connection connection = CRSDb.getConnect();
+		
+		int registrationStatus = 0;
+
+        try {
+			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_REGISTRATION_STATUS);
+			// TODO: GET REGISTRATION STATUS
+			// AND UPDATE registrationStatus
+			pstmt.setString(1,id);
+			
+			registrationStatus = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return registrationStatus;	
+	}
+	
 }

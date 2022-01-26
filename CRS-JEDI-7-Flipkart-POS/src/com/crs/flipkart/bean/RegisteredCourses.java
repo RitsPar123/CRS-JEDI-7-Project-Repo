@@ -11,8 +11,9 @@ import java.util.List;
  */
 public class RegisteredCourses {
 	private String studentId;
-	List<Course> selectedCourses;
-	double gpa;
+	private String courseId;
+	private int isRegistered;
+	private double gpa;
 	/**
 	 * @return the studentId
 	 */
@@ -26,16 +27,28 @@ public class RegisteredCourses {
 		this.studentId = studentId;
 	}
 	/**
-	 * @return the selectedCourses
+	 * @return the courseId
 	 */
-	public List<Course> getSelectedCourses() {
-		return selectedCourses;
+	public String getCourseId() {
+		return courseId;
 	}
 	/**
-	 * @param selectedCourses the selectedCourses to set
+	 * @param courseId the courseId to set
 	 */
-	public void setSelectedCourses(List<Course> selectedCourses) {
-		this.selectedCourses = selectedCourses;
+	public void setCourseId(String courseId) {
+		this.courseId = courseId;
+	}
+	/**
+	 * @return the isRegistered
+	 */
+	public int getIsRegistered() {
+		return isRegistered;
+	}
+	/**
+	 * @param isRegistered the isRegistered to set
+	 */
+	public void setIsRegistered(int isRegistered) {
+		this.isRegistered = isRegistered;
 	}
 	/**
 	 * @return the gpa
@@ -49,6 +62,7 @@ public class RegisteredCourses {
 	public void setGpa(double gpa) {
 		this.gpa = gpa;
 	}
+	
 	
 	
 	

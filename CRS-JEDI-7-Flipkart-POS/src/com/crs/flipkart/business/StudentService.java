@@ -1,6 +1,8 @@
 package com.crs.flipkart.business;
 
 import com.crs.flipkart.business.ReportCardService;
+import com.crs.flipkart.dao.RegisteredCoursesDaoInterface;
+import com.crs.flipkart.dao.RegisteredCoursesDaoOperation;
 import com.crs.flipkart.dao.StudentDaoInterface;
 import com.crs.flipkart.dao.StudentDaoOperation;
 
@@ -24,6 +26,7 @@ import com.crs.flipkart.bean.Student;
 public class StudentService implements StudentServiceInterface{
 	
 	StudentDaoInterface StudentDaoInterface = new StudentDaoOperation(); 
+	RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
 	
 	public String signup(String id,String password,String branch,String name,int role) {
 		String studentId = null;
@@ -48,26 +51,52 @@ public class StudentService implements StudentServiceInterface{
 	Scanner sc = new Scanner(System.in);
 
 	public void register(String studentId, CourseCatalog courseCatalog) {
+		
+		// Get registrationStatus and feepaid status
+		
+		StudentDaoInterface studentDaoInterface = new StudentDaoOperation();
+		int registrationStatus = studentDaoInterface.getRegistrationStatus(studentId);
+		
+		RegisteredCoursesService registeredCoursesService = new RegisteredCoursesService();
+		
+		List<Course> approvedCourses = registeredCoursesService.getApprovedCourses(studentId);
+		
+		if(registrationStatus==1) { // Fee is paid 
+			System.out.println("Registration Successfull");
+			return;
+		}
+	
+		if(approvedCourses.size() == 6) { // Choices are approved
+			System.out.println("Courses Approved. Please pay the fees to complete the registration process!");
+			return;
+		}
+		
 		SemesterRegistrationService semesterRegistrationService = new SemesterRegistrationService();
 		SemesterRegistration semesterRegistration = new SemesterRegistration(studentId);
+		
 		while (true) {
 			System.out.println("Enter an option");
 			System.out.println("1. Add course");
 			System.out.println("2. Drop Course");
-			System.out.println("3. Show Courses");
+			System.out.println("3. Show selected courses");
+			System.out.println("4. Show all available Courses");
 
 			int option = sc.nextInt();
 			switch (option) {
 				case 1: {
-					while (semesterRegistration.getCourses().size() != 6)
-						semesterRegistrationService.addCourse(semesterRegistration);
+					int count = registeredCoursesService.getSelectedCourses(studentId).size();
+					while(count < 6) {
+						if(semesterRegistrationService.addCourse(semesterRegistration)) ++count;
+					}
 				}
 					break;
 				case 2:
 					semesterRegistrationService.dropCourse(semesterRegistration);
 					break;
-				case 3:
-					semesterRegistrationService.showCourse(courseCatalog);
+				case 3: 
+					semesterRegistrationService.showSelectedCourses(semesterRegistration);
+				case 4:
+					semesterRegistrationService.showCourse();
 					break;
 			}
 			System.out.println("Are you done with selecting the courses? Y N");
@@ -86,21 +115,22 @@ public class StudentService implements StudentServiceInterface{
 	}
 
 	public void viewRegisteredCourses(String id) {
+		
+		int isRegistered = StudentDaoInterface.getRegistrationStatus(id);
+		
+		if(isRegistered == 0) {
+			System.out.println("Registration in progrees or incomplete!");
+			return;
+		}
+		
 		// Print RegisteredCourses
-		RegisteredCourses r = null;
-		// Find registerdCourses
-
-		if(r==null) {
-			System.out.println("Sorry! Registration Pending");
+		List<Course> courses = registeredCoursesDaoInterface.getRegisteredCoursesById(id);
+		
+		for(Course course: courses) {
+			System.out.println("CourseId : " + course.getCourseId());
 		}
-		else
-		{
-			System.out.println("Registered courses are: ");
-			for (Course c : r.getSelectedCourses()) {
-				System.out.println("CourseName: " + c.getCourseName() + " Course Id: " + c.getCourseId());
-			}
-			System.out.println("-----------------------------------");
-		}
+		
+		System.out.println("--------------------------------------------------");
 	}
 
 	public void payFees(String id) {
