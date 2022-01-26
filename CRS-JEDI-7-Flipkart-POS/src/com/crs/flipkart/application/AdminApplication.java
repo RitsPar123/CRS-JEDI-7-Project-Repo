@@ -12,6 +12,8 @@ import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.business.AdminService;
 import com.crs.flipkart.business.AdminServiceInterface;
+import com.crs.flipkart.business.NotificationService;
+import com.crs.flipkart.business.NotificationServiceInterface;
 
 /**
  * @author harsh
@@ -20,6 +22,7 @@ import com.crs.flipkart.business.AdminServiceInterface;
 public class AdminApplication {
 
     AdminServiceInterface adminInterface = new AdminService();
+    static NotificationServiceInterface notificationService = new NotificationService();
     Scanner sc = new Scanner(System.in);
 
     public void showMenu() {
@@ -101,7 +104,7 @@ public class AdminApplication {
         added = adminInterface.addCourse(course);
         
         if(added)
-        	System.out.println("\n The Course Has Been Added");
+        	System.out.println("\n The Course Has Been Added\n");
     }
 
     public void deleteCourse() {
@@ -132,7 +135,7 @@ public class AdminApplication {
         boolean isProfessorAdded = adminInterface.addProfessor(professor);
 
         if (isProfessorAdded) {
-            System.out.println("Professor created successfully.");
+            System.out.println("Professor created successfully.\n");
         }
     }
 
@@ -144,7 +147,7 @@ public class AdminApplication {
         boolean isApprove = adminInterface.approveStudent(studentUserId);
 
         if (isApprove)
-            System.out.println("Student Registration is being Approved");
+            System.out.println("Student Registration is being Approved\n");
     }
 
     private void viewPendingApproval() {
@@ -174,7 +177,8 @@ public class AdminApplication {
     	System.out.print("Enter Student's ID");
         String studentId = sc.next();
         Set<String> courseList = adminInterface.viewSelectedCourse(studentId);  
-
+        
+        String message;
         boolean status = true;
     
         for (String c : courseList) {
@@ -182,7 +186,7 @@ public class AdminApplication {
         	System.out.println(seatLeft);
         	if(seatLeft >= 7) {
         		status = false;
-        		System.out.println("Less than Three Students have Registered for this Course");
+        		message = "Less than Three Students have Registered for this Course\n";
         		break;
         	}
         }
@@ -190,8 +194,9 @@ public class AdminApplication {
         if(status == true) {
         	System.out.println("Student Has Been Registered");
         	adminInterface.updateRegistered(studentId);
-        	
+        	message = "You Have Been Registered";
+        	notificationService.sendNotification(studentId,message);
         }
-        System.out.println("************************************");
+        System.out.println("************************************\n");
 	}
 }

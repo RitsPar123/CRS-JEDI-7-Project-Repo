@@ -8,6 +8,8 @@ package com.crs.flipkart.application;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.CourseCatalog;
+import com.crs.flipkart.business.NotificationService;
+import com.crs.flipkart.business.NotificationServiceInterface;
 import com.crs.flipkart.business.StudentService;
 import com.crs.flipkart.business.StudentServiceInterface;
 import com.crs.flipkart.business.UserService;
@@ -24,7 +26,6 @@ public class CRSApplication {
      */
 
     static UserServiceInterface userInterface = new UserService();
-    static CourseCatalog courseCatalog = new CourseCatalog();
     static StudentApplication studentApplication = new StudentApplication();
     static Scanner sc = new Scanner(System.in);
 
@@ -85,8 +86,7 @@ public class CRSApplication {
         StudentServiceInterface studentInterface = new StudentService();
 
         String newUserID = studentInterface.signup(id, password, branch, name, role);
-        
-        //notification
+
     }
 
     public static void loginUser() {
@@ -112,8 +112,8 @@ public class CRSApplication {
                 	boolean isApproved = userInterface.verifyApproval(id);
                 	if(isApproved) {
                 		System.out.println("Student Has Been Logged In\n");
-//                		StudentApplication studentApp = new StudentApplication();
-//                        studentApp.studentLoggedin(id,courseCatalog);
+                		StudentApplication studentApp = new StudentApplication();
+                        studentApp.studentLoggedin(id);
                 	}else {
                 		System.out.println("You Have Not Been Approved By Admin");
                 	}
@@ -124,6 +124,7 @@ public class CRSApplication {
                 case 2:
                     System.out.println("Professor");
                     break;
+                    
                 case 3:
                     AdminApplication adminCRS = new AdminApplication();
                     adminCRS.showMenu();
