@@ -123,6 +123,8 @@ public class CRSApplication {
                     
                 case 2:
                     System.out.println("Professor");
+                    ProfessorApplication professorApplication = new ProfessorApplication();
+					professorApplication.professorLoggedIn(id);
                     break;
                     
                 case 3:
