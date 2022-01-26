@@ -8,7 +8,7 @@ import com.crs.flipkart.bean.OfflinePayment;
 
 public class OfflinePaymentService implements OfflinePaymentServiceInterface{
 
-	public OfflinePayment offlineMode()
+	public Boolean offlineMode()
 	{
 		System.out.println("Choose mode of Offlline payment:");
 		System.out.println("1.Cash");
@@ -40,7 +40,7 @@ public class OfflinePaymentService implements OfflinePaymentServiceInterface{
 			break;
 		}
 
-		return pay;
+		return true;
 	}
 
 }
