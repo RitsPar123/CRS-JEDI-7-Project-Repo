@@ -24,13 +24,16 @@ public class AdminApplication {
 
     public void showMenu() {
 
-        System.out.println("\n----------------Admin Menu----------------\n");
+        System.out.println("----------------Admin Menu----------------\n");
 
         CreateMenu();
 
         int userInput = sc.nextInt();
 
         while (userInput != 8) {
+        	
+        	System.out.println("\nEnter Your Choice");
+        	
             switch (userInput) {
                 case 1:
                     addCourse();
@@ -58,7 +61,7 @@ public class AdminApplication {
                     break;
                     
                 case 10:
-                    // View Courses
+                    // Allot Course
                     studentCourseAllot();
                     break;
                 default:
@@ -96,7 +99,9 @@ public class AdminApplication {
 
         boolean added = false;
         added = adminInterface.addCourse(course);
-        System.out.println(added);
+        
+        if(added)
+        	System.out.println("\n The Course Has Been Added");
     }
 
     public void deleteCourse() {
