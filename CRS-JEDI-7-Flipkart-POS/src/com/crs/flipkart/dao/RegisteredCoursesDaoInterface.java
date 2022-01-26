@@ -14,7 +14,7 @@ import com.crs.flipkart.bean.RegisteredCourses;
  */
 public interface RegisteredCoursesDaoInterface {
 	
-	public List<Course> getRegisteredCoursesById(String id);
+	public List<Course> getApprovedCoursesById(String id);
 	public boolean addCourse(String courseId,String SId);
 	public void dropCourse(String courseId,String SId);
 	public boolean hasCourse(String courseId,String Sid);

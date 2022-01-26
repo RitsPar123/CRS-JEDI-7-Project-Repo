@@ -28,6 +28,8 @@ public class StudentService implements StudentServiceInterface{
 	StudentDaoInterface StudentDaoInterface = new StudentDaoOperation(); 
 	RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
 	
+	Scanner sc = new Scanner(System.in);
+	
 	public String signup(String id,String password,String branch,String name,int role) {
 		String studentId = null;
 		
@@ -46,8 +48,6 @@ public class StudentService implements StudentServiceInterface{
 		return studentId;
 	}
 	
-
-<<<<<<< HEAD
 	public void register(String studentId, CourseCatalog courseCatalog) {
 		
 		// Get registrationStatus and feepaid status
@@ -122,7 +122,7 @@ public class StudentService implements StudentServiceInterface{
 		}
 		
 		// Print RegisteredCourses
-		List<Course> courses = registeredCoursesDaoInterface.getRegisteredCoursesById(id);
+		List<Course> courses = registeredCoursesDaoInterface.getApprovedCoursesById(id);
 		
 		for(Course course: courses) {
 			System.out.println("CourseId : " + course.getCourseId());
@@ -196,7 +196,5 @@ public class StudentService implements StudentServiceInterface{
 	public void showNotifications() {
 		// TODO: Print all the messages of the student
 	}
-=======
->>>>>>> 5906df70e161e2e26ef745be379a7f3743b912ff
 	
 }

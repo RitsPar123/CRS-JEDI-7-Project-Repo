@@ -9,13 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.List;
-=======
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
->>>>>>> 5906df70e161e2e26ef745be379a7f3743b912ff
+
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
@@ -257,7 +255,6 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 		return false;
 	}
-<<<<<<< HEAD
 	
 	public List<Course> getAllCourse() {
 		List<Course> courses = new ArrayList<>();
@@ -295,6 +292,3 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	
 }
 
-=======
-}
->>>>>>> 5906df70e161e2e26ef745be379a7f3743b912ff
