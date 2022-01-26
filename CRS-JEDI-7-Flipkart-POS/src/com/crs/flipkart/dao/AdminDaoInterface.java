@@ -19,4 +19,5 @@ public interface AdminDaoInterface {
 	public boolean addProfessor(Professor professor);
 	public boolean approveStudent(String studentId);
 	public List<Student> viewPendingApproval();
+	public List<Course> viewCourse();
 }

@@ -126,7 +126,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
         	while(resultSet.next()) {
         		Student stud = new Student();
         		stud.setId(resultSet.getString(1));
-        		stud.setBranch(resultSet.getString("Branch"));
+        		stud.setBranch(resultSet.getString(2));
+        		stud.setUserName(resultSet.getString(3));
         		
         		studentList.add(stud);
         	}
@@ -134,6 +135,37 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	        conn.close();
 	        
 	        return studentList;
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Course> viewCourse() {
+		// TODO Auto-generated method stub
+		Connection conn = CRSDb.getConnect();
+		try {
+        	PreparedStatement pstmtP;
+        	pstmtP = conn.prepareStatement(SQLQueriesConstant.VIEW_COURSES);
+        	
+        	ResultSet resultSet = pstmtP.executeQuery();
+        			
+        	List<Course> courseList =  new ArrayList<Course>();
+        	while(resultSet.next()) {
+        		Course cour = new Course();
+        		cour.setCourseId(resultSet.getString("CourseId"));
+        		cour.setCourseName(resultSet.getString("CourseName"));
+        		cour.setCount(resultSet.getInt("SeatCount"));
+        		
+        		courseList.add(cour);
+        	}
+	
+	        conn.close();
+	        
+	        return courseList;
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

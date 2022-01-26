@@ -43,5 +43,10 @@ public class AdminService implements AdminServiceInterface {
 		// TODO Auto-generated method stub
 		return adminDaoOp.viewPendingApproval();
 	}
+	@Override
+	public List<Course> viewCourse() {
+		// TODO Auto-generated method stub
+		return adminDaoOp.viewCourse();
+	}
 
 }

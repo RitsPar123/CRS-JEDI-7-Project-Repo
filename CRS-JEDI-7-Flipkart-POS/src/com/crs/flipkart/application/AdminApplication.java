@@ -28,7 +28,7 @@ public class AdminApplication {
 		
 		int userInput = sc.nextInt();
 		
-        while (userInput != 6) {
+        while (userInput != 8) {
             switch (userInput) {
                 case 1:
                     addCourse();
@@ -42,12 +42,17 @@ public class AdminApplication {
                     addProfessor();
                     break;
                 case 4:
-                	// add Professor
+                	// view Pending Approvals
                 	viewPendingApproval();
                     break;
                 case 5:
-                	// add Professor
+                	// Approve Registration
                 	approveRegistration();
+                    break;
+                    
+                case 6:
+                	// View Courses
+                	viewCourses();
                     break;
                 default:
                     System.out.println("Invalid Input");
@@ -64,11 +69,11 @@ public class AdminApplication {
 			System.out.println("2  Delete Course");
 			System.out.println("3  Add Professor");
 			System.out.println("4  View Pending Approval Registration");
-			System.out.println("5  Approve Student Registration");
+			System.out.println("5  Approve Student SignUp Registration");
 			System.out.println("5  Approve Student Semester Registration");
-			System.out.println("6  Activate Grade Card");
-			System.out.println("7  View Students Data");
-			System.out.println("8  View All Courses");
+			System.out.println("6  View All Courses");
+			System.out.println("7  View Student Data");
+			System.out.println("8  Activate Grade Card");
 			System.out.println("9  Student Course Allocation");
 
 	 }
@@ -133,9 +138,21 @@ public class AdminApplication {
 	  private void viewPendingApproval() {
 			
 			List <Student> studentList = adminInterface.viewPendingApproval();
-			
+			System.out.println("Student Details\n");
 			for(Student s:studentList) {
-				System.out.println("Student Id " + s.getId() + "  Student Branch  " + s.getBranch());
+				System.out.println("Id -> " + s.getId() + " Name -> " + s.getUserName() +  " Branch ->  " + s.getBranch());
 			}
+			System.out.println("************************************");
 	  }
+	  
+
+		private void viewCourses() {
+			// TODO Auto-generated method stub
+			List <Course> courseList = adminInterface.viewCourse();
+			System.out.println("Course Details\n");
+			for(Course c:courseList) {
+				System.out.println(" Id -> " + c.getCourseId() + " Name -> " + c.getCourseName() +  "  Seat Left -> " + c.getCount());
+			}
+			System.out.println("************************************");
+		}
 }

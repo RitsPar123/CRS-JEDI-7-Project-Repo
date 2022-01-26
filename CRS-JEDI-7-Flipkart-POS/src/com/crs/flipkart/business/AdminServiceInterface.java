@@ -19,4 +19,5 @@ public interface AdminServiceInterface {
 	public boolean addProfessor(Professor professor);
 	public boolean approveStudent(String studentUserId);
 	public List<Student> viewPendingApproval();
+	public List<Course> viewCourse();
 }
