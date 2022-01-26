@@ -17,8 +17,10 @@ public interface ProfessorDaoInterface {
 
 	public List<Course> viewRegisteredCourses(String id) ;
 	
-	public boolean addGrades(String courseId,String studentId,int grade) ;
+	public boolean addGrades(String professorId ,String courseId,String studentId,int grade) ;
 	
 	public List<Course> showCourses() ;
+	
+	public void viewRegisteredStudents(String id, String courseId);
 	
 }

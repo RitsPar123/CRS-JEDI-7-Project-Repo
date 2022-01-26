@@ -19,9 +19,10 @@ public void professorLoggedIn(String id) {
 		
 		while(true) {
 			System.out.println("1. Select Courses");//Selecting courses for Professor
-			System.out.println("2. View Registered Students");
+			System.out.println("2. View Registered Courses");
 			System.out.println("3. Add Grades");
 			System.out.println("4. Show Courses");
+			System.out.println("5. View Registered Students");
 
 			System.out.println("Enter your option");
 			Scanner sc = new Scanner(System.in);
@@ -52,19 +53,25 @@ public void professorLoggedIn(String id) {
 					int grade=sc.nextInt();
 				
 					
-					professorService.addGrades(courseId,studentId,grade);
+					professorService.addGrades(id,courseId,studentId,grade);
 					//Show successful grade allotment
 					break;
 				 case 4:
 					 professorService.showCourses();
 					 //shows available courses that can be picked
 					break;
+				 case 5:
+					 System.out.println("Enter  course Id");
+					 courseId=sc.next();
+					 professorService.viewRegisteredStudents(id,courseId);
+					 //shows available courses that can be picked
+					break;
 				default:
 					System.out.println("Enter valid option");
 			}
 			System.out.println("Do you want to logout? Y N");
-			//char c = sc.nextLine().charAt(0);
-			//if(c == 'Y') break;
+			char c = sc.next().charAt(0);
+			if(c == 'Y') break;
 		}
 	}
 

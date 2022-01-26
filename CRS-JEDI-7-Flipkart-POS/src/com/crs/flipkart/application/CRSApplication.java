@@ -36,7 +36,7 @@ public class CRSApplication {
 		// TODO Auto-generated method stub
 
 		// To be removed when admin is added.
-		CourseCatalogServiceInterface courseCatalogService = new CourseCatalogService();
+/*		CourseCatalogServiceInterface courseCatalogService = new CourseCatalogService();
 		courseCatalogService.addCourse(courseCatalog, new Course(4, "English", 100, "Amit Balyan"));
 		courseCatalogService.addCourse(courseCatalog, new Course(4, "Data structures", 101, "Kunal"));
 		courseCatalogService.addCourse(courseCatalog, new Course(4, "Operating System", 102, "Priya"));
@@ -45,7 +45,7 @@ public class CRSApplication {
 		courseCatalogService.addCourse(courseCatalog, new Course(4, "Maths", 105, "Harsh"));
 		courseCatalogService.addCourse(courseCatalog, new Course(4, "Chemistry", 106, "Advait"));
 		courseCatalogService.addCourse(courseCatalog, new Course(4, "Biology", 107, "Hardik"));
-
+*/
 		Scanner sc = new Scanner(System.in);
 		menu();
 		int userInput = sc.nextInt();
@@ -68,7 +68,7 @@ public class CRSApplication {
 	}
 
 	public static void menu() {
-		System.out.println("----------Welcome to Course Management System---------");
+		System.out.println("+----------Welcome to Course Management System---------");
 		System.out.println("1. Login");
 		System.out.println("2. Student Registration");
 		System.out.println("3. Exit");
@@ -112,7 +112,7 @@ public class CRSApplication {
 		password = sc.next();
 		Boolean userapproval = false;
 		
-		User u = new User(id, password, 1);
+		User u = new User(id, password, 2);
 
 		UserServiceInterface c = new UserService();
 		if (c.userLogin(u)) {
@@ -136,7 +136,6 @@ public class CRSApplication {
 				}
 					break;
 				case 2:
-					
 					ProfessorApplication professorApplication = new ProfessorApplication();
 					professorApplication.professorLoggedIn(u.getId());
 					
