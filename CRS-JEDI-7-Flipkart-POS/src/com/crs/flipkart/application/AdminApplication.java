@@ -33,7 +33,7 @@ public class AdminApplication {
 
         int userInput = sc.nextInt();
 
-        while (userInput != 8) {
+        while (userInput != 11) {
         	
         	System.out.println("\nEnter Your Choice");
         	
@@ -62,7 +62,10 @@ public class AdminApplication {
                     // View Courses
                     viewCourses();
                     break;
-                    
+                case 7:
+                    // View Student Data
+                    viewStudentData();
+                    break;
                 case 10:
                     // Allot Course
                     studentCourseAllot();
@@ -183,7 +186,6 @@ public class AdminApplication {
     
         for (String c : courseList) {
         	int seatLeft = adminInterface.getCouseList(c);
-        	System.out.println(seatLeft);
         	if(seatLeft >= 7) {
         		status = false;
         		message = "Less than Three Students have Registered for this Course\n";
@@ -198,5 +200,23 @@ public class AdminApplication {
         	notificationService.sendNotification(studentId,message);
         }
         System.out.println("************************************\n");
+	}
+    
+	private void viewStudentData() {
+		// TODO Auto-generated method stub
+		System.out.print("Enter Student's ID");
+        String studentId = sc.next();
+        
+        Student stud = new Student();
+        stud = adminInterface.viewStudentData(studentId);
+        
+        System.out.println("Details are  ->");
+        System.out.println("Id -> " + stud.getId() + " Name -> " + stud.getUserName() + " Branch -> " + stud.getBranch());
+        
+//        List<> courseList = adminInterface.viewSelectedCourse(studentId);  
+//        if(val) {
+//        	System.out.println("List of Courses doing");
+//	        	 List<Grade> grade =  adminInterface.viewStudentData(studentId);
+//        }
 	}
 }

@@ -24,4 +24,5 @@ public interface AdminServiceInterface {
 	public Set<String> viewSelectedCourse(String studentId);
 	public int getCouseList(String c);
 	public boolean updateRegistered(String studentId);
+	public Student viewStudentData(String studentId);
 }

@@ -24,4 +24,5 @@ public interface AdminDaoInterface {
 	public Set<String> viewSelectedCourse(String studentId);
 	public int getCourseList(String courseId);
 	public boolean updateRegistered(String studentId);
+	public Student viewStudentData(String studentId);
 }

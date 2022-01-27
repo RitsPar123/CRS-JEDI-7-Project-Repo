@@ -64,5 +64,10 @@ public class AdminService implements AdminServiceInterface {
 		// TODO Auto-generated method stub
 		return adminDaoOp.updateRegistered(studentId);
 	}
+	@Override
+	public Student viewStudentData(String studentId) {
+		// TODO Auto-generated method stub
+		return adminDaoOp.viewStudentData(studentId);
+	}
 
 }

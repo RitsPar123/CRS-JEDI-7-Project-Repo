@@ -253,4 +253,34 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 		return false;
 	}
+
+	@Override
+	public Student viewStudentData(String studentId) {
+		// TODO Auto-generated method stub
+		Connection conn = CRSDb.getConnect();
+        try {
+            PreparedStatement pstmtP;
+            pstmtP = conn.prepareStatement(SQLQueriesConstant.STUDENT_DATA);
+
+            pstmtP.setString(1, studentId);
+
+            ResultSet resultSet = pstmtP.executeQuery();
+            
+            Student stud = new Student();
+            if(resultSet.next()) {
+            stud.setId(resultSet.getString(1));
+            stud.setBranch(resultSet.getString(2));
+            stud.setUserName(resultSet.getString(3));
+            stud.setRegistered(resultSet.getBoolean(4));
+            }
+            conn.close();
+
+            return stud;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		return null;
+	}
 }

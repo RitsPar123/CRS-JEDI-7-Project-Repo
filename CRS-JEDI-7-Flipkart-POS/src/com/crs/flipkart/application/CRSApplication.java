@@ -86,7 +86,8 @@ public class CRSApplication {
         StudentServiceInterface studentInterface = new StudentService();
 
         String newUserID = studentInterface.signup(id, password, branch, name, role);
-
+        
+        System.out.println("Thankyou For Registration, Wait for the Admin Approval");
     }
 
     public static void loginUser() {
@@ -122,7 +123,7 @@ public class CRSApplication {
                     break;
                     
                 case 2:
-                    System.out.println("Professor");
+       
                     ProfessorApplication professorApplication = new ProfessorApplication();
 					professorApplication.professorLoggedIn(id);
                     break;
