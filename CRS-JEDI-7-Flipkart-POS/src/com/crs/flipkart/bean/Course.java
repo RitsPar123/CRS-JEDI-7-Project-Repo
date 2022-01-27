@@ -15,6 +15,11 @@ public class Course {
 	private boolean isOffered;
 	private double marks;
 
+	/**
+	 * Default Constructor
+	 */
+	public Course() {}
+
 	/** Parameterized constructor 
 	 * @param count
 	 * @param courseName

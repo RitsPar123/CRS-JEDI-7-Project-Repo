@@ -10,7 +10,7 @@ package com.crs.flipkart.dao;
 public interface NotificationDaoInterface {
 
 	/**
-	 * Inserting a notification to DB using SQL commands
+	 * Method to insert a notification to DB using SQL commands
 	 * @param studentId
 	 * @param message
 	 * @return true if successful / false if failure
