@@ -29,14 +29,13 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_STUDENT_ACOURSES_BY_ID);
 
-			pstmt.setString(0, id);
+			pstmt.setString(1, id);
 
 			ResultSet resultSet = pstmt.executeQuery();
 
 			while (resultSet.next()) {
 				Course course = new Course();
-				course.setCourseId(resultSet.getString(0));
-				course.setCourseName(resultSet.getString(0));
+				course.setCourseId(resultSet.getString("CourseId"));
 				courses.add(course);
 			}
 
@@ -61,8 +60,8 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.ADD_COURSE_FOR_STUDENT);
 
-			pstmt.setString(0, courseId);
-			pstmt.setString(1, studentId);
+			pstmt.setString(1, courseId);
+			pstmt.setString(2, studentId);
 
 			int done = pstmt.executeUpdate();
 
@@ -92,8 +91,8 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 
 			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.DROP_COURSE_FOR_STUDENT);
 
-			pstmt.setString(0, courseId);
-			pstmt.setString(1, studentId);
+			pstmt.setString(1, courseId);
+			pstmt.setString(2, studentId);
 
 			pstmt.executeUpdate();
 
@@ -114,8 +113,8 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.HAS_COURSE_ADDED);
-			pstmt.setString(0, courseId);
-			pstmt.setString(1, studentId);
+			pstmt.setString(1, courseId);
+			pstmt.setString(2, studentId);
 
 			ResultSet rs = pstmt.executeQuery();
 
@@ -144,14 +143,13 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_STUDENT_SCOURSES_BY_ID);
 
-			pstmt.setString(0, id);
+			pstmt.setString(1, id);
 
 			ResultSet resultSet = pstmt.executeQuery();
 
 			while (resultSet.next()) {
 				Course course = new Course();
-				course.setCourseId(resultSet.getString(0));
-				course.setCourseName(resultSet.getString(0));
+				course.setCourseId(resultSet.getString("CourseId"));
 				courses.add(course);
 			}
 

@@ -78,7 +78,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			ResultSet resultSet = pstmt.executeQuery();
 			if(resultSet.next())
 			{
-			     registrationStatus=resultSet.getInt(0);
+			     registrationStatus=resultSet.getInt("IsRegistered");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

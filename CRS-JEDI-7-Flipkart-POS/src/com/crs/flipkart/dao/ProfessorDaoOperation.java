@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.utils.CRSDb;
 
 /**
@@ -28,7 +29,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		// TODO Auto-generated method stub
 		try {
 			
-			String query = "update course set PID = ? where courseID = ? and courseName = ? and PID is null";
+			String query = SQLQueriesConstant.ASSIGN_COURSE_TO_PROF;
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, profId);
 			stmt.setString(2, courseid);
@@ -64,7 +65,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		
 		try {
 			
-				String sql="select CourseId, CourseName from course where PId = ? ";
+				String sql=SQLQueriesConstant.VIEW_PROF_COURSES;
 				
 				stmt = conn.prepareStatement(sql);
 			    stmt.setString(1, id);
@@ -103,55 +104,39 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			if(CheckGradeUpdateType(studentId , courseId)) {
 				
 				System.out.println("Record already exists\n");
-				System.out.print("Press Y if you want to overwrite :  ");
+				System.out.print("Press N if you donot want to overwrite :  ");
 				Scanner sc = new Scanner(System.in);
 				String choice = sc.next();
 				System.out.println();
 				
-				if(choice.equalsIgnoreCase("Y")) {
-					try {
-						query = "UPDATE grade SET marks = ? where sId = ? and courseId = ? LIMIT 1";
-						stmt = conn.prepareStatement(query);
-						stmt.setInt(1, grade);
-						stmt.setString(2, studentId);
-						stmt.setString(3, courseId);	
-						
-						int result = stmt.executeUpdate();
-						stmt.close();
-						if(result!=0)
-							System.out.println("Sucessfully updated marks!!");
-						else 
-							System.out.println("Mark updation failed!");
-						
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						return false;
-					}
-					return true;
+				if(choice.equalsIgnoreCase("N")) {
+					System.out.println("Mark updation cancelled");
+					return true;	
 				}
-				System.out.println("Mark updation cancelled");
-				return true;
-			}
-				 
-				query = "Insert into grade values (?,?,?)";
 				
-				try {
-			
-					stmt = conn.prepareStatement(query);
-					stmt.setString(1, studentId);
-					stmt.setString(2, courseId);	
-					stmt.setInt(3, grade);
-					
-					stmt.execute();
+			}
+			try {
+				query = SQLQueriesConstant.ADD_GRADES;
+				stmt = conn.prepareStatement(query);
+				stmt.setInt(1, grade);
+				stmt.setString(2, studentId);
+				stmt.setString(3, courseId);	
+				
+				int result = stmt.executeUpdate();
+				stmt.close();
+				if(result!=0)
 					System.out.println("Sucessfully updated marks!!");
-					return true;
-					
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					return false;
-				}
+				else 
+					System.out.println("Mark updation failed!");
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+			return true;
+				 
+			
 				
 			}
 			System.out.println("Student does not exist / does not take the course \n");
@@ -169,7 +154,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 		try {
 			
-			String sql="Select CourseId,courseName,seatCount from course where pid is null";
+			String sql=SQLQueriesConstant.COURSE_SELECTION_LIST;
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet courses =  stmt.executeQuery(sql);
 			
@@ -207,7 +192,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		try {
 			if(isProfCourse( id,  courseId))
 				{
-					String query = "Select user.id ,user.name from (user INNER JOIN registeredcourse ON registeredcourse.sid = user.id ) where courseid = ? and IsRegistered = 2";
+					String query = SQLQueriesConstant.VIEW_REGISTERED_STUDENTS;
 					stmt = conn.prepareStatement(query);
 					stmt.setString(1, courseId);
 					ResultSet registeredStudents =  stmt.executeQuery();
@@ -238,7 +223,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	private boolean checkGradeValidity(String professorId,String studentId, String courseId) {
 		// TODO Auto-generated method stub
 		try {
-			String query = "select * from registeredcourse where sid = ? and courseid = ? and IsRegistered = 2";
+			String query = SQLQueriesConstant.CHECK_STUDENT_REGISTRATION_FOR_COURSE;
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, studentId);
 			stmt.setString(2, courseId);
@@ -265,7 +250,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	
 	private boolean CheckGradeUpdateType(String studentId, String courseId) {
 		// TODO Auto-generated method stub
-		String query = "select * from grade where sid = ? and courseid = ?";
+		String query = SQLQueriesConstant.CHECK_GRADE_UPDATE_TYPE;
 		try {
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, studentId);
@@ -291,7 +276,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		try {
 			
 			
-			String sql = "select * from course where pid = ? and courseid = ? ";
+			String sql = SQLQueriesConstant.CHECK_PROF_COURSE;
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, professorId);
 			stmt.setString(2, courseId);

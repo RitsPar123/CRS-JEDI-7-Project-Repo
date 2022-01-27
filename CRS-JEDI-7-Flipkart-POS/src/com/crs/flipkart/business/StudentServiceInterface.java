@@ -14,4 +14,8 @@ public interface StudentServiceInterface {
 	
 		public String signup(String id,String password,String branch,String name,int role);
 
+		public void viewRegisteredCourses(String id);
+
+		public void register(String id);
+
 }

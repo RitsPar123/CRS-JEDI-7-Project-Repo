@@ -28,7 +28,7 @@ public class SQLQueriesConstant {
 	public static final String VIEW_COURSES = "select * from course";
 	public static final String VIEW_SELECT_COURSE = "select CourseId from registeredcourse where SId = ? AND IsRegistered=1";
 	public static final String GET_COURSE_SEAT = "select SeatCount from course where CourseId = ?";
-	public static final String APPROVE_STUDENT_REGISTRATION = "update student set IsRegistered = 2 where SId = ?";
+	public static final String APPROVE_STUDENT_REGISTRATION = "update student set IsRegistered = 1 where SId = ?";
 	public static final String ADD_PAYMENT = "insert into Payment (SId,PaymentId,PaymentMethod,Amount,TransactionDate,FeeStatus) values (?,?,?,?,?,1)";
 	public static final String SET_NOTIFICATION = "insert into Notification (NotificationId,SId,Message) values (1,?,?)";
 	public static final String STUDENT_DATA = "select student.SId,student.Branch,user.Name,student.IsRegistered,student.IsReportApproved from user inner join student on student.SID = user.Id  where SId = ?";
@@ -40,10 +40,10 @@ public class SQLQueriesConstant {
 	public static final String  VIEW_PROF_COURSES = "select CourseId, CourseName from course where PId = ? ";
 	public static final String  ADD_GRADES = "UPDATE registeredcourse SET grade = ? where sId = ? and courseId = ? LIMIT 1";
 	
-	public static final String  CHECK_STUDENT_REGISTRATION_FOR_COURSE = "select * from registeredcourse where sid = ? and courseid = ? and IsRegistered = 2";
+	public static final String  CHECK_STUDENT_REGISTRATION_FOR_COURSE = "select * from registeredcourse where sid = ? and courseid = ? and IsRegistered = 1";
 	public static final String  CHECK_GRADE_UPDATE_TYPE = "select * from registeredcourse where sid = ? and courseid = ? and grade is not null";
 	public static final String  CHECK_PROF_COURSE = "select * from course where pid = ? and courseid = ? ";
 	public static final String  COURSE_SELECTION_LIST ="Select CourseId,courseName,seatCount from course where pid is null";
-	public static final String  VIEW_REGISTERED_STUDENTS ="Select user.id ,user.name from (user INNER JOIN registeredcourse ON registeredcourse.sid = user.id ) where courseid = ? and IsRegistered = 2";
+	public static final String  VIEW_REGISTERED_STUDENTS ="Select user.id ,user.name from (user INNER JOIN registeredcourse ON registeredcourse.sid = user.id ) where courseid = ? and IsRegistered = 1";
 	
 }

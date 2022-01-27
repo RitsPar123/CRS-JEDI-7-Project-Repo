@@ -356,9 +356,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			
 			while(resultSet.next()) {
 				Course course = new Course();
-				course.setCourseId(resultSet.getString(0));
-				course.setProfessor(resultSet.getString(1));
-				course.setCourseName(resultSet.getString(2));
+				course.setCourseId(resultSet.getString("CourseId"));
+				course.setProfessor(resultSet.getString("PId"));
+				course.setCourseName(resultSet.getString("CourseName"));
 				courses.add(course);
 			}
 			

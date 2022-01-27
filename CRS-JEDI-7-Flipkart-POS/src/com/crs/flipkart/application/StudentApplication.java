@@ -35,13 +35,13 @@ public class StudentApplication {
 			int option = sc.nextInt();
 			switch (option) {
 				case 1:
-					//studentService.register(id, courseCatalog);
+					studentService.register(id);
 					break;
 				case 2:
 					//studentService.viewReportCard(id);
 					break;
 				case 3:
-					//studentService.viewRegisteredCourses(id);
+					studentService.viewRegisteredCourses(id);
 					break;
 				 case 4:
 					// studentService.showNotifications();
