@@ -10,6 +10,8 @@ import com.crs.flipkart.bean.Student;
  *
  */
 public interface StudentDaoInterface {
+	
 	public String signup(Student student);
 	public int getRegistrationStatus(String id);
+	
 }

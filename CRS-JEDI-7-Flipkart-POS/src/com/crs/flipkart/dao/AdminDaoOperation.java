@@ -9,9 +9,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
@@ -340,4 +342,40 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 	        return false;
 	    }
+	
+	public List<Course> getAllCourse() {
+		List<Course> courses = new ArrayList<>();
+		
+		Connection connection = CRSDb.getConnect();
+		
+		try {
+			
+			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_ALL_COURSES);
+			
+			ResultSet resultSet = pstmt.executeQuery();
+			
+			while(resultSet.next()) {
+				Course course = new Course();
+				course.setCourseId(resultSet.getString(0));
+				course.setProfessor(resultSet.getString(1));
+				course.setCourseName(resultSet.getString(2));
+				courses.add(course);
+			}
+			
+			return courses;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return courses;
+	}
+	
 }
+

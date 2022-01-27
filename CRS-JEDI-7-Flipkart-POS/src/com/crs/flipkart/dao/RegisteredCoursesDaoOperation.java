@@ -19,160 +19,155 @@ import com.crs.flipkart.utils.CRSDb;
  * @author harsh
  *
  */
-public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterface{
-	
-	
+public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterface {
+
 	public List<Course> getApprovedCoursesById(String id) {
 		List<Course> courses = new ArrayList<Course>();
-		
+
 		Connection connection = CRSDb.getConnect();
 
-        try {
-        	PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_STUDENT_ACOURSES_BY_ID);
-        	
-        	pstmt.setString(0, id);
-        	
-        	ResultSet resultSet = pstmt.executeQuery();
-        	
-        	while(resultSet.next()) {
-        		Course course = new Course();
-        		course.setCourseId(resultSet.getString(0));
-        		course.setCourseName(resultSet.getString(0));
-        		courses.add(course);
-        	}
-			
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_STUDENT_ACOURSES_BY_ID);
+
+			pstmt.setString(0, id);
+
+			ResultSet resultSet = pstmt.executeQuery();
+
+			while (resultSet.next()) {
+				Course course = new Course();
+				course.setCourseId(resultSet.getString(0));
+				course.setCourseName(resultSet.getString(0));
+				courses.add(course);
+			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				connection.close();
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return courses;
 	}
-	
-	
-	public boolean addCourse(String courseId,String studentId) {
+
+	public boolean addCourse(String courseId, String studentId) {
 		// SQL create query
 		Connection connection = CRSDb.getConnect();
-		
+
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.ADD_COURSE_FOR_STUDENT);
-			
+
 			pstmt.setString(0, courseId);
-			pstmt.setString(1,studentId);
-			
+			pstmt.setString(1, studentId);
+
 			int done = pstmt.executeUpdate();
-			
-			if(done==1) {
+
+			if (done == 1) {
 				System.out.println("Course added successfully!");
 			} else {
 				System.out.println("Error! Try again later");
 			}
-			return done==1;
-			
-		} catch(Exception e) {
+			return done == 1;
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				connection.close();
-			} catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return false;
 	}
 
-
-	public void dropCourse(String courseId,String studentId) {
+	public void dropCourse(String courseId, String studentId) {
 		Connection connection = CRSDb.getConnect();
-		
+
 		try {
-			
+
 			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.DROP_COURSE_FOR_STUDENT);
-			
-			pstmt.setString(0,courseId);
+
+			pstmt.setString(0, courseId);
 			pstmt.setString(1, studentId);
-			
+
 			pstmt.executeUpdate();
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				connection.close();
-			} catch (Exception e){
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
-	
-	public boolean hasCourse(String courseId,String studentId) {
+
+	public boolean hasCourse(String courseId, String studentId) {
 		Connection connection = CRSDb.getConnect();
-		
+
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.HAS_COURSE_ADDED);
 			pstmt.setString(0, courseId);
 			pstmt.setString(1, studentId);
-			
+
 			ResultSet rs = pstmt.executeQuery();
-			
-			if(!rs.next()) {
+
+			if (!rs.next()) {
 				return false;
-			} 
+			}
 			return true;
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				connection.close();
-			} catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return false;
 	}
-	
-	
+
 	public List<Course> getSelectedCourses(String id) {
 		List<Course> courses = new ArrayList<Course>();
-		
+
 		Connection connection = CRSDb.getConnect();
 
-        try {
-        	PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_STUDENT_SCOURSES_BY_ID);
-        	
-        	pstmt.setString(0, id);
-        	
-        	ResultSet resultSet = pstmt.executeQuery();
-        	
-        	while(resultSet.next()) {
-        		Course course = new Course();
-        		course.setCourseId(resultSet.getString(0));
-        		course.setCourseName(resultSet.getString(0));
-        		courses.add(course);
-        	}
-			
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_STUDENT_SCOURSES_BY_ID);
+
+			pstmt.setString(0, id);
+
+			ResultSet resultSet = pstmt.executeQuery();
+
+			while (resultSet.next()) {
+				Course course = new Course();
+				course.setCourseId(resultSet.getString(0));
+				course.setCourseName(resultSet.getString(0));
+				courses.add(course);
+			}
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				connection.close();
-			}catch(SQLException e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return courses;
-		
+
 	}
-	
-	
+
 }

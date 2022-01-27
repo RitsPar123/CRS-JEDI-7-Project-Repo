@@ -11,9 +11,9 @@ import com.crs.flipkart.bean.SemesterRegistration;
  *
  */
 public interface SemesterRegistrationServiceInterface {
-	public void addCourse(SemesterRegistration semesterRegistration);
+	public boolean addCourse(SemesterRegistration semesterRegistration);
 	
 	public void dropCourse(SemesterRegistration semesterRegistration);
 	
-	public void showCourse(CourseCatalog courseCatalog);
+	public void showCourse();
 }

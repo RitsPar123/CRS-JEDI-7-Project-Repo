@@ -62,6 +62,8 @@ public class StudentDaoOperation implements StudentDaoInterface {
 		return studentId;
 	}
 
+	
+	
 	public int getRegistrationStatus(String id) {
 		Connection connection = CRSDb.getConnect();
 		
