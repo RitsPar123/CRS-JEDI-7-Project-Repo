@@ -235,7 +235,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	}
 
 	@Override
-	public boolean updateRegistered(String studentId) {
+	public boolean updateRegistered(String studentId,String s1, String s2) {
 		// TODO Auto-generated method stub
 		
 		 Connection conn = CRSDb.getConnect();
@@ -243,7 +243,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	            PreparedStatement pstmtP;
 	            pstmtP = conn.prepareStatement(SQLQueriesConstant.APPROVE_STUDENT_REGISTRATION);
 
-	            pstmtP.setString(1, studentId);
+	            pstmtP.setString(1, s1);
+	            pstmtP.setString(2, s2);
+	            pstmtP.setString(3, studentId);
 
 	            pstmtP.executeUpdate();
 	            conn.close();

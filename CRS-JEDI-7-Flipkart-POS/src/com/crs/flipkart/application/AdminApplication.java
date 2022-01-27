@@ -221,13 +221,20 @@ public class AdminApplication {
         String message;
         boolean status = true;
         int count = 0;
-
-//        for (String c : courseList) {
-//        	int seatLeft = adminInterface.getCouseList(c);
-//        	if(seatLeft > 10) {
-//        		count++;	
-//        	}
-//        }
+        
+        String s1=null,s2=null;
+       for (String c : courseList) {
+        		count++;
+        		if(count>4) {
+        			if(s1 == null) {
+        				s1 = c;
+        			}else {
+        				s2 = c;
+        			}
+        		}
+        }
+       
+       System.out.println(s1 + "  " + s2);
         
 //        if(count>2) {
 //        	status = false;
@@ -240,7 +247,7 @@ public class AdminApplication {
         
         
         	System.out.println("Student Has Been Registered");
-        	adminInterface.updateRegistered(studentId);
+        	adminInterface.updateRegistered(studentId,s1,s2);
         	message = "Registered";
         	notificationService.sendNotification(studentId,message);
         

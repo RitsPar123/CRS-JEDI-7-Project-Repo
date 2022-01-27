@@ -24,7 +24,7 @@ public interface AdminServiceInterface {
 	public List<Course> viewCourse();
 	public Set<String> viewSelectedCourse(String studentId);
 	public int getCouseList(String c);
-	public boolean updateRegistered(String studentId);
+	public boolean updateRegistered(String studentId, String s1, String s2);
 	public Student viewStudentData(String studentId);
 	public List<RegisteredCourses> activateGradeCard(String studentId);
 	public boolean approveStudentRegistration(String SId);
