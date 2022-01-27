@@ -23,9 +23,12 @@ import com.crs.flipkart.utils.CRSDb;
  * @author Abhinav
  *
  */
-public class AdminDaoOperation implements AdminDaoInterface {
+public class AdminDaoOperation implements AdminDaoInterface{
     Connection conn = CRSDb.getConnect();
 
+    /**
+    * {@inheritDoc}
+    */    
     public boolean addCourse(Course course) {
         try {
             // Connection conn = CRSDb.getConnect();
@@ -47,6 +50,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return false;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
     @Override
     public boolean deleteCourse(String id) {
         // TODO Auto-generated method stub
@@ -67,6 +73,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return false;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
     @Override
     public boolean addProfessor(Professor professor) {
         // TODO Auto-generated method stub
@@ -91,6 +100,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return false;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
     @Override
     public boolean approveStudent(String SId) {
         // TODO Auto-generated method stub
@@ -114,6 +126,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return false;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
     @Override
     public List<Student> viewPendingApproval() {
         // TODO Auto-generated method stub
@@ -145,6 +160,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return null;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
     @Override
     public List<Course> viewCourse() {
         // TODO Auto-generated method stub
@@ -176,6 +194,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return null;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
 	@Override
 	public Set<String> viewSelectedCourse(String studentId) {
 		// TODO Auto-generated method stub
@@ -204,6 +225,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		return null;
 	}
 
+    /**
+    * {@inheritDoc}
+    */  
 	@Override
 	public int getCourseList(String courseId) {
 		// TODO Auto-generated method stub
@@ -230,6 +254,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		return 0;
 	}
 
+    /**
+    * {@inheritDoc}
+    */  
 	@Override
 	public boolean updateRegistered(String studentId) {
 		// TODO Auto-generated method stub
@@ -254,6 +281,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		return false;
 	}
 
+    /**
+    * {@inheritDoc}
+    */  
 	@Override
 	public Student viewStudentData(String studentId) {
 		// TODO Auto-generated method stub

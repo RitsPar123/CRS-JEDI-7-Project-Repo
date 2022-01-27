@@ -10,14 +10,20 @@ package com.crs.flipkart.bean;
 public class Notification {
 	private String studentId;
 	private String message;
-	/**
-	 * @return the studentId
-	 */
 	
+		/**
+	 * Parameterized constructor
+	 * @param id: notification id
+	 * @param message: content of notification / message 
+	 */
 	public Notification(String id,String message) {
 		this.studentId = id;
 		this.message = message;
 	}
+
+	/**Method to 
+	 * @return the studentId
+	 */
 	public String getStudentId() {
 		return studentId;
 	}
