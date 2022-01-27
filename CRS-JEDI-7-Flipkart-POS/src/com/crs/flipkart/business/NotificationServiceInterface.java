@@ -11,4 +11,6 @@ import com.crs.flipkart.bean.Notification;
  */
 public interface NotificationServiceInterface {
 	public boolean sendNotification(String studentId, String message);
+
+	public void showNotifications(String id);
 }

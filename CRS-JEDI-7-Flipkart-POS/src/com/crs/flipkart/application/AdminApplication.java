@@ -76,6 +76,7 @@ public class AdminApplication {
                     System.out.println("Invalid Input");
             }
             CreateMenu();
+            System.out.println("\nEnter Your Choice");
             userInput = sc.nextInt();
         }
 
@@ -150,6 +151,7 @@ public class AdminApplication {
         boolean isApprove = adminInterface.approveStudent(studentUserId);
 
         if (isApprove)
+        	notificationService.sendNotification(studentUserId,"Student Registration is being Approved");
             System.out.println("Student Registration is being Approved\n");
     }
 

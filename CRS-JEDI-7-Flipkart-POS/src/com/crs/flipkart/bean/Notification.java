@@ -14,6 +14,8 @@ public class Notification {
 	 * @return the studentId
 	 */
 	
+	public Notification() {}
+	
 	public Notification(String id,String message) {
 		this.studentId = id;
 		this.message = message;

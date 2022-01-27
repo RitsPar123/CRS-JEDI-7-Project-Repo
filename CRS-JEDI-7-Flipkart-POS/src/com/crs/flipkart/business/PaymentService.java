@@ -14,22 +14,29 @@ import com.crs.flipkart.dao.PaymentDaoOperations;
  *
  */
 public class PaymentService implements PaymentServiceInterface {
-	static NotificationServiceInterface notificationService = new NotificationService();
+	NotificationServiceInterface notificationService = new NotificationService();
 	PaymentDaoInterface paymentDao = new PaymentDaoOperations();
 	Scanner sc = new Scanner(System.in);
+	RegisteredCoursesServiceInterface registerCourse = new RegisteredCoursesService();
 	
 	@Override
 	public void showMenu(String StudentId) {
 		// TODO Auto-generated method stub
+		
+			int isRegister = registerCourse.getStatus(StudentId);
+			
+			if(isRegister ==  0) {
+				System.out.println("Your Course Allocation Registration is still pending\n");
+				return;
+			}
 		 	System.out.println("----------------Payment Options----------------\n");
-		 	System.out.println("1  Amount to be Paid is 1000");
+		 	System.out.println("  Amount to be Paid is 1000");
 
 		 	System.out.println("1  Online Payment");
 	        System.out.println("2  Offline Payment");
-
-	        int userInput = sc.nextInt();
 	        	
-	        	System.out.println("\nEnter Your Choice");
+	        System.out.println("\nEnter Your Choice");
+	        	int userInput = sc.nextInt();
 	        	
 	            switch (userInput) {
 	                case 1:
@@ -57,8 +64,13 @@ public class PaymentService implements PaymentServiceInterface {
 		Payment payment = new Payment(studentId,paymentId,"Online",amount,"77777",true);
 		boolean isPaid = paymentDao.payFees(payment);
 		if(isPaid) {
-			String message = "Fees Has been paid with Account number" + paymentId;
+			String message = "Fees Has been paid with Account number  -> " + paymentId;
+			registerCourse.updateStatus(studentId);
 			notificationService.sendNotification(studentId,message);
+			System.out.println(message);
+			return;
+		}else {
+			System.out.println("Fees Ha Not Been Paid");
 		}
 		
 	}
@@ -75,9 +87,13 @@ public class PaymentService implements PaymentServiceInterface {
 		Payment payment = new Payment(studentId,paymentId,"Offline",amount,"77777",true);
 		boolean isPaid = paymentDao.payFees(payment);
 		if(isPaid) {
-			String message = "Fees Has been paid with RefrenceId" + paymentId;
+			String message = "Fees Has been paid with RefrenceId  -> " + paymentId;
+			registerCourse.updateStatus(studentId);
 			notificationService.sendNotification(studentId,message);
-		}
-		
+			System.out.println(message);
+			return;
+		}else {
+				System.out.println("Fees Has Not Been Paid");
+			}
 	}
 }
