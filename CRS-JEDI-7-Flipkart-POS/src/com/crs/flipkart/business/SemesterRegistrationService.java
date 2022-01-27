@@ -33,6 +33,10 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
         	return false;
         }
         
+        System.out.println("Course with course id " + courseId + " added successfully!");
+        System.out.println("-----------------------------------------------"); 
+        System.out.println("-----------------------------------------------"); 
+        
         return registeredCoursesDaoInterface.addCourse(courseId,semesterRegistration.getStudentId());
     }
 
@@ -46,6 +50,12 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
         }
         
         registeredCoursesDaoInterface.dropCourse(courseId, semesterRegistration.getStudentId());
+        
+        System.out.println("Course with course id " + courseId + " deleted Successfully!");
+        
+        System.out.println("-----------------------------------------------"); 
+        System.out.println("-----------------------------------------------"); 
+        
     }
 
     public void showCourse() {
@@ -59,7 +69,8 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
     		System.out.println("Course ID: " + course.getCourseId() + " Course Name : " + course.getCourseName());
     	}
     	
-    	System.out.println("-----------------------------------------------");    	
+    	System.out.println("-----------------------------------------------");  
+    	System.out.println("-----------------------------------------------"); 
     }
     
     public void showSelectedCourses(SemesterRegistration semesterRegistration) {
