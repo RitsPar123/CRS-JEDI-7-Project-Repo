@@ -22,13 +22,13 @@ import com.crs.flipkart.utils.CRSDb;
 public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterface{
 	
 	
-	public List<Course> getRegisteredCoursesById(String id) {
+	public List<Course> getApprovedCoursesById(String id) {
 		List<Course> courses = new ArrayList<Course>();
 		
 		Connection connection = CRSDb.getConnect();
 
         try {
-        	PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_STUDENT_RCOURSES_BY_ID);
+        	PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_STUDENT_ACOURSES_BY_ID);
         	
         	pstmt.setString(0, id);
         	

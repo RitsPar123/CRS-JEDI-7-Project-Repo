@@ -26,6 +26,6 @@ public class RegisteredCoursesService implements RegisteredCoursesServiceInterfa
 	}
 	public List<Course> getApprovedCourses(String studentId) {
 		RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
-		return registeredCoursesDaoInterface.getApprovedCourses(studentId);
+		return registeredCoursesDaoInterface.getApprovedCoursesById(studentId);
 	}
 }

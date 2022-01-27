@@ -5,6 +5,7 @@ package com.crs.flipkart.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.crs.flipkart.bean.Student;
@@ -73,7 +74,11 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			// AND UPDATE registrationStatus
 			pstmt.setString(1,id);
 			
-			registrationStatus = pstmt.executeUpdate();
+			ResultSet resultSet = pstmt.executeQuery();
+			if(resultSet.next())
+			{
+			     registrationStatus=resultSet.getInt(0);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

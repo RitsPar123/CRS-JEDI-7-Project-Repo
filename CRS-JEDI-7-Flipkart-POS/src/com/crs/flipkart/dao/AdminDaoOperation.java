@@ -263,7 +263,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		
 		try {
 			
-			PreparedStatement pstmt = connection.prepareStatement("");
+			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_ALL_COURSES);
 			
 			ResultSet resultSet = pstmt.executeQuery();
 			

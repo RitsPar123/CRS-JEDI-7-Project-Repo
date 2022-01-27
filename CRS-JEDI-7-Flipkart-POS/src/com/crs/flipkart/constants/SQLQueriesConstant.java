@@ -30,4 +30,5 @@ public class SQLQueriesConstant {
 	public static final String GET_COURSE_SEAT = "select SeatCount from course where CourseId = ?";
 	public static final String APPROVE_STUDENT_REGISTRATION = "update student set IsRegistered = 2 where SId = ?";
 	public static final String ADD_PAYMENT = "insert into Payment (SId,PaymentId,PaymentMehtod,Amount,TransactionDate,FeeStatus) values (?,?,?,?,?,?)";
+	public static final String GET_ALL_COURSES = "select * from course ";
 }
