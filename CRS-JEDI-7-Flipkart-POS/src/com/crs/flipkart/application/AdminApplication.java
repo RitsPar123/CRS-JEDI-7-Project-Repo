@@ -233,8 +233,7 @@ public class AdminApplication {
         			}
         		}
         }
-       
-       System.out.println(s1 + "  " + s2);
+
         
 //        if(count>2) {
 //        	status = false;
