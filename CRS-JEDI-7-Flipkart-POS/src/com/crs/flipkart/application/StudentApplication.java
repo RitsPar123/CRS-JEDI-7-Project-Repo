@@ -6,6 +6,8 @@ package com.crs.flipkart.application;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.CourseCatalog;
+import com.crs.flipkart.business.NotificationService;
+import com.crs.flipkart.business.NotificationServiceInterface;
 import com.crs.flipkart.business.PaymentService;
 import com.crs.flipkart.business.PaymentServiceInterface;
 import com.crs.flipkart.business.StudentService;
@@ -19,6 +21,7 @@ import com.crs.flipkart.dao.PaymentDaoOperations;
  */
 
 public class StudentApplication {
+	NotificationServiceInterface notificationService = new NotificationService();
 	PaymentServiceInterface paymentInterface = new PaymentService();
 	
 	public void studentLoggedin(String id) {
@@ -44,7 +47,8 @@ public class StudentApplication {
 					studentService.viewRegisteredCourses(id);
 					break;
 				 case 4:
-					// studentService.showNotifications();
+					 notificationService.showNotifications(id);
+					 break;
 				case 5:
 					paymentInterface.showMenu(id);
 					break;
@@ -52,8 +56,8 @@ public class StudentApplication {
 					System.out.println("Enter valid option");
 			}
 			System.out.println("Do you want to logout? Y N");
-			//char c = sc.nextLine().charAt(0);
-			//if(c == 'Y') break;
+			char c = sc.nextLine().charAt(0);
+			if(c == 'Y') break;
 		}
 	}
 }

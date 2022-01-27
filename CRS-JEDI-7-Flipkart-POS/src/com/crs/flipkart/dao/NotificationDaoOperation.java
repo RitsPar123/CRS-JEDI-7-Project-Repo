@@ -4,7 +4,13 @@
 package com.crs.flipkart.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
+import com.crs.flipkart.bean.Notification;
+import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.utils.CRSDb;
 
@@ -22,9 +28,13 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
         try {
             PreparedStatement pstmtP;
             pstmtP = conn.prepareStatement(SQLQueriesConstant.SET_NOTIFICATION);
-
-            pstmtP.setString(1, studentId);
-            pstmtP.setString(2, message);
+            
+            UUID uuid=UUID.randomUUID();   
+            String uuidAsString = uuid.toString();     
+            
+            pstmtP.setString(1, uuidAsString);
+            pstmtP.setString(2, studentId);
+            pstmtP.setString(3, message);
 
             pstmtP.executeUpdate();
             //conn.close();
@@ -37,6 +47,38 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
         }
 
 		return false;
+	}
+
+	@Override
+	public List<Notification> getNoti(String id) {
+		// TODO Auto-generated method stub
+		  Connection conn = CRSDb.getConnect();
+	        try {
+	            PreparedStatement pstmtP;
+	            pstmtP = conn.prepareStatement(SQLQueriesConstant.NOTIFICATION_STUDENT);
+
+	            pstmtP.setString(1, id);
+	            
+	            ResultSet resultSet = pstmtP.executeQuery();
+	       
+
+	            List<Notification> notificationList = new ArrayList<Notification>();
+	            while (resultSet.next()) {
+	                Notification noti = new Notification();
+	                noti.setMessage(resultSet.getString(1));
+
+	                notificationList.add(noti);
+	            }
+
+	            conn.close();
+
+	            return notificationList;
+
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+		return null;
 	}
 	
 
