@@ -49,4 +49,5 @@ public class SQLQueriesConstant {
 	public static final String  UPDATE_COURSE_ENTRY = "update course set SeatCount = SeatCount+1 where CourseId = ?";
 	public static final String	GET_STATUS = "select IsRegistered from registeredcourse where SId = ?";
 	public static final String 	UPDATE_STUDENT_STATUS = "update student set IsRegistered = 1 where SId = ?";
+	public static final String	NOTIFICATION_STUDENT = "select Message from notification where SId=?";
 }

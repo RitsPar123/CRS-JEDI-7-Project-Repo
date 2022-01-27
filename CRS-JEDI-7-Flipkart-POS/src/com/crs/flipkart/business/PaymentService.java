@@ -14,7 +14,7 @@ import com.crs.flipkart.dao.PaymentDaoOperations;
  *
  */
 public class PaymentService implements PaymentServiceInterface {
-	static NotificationServiceInterface notificationService = new NotificationService();
+	NotificationServiceInterface notificationService = new NotificationService();
 	PaymentDaoInterface paymentDao = new PaymentDaoOperations();
 	Scanner sc = new Scanner(System.in);
 	RegisteredCoursesServiceInterface registerCourse = new RegisteredCoursesService();
