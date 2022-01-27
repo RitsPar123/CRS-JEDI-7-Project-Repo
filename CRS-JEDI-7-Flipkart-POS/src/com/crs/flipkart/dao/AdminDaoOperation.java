@@ -376,6 +376,55 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		
 		return courses;
 	}
+
+	@Override
+	public boolean deleteEntry(String studentId) {
+		// TODO Auto-generated method stub
+		
+		 Connection conn = CRSDb.getConnect();
+	        try {
+	            PreparedStatement pstmtP;
+	            pstmtP = conn.prepareStatement(SQLQueriesConstant.DELETE_ENTRY);
+
+	            pstmtP.setString(1, studentId);
+
+	            pstmtP.executeUpdate();
+	            //conn.close();
+
+	            return true;
+
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+
+		return false;
+	}
+
+	@Override
+	public boolean updateCourse(Set<String> courseList) {
+		// TODO Auto-generated method stub
+		Connection conn = CRSDb.getConnect();
+        try {
+        	for(String course:courseList) {
+        		PreparedStatement pstmtP;
+                pstmtP = conn.prepareStatement(SQLQueriesConstant.UPDATE_COURSE_ENTRY);
+
+                pstmtP.setString(1, course);
+
+                pstmtP.executeUpdate();
+        	}
+        	
+            conn.close();
+
+            return true;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		return false;
+	}
 	
 }
 

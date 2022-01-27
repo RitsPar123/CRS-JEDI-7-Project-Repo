@@ -28,4 +28,6 @@ public interface AdminServiceInterface {
 	public Student viewStudentData(String studentId);
 	public List<RegisteredCourses> activateGradeCard(String studentId);
 	public boolean approveStudentRegistration(String SId);
+	public boolean deleteEntry(String studentId);
+	public boolean updateCourse(Set<String> courseList);
 }

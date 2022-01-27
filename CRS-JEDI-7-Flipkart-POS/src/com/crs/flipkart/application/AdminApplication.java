@@ -174,35 +174,6 @@ public class AdminApplication {
         System.out.println("************************************");
     }
     
-    private void studentCourseAllot() {
-		// TODO Auto-generated method stub
-    	
-    	System.out.print("Enter Student's ID");
-        String studentId = sc.next();
-        Set<String> courseList = adminInterface.viewSelectedCourse(studentId);  
-        
-        String message;
-        boolean status = true;
-    
-        for (String c : courseList) {
-        	int seatLeft = adminInterface.getCouseList(c);
-        	if(seatLeft >= 7) {
-        		status = false;
-        		message = "Less than Three Students have Registered for this Course\n";
-        		break;
-        	}
-        }
-        
-        if(status == true) {
-        	System.out.println("Student Has Been Registered");
-        	adminInterface.updateRegistered(studentId);
-        	message = "You Have Been Registered";
-        	notificationService.sendNotification(studentId,message);
-        }
-        System.out.println("************************************\n");
-	}
-	
-
 	private void activateGradeCard() {
 		// TODO Auto-generated method stub
 		System.out.print("Enter Student's ID");
@@ -223,7 +194,7 @@ public class AdminApplication {
                 	count++;
                 }
                 
-                if(count == 6) {
+                if(count == 4) {
                 	adminInterface.approveStudentRegistration(studentId);
                 	System.out.println("Student Report is Generated");
                 }
@@ -231,4 +202,41 @@ public class AdminApplication {
             	System.out.println("Student Report is Already Generated");
             }
 	}
+	
+    private void studentCourseAllot() {
+		// TODO Auto-generated method stub
+    	
+    	System.out.print("Enter Student's ID   ");
+        String studentId = sc.next();
+        Set<String> courseList = adminInterface.viewSelectedCourse(studentId);  
+        
+        String message;
+        boolean status = true;
+        int count = 0;
+
+        for (String c : courseList) {
+        	int seatLeft = adminInterface.getCouseList(c);
+        	if(seatLeft >= 7) {
+        		count++;	
+        	}
+        }
+        
+        if(count>2) {
+        	status = false;
+    		message = "Less than Three Students have Registered for these Courses, Choose course again \n";
+    		adminInterface.deleteEntry(studentId);
+    		adminInterface.updateCourse(courseList);
+    		notificationService.sendNotification(studentId,message);
+    		System.out.println("Student Has Not Been Registered  ");
+        }
+        
+        else{
+        	System.out.println("Student Has Been Registered");
+        	adminInterface.updateRegistered(studentId);
+        	message = "You Have Been Registered";
+        	notificationService.sendNotification(studentId,message);
+        }
+        System.out.println("************************************\n");
+	}
+	
 }

@@ -99,4 +99,18 @@ public class AdminService implements AdminServiceInterface {
 		return adminDaoOp.approveStudentRegistration(SId);
 	}
 
+
+	@Override
+	public boolean deleteEntry(String studentId) {
+		// TODO Auto-generated method stub
+		return adminDaoOp.deleteEntry(studentId);
+	}
+
+
+	@Override
+	public boolean updateCourse(Set<String> courseList) {
+		// TODO Auto-generated method stub
+		return adminDaoOp.updateCourse(courseList);
+	}
+
 }

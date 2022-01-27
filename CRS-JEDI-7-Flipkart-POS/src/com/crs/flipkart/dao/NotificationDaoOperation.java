@@ -27,7 +27,7 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
             pstmtP.setString(2, message);
 
             pstmtP.executeUpdate();
-            conn.close();
+            //conn.close();
 
             return true;
 
