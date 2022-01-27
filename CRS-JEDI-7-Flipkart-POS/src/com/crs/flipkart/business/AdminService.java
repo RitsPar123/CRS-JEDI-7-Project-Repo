@@ -8,6 +8,7 @@ import java.util.Set;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
+import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.dao.AdminDaoInterface;
 import com.crs.flipkart.dao.AdminDaoOperation;
@@ -86,6 +87,16 @@ public class AdminService implements AdminServiceInterface {
 	public Student viewStudentData(String studentId) {
 		// TODO Auto-generated method stub
 		return adminDaoOp.viewStudentData(studentId);
+	}
+	@Override
+	public List<RegisteredCourses> activateGradeCard(String studentId) {
+		// TODO Auto-generated method stub
+		return adminDaoOp.activateGradeCard(studentId);
+	}
+	@Override
+	public boolean approveStudentRegistration(String SId) {
+		// TODO Auto-generated method stub
+		return adminDaoOp.approveStudentRegistration(SId);
 	}
 
 }

@@ -10,12 +10,16 @@ package com.crs.flipkart.bean;
 public class Professor extends User{
 	private String Department;
 	
+	/**
+	 * Default constructor
+	 */
 	public Professor() {
 		super();
 	}
 
 
 	/**
+	 * Method to get Department of a professor
 	 * @return the department
 	 */
 	public String getDepartment() {
@@ -24,7 +28,7 @@ public class Professor extends User{
 
 
 
-	/**
+	/**Method to set Department of a professor
 	 * @param department the department to set
 	 */
 	public void setDepartment(String department) {

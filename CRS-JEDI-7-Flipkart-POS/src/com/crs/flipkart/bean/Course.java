@@ -15,8 +15,17 @@ public class Course {
 	private boolean isOffered;
 	private double marks;
 
+	/**
+	 * Default Constructor
+	 */
 	public Course() {}
-	
+
+	/** Parameterized constructor 
+	 * @param count
+	 * @param courseName
+	 * @param courseId
+	 * @param professor
+	 */
 	public Course(int count, String courseName, String courseId, String professor) {
 		this.count = count;
 		this.courseName = courseName;

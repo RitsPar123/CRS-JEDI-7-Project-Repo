@@ -19,6 +19,9 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
 	java.sql.Date sqlDate=new java.sql.Date(date.getTime());
 	 Connection conn = CRSDb.getConnect();
 
+	/**
+    * {@inheritDoc}
+    */  
 	@Override
 	public boolean payFees(Payment pay) {
 		  try {

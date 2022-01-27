@@ -10,44 +10,78 @@ import java.util.List;
  *
  */
 public class RegisteredCourses {
+	private String CourseId;
 	private String studentId;
-	List<Course> selectedCourses;
-	double gpa;
+	private int IsRegistered;
+	private int grade;
+	
 	/**
-	 * @return the studentId
+	 * Default constructor
+	 */
+	public RegisteredCourses() {}
+	
+	/**
+	 * Method to get courseId
+	 * @return
+	 */
+	public String getCourseId() {
+		return CourseId;
+	}
+
+	
+	/** 
+	 * Mthod to Set CourseId
+	 * @param courseId
+	 */
+	public void setCourseId(String courseId) {
+		CourseId = courseId;
+	}
+	
+	/** Method to get studentID
+	 * @return String
 	 */
 	public String getStudentId() {
 		return studentId;
 	}
-	/**
-	 * @param studentId the studentId to set
+	
+	/** 
+	 * Method to set studentId
+	 * @param studentId
 	 */
 	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
-	/**
-	 * @return the selectedCourses
+	
+	/** 
+	 * Method to get IsRegistered Status
+	 * @return int
 	 */
-	public List<Course> getSelectedCourses() {
-		return selectedCourses;
+	public int getIsRegistered() {
+		return IsRegistered;
 	}
-	/**
-	 * @param selectedCourses the selectedCourses to set
+	
+	/** 
+	 * Method to set IsRegistered Status
+	 * @param isRegistered
 	 */
-	public void setSelectedCourses(List<Course> selectedCourses) {
-		this.selectedCourses = selectedCourses;
+	public void setIsRegistered(int isRegistered) {
+		IsRegistered = isRegistered;
 	}
-	/**
-	 * @return the gpa
+	
+	/** 
+	 * Method to get grade
+	 * @return int
 	 */
-	public double getGpa() {
-		return gpa;
+	public int getGrade() {
+		return grade;
 	}
-	/**
-	 * @param gpa the gpa to set
+	
+	/** 
+	 * Method to set grade
+	 * @param grade
 	 */
-	public void setGpa(double gpa) {
-		this.gpa = gpa;
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 	
 	

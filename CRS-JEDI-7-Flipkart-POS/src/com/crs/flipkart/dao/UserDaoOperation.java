@@ -17,6 +17,9 @@ import com.crs.flipkart.utils.CRSDb;
  */
 public class UserDaoOperation implements UserDaoInterface {
 
+	/**
+    * {@inheritDoc}
+    */ 
 	@Override
 	public int verifyUser(String id, String Password) {
 		// TODO Auto-generated method stub
@@ -55,6 +58,9 @@ public class UserDaoOperation implements UserDaoInterface {
 		return 4;
 	}
 
+	/**
+    * {@inheritDoc}
+    */ 
 	@Override
 	public boolean updatePassword(String id, String Password) {
 		// TODO Auto-generated method stub
@@ -86,7 +92,10 @@ public class UserDaoOperation implements UserDaoInterface {
 		
 		return false;
 	}
-
+	
+	/**
+    * {@inheritDoc}
+    */ 
 	@Override
 	public boolean verifyApproval(String id) {
 		// TODO Auto-generated method stub

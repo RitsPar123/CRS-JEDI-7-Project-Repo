@@ -8,6 +8,7 @@ import java.util.Set;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
+import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.bean.Student;
 
 /**
@@ -27,4 +28,6 @@ public interface AdminServiceInterface {
 	public int getCouseList(String c);
 	public boolean updateRegistered(String studentId);
 	public Student viewStudentData(String studentId);
+	public List<RegisteredCourses> activateGradeCard(String studentId);
+	public boolean approveStudentRegistration(String SId);
 }
