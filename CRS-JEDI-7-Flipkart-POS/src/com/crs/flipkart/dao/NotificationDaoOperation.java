@@ -70,7 +70,7 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
 	                notificationList.add(noti);
 	            }
 
-	            conn.close();
+	            //conn.close();
 
 	            return notificationList;
 

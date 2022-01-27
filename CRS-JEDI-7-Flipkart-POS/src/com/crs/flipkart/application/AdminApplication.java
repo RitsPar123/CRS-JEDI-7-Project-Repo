@@ -31,12 +31,11 @@ public class AdminApplication {
         System.out.println("----------------Admin Menu----------------\n");
 
         CreateMenu();
-
+        
+        System.out.println("\nEnter Your Choice");
         int userInput = sc.nextInt();
 
         while (userInput != 11) {
-        	
-        	System.out.println("\nEnter Your Choice");
         	
             switch (userInput) {
                 case 1:
@@ -218,7 +217,7 @@ public class AdminApplication {
 
         for (String c : courseList) {
         	int seatLeft = adminInterface.getCouseList(c);
-        	if(seatLeft >= 7) {
+        	if(seatLeft >= 10) {
         		count++;	
         	}
         }
