@@ -4,6 +4,7 @@
 package com.crs.flipkart.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.UUID;
 
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.utils.CRSDb;
@@ -22,9 +23,13 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
         try {
             PreparedStatement pstmtP;
             pstmtP = conn.prepareStatement(SQLQueriesConstant.SET_NOTIFICATION);
-
-            pstmtP.setString(1, studentId);
-            pstmtP.setString(2, message);
+            
+            UUID uuid=UUID.randomUUID();   
+            String uuidAsString = uuid.toString();     
+            
+            pstmtP.setString(1, uuidAsString);
+            pstmtP.setString(2, studentId);
+            pstmtP.setString(3, message);
 
             pstmtP.executeUpdate();
             //conn.close();

@@ -19,5 +19,6 @@ public interface RegisteredCoursesDaoInterface {
 	public void dropCourse(String courseId,String SId);
 	public boolean hasCourse(String courseId,String Sid);
 	public List<Course> getSelectedCourses(String id);
-	
+	public int getStatus(String studentId);
+	public boolean updateStatus(String studentId);
 }

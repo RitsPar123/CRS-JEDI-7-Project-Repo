@@ -30,7 +30,7 @@ public class SQLQueriesConstant {
 	public static final String GET_COURSE_SEAT = "select SeatCount from course where CourseId = ?";
 	public static final String APPROVE_STUDENT_REGISTRATION = "update registeredcourse set IsRegistered = 1 where SId = ?";
 	public static final String ADD_PAYMENT = "insert into Payment (SId,PaymentId,PaymentMethod,Amount,TransactionDate,FeeStatus) values (?,?,?,?,?,1)";
-	public static final String SET_NOTIFICATION = "insert into Notification (NotificationId,SId,Message) values (1,?,?)";
+	public static final String SET_NOTIFICATION = "insert into notification (NotificationId,SId,Message) values (?,?,?)";
 	public static final String STUDENT_DATA = "select student.SId,student.Branch,user.Name,student.IsRegistered,student.IsReportApproved from user inner join student on student.SID = user.Id  where SId = ?";
 	public static final String REGISTERED_COURSE = "select * from registeredcourse where SId = ?";
 	public static final String APPROVE_REPORT = "update student set IsReportApproved = 1 where SId = ?";
@@ -47,4 +47,6 @@ public class SQLQueriesConstant {
 	public static final String  VIEW_REGISTERED_STUDENTS ="Select user.id ,user.name from (user INNER JOIN registeredcourse ON registeredcourse.sid = user.id ) where courseid = ? and IsRegistered = 1";
 	public static final String  DELETE_ENTRY = "delete from registeredcourse where SId= ?";
 	public static final String  UPDATE_COURSE_ENTRY = "update course set SeatCount = SeatCount+1 where CourseId = ?";
+	public static final String	GET_STATUS = "select IsRegistered from registeredcourse where SId = ?";
+	public static final String 	UPDATE_STUDENT_STATUS = "update student set IsRegistered = 1 where SId = ?";
 }

@@ -168,4 +168,51 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 
 	}
 
+	@Override
+	public int getStatus(String studentId) {
+		// TODO Auto-generated method stub
+		Connection conn = CRSDb.getConnect();
+        try {
+        		PreparedStatement pstmtP;
+                pstmtP = conn.prepareStatement(SQLQueriesConstant.GET_STATUS);
+
+                pstmtP.setString(1, studentId);
+
+                ResultSet resultSet = pstmtP.executeQuery();
+                
+                if(resultSet.next()) {
+                	return resultSet.getInt("IsRegistered");
+                }
+                
+        	
+//            conn.close();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		return 0;
+	}
+
+	@Override
+	public boolean updateStatus(String studentId) {
+		// TODO Auto-generated method stub
+		Connection conn = CRSDb.getConnect();
+        try {
+            PreparedStatement pstmtP;
+            pstmtP = conn.prepareStatement(SQLQueriesConstant.UPDATE_STUDENT_STATUS);
+
+            pstmtP.setString(1, studentId);
+
+            pstmtP.executeUpdate();
+//            conn.close();
+
+            return true;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		return false;
+	}
+
 }
