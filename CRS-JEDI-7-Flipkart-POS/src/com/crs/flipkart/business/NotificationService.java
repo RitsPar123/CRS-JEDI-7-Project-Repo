@@ -27,10 +27,14 @@ public class NotificationService implements NotificationServiceInterface {
 		// TODO Auto-generated method stub
 		List<Notification> notification = notificationDaoOp.getNoti(id);
 		System.out.println("Notifications : ");
-		for(Notification noti: notification) {
-			System.out.println(noti.getMessage() + " ");
+		if(notification.size()>0) {
+			for(Notification noti: notification) {
+				System.out.println(noti.getMessage() + " ");
+			}
+		}else {
+			System.out.println("No Notifications are Present");
 		}
-		
+	
 		System.out.println("--------------------------------------------------");
 	}
 	}

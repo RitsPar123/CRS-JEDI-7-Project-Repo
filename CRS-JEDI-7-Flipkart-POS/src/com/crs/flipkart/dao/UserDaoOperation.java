@@ -44,12 +44,6 @@ public class UserDaoOperation implements UserDaoInterface {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}finally {
-				try {
-					connection.close();
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}
 			}
 		 
 		return 4;
@@ -76,12 +70,6 @@ public class UserDaoOperation implements UserDaoInterface {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			try {
-				connection.close();
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
 		}
 		
 		return false;
@@ -109,12 +97,6 @@ public class UserDaoOperation implements UserDaoInterface {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			try {
-				connection.close();
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
 		}
 		
 		return false;
