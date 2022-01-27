@@ -15,6 +15,7 @@ import java.util.Set;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
+import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.utils.CRSDb;
@@ -302,8 +303,9 @@ public class AdminDaoOperation implements AdminDaoInterface{
             stud.setBranch(resultSet.getString(2));
             stud.setUserName(resultSet.getString(3));
             stud.setRegistered(resultSet.getBoolean(4));
+            stud.setReportApproved(resultSet.getBoolean(5));
             }
-            conn.close();
+//            conn.close();
 
             return stud;
 
@@ -313,4 +315,59 @@ public class AdminDaoOperation implements AdminDaoInterface{
         }
 		return null;
 	}
+
+	@Override
+	public List<RegisteredCourses> activateGradeCard(String studentId) {
+		// TODO Auto-generated method stub
+		Connection conn = CRSDb.getConnect();
+        try {
+            PreparedStatement pstmtP;
+            pstmtP = conn.prepareStatement(SQLQueriesConstant.REGISTERED_COURSE);
+            
+            pstmtP.setString(1, studentId);
+
+            ResultSet resultSet = pstmtP.executeQuery();
+
+            List<RegisteredCourses> registeredCourse = new ArrayList<RegisteredCourses>();
+            
+            while (resultSet.next()) {
+            	RegisteredCourses course = new RegisteredCourses();
+                course.setCourseId(resultSet.getString("CourseId"));
+                course.setGrade(resultSet.getInt("Grade"));
+
+                registeredCourse.add(course);
+            }
+
+//            conn.close();
+            return registeredCourse;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+		return null;
+	}
+	
+	 @Override
+	    public boolean approveStudentRegistration(String SId) {
+	        // TODO Auto-generated method stub
+	        Connection conn = CRSDb.getConnect();
+	        try {
+	            PreparedStatement pstmtP;
+	            pstmtP = conn.prepareStatement(SQLQueriesConstant.APPROVE_REPORT);
+
+	            pstmtP.setString(1, SId);
+
+	            pstmtP.executeUpdate();
+	            conn.close();
+
+	            return true;
+
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+
+	        return false;
+	    }
 }

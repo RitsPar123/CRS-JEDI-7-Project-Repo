@@ -25,5 +25,7 @@ public class SQLQueriesConstant {
 	public static final String APPROVE_STUDENT_REGISTRATION = "update student set IsRegistered = 2 where SId = ?";
 	public static final String ADD_PAYMENT = "insert into Payment (SId,PaymentId,PaymentMethod,Amount,TransactionDate,FeeStatus) values (?,?,?,?,?,1)";
 	public static final String SET_NOTIFICATION = "insert into Notification (NotificationId,SId,Message) values (1,?,?)";
-	public static final String STUDENT_DATA = "select student.SId,student.Branch,user.Name,student.IsRegistered from user inner join student on student.SID = user.Id  where SId = ?";
+	public static final String STUDENT_DATA = "select student.SId,student.Branch,user.Name,student.IsRegistered,student.IsReportApproved from user inner join student on student.SID = user.Id  where SId = ?";
+	public static final String REGISTERED_COURSE = "select * from registeredcourse where SId = ?";
+	public static final String APPROVE_REPORT = "update student set IsReportApproved = 1 where SId = ?";
 }

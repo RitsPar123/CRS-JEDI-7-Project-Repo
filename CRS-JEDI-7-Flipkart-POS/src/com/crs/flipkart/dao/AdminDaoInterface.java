@@ -8,6 +8,7 @@ import java.util.Set;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
+import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.bean.Student;
 
 /**
@@ -83,4 +84,6 @@ public interface AdminDaoInterface {
 	 * @return student object
 	 */
 	public Student viewStudentData(String studentId);
+	public List<RegisteredCourses> activateGradeCard(String studentId);
+	public boolean approveStudentRegistration(String SId);
 }
