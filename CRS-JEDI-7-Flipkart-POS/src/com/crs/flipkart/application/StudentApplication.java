@@ -26,16 +26,12 @@ public class StudentApplication {
 	
 	public void studentLoggedin(String id) {
 		StudentServiceInterface studentService = new StudentService();
-
-		while(true) {
-			System.out.println("1. Registration");
-			System.out.println("2. View Report Card");
-			System.out.println("3. View Registered Courses");
-			System.out.println("4. Show Notifications");
-			System.out.println("5. Pay Fees");
-			System.out.println("Enter your option");
-			Scanner sc = new Scanner(System.in);
-			int option = sc.nextInt();
+		
+		CreateMenu();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter your option");
+		int option = sc.nextInt();
+		while(option != 11) {
 			switch (option) {
 				case 1:
 					studentService.register(id);
@@ -55,9 +51,20 @@ public class StudentApplication {
 				default:
 					System.out.println("Enter valid option");
 			}
-			System.out.println("Do you want to logout? Y N");
-			char c = sc.nextLine().charAt(0);
-			if(c == 'Y') break;
+			CreateMenu();
+            System.out.println("\nEnter Your Choice");
+            option = sc.nextInt();
 		}
 	}
+
+	private void CreateMenu() {
+		// TODO Auto-generated method stub
+		System.out.println("1. Registration");
+		System.out.println("2. View Report Card");
+		System.out.println("3. View Registered Courses");
+		System.out.println("4. Show Notifications");
+		System.out.println("5. Pay Fees");
+		
+	}
+	
 }

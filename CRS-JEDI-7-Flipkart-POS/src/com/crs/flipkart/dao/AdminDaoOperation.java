@@ -27,19 +27,19 @@ import com.crs.flipkart.utils.CRSDb;
  *
  */
 public class AdminDaoOperation implements AdminDaoInterface {
-    Connection conn = CRSDb.getConnect();
+    
 
     public boolean addCourse(Course course) {
+    	Connection conn = CRSDb.getConnect();
         try {
-            // Connection conn = CRSDb.getConnect();
+            
             PreparedStatement stmt;
             stmt = conn.prepareStatement(SQLQueriesConstant.ADD_COURSE);
             stmt.setString(1, course.getCourseId());
-            stmt.setString(2, course.getProfessor());
-            stmt.setString(3, course.getCourseName());
+            stmt.setString(2, course.getCourseName());
 
             stmt.executeUpdate();
-            conn.close();
+            //conn.close();
 
             return true;
 
@@ -53,14 +53,14 @@ public class AdminDaoOperation implements AdminDaoInterface {
     @Override
     public boolean deleteCourse(String id) {
         // TODO Auto-generated method stub
-
+    	Connection conn = CRSDb.getConnect();
         try {
             PreparedStatement stmt;
             stmt = conn.prepareStatement(SQLQueriesConstant.DELETE_COURSE);
             stmt.setString(1, id);
 
             int row = stmt.executeUpdate();
-            conn.close();
+            //conn.close();
 
             return true;
 
@@ -73,6 +73,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
     @Override
     public boolean addProfessor(Professor professor) {
         // TODO Auto-generated method stub
+    	Connection conn = CRSDb.getConnect();
         try {
             PreparedStatement pstmtP;
             pstmtP = conn.prepareStatement(SQLQueriesConstant.ADD_PROFESSOR);
@@ -105,7 +106,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
             pstmtP.setString(1, SId);
 
             pstmtP.executeUpdate();
-            conn.close();
+            //conn.close();
 
             return true;
 
@@ -137,7 +138,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
                 studentList.add(stud);
             }
 
-            conn.close();
+            //conn.close();
 
             return studentList;
 
@@ -168,7 +169,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
                 courseList.add(cour);
             }
 
-            conn.close();
+            //conn.close();
 
             return courseList;
 
@@ -210,7 +211,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	@Override
 	public int getCourseList(String courseId) {
 		// TODO Auto-generated method stub
-		
+		Connection conn = CRSDb.getConnect();
 		try {
             PreparedStatement pstmtP;
             pstmtP = conn.prepareStatement(SQLQueriesConstant.GET_COURSE_SEAT);
