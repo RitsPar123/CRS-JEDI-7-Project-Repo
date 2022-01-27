@@ -10,6 +10,7 @@ import java.util.Set;
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.bean.Professor;
+import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.business.AdminService;
 import com.crs.flipkart.business.AdminServiceInterface;
 import com.crs.flipkart.business.NotificationService;
@@ -63,13 +64,14 @@ public class AdminApplication {
                     viewCourses();
                     break;
                 case 7:
-                    // View Student Data
-                    viewStudentData();
-                    break;
-                case 10:
                     // Allot Course
                     studentCourseAllot();
                     break;
+                case 8:
+                    // View Student Data
+                    activateGradeCard();
+                    break;
+
                 default:
                     System.out.println("Invalid Input");
             }
@@ -87,10 +89,8 @@ public class AdminApplication {
         System.out.println("4  View Pending Approval Registration");
         System.out.println("5  Approve Student SignUp Registration");
         System.out.println("6  View All Courses");
-        System.out.println("7  View Student Data");
+        System.out.println("7  Student Course Allocation");
         System.out.println("8  Activate Grade Card");
-        System.out.println("9  Approve Student Semester Registration");
-        System.out.println("10  Student Course Allocation");
 
     }
 
@@ -201,22 +201,34 @@ public class AdminApplication {
         }
         System.out.println("************************************\n");
 	}
-    
-	private void viewStudentData() {
+	
+
+	private void activateGradeCard() {
 		// TODO Auto-generated method stub
 		System.out.print("Enter Student's ID");
         String studentId = sc.next();
         
-        Student stud = new Student();
-        stud = adminInterface.viewStudentData(studentId);
-        
-        System.out.println("Details are  ->");
-        System.out.println("Id -> " + stud.getId() + " Name -> " + stud.getUserName() + " Branch -> " + stud.getBranch());
-        
-//        List<> courseList = adminInterface.viewSelectedCourse(studentId);  
-//        if(val) {
-//        	System.out.println("List of Courses doing");
-//	        	 List<Grade> grade =  adminInterface.viewStudentData(studentId);
-//        }
+    	
+            Student stud = new Student();
+            stud = adminInterface.viewStudentData(studentId);
+            
+            System.out.println("Details are  ->");
+            System.out.println("Id -> " + stud.getId() + " Name -> " + stud.getUserName() + " Branch -> " + stud.getBranch());
+
+            if(!stud.isReportApproved()) {
+                List<RegisteredCourses> registeredCourses = adminInterface.activateGradeCard(studentId);
+                int count = 0;
+                for(RegisteredCourses course:registeredCourses) {
+                	System.out.println("CourseId -> " + course.getCourseId() + " Grade " + course.getGrade());
+                	count++;
+                }
+                
+                if(count == 6) {
+                	adminInterface.approveStudentRegistration(studentId);
+                	System.out.println("Student Report is Generated");
+                }
+            }else {
+            	System.out.println("Student Report is Already Generated");
+            }
 	}
 }
