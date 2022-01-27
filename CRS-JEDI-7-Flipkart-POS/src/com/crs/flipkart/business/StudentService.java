@@ -82,12 +82,8 @@ public class StudentService implements StudentServiceInterface{
 
 			int option = sc.nextInt();
 			switch (option) {
-				case 1: {
-					int count = registeredCoursesService.getSelectedCourses(studentId).size();
-					while(count < 6) {
-						if(semesterRegistrationService.addCourse(semesterRegistration)) ++count;
-					}
-				}
+				case 1: 
+					if(registeredCoursesService.getSelectedCourses(studentId).size() < 6) semesterRegistrationService.addCourse(semesterRegistration);
 					break;
 				case 2:
 					semesterRegistrationService.dropCourse(semesterRegistration);

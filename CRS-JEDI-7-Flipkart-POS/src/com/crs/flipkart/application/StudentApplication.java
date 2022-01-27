@@ -44,7 +44,7 @@ public class StudentApplication {
 					studentService.viewRegisteredCourses(id);
 					break;
 				 case 4:
-					// studentService.showNotifications();
+					 //studentService.showNotifications();
 				case 5:
 					paymentInterface.showMenu(id);
 					break;

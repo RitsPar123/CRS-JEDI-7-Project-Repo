@@ -62,6 +62,7 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 
 			pstmt.setString(1, courseId);
 			pstmt.setString(2, studentId);
+			pstmt.setString(3,null);
 
 			int done = pstmt.executeUpdate();
 
