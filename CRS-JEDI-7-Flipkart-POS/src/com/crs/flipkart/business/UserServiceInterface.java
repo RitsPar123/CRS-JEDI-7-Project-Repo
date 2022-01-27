@@ -12,6 +12,7 @@ import com.crs.flipkart.bean.User;
 
  /*
   *Interface consists of various methods of User related to login,password and approval
+  *
   */
 public interface UserServiceInterface {
 	
