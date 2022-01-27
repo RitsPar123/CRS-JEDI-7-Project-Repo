@@ -32,4 +32,5 @@ public interface AdminDaoInterface {
 	public boolean approveStudentRegistration(String SId);
 	public boolean deleteEntry(String studentId);
 	public boolean updateCourse(Set<String> courseList);
+	public boolean addUser(String id, String password, String name);
 }

@@ -113,4 +113,11 @@ public class AdminService implements AdminServiceInterface {
 		return adminDaoOp.updateCourse(courseList);
 	}
 
+
+	@Override
+	public boolean addUser(String id, String password,String name) {
+		// TODO Auto-generated method stub
+		return adminDaoOp.addUser(id,password,name);
+	}
+
 }

@@ -129,6 +129,12 @@ public class AdminApplication {
 
         System.out.println("Enter Department ");
         String department = sc.next();
+        
+        System.out.println("Enter Name ");
+        String name = sc.next();
+        
+        System.out.println("Enter Password ");
+        String password = sc.next();
 
         Professor professor = new Professor();
 
@@ -136,6 +142,7 @@ public class AdminApplication {
         professor.setId(id);
 
         boolean isProfessorAdded = adminInterface.addProfessor(professor);
+        boolean addUser = adminInterface.addUser(id,password,name);
 
         if (isProfessorAdded) {
             System.out.println("Professor created successfully.\n");
@@ -215,28 +222,28 @@ public class AdminApplication {
         boolean status = true;
         int count = 0;
 
-        for (String c : courseList) {
-        	int seatLeft = adminInterface.getCouseList(c);
-        	if(seatLeft >= 10) {
-        		count++;	
-        	}
-        }
+//        for (String c : courseList) {
+//        	int seatLeft = adminInterface.getCouseList(c);
+//        	if(seatLeft > 10) {
+//        		count++;	
+//        	}
+//        }
         
-        if(count>2) {
-        	status = false;
-    		message = "Less than Three Students have Registered for these Courses, Choose course again \n";
-    		adminInterface.deleteEntry(studentId);
-    		adminInterface.updateCourse(courseList);
-    		notificationService.sendNotification(studentId,message);
-    		System.out.println("Student Has Not Been Registered  ");
-        }
+//        if(count>2) {
+//        	status = false;
+//    		message = "Not Done";
+//    		adminInterface.deleteEntry(studentId);
+//    		adminInterface.updateCourse(courseList);
+//    		notificationService.sendNotification(studentId,message);
+//    		System.out.println("Student Has Not Been Registered  ");
+//        }
         
-        else{
+        
         	System.out.println("Student Has Been Registered");
         	adminInterface.updateRegistered(studentId);
-        	message = "You Have Been Registered";
+        	message = "Registered";
         	notificationService.sendNotification(studentId,message);
-        }
+        
         System.out.println("************************************\n");
 	}
 	

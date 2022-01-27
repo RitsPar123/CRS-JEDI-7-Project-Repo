@@ -83,7 +83,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             pstmtP.executeUpdate();
 
-            conn.close();
+            //conn.close();
 
             return true;
 
@@ -424,6 +424,33 @@ public class AdminDaoOperation implements AdminDaoInterface {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+		return false;
+	}
+
+	@Override
+	public boolean addUser(String id, String password,String name) {
+		// TODO Auto-generated method stub
+		
+		Connection conn = CRSDb.getConnect();
+        try {
+            PreparedStatement pstmtP;
+            pstmtP = conn.prepareStatement(SQLQueriesConstant.ADD_USER_PRO);
+
+            pstmtP.setString(1, id);
+            pstmtP.setString(2, name);
+            pstmtP.setString(3, password);
+
+            pstmtP.executeUpdate();
+
+            //conn.close();
+
+            return true;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
 		return false;
 	}
 	
