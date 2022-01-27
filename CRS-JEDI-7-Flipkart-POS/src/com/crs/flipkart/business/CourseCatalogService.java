@@ -3,7 +3,7 @@ package com.crs.flipkart.business;
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.CourseCatalog;
 
-public class CourseCatalogService {
+public class CourseCatalogService implements CourseCatalogServiceInterface{
 
     public void addCourse(CourseCatalog courseCatalog, Course course) {
         courseCatalog.getCourses().add(course);
