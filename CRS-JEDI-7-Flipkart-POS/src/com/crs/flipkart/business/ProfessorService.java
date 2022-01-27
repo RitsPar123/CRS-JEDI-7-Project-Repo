@@ -17,11 +17,21 @@ import com.crs.flipkart.dao.ProfessorDaoOperation;
 public class ProfessorService {
 	
 	ProfessorDaoInterface professorDaoInterface = new ProfessorDaoOperation();
-
+	/*
+	 *Method lets professor select a course with a particular courseid and coursename
+	 * @param profId:id of professor 
+	 * @param courseid: id of the course
+	 * @param coursename: name of the course professor wants to select
+	 */
 	public void selectCourse(String profId,String courseid,String coursename) {
 		professorDaoInterface.selectCourse(profId,courseid,coursename);
 		//table-course
 	}
+
+	/*
+	 * Method lets professor View Registered Courses;
+	 * @param id:Professor's id
+	 */
 	public void viewRegisteredCourses(String id) {
 		
 		List<Course> RegisteredCourse = new ArrayList<Course>();
@@ -35,10 +45,18 @@ public class ProfessorService {
 		
 		//table-course
 	}
+	/*
+	 * Method lets professor add Grades 
+	 * @param profesorId: id of professor 
+	 * @param courseid: id of the course
+	 * @param studentId: id of the student
+	 * @param grade: grade to be added
+	 */
 	public void addGrades(String professorId,String courseId,String studentId,int grade) {
 		professorDaoInterface.addGrades( professorId,courseId,studentId,grade);
 		//table-grades
 	}
+	/*Method shows courses availabe for professor to select from */
 	public void showCourses() {
 		List<Course> courseList = professorDaoInterface.showCourses();
 		
@@ -50,7 +68,12 @@ public class ProfessorService {
 		System.out.println();
 		//table-course
 	}
-	
+
+	/*
+	 * Method allows Professor to view students registered for a particular courseId 
+	 * @param id:professor id
+	 * @param courseId: id of the course
+	 */
 	public void viewRegisteredStudents(String id, String courseId)
 	{
 		professorDaoInterface.viewRegisteredStudents(id,courseId);

@@ -18,6 +18,10 @@ public class PaymentService implements PaymentServiceInterface {
 	PaymentDaoInterface paymentDao = new PaymentDaoOperations();
 	Scanner sc = new Scanner(System.in);
 	
+	/*
+	 *Method gives student various payment options
+	 * @param StudentId : Id of the Student
+	 */
 	@Override
 	public void showMenu(String StudentId) {
 		// TODO Auto-generated method stub

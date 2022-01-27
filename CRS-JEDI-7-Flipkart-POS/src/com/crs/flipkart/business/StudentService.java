@@ -24,7 +24,14 @@ public class StudentService implements StudentServiceInterface{
 	
 	StudentDaoInterface StudentDaoInterface = new StudentDaoOperation(); 
 
-	
+	/*
+	 * Method lets student sign up into the CRS system
+     * @param  id: id of student
+	 * @param  password : password of login
+	 * @param  branch : branch of the student
+	 * @param  name : name of the student
+	 * @param role : signifies status in student table
+	 */
 	public String signup(String id,String password,String branch,String name,int role) {
 		String studentId = null;
 		
