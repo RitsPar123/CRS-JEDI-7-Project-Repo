@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.constants.SQLQueriesConstant;
@@ -20,6 +22,8 @@ import com.crs.flipkart.utils.CRSDb;
  *
  */
 public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterface {
+	 private static Logger logger = Logger.getLogger(PaymentDaoOperations.class);
+
 
 	public List<Course> getApprovedCoursesById(String id) {
 		List<Course> courses = new ArrayList<Course>();
@@ -41,12 +45,12 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		}
 
@@ -74,12 +78,12 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 			return done == 1;
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		}
 		return false;
@@ -98,12 +102,12 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		} finally {
 			try {
 				connection.close();
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		}
 
@@ -125,12 +129,12 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 			return true;
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		}
 		return false;
@@ -156,12 +160,12 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		}
 
@@ -189,7 +193,7 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 //            conn.close();
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		return 0;
 	}
@@ -211,7 +215,7 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		return false;
 	}

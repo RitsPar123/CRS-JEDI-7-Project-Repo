@@ -6,6 +6,8 @@ package com.crs.flipkart.business;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.CourseCatalog;
 import com.crs.flipkart.bean.SemesterRegistration;
@@ -19,8 +21,10 @@ import com.crs.flipkart.dao.RegisteredCoursesDaoOperation;
  *
  */
 public class SemesterRegistrationService implements SemesterRegistrationServiceInterface{
-    Scanner sc = new Scanner(System.in);
-
+    
+	private static Logger logger = Logger.getLogger(SemesterRegistrationService.class);
+	
+	Scanner sc = new Scanner(System.in);
     RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
     
     public boolean addCourse(SemesterRegistration semesterRegistration) {

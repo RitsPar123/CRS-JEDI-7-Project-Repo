@@ -6,18 +6,23 @@ package com.crs.flipkart.business;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.dao.AdminDaoInterface;
 import com.crs.flipkart.dao.AdminDaoOperation;
+import com.crs.flipkart.dao.StudentDaoOperation;
 
 /**
  * @author Abhinav
  *
  */
 public class AdminService implements AdminServiceInterface {
+
+	 private static Logger logger = Logger.getLogger(AdminService.class);
 
 	AdminDaoInterface adminDaoOp = new AdminDaoOperation();
 	

@@ -1,11 +1,14 @@
 package com.crs.flipkart.business;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.User;
 import com.crs.flipkart.dao.UserDaoInterface;
 import com.crs.flipkart.dao.UserDaoOperation;
 
 public class UserService implements UserServiceInterface{
 	
+	private static Logger logger = Logger.getLogger(UserService.class);
 	UserDaoInterface userDaoInterface = new UserDaoOperation();
 	
 	public boolean userLogin(User u) {

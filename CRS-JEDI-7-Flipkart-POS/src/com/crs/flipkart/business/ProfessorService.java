@@ -6,6 +6,8 @@ package com.crs.flipkart.business;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.dao.ProfessorDaoInterface;
 import com.crs.flipkart.dao.ProfessorDaoOperation;
@@ -15,7 +17,7 @@ import com.crs.flipkart.dao.ProfessorDaoOperation;
  *
  */
 public class ProfessorService {
-	
+	private static Logger logger = Logger.getLogger(ProfessorService.class);
 	ProfessorDaoInterface professorDaoInterface = new ProfessorDaoOperation();
 
 	public void selectCourse(String profId,String courseid,String coursename) {

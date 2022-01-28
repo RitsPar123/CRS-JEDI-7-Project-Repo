@@ -5,6 +5,8 @@ package com.crs.flipkart.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.utils.CRSDb;
 import com.crs.flipkart.bean.Payment;
@@ -18,6 +20,7 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
 	java.util.Date date=new java.util.Date();
 	java.sql.Date sqlDate=new java.sql.Date(date.getTime());
 	 Connection conn = CRSDb.getConnect();
+	 private static Logger logger = Logger.getLogger(PaymentDaoOperations.class);
 
 	@Override
 	public boolean payFees(Payment pay) {
@@ -37,7 +40,7 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
 
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	        	logger.error("Exception" + e.getMessage());
 	        }
 		  return false;
       

@@ -2,11 +2,15 @@ package com.crs.flipkart.business;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.CashPayment;
 import com.crs.flipkart.bean.ChequePayment;
 import com.crs.flipkart.bean.OfflinePayment;
 
 public class OfflinePaymentService {
+	
+	private static Logger logger = Logger.getLogger(OfflinePaymentService.class);
 	
 	public OfflinePayment offlineMode()
 	{

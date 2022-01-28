@@ -5,6 +5,8 @@ package com.crs.flipkart.business;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.dao.RegisteredCoursesDaoInterface;
 import com.crs.flipkart.dao.RegisteredCoursesDaoOperation;
@@ -14,7 +16,7 @@ import com.crs.flipkart.dao.RegisteredCoursesDaoOperation;
  *
  */
 public class RegisteredCoursesService implements RegisteredCoursesServiceInterface{
-	
+	private static Logger logger = Logger.getLogger(RegisteredCoursesService.class);
 	RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
  	
 	public void generateReportCard() {

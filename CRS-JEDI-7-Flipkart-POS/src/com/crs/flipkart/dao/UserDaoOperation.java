@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.utils.CRSDb;
 
@@ -16,6 +18,8 @@ import com.crs.flipkart.utils.CRSDb;
  *
  */
 public class UserDaoOperation implements UserDaoInterface {
+
+	 private static Logger logger = Logger.getLogger(StudentDaoOperation.class);
 
 	@Override
 	public int verifyUser(String id, String Password) {
@@ -43,7 +47,7 @@ public class UserDaoOperation implements UserDaoInterface {
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		 
 		return 4;
@@ -69,7 +73,7 @@ public class UserDaoOperation implements UserDaoInterface {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		
 		return false;
@@ -96,7 +100,7 @@ public class UserDaoOperation implements UserDaoInterface {
 	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		
 		return false;

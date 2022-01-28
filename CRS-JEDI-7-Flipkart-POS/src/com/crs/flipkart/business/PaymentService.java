@@ -5,6 +5,8 @@ package com.crs.flipkart.business;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Payment;
 import com.crs.flipkart.dao.PaymentDaoInterface;
 import com.crs.flipkart.dao.PaymentDaoOperations;
@@ -14,6 +16,8 @@ import com.crs.flipkart.dao.PaymentDaoOperations;
  *
  */
 public class PaymentService implements PaymentServiceInterface {
+	
+	private static Logger logger = Logger.getLogger(PaymentService.class);
 	NotificationServiceInterface notificationService = new NotificationService();
 	PaymentDaoInterface paymentDao = new PaymentDaoOperations();
 	Scanner sc = new Scanner(System.in);

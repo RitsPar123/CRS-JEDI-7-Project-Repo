@@ -5,6 +5,8 @@ package com.crs.flipkart.business;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Notification;
 import com.crs.flipkart.bean.Payment;
@@ -17,7 +19,7 @@ import com.crs.flipkart.dao.NotificationDaoOperation;
  */
 public class NotificationService implements NotificationServiceInterface {
 	NotificationDaoInterface notificationDaoOp = new NotificationDaoOperation();
-	
+	private static Logger logger = Logger.getLogger(NotificationService.class);
 	public boolean sendNotification(String studentId,String message) {		
 		return notificationDaoOp.sendNotification(studentId,message);	
 	}

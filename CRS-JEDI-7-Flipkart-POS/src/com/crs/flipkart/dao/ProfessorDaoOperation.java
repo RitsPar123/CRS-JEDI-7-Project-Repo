@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.utils.CRSDb;
@@ -23,6 +25,8 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	
 	Connection conn = CRSDb.getConnect();
 	PreparedStatement stmt = null;
+	private static Logger logger = Logger.getLogger(ProfessorDaoOperation.class);
+
 
 	@Override
 	public boolean selectCourse(String profId,String courseid, String coursename) {
@@ -51,7 +55,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		return false;
 	}
@@ -89,7 +93,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 			
 		}
 		return RegisteredCourses;
@@ -131,7 +135,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 				return false;
 			}
 			return true;
@@ -179,7 +183,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		
 		 
@@ -212,7 +216,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		}
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		
 		return;
@@ -241,7 +245,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		    stmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
  
 	  return false;    
@@ -265,7 +269,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		
 		return false;
@@ -290,7 +294,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		
 		}catch (SQLException e) {
 	// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 	return false;	
 	}

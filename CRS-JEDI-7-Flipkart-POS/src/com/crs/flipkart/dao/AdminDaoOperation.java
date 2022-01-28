@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
@@ -28,6 +29,7 @@ import com.crs.flipkart.utils.CRSDb;
  */
 public class AdminDaoOperation implements AdminDaoInterface {
     
+	private static Logger logger = Logger.getLogger(AdminDaoOperation.class);
 
     public boolean addCourse(Course course) {
     	Connection conn = CRSDb.getConnect();
@@ -45,7 +47,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
         return false;
     }
@@ -65,7 +67,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
             return true;
 
         } catch (Exception e) {
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
         return false;
     }
@@ -89,7 +91,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 
         return false;
@@ -112,7 +114,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 
         return false;
@@ -144,7 +146,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
         return null;
     }
@@ -175,7 +177,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
         return null;
     }
@@ -203,7 +205,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		return null;
 	}
@@ -228,7 +230,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		
 		return 0;
@@ -252,7 +254,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	        	logger.error("Exception" + e.getMessage());
 	        }
 
 		return false;
@@ -284,7 +286,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		return null;
 	}
@@ -316,7 +318,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		return null;
 	}
@@ -338,7 +340,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	        	logger.error("Exception" + e.getMessage());
 	        }
 
 	        return false;
@@ -366,12 +368,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			return courses;
 			
 		} catch(Exception e) {
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		} finally {
 			try {
 				connection.close();
 			} catch(Exception e) {
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		}
 		
@@ -396,7 +398,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	        	logger.error("Exception" + e.getMessage());
 	        }
 
 		return false;
@@ -422,7 +424,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		return false;
 	}
