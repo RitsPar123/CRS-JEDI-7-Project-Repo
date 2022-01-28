@@ -9,6 +9,7 @@ package com.crs.flipkart.bean;
  */
 public class Payment {
 
+	
 	private String studentId;
 	private	String  paymentId;
 	private String paymentMethod;
@@ -17,6 +18,16 @@ public class Payment {
 	private Boolean status;
 	/**
 	 * @return the method
+	 */
+	
+	/**
+	 * Parameterized constructor
+	 * @param Id: student id in the database
+	 * @param paymentId: payment id of the student
+	 * @param method: type of payment
+	 * @param amount: amount for the payment
+	 * @param dateT: reference date for the payment
+	 * @param status: status for the payment
 	 */
 	
 	public Payment(String Id,String paymentId,String method,double amount,String dateT,Boolean status){
@@ -90,11 +101,17 @@ public class Payment {
 		this.status = status;
 	}
 	
+	/**
+	 * Method to get type of Payment
+	 * @return Student Id
+	 */
 	public String getPaymentMethod() {
 		return paymentMethod;
 	}
 
-
+	/**
+	 * @param paymentMethod is set
+	 */
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}

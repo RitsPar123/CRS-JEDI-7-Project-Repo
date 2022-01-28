@@ -10,9 +10,7 @@ package com.crs.flipkart.bean;
 public class Notification {
 	private String studentId;
 	private String message;
-	/**
-	 * @return the studentId
-	 */
+
 	
 	public Notification() {}
 	
@@ -20,6 +18,12 @@ public class Notification {
 		this.studentId = id;
 		this.message = message;
 	}
+	
+	/**
+	 * Method to get Student Id of student enrolled in the course
+	 * @return Student Id
+	 */
+	
 	public String getStudentId() {
 		return studentId;
 	}

@@ -18,9 +18,7 @@ public class ReportCard {
 	private int id;
 	private HashMap<String,Double> m; // Subject Code, gpa
 	private double gpa;
-	/**
-	 * @return the id
-	 */
+
 	
 	//gpa range 0-5 and subject range 100-107
 	public ReportCard(int id,List<String> subjectcode,List<Double> grade){

@@ -16,7 +16,7 @@ public class ProfessorNotAddedException extends Exception{
 	
     /**
      * Parameterized constructor
-     * @param prof
+     * @param prof : professor object
      */
 	public ProfessorNotAddedException(Professor prof) {
 		this.professor = prof;

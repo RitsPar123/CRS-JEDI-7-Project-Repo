@@ -14,7 +14,7 @@ public class CourseNotDeletedException extends Exception{
 	 
 	/**
 	 * Constructor
-	 * @param courseId
+	 * @param Id : course id
 	 */
 	 public CourseNotDeletedException(String Id)
 	 {
@@ -23,7 +23,7 @@ public class CourseNotDeletedException extends Exception{
 	 
 	 /**
 	  * Getter function for courseId
-	  * @return
+	  * @return courseid
 	  */
 	 public String getcourseId()
 	 {

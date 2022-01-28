@@ -14,7 +14,7 @@ public class StudentNotFoundException extends Exception{
 
     /**
      * Parameterized constructor
-     * @param sid
+     * @param sid : student id
      */
     public StudentNotFoundException(String sid){
         this.sid = sid; 

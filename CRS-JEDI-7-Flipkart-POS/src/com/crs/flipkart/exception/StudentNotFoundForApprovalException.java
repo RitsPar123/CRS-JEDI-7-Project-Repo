@@ -14,7 +14,7 @@ public class StudentNotFoundForApprovalException extends Exception{
 	
 	/**
 	 * Parameterized constructor
-	 * @param sid
+	 * @param sid : studentId
 	 */
 	public StudentNotFoundForApprovalException(String sid) {
 		this.sid = sid;

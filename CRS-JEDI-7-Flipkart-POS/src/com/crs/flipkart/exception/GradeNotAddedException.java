@@ -15,7 +15,8 @@ public class GradeNotAddedException extends Exception{
 	 
 	/**
 	 * Constructor
-	 * @param studentId
+	 * @param studentId : student id
+	 * @param courseid: course id
 	 */
 	 public GradeNotAddedException(String studentId,String courseid)
 	 {
@@ -24,7 +25,7 @@ public class GradeNotAddedException extends Exception{
 	 
 	 /**
 	  * Getter function for studentId
-	  * @return
+	  * @return sid
 	  */
 	 public String getStudentId()
 	 {
