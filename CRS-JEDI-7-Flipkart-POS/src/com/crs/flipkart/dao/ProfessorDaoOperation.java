@@ -137,9 +137,13 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 					logger.info("Sucessfully updated marks!!");
 				else 
 					logger.info("Mark updation failed!");
+					throw new GradeNotAddedException(courseid,studentId);
 					System.out.println();
 				
-			} catch (SQLException e) {
+			}catch(GradeNotAddedException g){
+				logger.error("Exception" + g.getMessage());
+			} 
+			catch (SQLException e) {
 				// TODO Auto-generated catch block
 				logger.error("Exception" + e.getMessage());
 				return false;
@@ -270,8 +274,9 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 			if(grade.next())
 				return true;
-			else
+			else{
 				return false;
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
