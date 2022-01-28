@@ -14,6 +14,8 @@ import com.crs.flipkart.business.StudentService;
 import com.crs.flipkart.business.StudentServiceInterface;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.business.UserServiceInterface;
+import com.crs.flipkart.exception.CourseNotAddedException;
+import com.crs.flipkart.exception.CourseNotDeletedException;
 
 /**
  * @author harsh
@@ -29,7 +31,7 @@ public class CRSApplication {
     static StudentApplication studentApplication = new StudentApplication();
     static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CourseNotAddedException, CourseNotDeletedException{
         // TODO Auto-generated method stub
         
         menu();
@@ -89,7 +91,7 @@ public class CRSApplication {
         System.out.println("Thankyou For Registration, Wait for the Admin Approval");
     }
 
-    public static void loginUser() {
+    public static void loginUser() throws CourseNotAddedException, CourseNotDeletedException {
         String id, password;
 
         System.out.println("-----------------Login Menu------------------");

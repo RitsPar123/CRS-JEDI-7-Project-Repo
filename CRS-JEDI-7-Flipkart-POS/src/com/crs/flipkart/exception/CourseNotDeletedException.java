@@ -34,6 +34,6 @@ public class CourseNotDeletedException extends Exception{
 	  * Message thrown by exception
 	  */
 	 public String getMessage() {
-		 return "Course with courseId : "+ courseid + "cannot be deleted";
+		 return "Course with courseId : "+ courseid + " cannot be deleted";
 }
 }

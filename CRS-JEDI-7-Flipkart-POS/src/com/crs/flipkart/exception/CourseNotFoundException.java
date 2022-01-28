@@ -24,6 +24,6 @@ public class CourseNotFoundException extends Exception{
      *Message thrown by exception
      */
     public String getMessage(){
-        return "Course with courseid : "+courseid+" not found";
+        return "Course with courseid : "+courseid+" is not found";
     }
 }

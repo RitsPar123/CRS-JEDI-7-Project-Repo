@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.utils.CRSDb;
 
@@ -16,6 +18,8 @@ import com.crs.flipkart.utils.CRSDb;
  *
  */
 public class UserDaoOperation implements UserDaoInterface {
+
+	 private static Logger logger = Logger.getLogger(StudentDaoOperation.class);
 
 	@Override
 	public int verifyUser(String id, String Password) {
@@ -31,10 +35,11 @@ public class UserDaoOperation implements UserDaoInterface {
 				ResultSet result = pstmt.executeQuery();
 				
 				if(!result.next()) {
-					System.out.println("jvndx");
+					logger.error("User Not Verified");
 				}
 				
 				else if(Password.equals(result.getString("Password"))) {
+					logger.info("User Verified");
 					return result.getInt("Role");
 				}
 				else {
@@ -43,7 +48,7 @@ public class UserDaoOperation implements UserDaoInterface {
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		 
 		return 4;
@@ -63,13 +68,15 @@ public class UserDaoOperation implements UserDaoInterface {
 			int result = pstmtUpdate.executeUpdate();
 			
 			if(result == 1) 
+			{
+				logger.info("Password Updated");
 				return true;
-			
+			}
 			return false;
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		
 		return false;
@@ -96,7 +103,7 @@ public class UserDaoOperation implements UserDaoInterface {
 	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		
 		return false;

@@ -4,6 +4,8 @@ import com.crs.flipkart.business.ReportCardService;
 import com.crs.flipkart.dao.PaymentDaoOperations;
 import com.crs.flipkart.dao.RegisteredCoursesDaoInterface;
 import com.crs.flipkart.dao.RegisteredCoursesDaoOperation;
+import com.crs.flipkart.dao.NotificationDaoInterface;
+import com.crs.flipkart.dao.NotificationDaoOperation;
 import com.crs.flipkart.dao.PaymentDaoInterface;
 import com.crs.flipkart.dao.RegisteredCoursesDaoInterface;
 import com.crs.flipkart.dao.RegisteredCoursesDaoOperation;
@@ -17,6 +19,9 @@ import com.crs.flipkart.bean.CourseCatalog;
 import com.crs.flipkart.bean.Notification;
 import java.util.Scanner;
 import java.util.UUID;
+
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Payment;
 import com.crs.flipkart.bean.RegisteredCourses;
@@ -26,8 +31,11 @@ import com.crs.flipkart.bean.Student;
 
 public class StudentService implements StudentServiceInterface{
 	
+	
+	private static Logger logger = Logger.getLogger(StudentService.class);
 	StudentDaoInterface StudentDaoInterface = new StudentDaoOperation(); 
 	RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
+	NotificationDaoInterface notificationDaoInterface = new NotificationDaoOperation();
 	
 	Scanner sc = new Scanner(System.in);
 	
@@ -130,8 +138,10 @@ public class StudentService implements StudentServiceInterface{
 	}
 
 
-	public void showNotifications() {
+	public void showNotifications(String studentId) {
 		// TODO: Print all the messages of the student
+		logger.info("Fetching Notification");
+		notificationDaoInterface.getNoti(studentId);
 	}
 	
 }

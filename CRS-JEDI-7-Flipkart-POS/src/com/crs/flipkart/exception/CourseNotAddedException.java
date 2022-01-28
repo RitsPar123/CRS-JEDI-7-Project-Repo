@@ -1,5 +1,6 @@
 package com.crs.flipkart.exception;
 
+@SuppressWarnings("serial")
 public class CourseNotAddedException extends Exception{
 	
 
@@ -27,7 +28,7 @@ public class CourseNotAddedException extends Exception{
 		  * Message thrown by exception
 		  */
 		 public String getMessage() {
-			 return "Course with courseId : "+ courseid + "cannot be added";
+			 return "Course with courseId : "+ courseid + " cannot be added";
 		 }
 		 
 }

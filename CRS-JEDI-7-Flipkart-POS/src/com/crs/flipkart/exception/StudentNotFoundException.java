@@ -24,6 +24,6 @@ public class StudentNotFoundException extends Exception{
      * Message thrown by exception
      */
     public String getMessage(){
-        return "Student with id : "+sid+" not found";
+        return "Student with id : "+sid+" cannot be found";
     }
 }

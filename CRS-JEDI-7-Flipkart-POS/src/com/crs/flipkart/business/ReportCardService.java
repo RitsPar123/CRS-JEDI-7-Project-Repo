@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.ReportCard;
 /**
  * @author srini
@@ -19,6 +21,7 @@ public class ReportCardService implements ReportCardServiceInterface {
 	int id;
 	HashMap<String,Double> m; // Subject Code, gpa
 	double gpa; */
+	private static Logger logger = Logger.getLogger(ReportCardService.class);
 	private HashMap<String, ReportCard> report;
 	
 	public ReportCardService() {

@@ -8,7 +8,7 @@ package com.crs.flipkart.exception;
  *
  */
 @SuppressWarnings("serial")
-public class StudentNotFoundForApprovalException extends Exception{
+public class StudentNotApprovedException extends Exception{
 	
 	String sid; 
 	
@@ -16,7 +16,7 @@ public class StudentNotFoundForApprovalException extends Exception{
 	 * Parameterized constructor
 	 * @param sid
 	 */
-	public StudentNotFoundForApprovalException(String sid) {
+	public StudentNotApprovedException(String sid) {
 		this.sid = sid;
 	}
 
@@ -24,7 +24,7 @@ public class StudentNotFoundForApprovalException extends Exception{
 	 * Message thrown by exception
 	 */
 	public String getMessage(){
-		return "Student with id : "+sid+"  could not be approved";
+		return "Student with id : "+sid+" could not be found / approved";
 	}
 	
 }

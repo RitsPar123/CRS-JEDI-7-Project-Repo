@@ -1,0 +1,146 @@
+19:01:02,998  INFO UserService,main:33 - Verifying User
+19:01:03,028  INFO StudentDaoOperation,main:42 - User Verified
+19:01:15,042  INFO AdminService,main:63 - Showing pending approvals of students semester registration
+19:01:28,611  INFO AdminService,main:55 - Approving student
+19:01:28,617  INFO AdminDaoOperation,main:117 - Student Self Registration approved
+19:01:28,618  INFO NotificationService,main:24 - Sending notification
+19:01:28,707  INFO NotificationDaoOperation,main:46 - Notification Sent
+19:06:16,698  INFO AdminService,main:79 - Showing Selected Courses
+19:06:16,706 ERROR AdminDaoOperation,main:219 - ExceptionStudent with id : 101   is not registered for any course
+19:07:23,631  INFO UserService,main:33 - Verifying User
+19:07:23,658  INFO StudentDaoOperation,main:42 - User Verified
+19:07:47,710  INFO AdminService,main:79 - Showing Selected Courses
+19:07:47,711 ERROR AdminDaoOperation,main:219 - ExceptionStudent with id : 101   is not registered for any course
+19:08:16,971  INFO UserService,main:33 - Verifying User
+19:08:16,996  INFO StudentDaoOperation,main:42 - User Verified
+19:08:19,761  INFO AdminService,main:79 - Showing Selected Courses
+19:08:19,763 ERROR AdminDaoOperation,main:219 - ExceptionStudent with id : 101   is not registered for any course
+19:08:19,764  INFO AdminService,main:94 - Updating Student Registration
+19:08:19,772  INFO NotificationService,main:24 - Sending notification
+19:08:19,879  INFO NotificationDaoOperation,main:46 - Notification Sent
+19:25:02,922  INFO UserService,main:33 - Verifying User
+19:25:02,967  INFO StudentDaoOperation,main:42 - User Verified
+19:25:06,737  INFO AdminService,main:80 - Showing Selected Courses
+19:25:06,756 ERROR AdminDaoOperation,main:219 - Exception Student with id : 101is not registered for any course
+19:26:46,025  INFO AdminService,main:80 - Showing Selected Courses
+19:26:46,028 ERROR AdminDaoOperation,main:219 - Exception Student with id : 101is not registered for any course
+19:26:55,523  INFO AdminService,main:31 - Adding course in the course-catalogue
+19:26:55,555 ERROR AdminDaoOperation,main:53 - ExceptionField 'PId' doesn't have a default value
+19:26:55,556 ERROR AdminDaoOperation,main:55 - exception Course with courseId : 101 cannot be added
+19:32:37,034  INFO UserService,main:33 - Verifying User
+19:32:37,057  INFO StudentDaoOperation,main:42 - User Verified
+19:32:42,135  INFO AdminService,main:31 - Adding course in the course-catalogue
+19:32:42,150 ERROR AdminDaoOperation,main:53 - Exception Field 'PId' doesn't have a default value
+19:32:42,150 ERROR AdminDaoOperation,main:55 - Exception Course with courseId : 101 cannot be added
+19:32:58,534  INFO AdminService,main:39 - Deleting course in the course-catalogue
+19:32:58,536  INFO AdminDaoOperation,main:70 - Course Deleted
+19:34:27,102  INFO AdminService,main:47 - Adding professor
+19:34:27,123  INFO AdminDaoOperation,main:94 - Professor Added 
+19:34:27,124  INFO AdminService,main:139 - Adding a new user
+19:34:27,126  INFO AdminDaoOperation,main:489 - User Added
+19:35:36,767  INFO UserService,main:33 - Verifying User
+19:35:36,792  INFO StudentDaoOperation,main:42 - User Verified
+19:35:54,715  INFO AdminService,main:47 - Adding professor
+19:35:54,722  INFO AdminDaoOperation,main:94 - Professor Added 
+19:35:54,723  INFO AdminService,main:139 - Adding a new user
+19:35:54,726  INFO AdminDaoOperation,main:489 - User Added
+19:36:00,783  INFO AdminService,main:63 - Showing pending approvals of students semester registration
+19:38:13,173  INFO UserService,main:33 - Verifying User
+19:38:13,202  INFO StudentDaoOperation,main:42 - User Verified
+19:38:14,881  INFO AdminService,main:63 - Showing pending approvals of students semester registration
+19:40:37,581  INFO UserService,main:33 - Verifying User
+19:40:37,606  INFO StudentDaoOperation,main:42 - User Verified
+19:40:39,323  INFO AdminService,main:63 - Showing pending approvals of students semester registration
+19:40:56,102  INFO UserService,main:33 - Verifying User
+19:40:56,128  INFO StudentDaoOperation,main:42 - User Verified
+19:40:57,543  INFO AdminService,main:63 - Showing pending approvals of students semester registration
+19:40:57,550  INFO AdminDaoOperation,main:215 - No pending Approval Requests
+19:41:05,664  INFO AdminService,main:55 - Approving student
+19:41:05,666  INFO AdminDaoOperation,main:117 - Student Self Registration approved
+19:41:05,667  INFO NotificationService,main:24 - Sending notification
+19:41:05,790  INFO NotificationDaoOperation,main:46 - Notification Sent
+19:43:33,578  INFO UserService,main:33 - Verifying User
+19:43:33,605  INFO StudentDaoOperation,main:42 - User Verified
+19:43:38,633  INFO AdminService,main:55 - Approving student
+19:43:38,634 ERROR AdminDaoOperation,main:89 - Exception Student with id : 101 could not be approved
+19:44:44,297  INFO UserService,main:33 - Verifying User
+19:44:44,317  INFO StudentDaoOperation,main:42 - User Verified
+19:44:51,785  INFO AdminService,main:55 - Approving student
+19:44:51,788 ERROR AdminDaoOperation,main:89 - Exception Student with id : 101 could not be found / approved
+19:45:05,933  INFO AdminService,main:71 - Showing courses from the course catalogue
+19:46:32,125  INFO UserService,main:33 - Verifying User
+19:46:32,153  INFO StudentDaoOperation,main:42 - User Verified
+19:46:34,847  INFO AdminService,main:71 - Showing courses from the course catalogue
+19:46:34,849  INFO AdminDaoOperation,main:230 - No courses found in course catalogue
+19:46:57,104  INFO UserService,main:33 - Verifying User
+19:46:57,129  INFO StudentDaoOperation,main:42 - User Verified
+19:46:59,213  INFO AdminService,main:71 - Showing courses from the course catalogue
+19:46:59,214  INFO AdminDaoOperation,main:230 - No courses found in course catalogue
+
+19:47:05,523  INFO AdminService,main:80 - Showing Selected Courses
+19:47:05,526 ERROR AdminDaoOperation,main:221 - Exception Student with id : 101 is not registered for any course
+19:47:45,315  INFO UserService,main:33 - Verifying User
+19:47:45,341  INFO StudentDaoOperation,main:42 - User Verified
+19:47:49,331  INFO AdminService,main:80 - Showing Selected Courses
+19:47:49,333 ERROR AdminDaoOperation,main:221 - Exception Student with id : 101 is not registered for any course
+19:48:51,532  INFO AdminService,main:103 - Viewing student data
+19:48:51,536 ERROR AdminDaoOperation,main:312 - Exception Student with id : 101 cannot be found
+20:24:58,889  INFO UserService,main:33 - Verifying User
+20:24:58,908  INFO StudentDaoOperation,main:42 - User Verified
+20:25:05,345  INFO AdminService,main:103 - Viewing student data
+20:25:05,353 ERROR AdminDaoOperation,main:312 - Exception Student with id : 101 cannot be found
+20:25:13,850  INFO AdminService,main:39 - Deleting course in the course-catalogue
+20:25:13,856  INFO AdminDaoOperation,main:70 - Course Deleted
+20:29:42,579  INFO UserService,main:33 - Verifying User
+20:29:42,598  INFO StudentDaoOperation,main:42 - User Verified
+20:29:53,906  INFO AdminService,main:31 - Adding course in the course-catalogue
+20:29:53,914 ERROR AdminDaoOperation,main:53 - Exception Field 'PId' doesn't have a default value
+20:29:53,915 ERROR AdminDaoOperation,main:55 - Exception Course with courseId : 102 cannot be added
+20:30:05,023  INFO AdminService,main:39 - Deleting course in the course-catalogue
+20:30:05,024  INFO AdminDaoOperation,main:70 - Course Deleted
+20:30:26,877  INFO AdminService,main:47 - Adding professor
+20:30:26,885  INFO AdminDaoOperation,main:94 - Professor Added 
+20:30:26,886  INFO AdminService,main:139 - Adding a new user
+20:30:26,889  INFO AdminDaoOperation,main:491 - User Added
+20:30:36,630  INFO AdminService,main:63 - Showing pending approvals of students semester registration
+20:30:36,632  INFO AdminDaoOperation,main:221 - No pending Approval Requests
+20:30:44,497  INFO AdminService,main:55 - Approving student
+20:30:44,498 ERROR AdminDaoOperation,main:89 - Exception Student with id : 202 could not be found / approved
+20:30:52,849  INFO AdminService,main:71 - Showing courses from the course catalogue
+20:30:52,851  INFO AdminDaoOperation,main:235 - No courses found in course catalogue
+
+20:31:02,366  INFO AdminService,main:80 - Showing Selected Courses
+20:31:02,373 ERROR AdminDaoOperation,main:221 - Exception Student with id : 189 is not registered for any course
+20:31:08,132  INFO AdminService,main:103 - Viewing student data
+20:31:08,134 ERROR AdminDaoOperation,main:312 - Exception Student with id : 139 cannot be found
+22:06:08,706  INFO UserService,main:33 - Verifying User
+22:06:08,729  INFO StudentDaoOperation,main:42 - User Verified
+22:06:08,730  INFO UserService,main:47 - Verifying Approval
+22:06:44,130  INFO UserService,main:33 - Verifying User
+22:06:44,131  INFO StudentDaoOperation,main:42 - User Verified
+22:06:44,132  INFO UserService,main:47 - Verifying Approval
+22:06:47,640  INFO NotificationService,main:35 - Displaying notification 
+22:08:52,085  INFO UserService,main:33 - Verifying User
+22:08:52,106  INFO StudentDaoOperation,main:42 - User Verified
+22:08:52,107  INFO UserService,main:47 - Verifying Approval
+22:08:54,918  INFO NotificationService,main:35 - Displaying notification 
+22:09:19,289  INFO UserService,main:33 - Verifying User
+22:09:19,309  INFO StudentDaoOperation,main:42 - User Verified
+22:09:19,310  INFO UserService,main:47 - Verifying Approval
+22:09:21,093  INFO NotificationService,main:35 - Displaying notification 
+22:09:23,829  INFO AdminService,main:103 - Viewing student data
+22:09:23,832  INFO AdminService,main:109 - Activating grade card
+22:09:23,835 ERROR AdminDaoOperation,main:351 - Exception Student with id : 116 is not registered for any course
+22:10:35,675  INFO UserService,main:33 - Verifying User
+22:10:35,699  INFO StudentDaoOperation,main:42 - User Verified
+22:10:35,699  INFO UserService,main:47 - Verifying Approval
+22:10:41,463  INFO NotificationService,main:35 - Displaying notification 
+22:10:41,464  INFO NotificationService,main:44 - No Notifications are Present
+22:18:40,870  INFO UserService,main:33 - Verifying User
+22:18:40,872  INFO StudentDaoOperation,main:42 - User Verified
+22:18:40,872  INFO UserService,main:47 - Verifying Approval
+22:18:44,415  INFO PaymentService,main:29 - Displaying menu
+22:18:44,416  INFO RegisteredCoursesService,main:44 - Showing status
+22:19:05,928  INFO AdminService,main:103 - Viewing student data
+22:19:05,931  INFO AdminService,main:109 - Activating grade card
+22:19:05,933 ERROR AdminDaoOperation,main:351 - Exception Student with id : 101 is not registered for any course

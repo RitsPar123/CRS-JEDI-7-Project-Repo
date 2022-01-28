@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.utils.CRSDb;
@@ -23,6 +25,8 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	
 	Connection conn = CRSDb.getConnect();
 	PreparedStatement stmt = null;
+	private static Logger logger = Logger.getLogger(ProfessorDaoOperation.class);
+
 
 	@Override
 	public boolean selectCourse(String profId,String courseid, String coursename) {
@@ -40,18 +44,18 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 			if(result==0) 
 			{
-				System.out.println("Course does not exist or already been taken");
+				logger.error("Course does not exist or already been taken");
 				return false;
 				}
 			else 
 			{
-				System.out.println("Course has been added Successfully");
+				logger.info("Course has been added Successfully");
 				return true;
 			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		return false;
 	}
@@ -89,7 +93,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 			
 		}
 		return RegisteredCourses;
@@ -110,7 +114,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 				System.out.println();
 				
 				if(choice.equalsIgnoreCase("N")) {
-					System.out.println("Mark updation cancelled");
+					logger.info("Mark updation cancelled");
 					return true;	
 				}
 				
@@ -125,13 +129,14 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 				int result = stmt.executeUpdate();
 				stmt.close();
 				if(result!=0)
-					System.out.println("Sucessfully updated marks!!");
+					logger.info("Sucessfully updated marks!!");
 				else 
-					System.out.println("Mark updation failed!");
+					logger.info("Mark updation failed!");
+					System.out.println();
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 				return false;
 			}
 			return true;
@@ -139,7 +144,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 				
 			}
-			System.out.println("Student does not exist / does not take the course \n");
+			logger.error("Student does not exist / does not take the course \n");
 			return false;
 	}
 
@@ -179,7 +184,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		
 		 
@@ -206,13 +211,13 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 					return ;
 				}
 			else{
-				System.out.println("Professor Not Registered for given Course");
+				logger.error("Professor Not Registered for given Course");
 				return ;
 			}
 		}
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		
 		return;
@@ -241,7 +246,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		    stmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
  
 	  return false;    
@@ -265,7 +270,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 		
 		return false;
@@ -290,7 +295,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		
 		}catch (SQLException e) {
 	// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}
 	return false;	
 	}

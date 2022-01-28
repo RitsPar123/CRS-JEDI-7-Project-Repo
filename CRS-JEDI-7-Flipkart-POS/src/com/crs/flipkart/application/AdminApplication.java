@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.bean.Professor;
@@ -15,18 +17,25 @@ import com.crs.flipkart.business.AdminService;
 import com.crs.flipkart.business.AdminServiceInterface;
 import com.crs.flipkart.business.NotificationService;
 import com.crs.flipkart.business.NotificationServiceInterface;
+import com.crs.flipkart.dao.AdminDaoOperation;
+import com.crs.flipkart.exception.CourseNotAddedException;
+import com.crs.flipkart.exception.CourseNotDeletedException;
+import com.crs.flipkart.exception.ProfessorNotAddedException;
+import com.crs.flipkart.exception.StudentNotApprovedException;
 
 /**
  * @author harsh
  *
  */
 public class AdminApplication {
-
+	
+	
     AdminServiceInterface adminInterface = new AdminService();
     static NotificationServiceInterface notificationService = new NotificationService();
     Scanner sc = new Scanner(System.in);
+    private static Logger logger = Logger.getLogger(AdminDaoOperation.class);
 
-    public void showMenu() {
+    public void showMenu(){
 
         System.out.println("----------------Admin Menu----------------\n");
 
@@ -39,15 +48,33 @@ public class AdminApplication {
         	
             switch (userInput) {
                 case 1:
-                    addCourse();
+                	try {
+                    addCourse(); 
+                    }
+                	catch(CourseNotAddedException e) {
+                		logger.error("Exception "+e.getMessage());
+                	}
+                	 System.out.println("************************************");
                     break;
                 case 2:
                     // delete Course
-                    deleteCourse();
+                	try {
+                		deleteCourse();
+                    }
+                	catch(CourseNotDeletedException e) {
+                		logger.error("Exception "+e.getMessage());
+                	}
+                	System.out.println("************************************");
                     break;
                 case 3:
                     // add Professor
-                    addProfessor();
+                	try {
+                    addProfessor(); 
+                    }
+                	catch(ProfessorNotAddedException e) {
+                		logger.error("Exception "+e.getMessage());
+                	}
+                	System.out.println("************************************");
                     break;
                 case 4:
                     // view Pending Approvals
@@ -55,7 +82,13 @@ public class AdminApplication {
                     break;
                 case 5:
                     // Approve Registration
+                	try {
                     approveRegistration();
+                    }
+                	catch(StudentNotApprovedException e) {
+                		logger.error("Exception "+e.getMessage());
+                	}
+                	System.out.println("************************************");
                     break;
 
                 case 6:
@@ -69,6 +102,7 @@ public class AdminApplication {
                 case 8:
                     // View Student Data
                     activateGradeCard();
+                    System.out.println("************************************");
                     break;
 
                 default:
@@ -94,7 +128,7 @@ public class AdminApplication {
 
     }
 
-    private void addCourse() {
+    private void addCourse() throws CourseNotAddedException{
         System.out.println("Enter Course Code");
         String courseId = sc.next();
 
@@ -108,34 +142,43 @@ public class AdminApplication {
         
         if(added)
         	System.out.println("\n The Course Has Been Added\n");
+        else 
+        	throw new CourseNotAddedException(courseId);
+        
     }
 
-    public void deleteCourse() {
-        System.out.println("Enter Course Code");
+    public void deleteCourse() throws CourseNotDeletedException{
+        System.out.print("Enter Course Code : ");
         String courseId = sc.next();
-
+        System.out.println();
         boolean deleted = false;
         deleted = adminInterface.deleteCourse(courseId);
 
         if (deleted)
             System.out.println("Course is Deleted");
+        else 
+        	throw new CourseNotDeletedException(courseId);
     }
 
-    private void addProfessor() {
+    private void addProfessor() throws ProfessorNotAddedException{
         System.out.println("Enter details of the Professor to be added: ");
 
-        System.out.println("Enter ProfessorId ");
+        System.out.print("Enter ProfessorId: ");
         String id = sc.next();
-
-        System.out.println("Enter Department ");
+        System.out.println();
+        
+        System.out.print("Enter Department: ");
         String department = sc.next();
+        System.out.println();
         
-        System.out.println("Enter Name ");
+        System.out.print("Enter Name: ");
         String name = sc.next();
+        System.out.println();
         
-        System.out.println("Enter Password ");
+        System.out.print("Enter Password: ");
         String password = sc.next();
-
+        System.out.println();
+        
         Professor professor = new Professor();
 
         professor.setDepartment(department);
@@ -144,53 +187,65 @@ public class AdminApplication {
         boolean isProfessorAdded = adminInterface.addProfessor(professor);
         boolean addUser = adminInterface.addUser(id,password,name);
 
-        if (isProfessorAdded) {
-            System.out.println("Professor created successfully.\n");
-        }
+        if (isProfessorAdded) 
+            System.out.println("Professor created successfully.");
+        else
+        	throw new ProfessorNotAddedException(professor);
     }
 
-    private void approveRegistration() {
+    private void approveRegistration() throws StudentNotApprovedException{
         // TODO Auto-generated method stub
-        System.out.print("Enter Student's ID");
+        System.out.print("Enter Student's ID: ");
         String studentUserId = sc.next();
 
         boolean isApprove = adminInterface.approveStudent(studentUserId);
 
-        if (isApprove)
+        if (isApprove) {
         	notificationService.sendNotification(studentUserId,"Student Registration is being Approved");
             System.out.println("Student Registration is being Approved\n");
+        } 
+        else 
+        	throw new StudentNotApprovedException(studentUserId);
     }
 
     private void viewPendingApproval() {
 
         List<Student> studentList = adminInterface.viewPendingApproval();
+        if(studentList!=null && studentList.size()!=0) {
         System.out.println("Student Details\n");
         for (Student s : studentList) {
             System.out.println("Id -> " + s.getId() + " Name -> " + s.getUserName() + " Branch ->  " + s.getBranch());
         }
+        } 
+        else 
+        	logger.info("No pending Approval Requests");
         System.out.println("************************************");
     }
 
     private void viewCourses() {
         // TODO Auto-generated method stub
         List<Course> courseList = adminInterface.viewCourse();
+        if(courseList!=null && courseList.size()>0) {
         System.out.println("Course Details\n");
         for (Course c : courseList) {
             System.out.println(
                     " Id -> " + c.getCourseId() + " Name -> " + c.getCourseName() + "  Seat Left -> " + c.getCount());
         }
+        } 
+        logger.info("No courses found in course catalogue\n");
         System.out.println("************************************");
     }
     
 	private void activateGradeCard() {
 		// TODO Auto-generated method stub
-		System.out.print("Enter Student's ID");
+		System.out.print("Enter Student's ID :");
         String studentId = sc.next();
         
     	
             Student stud = new Student();
             stud = adminInterface.viewStudentData(studentId);
             
+            if(stud!=null) {
             System.out.println("Details are  ->");
             System.out.println("Id -> " + stud.getId() + " Name -> " + stud.getUserName() + " Branch -> " + stud.getBranch());
 
@@ -209,12 +264,13 @@ public class AdminApplication {
             }else {
             	System.out.println("Student Report is Already Generated");
             }
+            }
 	}
 	
     private void studentCourseAllot() {
 		// TODO Auto-generated method stub
     	
-    	System.out.print("Enter Student's ID   ");
+    	System.out.print("Enter Student's ID: ");
         String studentId = sc.next();
         Set<String> courseList = adminInterface.viewSelectedCourse(studentId);  
         
@@ -223,15 +279,21 @@ public class AdminApplication {
         int count = 0;
         
         String s1=null,s2=null;
-       for (String c : courseList) {
-        		count++;
-        		if(count>4) {
-        			if(s1 == null) {
-        				s1 = c;
-        			}else {
-        				s2 = c;
-        			}
-        		}
+        if(courseList!=null) {
+	       for (String c : courseList) {
+	        		count++;
+	        		if(count>4) {
+	        			if(s1 == null) {
+	        				s1 = c;
+	        			}else {
+	        				s2 = c;
+	        			}
+	        		}
+	        }
+	       	System.out.println("Student Has Been Registered");
+	       	adminInterface.updateRegistered(studentId,s1,s2);
+	       	message = "Registered";
+	       	notificationService.sendNotification(studentId,message);
         }
 
         
@@ -243,14 +305,9 @@ public class AdminApplication {
 //    		notificationService.sendNotification(studentId,message);
 //    		System.out.println("Student Has Not Been Registered  ");
 //        }
+      
         
-        
-        	System.out.println("Student Has Been Registered");
-        	adminInterface.updateRegistered(studentId,s1,s2);
-        	message = "Registered";
-        	notificationService.sendNotification(studentId,message);
-        
-        System.out.println("************************************\n");
+        System.out.println("\n************************************\n");
 	}
 	
 }

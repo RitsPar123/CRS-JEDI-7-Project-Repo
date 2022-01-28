@@ -35,7 +35,7 @@ public class GradeNotAddedException extends Exception{
 	  * 
 	  */
 	  public String getMessage() {
-		  return "Marks for student with id : "+sid+" and course with id: "+courseid+"   cannot be added";
+		  return "Marks for student with id : "+sid+" and course with id: "+courseid+" cannot be added";
 	  }
 }
 

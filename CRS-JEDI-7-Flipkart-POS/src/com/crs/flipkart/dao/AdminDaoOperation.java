@@ -14,12 +14,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.constants.SQLQueriesConstant;
+import com.crs.flipkart.exception.CourseNotAddedException;
+import com.crs.flipkart.exception.CourseNotFoundException;
+import com.crs.flipkart.exception.StudentNotFoundException;
+import com.crs.flipkart.exception.StudentNotRegisteredException;
 import com.crs.flipkart.utils.CRSDb;
 
 /**
@@ -28,8 +33,9 @@ import com.crs.flipkart.utils.CRSDb;
  */
 public class AdminDaoOperation implements AdminDaoInterface {
     
+	private static Logger logger = Logger.getLogger(AdminDaoOperation.class);
 
-    public boolean addCourse(Course course) {
+    public boolean addCourse(Course course){
     	Connection conn = CRSDb.getConnect();
         try {
             
@@ -40,13 +46,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             stmt.executeUpdate();
             //conn.close();
-
+            logger.info ("Course Added");
             return true;
 
         } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception " + e.getMessage());
         }
+        
         return false;
     }
 
@@ -61,12 +67,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             int row = stmt.executeUpdate();
             //conn.close();
-
+            logger.info ("Course Deleted");
             return true;
 
         } catch (Exception e) {
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
+        logger.info ("Course Not Deleted");
         return false;
     }
 
@@ -83,13 +90,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             pstmtP.executeUpdate();
 
-            conn.close();
-
+            //conn.close();
+            logger.info ("Professor Added ");
             return true;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 
         return false;
@@ -107,14 +114,14 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             int result = pstmtP.executeUpdate();
             //conn.close();
-            
             if(result!=0) {
+            	logger.info ("Student Self Registration approved");
             	return true;
             }
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 
         return false;
@@ -146,7 +153,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
         return null;
     }
@@ -177,13 +184,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
         return null;
     }
 
 	@Override
-	public Set<String> viewSelectedCourse(String studentId) {
+	public Set<String> viewSelectedCourse(String studentId){
 		// TODO Auto-generated method stub
 		Connection conn = CRSDb.getConnect();
         try {
@@ -197,18 +204,24 @@ public class AdminDaoOperation implements AdminDaoInterface {
             
             Set<String> courseList = new HashSet();
             
-            while (resultSet.next()) {
-                courseList.add(resultSet.getString("CourseId"));
+            if(resultSet.next()) {
+	            while (resultSet.next()) {
+	                courseList.add(resultSet.getString("CourseId"));
+	            }
             }
-
+            else 
+            	throw new StudentNotRegisteredException(studentId);
             //conn.close();
             
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception " + e.getMessage());
         }
-		return null;
+        catch (StudentNotRegisteredException e) {
+        	logger.error("Exception " + e.getMessage());
+        }
+        
+        return null;
 	}
 
 	@Override
@@ -226,13 +239,16 @@ public class AdminDaoOperation implements AdminDaoInterface {
             if(resultSet.next()) {
             	return resultSet.getInt("SeatCount");
             }
+            else 
+            	throw new CourseNotFoundException(courseId);
             
-            conn.close();
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        	logger.error("Exception " + e.getMessage());
+        } catch (CourseNotFoundException e) {
+			// TODO Auto-generated catch block
+			logger.error("Exception "+ e.getMessage());
+		}
 		
 		return 0;
 	}
@@ -251,13 +267,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	            pstmtP.setString(3, studentId);
 
 	            pstmtP.executeUpdate();
-	            //conn.close();
+	            conn.close();
 	            
 	            return true;
 
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	        	logger.error("Exception" + e.getMessage());
 	        }
 
 		return false;
@@ -282,15 +298,19 @@ public class AdminDaoOperation implements AdminDaoInterface {
             stud.setUserName(resultSet.getString(3));
             stud.setRegistered(resultSet.getBoolean(4));
             stud.setReportApproved(resultSet.getBoolean(5));
+            
+            return stud;
             }
 //            conn.close();
-
-            return stud;
-
-        } catch (Exception e) {
+            else 
+            	throw new StudentNotFoundException(studentId);
+        } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        	logger.error("Exception" + e.getMessage());
+        } catch (StudentNotFoundException e) {
+			
+        	logger.error("Exception "+e.getMessage());
+		}
 		return null;
 	}
 
@@ -308,6 +328,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             List<RegisteredCourses> registeredCourse = new ArrayList<RegisteredCourses>();
             
+            if(resultSet.next()) {
             while (resultSet.next()) {
             	RegisteredCourses course = new RegisteredCourses();
                 course.setCourseId(resultSet.getString("CourseId"));
@@ -317,11 +338,17 @@ public class AdminDaoOperation implements AdminDaoInterface {
             }
 
 //            conn.close();
+            logger.info("Grade Card Activated");
             return registeredCourse;
-
-        } catch (Exception e) {
+            }
+            else 
+            	throw new StudentNotRegisteredException(studentId);
+        } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
+        } 
+        catch(StudentNotRegisteredException e) {
+        	logger.error("Exception "+e.getMessage());
         }
 		return null;
 	}
@@ -337,16 +364,29 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	            pstmtP.setString(1, SId);
 
 	            int result = pstmtP.executeUpdate();
-	            conn.close();
-	            
-	            if(result!=0)
+	            if(result!=0) {
+	            	conn.close();
+	            	logger.info("Sem Registeration Approved");
 	            	return true;
+	            	}
+	            else
+	            	throw new StudentNotRegisteredException(SId);
 
-	        } catch (Exception e) {
+	        } catch (SQLException e) {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	        	logger.error("Exception" + e.getMessage());
+	        } 
+	        catch (StudentNotRegisteredException e) {
+	        	
+	        	logger.error("Exception "+e.getMessage());
+			}
+	        try {
+	        	conn.close();
 	        }
-
+	        catch (SQLException e) {
+				
+	        	logger.error("Exception" + e.getMessage());
+			}
 	        return false;
 	    }
 	
@@ -372,12 +412,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			return courses;
 			
 		} catch(Exception e) {
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		} finally {
 			try {
 				connection.close();
 			} catch(Exception e) {
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		}
 		
@@ -397,12 +437,11 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 	            pstmtP.executeUpdate();
 	            //conn.close();
-
 	            return true;
 
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	        	logger.error("Exception" + e.getMessage());
 	        }
 
 		return false;
@@ -423,12 +462,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
         	}
         	
             conn.close();
-
+            logger.info("Course updated");
             return true;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		return false;
 	}
@@ -449,12 +488,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
             pstmtP.executeUpdate();
 
             //conn.close();
-
+            logger.info("User Added");
             return true;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 
 		return false;
