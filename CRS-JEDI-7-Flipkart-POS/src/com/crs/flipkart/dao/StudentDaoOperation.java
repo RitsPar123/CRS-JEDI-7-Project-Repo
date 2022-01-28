@@ -49,6 +49,8 @@ public class StudentDaoOperation implements StudentDaoInterface {
 		        
 		        if(result2 == 1) {
 		        	studentId = student.getId();
+		        	logger.info("Student has signed up");
+
 		        }
 
 	        }

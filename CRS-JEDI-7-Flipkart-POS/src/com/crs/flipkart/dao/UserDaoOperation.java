@@ -35,10 +35,11 @@ public class UserDaoOperation implements UserDaoInterface {
 				ResultSet result = pstmt.executeQuery();
 				
 				if(!result.next()) {
-					System.out.println("jvndx");
+					logger.error("User Not Verified");
 				}
 				
 				else if(Password.equals(result.getString("Password"))) {
+					logger.info("User Verified");
 					return result.getInt("Role");
 				}
 				else {
@@ -67,8 +68,10 @@ public class UserDaoOperation implements UserDaoInterface {
 			int result = pstmtUpdate.executeUpdate();
 			
 			if(result == 1) 
+			{
+				logger.info("Password Updated");
 				return true;
-			
+			}
 			return false;
 			
 		} catch (Exception e) {
