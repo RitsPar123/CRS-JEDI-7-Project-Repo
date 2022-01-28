@@ -28,7 +28,8 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
     RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
     
     public boolean addCourse(SemesterRegistration semesterRegistration) {
-    	    	
+    	
+    	logger.info("Adding course");
         System.out.println("Enter the course ID");
         String courseId = sc.next();
         
@@ -45,6 +46,8 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
     }
 
     public void dropCourse(SemesterRegistration semesterRegistration) {
+    	
+    	logger.info("Dropping Course");
         System.out.println("Enter the course ID that you want to delete");
         String courseId = sc.next();
         
@@ -63,6 +66,8 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
     }
 
     public void showCourse() {
+    	
+    	logger.info("Showing Course");
     	System.out.println("Courses offered in this semester are: ");
     	// Fetch courses from course catalog
     	AdminDaoInterface adminDaoInterface = new AdminDaoOperation();
@@ -78,6 +83,8 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
     }
     
     public void showSelectedCourses(SemesterRegistration semesterRegistration) {
+    	
+    	logger.info("Showing selected courses");
     	System.out.println("You have selected the following courses!");
     	List<Course> selectedCourses = registeredCoursesDaoInterface.getSelectedCourses(semesterRegistration.getStudentId());
     	

@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/Users/hardik.kothari/Downloads/mysql-connector-java-8.0.28/mysql-connector-java-8.0.28.jar"/>
-	<classpathentry kind="lib" path="/Users/hardik.kothari/Downloads/log4j-1.2.11.jar"/>
+	<classpathentry kind="lib" path="D:/downloading/jar_files/mysql-connector-java-8.0.18.jar"/>
+	<classpathentry kind="lib" path="D:/downloading/log4j-1.2.11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

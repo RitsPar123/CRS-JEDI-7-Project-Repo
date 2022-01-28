@@ -20,13 +20,15 @@ import com.crs.flipkart.dao.NotificationDaoOperation;
 public class NotificationService implements NotificationServiceInterface {
 	NotificationDaoInterface notificationDaoOp = new NotificationDaoOperation();
 	private static Logger logger = Logger.getLogger(NotificationService.class);
-	public boolean sendNotification(String studentId,String message) {		
+	public boolean sendNotification(String studentId,String message) {
+		logger.info("Sending notification");
 		return notificationDaoOp.sendNotification(studentId,message);	
 	}
 
 	@Override
 	public void showNotifications(String id) {
 		// TODO Auto-generated method stub
+		logger.info("Displaying notification ");
 		List<Notification> notification = notificationDaoOp.getNoti(id);
 		System.out.println("Notifications : ");
 		if(notification.size()>0) {

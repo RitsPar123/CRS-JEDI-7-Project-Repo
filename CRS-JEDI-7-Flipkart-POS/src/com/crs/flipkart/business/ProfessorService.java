@@ -20,42 +20,50 @@ public class ProfessorService {
 	private static Logger logger = Logger.getLogger(ProfessorService.class);
 	ProfessorDaoInterface professorDaoInterface = new ProfessorDaoOperation();
 
-	public void selectCourse(String profId,String courseid,String coursename) {
-		professorDaoInterface.selectCourse(profId,courseid,coursename);
-		//table-course
+	public void selectCourse(String profId, String courseid, String coursename) {
+		logger.info("Selecting the course");
+		professorDaoInterface.selectCourse(profId, courseid, coursename);
+		// table-course
 	}
+
 	public void viewRegisteredCourses(String id) {
-		
+		logger.info("Viewing Registered Course");
 		List<Course> RegisteredCourse = new ArrayList<Course>();
-		RegisteredCourse=professorDaoInterface.viewRegisteredCourses(id);
-		
+		RegisteredCourse = professorDaoInterface.viewRegisteredCourses(id);
+
 		System.out.println();
-		for(Course rc: RegisteredCourse) {
-			System.out.println("\tCourse ID :" + rc.getCourseId() +"\tCourse Name: "+ rc.getCourseName());
+		for (Course rc : RegisteredCourse) {
+			System.out.println("\tCourse ID :" + rc.getCourseId() + "\tCourse Name: " + rc.getCourseName());
 		}
 		System.out.println();
-		
-		//table-course
+
+		// table-course
 	}
-	public void addGrades(String professorId,String courseId,String studentId,int grade) {
-		professorDaoInterface.addGrades( professorId,courseId,studentId,grade);
-		//table-grades
+
+	public void addGrades(String professorId, String courseId, String studentId, int grade) {
+
+		logger.info("Adding grades of the student");
+		professorDaoInterface.addGrades(professorId, courseId, studentId, grade);
+		// table-grades
 	}
+
 	public void showCourses() {
+
+		logger.info("Showing Courses");
 		List<Course> courseList = professorDaoInterface.showCourses();
-		
+
 		System.out.println();
-		for(Course course :courseList)
-		{
-			System.out.println("\tCourse ID :" + course.getCourseId() +"\tCourse Name: "+ course.getCourseName() + " \tSeats:" + course.getCount() );
+		for (Course course : courseList) {
+			System.out.println("\tCourse ID :" + course.getCourseId() + "\tCourse Name: " + course.getCourseName()
+					+ " \tSeats:" + course.getCount());
 		}
 		System.out.println();
-		//table-course
+		// table-course
 	}
-	
-	public void viewRegisteredStudents(String id, String courseId)
-	{
-		professorDaoInterface.viewRegisteredStudents(id,courseId);
+
+	public void viewRegisteredStudents(String id, String courseId) {
+		logger.info("Viewing Registered Courses");
+		professorDaoInterface.viewRegisteredStudents(id, courseId);
 	}
 
 }
