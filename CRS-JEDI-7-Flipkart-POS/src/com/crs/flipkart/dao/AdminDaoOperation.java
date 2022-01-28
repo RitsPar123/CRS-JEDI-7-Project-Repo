@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
@@ -28,6 +29,7 @@ import com.crs.flipkart.utils.CRSDb;
  */
 public class AdminDaoOperation implements AdminDaoInterface {
     
+	private static Logger logger = Logger.getLogger(AdminDaoOperation.class);
 
     public boolean addCourse(Course course) {
     	Connection conn = CRSDb.getConnect();
@@ -40,13 +42,14 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             stmt.executeUpdate();
             //conn.close();
-
+            logger.info ("Course Added");
             return true;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
+        
         return false;
     }
 
@@ -61,12 +64,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             int row = stmt.executeUpdate();
             //conn.close();
-
+            logger.info ("Course Deleted");
             return true;
 
         } catch (Exception e) {
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
+        logger.info ("Course Not Deleted");
         return false;
     }
 
@@ -83,13 +87,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             pstmtP.executeUpdate();
 
-            conn.close();
-
+            //conn.close();
+            logger.info ("Professor Added ");
             return true;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 
         return false;
@@ -107,14 +111,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             int result = pstmtP.executeUpdate();
             //conn.close();
-            
-            if(result!=0) {
-            	return true;
-            }
+            logger.info ("Student Self Registration approved");
+            return true;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 
         return false;
@@ -146,7 +148,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
         return null;
     }
@@ -177,7 +179,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
         return null;
     }
@@ -206,7 +208,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		return null;
 	}
@@ -231,7 +233,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		
 		return 0;
@@ -251,13 +253,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	            pstmtP.setString(3, studentId);
 
 	            pstmtP.executeUpdate();
-	            //conn.close();
+	            conn.close();
 	            
 	            return true;
 
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	        	logger.error("Exception" + e.getMessage());
 	        }
 
 		return false;
@@ -289,7 +291,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		return null;
 	}
@@ -317,11 +319,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
             }
 
 //            conn.close();
+            logger.info("Grade Card Activated");
             return registeredCourse;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		return null;
 	}
@@ -338,13 +341,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 	            int result = pstmtP.executeUpdate();
 	            conn.close();
-	            
-	            if(result!=0)
-	            	return true;
+	            logger.info("Sem Registeration Approved");
+	            return true;
 
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	        	logger.error("Exception" + e.getMessage());
 	        }
 
 	        return false;
@@ -372,12 +374,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			return courses;
 			
 		} catch(Exception e) {
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		} finally {
 			try {
 				connection.close();
 			} catch(Exception e) {
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		}
 		
@@ -397,12 +399,11 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 	            pstmtP.executeUpdate();
 	            //conn.close();
-
 	            return true;
 
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	        	logger.error("Exception" + e.getMessage());
 	        }
 
 		return false;
@@ -423,12 +424,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
         	}
         	
             conn.close();
-
+            logger.info("Course updated");
             return true;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 		return false;
 	}
@@ -449,12 +450,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
             pstmtP.executeUpdate();
 
             //conn.close();
-
+            logger.info("User Added");
             return true;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 
 		return false;

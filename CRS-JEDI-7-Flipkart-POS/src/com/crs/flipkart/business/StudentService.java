@@ -17,6 +17,9 @@ import com.crs.flipkart.bean.CourseCatalog;
 import com.crs.flipkart.bean.Notification;
 import java.util.Scanner;
 import java.util.UUID;
+
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Payment;
 import com.crs.flipkart.bean.RegisteredCourses;
@@ -26,6 +29,8 @@ import com.crs.flipkart.bean.Student;
 
 public class StudentService implements StudentServiceInterface{
 	
+	
+	private static Logger logger = Logger.getLogger(StudentService.class);
 	StudentDaoInterface StudentDaoInterface = new StudentDaoOperation(); 
 	RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
 	

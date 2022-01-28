@@ -6,12 +6,15 @@ package com.crs.flipkart.business;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.dao.AdminDaoInterface;
 import com.crs.flipkart.dao.AdminDaoOperation;
+import com.crs.flipkart.dao.StudentDaoOperation;
 
 /**
  * @author Abhinav
@@ -19,11 +22,13 @@ import com.crs.flipkart.dao.AdminDaoOperation;
  */
 public class AdminService implements AdminServiceInterface {
 
+	 private static Logger logger = Logger.getLogger(AdminService.class);
+
 	AdminDaoInterface adminDaoOp = new AdminDaoOperation();
 	
 	/*Adding course in course table */    
 	public boolean addCourse(Course course) {
-	
+		logger.info("Adding course in the course-catalogue");
 		return adminDaoOp.addCourse(course);
 	}
 	
@@ -31,21 +36,23 @@ public class AdminService implements AdminServiceInterface {
 	/* Deleting course from the course table using course id */
 	@Override
 	public boolean deleteCourse(String id) {
-		
+		logger.info("Deleting course in the course-catalogue");
 		return adminDaoOp.deleteCourse(id);
+		// TODO Auto-generated method stub
 	}
 	
-	/*Adding professor in professor table */
 	@Override
 	public boolean addProfessor(Professor professor) {
-		
+		// TODO Auto-generated method stub
+		logger.info("Adding professor");
 		return adminDaoOp.addProfessor(professor);
 	}
 	
 	/*approves student using studentId in student table */
 	@Override
 	public boolean approveStudent(String studentId) {
-
+		// TODO Auto-generated method stub
+		logger.info("Approving student");
 		return adminDaoOp.approveStudent(studentId);
 	}
 	
@@ -53,6 +60,7 @@ public class AdminService implements AdminServiceInterface {
 	@Override
 	public List<Student> viewPendingApproval() {
 		// TODO Auto-generated method stub
+		logger.info("Showing pending approvals of students semester registration");
 		return adminDaoOp.viewPendingApproval();
 	}
 	
@@ -60,6 +68,7 @@ public class AdminService implements AdminServiceInterface {
 	@Override
 	public List<Course> viewCourse() {
 		// TODO Auto-generated method stub
+		logger.info("Showing courses from the course catalogue");
 		return adminDaoOp.viewCourse();
 	}
 	
@@ -67,6 +76,7 @@ public class AdminService implements AdminServiceInterface {
 	@Override
 	public Set<String> viewSelectedCourse(String studentId) {
 		// TODO Auto-generated method stub
+		logger.info("Showing Selected Courses");
 		return adminDaoOp.viewSelectedCourse(studentId);
 	}
 	
@@ -74,12 +84,14 @@ public class AdminService implements AdminServiceInterface {
 	@Override
 	public int getCouseList(String courseId) {
 		// TODO Auto-generated method stub
+		logger.info("Getting Course List");
 		return adminDaoOp.getCourseList(courseId);
 	}
 	/*Method to get student registered*/
 	@Override
 	public boolean updateRegistered(String studentId,String s1, String s2) {
 		// TODO Auto-generated method stub
+		logger.info("Updating Student Registration");
 		return adminDaoOp.updateRegistered(studentId,s1,s2);
 	}
 	
@@ -87,16 +99,19 @@ public class AdminService implements AdminServiceInterface {
 	@Override
 	public Student viewStudentData(String studentId) {
 		// TODO Auto-generated method stub
+		logger.info("Viewing student data");
 		return adminDaoOp.viewStudentData(studentId);
 	}
 	@Override
 	public List<RegisteredCourses> activateGradeCard(String studentId) {
 		// TODO Auto-generated method stub
+		logger.info("Activating grade card");
 		return adminDaoOp.activateGradeCard(studentId);
 	}
 	@Override
 	public boolean approveStudentRegistration(String SId) {
 		// TODO Auto-generated method stub
+		logger.info("Approving student registration");
 		return adminDaoOp.approveStudentRegistration(SId);
 	}
 
@@ -104,6 +119,7 @@ public class AdminService implements AdminServiceInterface {
 	@Override
 	public boolean deleteEntry(String studentId) {
 		// TODO Auto-generated method stub
+		logger.info("Deleting student's entry");
 		return adminDaoOp.deleteEntry(studentId);
 	}
 
@@ -111,6 +127,7 @@ public class AdminService implements AdminServiceInterface {
 	@Override
 	public boolean updateCourse(Set<String> courseList) {
 		// TODO Auto-generated method stub
+		logger.info("Updating Courses in the list");
 		return adminDaoOp.updateCourse(courseList);
 	}
 
@@ -118,6 +135,7 @@ public class AdminService implements AdminServiceInterface {
 	@Override
 	public boolean addUser(String id, String password,String name) {
 		// TODO Auto-generated method stub
+		logger.info("Adding a new user");
 		return adminDaoOp.addUser(id,password,name);
 	}
 

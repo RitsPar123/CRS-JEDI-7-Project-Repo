@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.utils.CRSDb;
@@ -17,6 +19,9 @@ import com.crs.flipkart.utils.CRSDb;
  *
  */
 public class StudentDaoOperation implements StudentDaoInterface {
+	 private static Logger logger = Logger.getLogger(StudentDaoOperation.class);
+
+	
 	public String signup(Student student) {
 		
 		Connection connection = CRSDb.getConnect();
@@ -44,18 +49,20 @@ public class StudentDaoOperation implements StudentDaoInterface {
 		        
 		        if(result2 == 1) {
 		        	studentId = student.getId();
+		        	logger.info("Student has signed up");
+
 		        }
 
 	        }
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}finally {
 			try {
 				connection.close();
 			}catch(SQLException e) {
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		}
         
@@ -82,12 +89,12 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Exception" + e.getMessage());
 		}finally {
 			try {
 				connection.close();
 			}catch(SQLException e) {
-				e.printStackTrace();
+				logger.error("Exception" + e.getMessage());
 			}
 		}
 		return registrationStatus;	

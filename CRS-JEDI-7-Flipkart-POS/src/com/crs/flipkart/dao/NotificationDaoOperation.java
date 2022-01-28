@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Notification;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.constants.SQLQueriesConstant;
@@ -19,6 +21,9 @@ import com.crs.flipkart.utils.CRSDb;
  *
  */
 public class NotificationDaoOperation implements NotificationDaoInterface {
+
+	
+	private static Logger logger = Logger.getLogger(NotificationDaoOperation.class);
 
 	@Override
 	public boolean sendNotification(String studentId, String message) {
@@ -38,12 +43,12 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
 
             pstmtP.executeUpdate();
             //conn.close();
-
+            logger.info("Notification Sent");
             return true;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+        	logger.error("Exception" + e.getMessage());
         }
 
 		return false;
@@ -76,7 +81,7 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
 
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
-	            e.printStackTrace();
+	        	logger.error("Exception" + e.getMessage());
 	        }
 		return null;
 	}

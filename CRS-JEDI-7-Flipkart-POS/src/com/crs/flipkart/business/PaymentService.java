@@ -5,6 +5,8 @@ package com.crs.flipkart.business;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Payment;
 import com.crs.flipkart.dao.PaymentDaoInterface;
 import com.crs.flipkart.dao.PaymentDaoOperations;
@@ -14,6 +16,8 @@ import com.crs.flipkart.dao.PaymentDaoOperations;
  *
  */
 public class PaymentService implements PaymentServiceInterface {
+	
+	private static Logger logger = Logger.getLogger(PaymentService.class);
 	NotificationServiceInterface notificationService = new NotificationService();
 	PaymentDaoInterface paymentDao = new PaymentDaoOperations();
 	Scanner sc = new Scanner(System.in);
@@ -22,7 +26,7 @@ public class PaymentService implements PaymentServiceInterface {
 	@Override
 	public void showMenu(String StudentId) {
 		// TODO Auto-generated method stub
-		
+		    logger.info("Displaying menu");
 			int isRegister = registerCourse.getStatus(StudentId);
 			
 			if(isRegister ==  0) {
@@ -54,6 +58,7 @@ public class PaymentService implements PaymentServiceInterface {
 
 	private void onlinePayment(String studentId) {
 		// TODO Auto-generated method stub
+		logger.info("Online-payment method");
 		String paymentId;
 		System.out.println("Enter Your Account Number for further Confirmation and Notification");
 		
@@ -77,6 +82,7 @@ public class PaymentService implements PaymentServiceInterface {
 
 	private void offlinePayment(String studentId) {
 		// TODO Auto-generated method stub
+		logger.info("Offline payment mehthod");
 		String paymentId;
 		System.out.println("Enter Your ReceiptId for further Confirmation and Notification");
 		
