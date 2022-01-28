@@ -10,7 +10,7 @@ import com.crs.flipkart.bean.Professor;
  *
  */
 @SuppressWarnings("serial")
-public class UserNotVerfiedException extends Exception{
+public class UserNotApprovedException extends Exception{
 	
 	String id; 
 	
@@ -18,12 +18,12 @@ public class UserNotVerfiedException extends Exception{
      * Parameterized constructor
      * @param id
      */
-	public UserNotVerfiedException(String id) {
+	public UserNotApprovedException(String id) {
 		this.id = id;
 	}
 
     public String getMessage(){
-		return "user with id : "+sid+"  could not be verified";
+		return "user with id : "+id+"  could not be verified";
     }
 	
 	

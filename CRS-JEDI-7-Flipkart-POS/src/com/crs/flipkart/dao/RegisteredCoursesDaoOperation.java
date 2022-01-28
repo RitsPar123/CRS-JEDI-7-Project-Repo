@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.constants.SQLQueriesConstant;
+import com.crs.flipkart.exception.CourseNotAddedException;
 import com.crs.flipkart.utils.CRSDb;
 
 /**
@@ -74,7 +75,7 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 				logger.info("Course added successfully!");
 			} else {
 				logger.error("Error! Try again later");
-				throw new CourseNotAddedException(id);
+				throw new CourseNotAddedException(courseId);
 			}
 			return done == 1;
 

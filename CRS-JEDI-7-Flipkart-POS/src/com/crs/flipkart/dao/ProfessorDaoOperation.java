@@ -15,6 +15,8 @@ import org.apache.log4j.Logger;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.constants.SQLQueriesConstant;
+import com.crs.flipkart.exception.CourseNotFoundException;
+import com.crs.flipkart.exception.GradeNotAddedException;
 import com.crs.flipkart.utils.CRSDb;
 
 /**
@@ -49,7 +51,6 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			{
 				logger.error("Course does not exist or already been taken");
 				throw new CourseNotFoundException(courseid);
-				return false;
 				}
 			else 
 			{
@@ -144,8 +145,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 					logger.info("Sucessfully updated marks!!");
 				else 
 					logger.info("Mark updation failed!");
-					throw new GradeNotAddedException(courseid,studentId);
-					System.out.println();
+					throw new GradeNotAddedException(courseId,studentId);
 				
 			}catch(GradeNotAddedException g){
 				logger.error("Exception" + g.getMessage());

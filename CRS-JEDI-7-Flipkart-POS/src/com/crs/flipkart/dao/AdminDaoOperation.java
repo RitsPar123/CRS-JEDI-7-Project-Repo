@@ -275,7 +275,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		return 0;
 	}
 
-	
+	@Override
 	public boolean updateRegistered(String studentId,String s1, String s2) {
 		// TODO Auto-generated method stub
 		
@@ -524,11 +524,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		return false;
 	}
 
-	@Override
-	public boolean updateRegistered(String studentId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 	
 }
 

@@ -22,9 +22,9 @@ public class Course {
 	
 	/**
 	 * Parameterized constructor
-	 * @param count
-	 * @param courseName
-	 * @param courseId
+	 * @param count : seat count
+	 * @param courseName : Name of the course
+	 * @param courseId : Id of the course
 	 */
 	public Course(int count, String courseName, String courseId) {
 		this.count = count;
@@ -34,10 +34,10 @@ public class Course {
 	
 
 	/** Parameterized constructor 
-	 * @param count
-	 * @param courseName
-	 * @param courseId
-	 * @param professor
+	 * @param count : seat count
+	 * @param courseName : Name of the course
+	 * @param courseId : Id of the course
+	 * @param professor : Id of the professor
 	 */
 	public Course(int count, String courseName, String courseId, String professor) {
 		this.count = count;
@@ -48,28 +48,28 @@ public class Course {
 
 
 	/**Method to get count of registered students
-	 * @return the count
+	 * @return count
 	 */
 	public int getCount() {
 		return count;
 	}
 
 	/**Method to set count of registered students
-	 * @param count the count to set
+	 * @param count : count to set
 	 */
 	public void setCount(int count) {
 		this.count = count;
 	}
 
 	/**Method to get CourseName of a course object
-	 * @return the courseName
+	 * @return courseName
 	 */
 	public String getCourseName() {
 		return courseName;
 	}
 
 	/**Method to set CourseName of a course object
-	 * @param courseName the courseName to set
+	 * @param courseName : the courseName to set
 	 */
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
@@ -97,7 +97,7 @@ public class Course {
 	}
 
 	/**Method to set ProfessorId
-	 * @param professor the professor to set
+	 * @param professor the professor object to set
 	 */
 	public void setProfessor(String professor) {
 		this.professor = professor;
