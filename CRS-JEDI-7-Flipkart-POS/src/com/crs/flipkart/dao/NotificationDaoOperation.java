@@ -43,7 +43,7 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
 
             pstmtP.executeUpdate();
             //conn.close();
-
+            logger.info("Notification Sent");
             return true;
 
         } catch (Exception e) {

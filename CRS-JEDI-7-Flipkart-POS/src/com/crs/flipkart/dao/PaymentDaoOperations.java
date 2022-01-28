@@ -36,6 +36,7 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
 
 	            stmt.executeUpdate();
 	            conn.close();
+	            logger.info("Fee Payment Done");
 	            return true;
 
 	        } catch (Exception e) {

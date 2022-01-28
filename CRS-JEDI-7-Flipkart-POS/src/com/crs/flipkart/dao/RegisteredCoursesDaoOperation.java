@@ -71,9 +71,9 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 			int done = pstmt.executeUpdate();
 
 			if (done == 1) {
-				System.out.println("Course added successfully!");
+				logger.info("Course added successfully!");
 			} else {
-				System.out.println("Error! Try again later");
+				logger.error("Error! Try again later");
 			}
 			return done == 1;
 
@@ -210,7 +210,7 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 
             pstmtP.executeUpdate();
 //            conn.close();
-
+            logger.info("Status Updated");
             return true;
 
         } catch (Exception e) {
