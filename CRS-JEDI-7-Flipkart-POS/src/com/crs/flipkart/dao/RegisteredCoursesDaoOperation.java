@@ -74,10 +74,13 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 				logger.info("Course added successfully!");
 			} else {
 				logger.error("Error! Try again later");
+				throw new CourseNotAddedException(id);
 			}
 			return done == 1;
 
-		} catch (Exception e) {
+		}catch(CourseNotAddedException u){
+			logger.error("Exception" + u.getMessage());
+		}catch (Exception e) {
 			logger.error("Exception" + e.getMessage());
 		} finally {
 			try {
@@ -100,7 +103,7 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 			pstmt.setString(2, studentId);
 
 			pstmt.executeUpdate();
-
+		
 		} catch (Exception e) {
 			logger.error("Exception" + e.getMessage());
 		} finally {

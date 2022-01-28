@@ -35,7 +35,8 @@ public class UserDaoOperation implements UserDaoInterface {
 				ResultSet result = pstmt.executeQuery();
 				
 				if(!result.next()) {
-					logger.error("User Not Verified");
+					//logger.error("User Not Verified");
+					throw new UserNotVerifiedException(id);
 				}
 				
 				else if(Password.equals(result.getString("Password"))) {
@@ -45,8 +46,11 @@ public class UserDaoOperation implements UserDaoInterface {
 				else {
 					return 4;
 				}
-				
-			} catch (Exception e) {
+			
+			}catch(UserNotVerifiedException u){
+				logger.error("Exception:"+u.getMessage());
+			} 
+			catch (Exception e) {
 				// TODO Auto-generated catch block
 				logger.error("Exception" + e.getMessage());
 			}
@@ -100,8 +104,12 @@ public class UserDaoOperation implements UserDaoInterface {
 				isApproved = resultSet.getBoolean("IsApproved");
 			
 			if(isApproved == true) return true;
+			throw new UserNotVerfiedException(id);
 	
-		} catch (Exception e) {
+		}catch(UserNotVerfiedException u){
+			logger.error("Exception" + u.getMessage());
+		} 
+		catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error("Exception" + e.getMessage());
 		}
