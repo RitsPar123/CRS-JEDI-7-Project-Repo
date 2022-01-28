@@ -1,0 +1,14 @@
+16:15:13,877  INFO UserService,main:33 - Verifying User
+16:15:13,897 ERROR StudentDaoOperation,main:38 - User Not Verified
+16:15:13,897 ERROR CRSApplication,main:142 - Invalid Credentials!
+16:19:22,941  INFO CRSApplication,main:65 - 1. Login
+16:19:22,945  INFO CRSApplication,main:66 - 2. Student Registration
+16:19:22,946  INFO CRSApplication,main:67 - 3. UpdatePassword
+16:19:22,947  INFO CRSApplication,main:68 - 4. Exit
+16:19:22,948  INFO CRSApplication,main:69 - Enter user input
+16:19:57,665  INFO CRSApplication,main:99 - -----------------Login Menu------------------
+16:19:57,666  INFO CRSApplication,main:101 - Enter id 
+16:20:01,049  INFO CRSApplication,main:104 - Enter password
+16:20:03,484  INFO UserService,main:33 - Verifying User
+16:20:03,504  INFO StudentDaoOperation,main:42 - User Verified
+16:20:03,520  INFO CRSApplication,main:136 - Admin Has Logged In at : 2022-01-28T16:20:03.519594800 ->  Login Successful

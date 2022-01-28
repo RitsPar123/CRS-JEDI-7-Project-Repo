@@ -162,7 +162,7 @@ public class CRSApplication {
         	logger.error("Not Updated");
     	}
     	catch(Exception e){
-    		logger.error("Error Occured "+ex.getMessage());
+    		logger.error("Error Occured "+e.getMessage());
     	}
     }
 
