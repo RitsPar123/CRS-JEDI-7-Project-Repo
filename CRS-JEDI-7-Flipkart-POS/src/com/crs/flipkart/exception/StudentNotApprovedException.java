@@ -14,7 +14,7 @@ public class StudentNotApprovedException extends Exception{
 	
 	/**
 	 * Parameterized constructor
-	 * @param sid
+	 * @param sid : studentId
 	 */
 	public StudentNotApprovedException(String sid) {
 		this.sid = sid;

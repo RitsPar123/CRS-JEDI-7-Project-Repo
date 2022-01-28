@@ -8,7 +8,7 @@ public class CourseNotAddedException extends Exception{
 		 
 		/**
 		 * Constructor
-		 * @param courseId
+		 * @param Id : course id
 		 */
 		 public CourseNotAddedException(String Id)
 		 {
@@ -17,7 +17,7 @@ public class CourseNotAddedException extends Exception{
 		 
 		 /**
 		  * Getter function for courseId
-		  * @return
+		  * @return courseid
 		  */
 		 public String getcourseId()
 		 {

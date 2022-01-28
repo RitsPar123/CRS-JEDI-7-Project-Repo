@@ -9,6 +9,7 @@ package com.crs.flipkart.bean;
  */
 public class Payment {
 
+	
 	private String studentId;
 	private	String  paymentId;
 	private String paymentMethod;
@@ -106,8 +107,8 @@ public class Payment {
 	}
 	
 	/**
-	 * Method to get PaymentMethod
-	 * @return
+	 * Method to get type of Payment
+	 * @return Student Id
 	 */
 	public String getPaymentMethod() {
 		return paymentMethod;

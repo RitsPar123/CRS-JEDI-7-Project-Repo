@@ -14,7 +14,7 @@ public class CourseNotFoundException extends Exception{
 
     /**
      * Parameterized constructor
-     * @param courseid
+     * @param courseid : course id
      */
     public CourseNotFoundException(String courseid){
         this.courseid = courseid;

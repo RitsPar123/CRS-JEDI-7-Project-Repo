@@ -252,6 +252,7 @@ public class AdminApplication {
             if(!stud.isReportApproved()) {
                 List<RegisteredCourses> registeredCourses = adminInterface.activateGradeCard(studentId);
                 int count = 0;
+                if(registeredCourses!=null && registeredCourses.size()>0) {
                 for(RegisteredCourses course:registeredCourses) {
                 	System.out.println("CourseId -> " + course.getCourseId() + " Grade " + course.getGrade());
                 	count++;
@@ -260,6 +261,7 @@ public class AdminApplication {
                 if(count == 4) {
                 	adminInterface.approveStudentRegistration(studentId);
                 	System.out.println("Student Report is Generated");
+                }
                 }
             }else {
             	System.out.println("Student Report is Already Generated");

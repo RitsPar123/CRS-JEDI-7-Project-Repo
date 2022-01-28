@@ -22,10 +22,12 @@ public class Notification {
 		this.studentId = id;
 		this.message = message;
 	}
-
-	/**Method to 
-	 * @return the studentId
+	
+	/**
+	 * Method to get Student Id of student enrolled in the course
+	 * @return Student Id
 	 */
+	
 	public String getStudentId() {
 		return studentId;
 	}
