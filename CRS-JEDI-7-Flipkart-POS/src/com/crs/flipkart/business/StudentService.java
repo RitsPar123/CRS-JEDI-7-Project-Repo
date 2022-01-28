@@ -39,6 +39,15 @@ public class StudentService implements StudentServiceInterface{
 	
 	Scanner sc = new Scanner(System.in);
 	
+
+	/*
+	 * Method lets student sign up into the CRS system
+     * @param  id: id of student
+	 * @param  password : password of login
+	 * @param  branch : branch of the student
+	 * @param  name : name of the student
+	 * @param role : signifies status in student table
+	 */
 	public String signup(String id,String password,String branch,String name,int role) {
 		String studentId = null;
 		
@@ -57,6 +66,11 @@ public class StudentService implements StudentServiceInterface{
 		return studentId;
 	}
 
+	
+	/** 
+	 * Method to show and handle registeration related options
+	 * @param studentId
+	 */
 	public void register(String studentId) {
 		
 		// Get registrationStatus and feepaid status
@@ -111,6 +125,11 @@ public class StudentService implements StudentServiceInterface{
 
 	}
 
+	
+	/**
+	 * Method to view report card of student 
+	 * @param id : Id of the student
+	 */
 	public void viewReportCard(String id) {
 		// RegisteredCourses -> Report card
 		// Print
@@ -118,6 +137,11 @@ public class StudentService implements StudentServiceInterface{
 		reportcardservice.ViewReportCard(id);
 	}
 
+	
+	/** 
+	 * Method to view courses registered by student
+	 * @param id : StudentId
+	 */
 	public void viewRegisteredCourses(String id) {
 		
 		int isRegistered = StudentDaoInterface.getRegistrationStatus(id);
@@ -138,6 +162,11 @@ public class StudentService implements StudentServiceInterface{
 	}
 
 
+	
+	/** 
+	 * Method to show notifications for a student
+	 * @param studentId
+	 */
 	public void showNotifications(String studentId) {
 		// TODO: Print all the messages of the student
 		logger.info("Fetching Notification");

@@ -15,6 +15,8 @@ import com.crs.flipkart.bean.Student;
  * @author Abhinav
  *
  */
+
+/*Methods for Admin*/ 
 public interface AdminServiceInterface {
 	public boolean addCourse(Course course);
 	public boolean deleteCourse(String id);

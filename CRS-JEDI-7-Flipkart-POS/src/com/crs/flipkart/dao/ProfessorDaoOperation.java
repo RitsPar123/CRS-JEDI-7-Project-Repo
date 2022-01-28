@@ -28,6 +28,9 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	private static Logger logger = Logger.getLogger(ProfessorDaoOperation.class);
 
 
+	/**
+    * {@inheritDoc}
+    */  
 	@Override
 	public boolean selectCourse(String profId,String courseid, String coursename) {
 		// TODO Auto-generated method stub
@@ -65,7 +68,9 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		return false;
 	}
 	
-	
+	/**
+    * {@inheritDoc}
+    */ 
 	@Override
 	public List<Course> viewRegisteredCourses(String id) {
 		// TODO Auto-generated method stub
@@ -104,7 +109,9 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		return RegisteredCourses;
 }
 
-
+	/**
+    * {@inheritDoc}
+    */ 
 	@Override
 	public boolean addGrades(String professorId, String courseId, String studentId, int grade) {
 		String query;
@@ -158,8 +165,9 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	}
 
 	
-	
-	
+	/**
+    * {@inheritDoc}
+    */ 
 	@Override
 	public List<Course> showCourses() {
 		
@@ -201,6 +209,9 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	  
 	}
 	
+	/**
+    * {@inheritDoc}
+    */ 
 	@Override
 	public void viewRegisteredStudents(String id, String courseId) {
 		try {
@@ -233,7 +244,13 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	}
 	
 	
-	
+	/**
+	 * Method to check if student and course pair is valid using SQL commands
+	 * @param professorId
+	 * @param studentId
+	 * @param courseId
+	 * @return true if valid / false if invalid
+	 */
 	private boolean checkGradeValidity(String professorId,String studentId, String courseId) {
 		// TODO Auto-generated method stub
 		try {
@@ -261,7 +278,12 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 	  return false;    
 		}
 	
-	
+	/**
+	 * Method to check if grades are to be updated or to be inserted using SQL commands
+	 * @param studentId
+	 * @param courseId
+	 * @return true if to be updated / false if to be inserted
+	 */
 	private boolean CheckGradeUpdateType(String studentId, String courseId) {
 		// TODO Auto-generated method stub
 		String query = SQLQueriesConstant.CHECK_GRADE_UPDATE_TYPE;
@@ -286,6 +308,12 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		return false;
 	}
 	
+	/**
+	 * Method to check if professor is authorized to change details for a course using SQL commands
+	 * @param professorId
+	 * @param courseId
+	 * @return
+	 */
 	private boolean isProfCourse(String professorId, String courseId) 
 	{
 		try {

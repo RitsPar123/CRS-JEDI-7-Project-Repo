@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.constants.SQLQueriesConstant;
+import com.crs.flipkart.exception.StudentNotFoundException;
 import com.crs.flipkart.utils.CRSDb;
 
 /**
@@ -19,9 +20,13 @@ import com.crs.flipkart.utils.CRSDb;
  *
  */
 public class StudentDaoOperation implements StudentDaoInterface {
-	 private static Logger logger = Logger.getLogger(StudentDaoOperation.class);
-
 	
+	
+	private static Logger logger = Logger.getLogger(StudentDaoOperation.class);
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public String signup(Student student) {
 		
 		Connection connection = CRSDb.getConnect();
@@ -53,13 +58,13 @@ public class StudentDaoOperation implements StudentDaoInterface {
 
 		        }
 				else{
-					throw new StudentNotFoundException(id);
+					throw new StudentNotFoundException(student.getId());
 				}
 
 	        }
 			
 		}catch(StudentNotFoundException u){
-			logger.error("Exception" + e.getMessage());
+			logger.error("Exception" + u.getMessage());
 		}
 		 catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -97,7 +102,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 				throw new StudentNotFoundException(id);
 			}
 		}catch(StudentNotFoundException u){
-			logger.error("Exception" + e.getMessage());
+			logger.error("Exception" + u.getMessage());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error("Exception" + e.getMessage());

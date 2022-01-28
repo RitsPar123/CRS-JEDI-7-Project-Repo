@@ -22,6 +22,9 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
 	 Connection conn = CRSDb.getConnect();
 	 private static Logger logger = Logger.getLogger(PaymentDaoOperations.class);
 
+	/**
+    * {@inheritDoc}
+    */  
 	@Override
 	public boolean payFees(Payment pay) {
 		  try {

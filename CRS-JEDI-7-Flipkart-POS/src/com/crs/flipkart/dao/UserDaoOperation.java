@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 
 import com.crs.flipkart.constants.SQLQueriesConstant;
+import com.crs.flipkart.exception.UserNotVerifiedException;
 import com.crs.flipkart.utils.CRSDb;
 
 /**
@@ -21,6 +22,9 @@ public class UserDaoOperation implements UserDaoInterface {
 
 	 private static Logger logger = Logger.getLogger(StudentDaoOperation.class);
 
+	/**
+    * {@inheritDoc}
+    */ 
 	@Override
 	public int verifyUser(String id, String Password) {
 		// TODO Auto-generated method stub
@@ -58,6 +62,9 @@ public class UserDaoOperation implements UserDaoInterface {
 		return 4;
 	}
 
+	/**
+    * {@inheritDoc}
+    */ 
 	@Override
 	public boolean updatePassword(String id, String Password) {
 		// TODO Auto-generated method stub
@@ -85,7 +92,10 @@ public class UserDaoOperation implements UserDaoInterface {
 		
 		return false;
 	}
-
+	
+	/**
+    * {@inheritDoc}
+    */ 
 	@Override
 	public boolean verifyApproval(String id) {
 		// TODO Auto-generated method stub
@@ -104,9 +114,9 @@ public class UserDaoOperation implements UserDaoInterface {
 				isApproved = resultSet.getBoolean("IsApproved");
 			
 			if(isApproved == true) return true;
-			throw new UserNotVerfiedException(id);
+			throw new UserNotVerifiedException(id);
 	
-		}catch(UserNotVerfiedException u){
+		}catch(UserNotVerifiedException u){
 			logger.error("Exception" + u.getMessage());
 		} 
 		catch (Exception e) {

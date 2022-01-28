@@ -15,59 +15,70 @@ public class RegisteredCourses {
 	private int isRegistered;
 	private int grade;
 	
-	public RegisteredCourses() {}
-
 	/**
-	 * @return the courseId
+	 * Default constructor
+	 */
+	public RegisteredCourses() {}
+	
+	/**
+	 * Method to get courseId
+	 * @return courseId
 	 */
 	public String getCourseId() {
 		return courseId;
 	}
 
-	/**
-	 * @param courseId the courseId to set
+	
+	/** 
+	 * Method to Set CourseId
+	 * @param courseId
 	 */
 	public void setCourseId(String courseId) {
 		this.courseId = courseId;
 	}
-
-	/**
-	 * @return the studentId
+	
+	/** Method to get studentID
+	 * @return studentID
 	 */
 	public String getStudentId() {
 		return studentId;
 	}
-
-	/**
-	 * @param studentId the studentId to set
+	
+	/** 
+	 * Method to set studentId
+	 * @param studentId
 	 */
 	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
-
-	/**
-	 * @return the isRegistered
+	
+	/** 
+	 * Method to get IsRegistered Status
+	 * @return int
 	 */
 	public int getIsRegistered() {
 		return isRegistered;
 	}
-
-	/**
-	 * @param isRegistered the isRegistered to set
+	
+	/** 
+	 * Method to set IsRegistered Status
+	 * @param isRegistered
 	 */
 	public void setIsRegistered(int isRegistered) {
 		this.isRegistered = isRegistered;
 	}
-
-	/**
-	 * @return the grade
+	
+	/** 
+	 * Method to get grade
+	 * @return int
 	 */
 	public int getGrade() {
 		return grade;
 	}
-
-	/**
-	 * @param grade the grade to set
+	
+	/** 
+	 * Method to set grade
+	 * @param grade
 	 */
 	public void setGrade(int grade) {
 		this.grade = grade;

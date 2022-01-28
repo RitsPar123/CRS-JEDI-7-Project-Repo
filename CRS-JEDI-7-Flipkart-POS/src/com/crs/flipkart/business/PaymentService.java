@@ -23,6 +23,10 @@ public class PaymentService implements PaymentServiceInterface {
 	Scanner sc = new Scanner(System.in);
 	RegisteredCoursesServiceInterface registerCourse = new RegisteredCoursesService();
 	
+	/*
+	 *Method gives student various payment options
+	 * @param StudentId : Id of the Student
+	 */
 	@Override
 	public void showMenu(String StudentId) {
 		// TODO Auto-generated method stub

@@ -24,13 +24,19 @@ public class ReportCardService implements ReportCardServiceInterface {
 	private static Logger logger = Logger.getLogger(ReportCardService.class);
 	private HashMap<String, ReportCard> report;
 	
+	/* Constructor for ReportCardService
+	 * It initializes report hashmap
+	 */
 	public ReportCardService() {
 		this.report= new HashMap<String,ReportCard>();
 		report.put("1",new ReportCard(1,Arrays.asList("100", "102", "104","105"),Arrays.asList(3.0,4.1,3.5,3.6)));
 		report.put("2",new ReportCard(2,Arrays.asList("101", "103", "102","105"),Arrays.asList(3.2,5.0,5.0,3.1)));
 		report.put("3",new ReportCard(3,Arrays.asList("100", "103", "104","107"),Arrays.asList(2.4,4.2,3.7,3.8)));
 	}
-	
+	/*
+	 * Method displays reportCard of particular student id
+	 * @param id: id of the student
+	 */
 	public void ViewReportCard(String id) {
 		if(report.containsKey(id)) {
 			ReportCard ViewCard = report.get(id); 
@@ -42,8 +48,5 @@ public class ReportCardService implements ReportCardServiceInterface {
 		} else {
 			System.out.println("Report card still ungenerated!");
 		}
-	}
-
-	
-	
+	}	
 }

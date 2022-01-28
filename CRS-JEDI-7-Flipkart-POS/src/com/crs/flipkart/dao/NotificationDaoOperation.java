@@ -26,6 +26,9 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
 	
 	private static Logger logger = Logger.getLogger(NotificationDaoOperation.class);
 
+    /**
+    * {@inheritDoc}
+    */  
 	@Override
 	public boolean sendNotification(String studentId, String message) {
 		// TODO Auto-generated method stub

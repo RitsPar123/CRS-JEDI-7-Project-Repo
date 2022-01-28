@@ -34,7 +34,8 @@ import com.crs.flipkart.utils.CRSDb;
 public class AdminDaoOperation implements AdminDaoInterface {
     
 	private static Logger logger = Logger.getLogger(AdminDaoOperation.class);
-
+    
+    
     public boolean addCourse(Course course){
     	Connection conn = CRSDb.getConnect();
         try {
@@ -56,6 +57,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return false;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
     @Override
     public boolean deleteCourse(String id) {
         // TODO Auto-generated method stub
@@ -77,6 +81,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return false;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
     @Override
     public boolean addProfessor(Professor professor) {
         // TODO Auto-generated method stub
@@ -102,6 +109,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return false;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
     @Override
     public boolean approveStudent(String SId) {
         // TODO Auto-generated method stub
@@ -127,6 +137,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return false;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
     @Override
     public List<Student> viewPendingApproval() {
         // TODO Auto-generated method stub
@@ -158,6 +171,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return null;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
     @Override
     public List<Course> viewCourse() {
         // TODO Auto-generated method stub
@@ -189,6 +205,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return null;
     }
 
+    /**
+    * {@inheritDoc}
+    */  
 	@Override
 	public Set<String> viewSelectedCourse(String studentId){
 		// TODO Auto-generated method stub
@@ -224,6 +243,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
         return null;
 	}
 
+    /**
+    * {@inheritDoc}
+    */  
 	@Override
 	public int getCourseList(String courseId) {
 		// TODO Auto-generated method stub
@@ -253,7 +275,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		return 0;
 	}
 
-	@Override
+	
 	public boolean updateRegistered(String studentId,String s1, String s2) {
 		// TODO Auto-generated method stub
 		
@@ -279,6 +301,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		return false;
 	}
 
+    /**
+    * {@inheritDoc}
+    */  
 	@Override
 	public Student viewStudentData(String studentId) {
 		// TODO Auto-generated method stub
@@ -496,6 +521,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
         	logger.error("Exception" + e.getMessage());
         }
 
+		return false;
+	}
+
+	@Override
+	public boolean updateRegistered(String studentId) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 	
