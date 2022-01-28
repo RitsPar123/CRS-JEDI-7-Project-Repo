@@ -52,10 +52,16 @@ public class StudentDaoOperation implements StudentDaoInterface {
 		        	logger.info("Student has signed up");
 
 		        }
+				else{
+					throw new StudentNotFoundException(id);
+				}
 
 	        }
 			
-		} catch (Exception e) {
+		}catch(StudentNotFoundException u){
+			logger.error("Exception" + e.getMessage());
+		}
+		 catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error("Exception" + e.getMessage());
 		}finally {
@@ -87,6 +93,11 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			{
 			     registrationStatus=resultSet.getInt("IsRegistered");
 			}
+			else{
+				throw new StudentNotFoundException(id);
+			}
+		}catch(StudentNotFoundException u){
+			logger.error("Exception" + e.getMessage());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.error("Exception" + e.getMessage());

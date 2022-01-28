@@ -45,6 +45,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			if(result==0) 
 			{
 				logger.error("Course does not exist or already been taken");
+				throw new CourseNotFoundException(courseid);
 				return false;
 				}
 			else 
@@ -53,7 +54,11 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 				return true;
 			}
 			
-		} catch (SQLException e) {
+		}catch (CourseNotFoundException u) {
+			// TODO Auto-generated catch block
+			logger.error("Exception:" + u.getMessage());
+		}
+		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			logger.error("Exception" + e.getMessage());
 		}
