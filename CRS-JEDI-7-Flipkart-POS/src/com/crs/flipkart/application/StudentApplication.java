@@ -3,9 +3,14 @@
  */
 package com.crs.flipkart.application;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.CourseCatalog;
+import com.crs.flipkart.bean.RegisteredCourses;
+import com.crs.flipkart.bean.Student;
+import com.crs.flipkart.business.AdminService;
+import com.crs.flipkart.business.AdminServiceInterface;
 import com.crs.flipkart.business.NotificationService;
 import com.crs.flipkart.business.NotificationServiceInterface;
 import com.crs.flipkart.business.PaymentService;
@@ -23,6 +28,7 @@ import com.crs.flipkart.dao.PaymentDaoOperations;
 public class StudentApplication {
 	NotificationServiceInterface notificationService = new NotificationService();
 	PaymentServiceInterface paymentInterface = new PaymentService();
+	AdminServiceInterface adminInterface = new AdminService();
 	
 	public void studentLoggedin(String id) {
 		StudentServiceInterface studentService = new StudentService();
@@ -37,7 +43,7 @@ public class StudentApplication {
 					studentService.register(id);
 					break;
 				case 2:
-					//studentService.viewReportCard(id);
+					viewGradeCard(id);
 					break;
 				case 3:
 					studentService.viewRegisteredCourses(id);
@@ -66,5 +72,28 @@ public class StudentApplication {
 		System.out.println("5. Pay Fees");
 		
 	}
+	
+	private void viewGradeCard(String studentId) {
+		// TODO Auto-generated method stub
+        
+    	
+            Student stud = new Student();
+            stud = adminInterface.viewStudentData(studentId);
+            
+            System.out.println("Details are  ->");
+            System.out.println("Id -> " + stud.getId() + " Name -> " + stud.getUserName() + " Branch -> " + stud.getBranch());
+
+                List<RegisteredCourses> registeredCourses = adminInterface.activateGradeCard(studentId);
+     
+                if(stud.isReportApproved()) {
+                for(RegisteredCourses course:registeredCourses) {
+                	System.out.println("CourseId -> " + course.getCourseId() + " Grade ->  " + course.getGrade());
+         
+                }
+                }
+            	System.out.println("Student Report Card");
+       
+	}
+	
 	
 }

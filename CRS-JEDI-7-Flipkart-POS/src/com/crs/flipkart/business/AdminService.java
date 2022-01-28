@@ -82,9 +82,9 @@ public class AdminService implements AdminServiceInterface {
 	}
 	/*Method to get student registered*/
 	@Override
-	public boolean updateRegistered(String studentId) {
+	public boolean updateRegistered(String studentId,String s1, String s2) {
 		// TODO Auto-generated method stub
-		return adminDaoOp.updateRegistered(studentId);
+		return adminDaoOp.updateRegistered(studentId,s1,s2);
 	}
 	
 	/*Method to view Student Data using user and student table*/
@@ -116,6 +116,13 @@ public class AdminService implements AdminServiceInterface {
 	public boolean updateCourse(Set<String> courseList) {
 		// TODO Auto-generated method stub
 		return adminDaoOp.updateCourse(courseList);
+	}
+
+
+	@Override
+	public boolean addUser(String id, String password,String name) {
+		// TODO Auto-generated method stub
+		return adminDaoOp.addUser(id,password,name);
 	}
 
 }

@@ -85,7 +85,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             pstmtP.executeUpdate();
 
-            conn.close();
+            //conn.close();
 
             return true;
 
@@ -237,7 +237,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	}
 
 	@Override
-	public boolean updateRegistered(String studentId) {
+	public boolean updateRegistered(String studentId,String s1, String s2) {
 		// TODO Auto-generated method stub
 		
 		 Connection conn = CRSDb.getConnect();
@@ -245,7 +245,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	            PreparedStatement pstmtP;
 	            pstmtP = conn.prepareStatement(SQLQueriesConstant.APPROVE_STUDENT_REGISTRATION);
 
-	            pstmtP.setString(1, studentId);
+	            pstmtP.setString(1, s1);
+	            pstmtP.setString(2, s2);
+	            pstmtP.setString(3, studentId);
 
 	            pstmtP.executeUpdate();
 	            conn.close();
@@ -426,6 +428,33 @@ public class AdminDaoOperation implements AdminDaoInterface {
             // TODO Auto-generated catch block
         	logger.error("Exception" + e.getMessage());
         }
+		return false;
+	}
+
+	@Override
+	public boolean addUser(String id, String password,String name) {
+		// TODO Auto-generated method stub
+		
+		Connection conn = CRSDb.getConnect();
+        try {
+            PreparedStatement pstmtP;
+            pstmtP = conn.prepareStatement(SQLQueriesConstant.ADD_USER_PRO);
+
+            pstmtP.setString(1, id);
+            pstmtP.setString(2, name);
+            pstmtP.setString(3, password);
+
+            pstmtP.executeUpdate();
+
+            //conn.close();
+
+            return true;
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
 		return false;
 	}
 	

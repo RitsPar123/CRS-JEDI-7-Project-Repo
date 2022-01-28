@@ -26,10 +26,11 @@ public interface AdminDaoInterface {
 	public List<Course> viewCourse();
 	public Set<String> viewSelectedCourse(String studentId);
 	public int getCourseList(String courseId);
-	public boolean updateRegistered(String studentId);
+	public boolean updateRegistered(String studentId, String s1, String s2);
 	public Student viewStudentData(String studentId);
 	public List<RegisteredCourses> activateGradeCard(String studentId);
 	public boolean approveStudentRegistration(String SId);
 	public boolean deleteEntry(String studentId);
 	public boolean updateCourse(Set<String> courseList);
+	public boolean addUser(String id, String password, String name);
 }
