@@ -83,7 +83,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             pstmtP.executeUpdate();
 
-            //conn.close();
+            conn.close();
 
             return true;
 
@@ -105,10 +105,12 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             pstmtP.setString(1, SId);
 
-            pstmtP.executeUpdate();
+            int result = pstmtP.executeUpdate();
             //conn.close();
-
-            return true;
+            
+            if(result!=0) {
+            	return true;
+            }
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -191,15 +193,16 @@ public class AdminDaoOperation implements AdminDaoInterface {
             pstmtP.setString(1, studentId);
 
             ResultSet resultSet = pstmtP.executeQuery();
-
+            
+            
             Set<String> courseList = new HashSet();
+            
             while (resultSet.next()) {
                 courseList.add(resultSet.getString("CourseId"));
             }
 
             //conn.close();
-
-            return courseList;
+            
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -248,8 +251,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	            pstmtP.setString(3, studentId);
 
 	            pstmtP.executeUpdate();
-	            conn.close();
-
+	            //conn.close();
+	            
 	            return true;
 
 	        } catch (Exception e) {
@@ -333,10 +336,11 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
 	            pstmtP.setString(1, SId);
 
-	            pstmtP.executeUpdate();
+	            int result = pstmtP.executeUpdate();
 	            conn.close();
-
-	            return true;
+	            
+	            if(result!=0)
+	            	return true;
 
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block

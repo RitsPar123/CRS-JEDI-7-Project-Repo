@@ -23,6 +23,7 @@ public class AdminService implements AdminServiceInterface {
 	
 	/*Adding course in course table */    
 	public boolean addCourse(Course course) {
+	
 		return adminDaoOp.addCourse(course);
 	}
 	
@@ -30,21 +31,21 @@ public class AdminService implements AdminServiceInterface {
 	/* Deleting course from the course table using course id */
 	@Override
 	public boolean deleteCourse(String id) {
-		// TODO Auto-generated method stub
+		
 		return adminDaoOp.deleteCourse(id);
 	}
 	
 	/*Adding professor in professor table */
 	@Override
 	public boolean addProfessor(Professor professor) {
-		// TODO Auto-generated method stub
+		
 		return adminDaoOp.addProfessor(professor);
 	}
 	
 	/*approves student using studentId in student table */
 	@Override
 	public boolean approveStudent(String studentId) {
-		// TODO Auto-generated method stub
+
 		return adminDaoOp.approveStudent(studentId);
 	}
 	
