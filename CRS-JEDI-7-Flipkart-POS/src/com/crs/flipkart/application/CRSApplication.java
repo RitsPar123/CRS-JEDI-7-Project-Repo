@@ -5,6 +5,8 @@
 package com.crs.flipkart.application;
 
 
+import java.time.LocalDateTime;
+import org.apache.log4j.Logger;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.CourseCatalog;
@@ -16,7 +18,7 @@ import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.business.UserServiceInterface;
 
 /**
- * @author harsh
+ * @author Abhinav
  *
  */
 public class CRSApplication {
@@ -28,6 +30,7 @@ public class CRSApplication {
     static UserServiceInterface userInterface = new UserService();
     static StudentApplication studentApplication = new StudentApplication();
     static Scanner sc = new Scanner(System.in);
+    private static Logger logger = Logger.getLogger(CRSApplication.class);
 
     public static void main(String[] args) {
         // TODO Auto-generated method stub
@@ -50,7 +53,7 @@ public class CRSApplication {
                     CRSApplication.updatePassword();
                     break;
                 default:
-                    System.out.println("Invalid Input");
+                	logger.info("Invalid Input");
             }
             menu();
             userInput = sc.nextInt();
@@ -58,26 +61,26 @@ public class CRSApplication {
     }
 
     public static void menu() {
-        System.out.println("----------Welcome to Course Management System---------");
-        System.out.println("1. Login");
-        System.out.println("2. Student Registration");
-        System.out.println("3. UpdatePassword");
-        System.out.println("4. Exit");
-        System.out.println("Enter user input");
+    	logger.info("----------Welcome to Course Management System---------");
+        logger.info("1. Login");
+        logger.info("2. Student Registration");
+        logger.info("3. UpdatePassword");
+        logger.info("4. Exit");
+        logger.info("Enter user input");
     }
 
     public static void registerStudent() {
 
-        System.out.println("Enter Id:");
+        logger.info("Enter Id:");
         String id = sc.next();
 
-        System.out.println("Enter Name:");
+        logger.info("Enter Name:");
         String name = sc.next();
 
-        System.out.println("Enter Password:");
+        logger.info("Enter Password:");
         String password = sc.next();
 
-        System.out.println("Enter Branch:");
+        logger.info("Enter Branch:");
         String branch = sc.next();
         
         int role = 1;
@@ -86,18 +89,19 @@ public class CRSApplication {
 
         String newUserID = studentInterface.signup(id, password, branch, name, role);
         
-        System.out.println("Thankyou For Registration, Wait for the Admin Approval");
+        logger.info("Thankyou For Registration, Wait for the Admin Approval");
+    	
     }
 
     public static void loginUser() {
         String id, password;
 
-        System.out.println("-----------------Login Menu------------------");
+        logger.info("-----------------Login Menu------------------");
 
-        System.out.println("Enter id ");
+        logger.info("Enter id ");
         id = sc.next();
 
-        System.out.println("Enter password");
+        logger.info("Enter password");
         password = sc.next();
 
         int loggedIn = -1;
@@ -105,45 +109,47 @@ public class CRSApplication {
         loggedIn = userInterface.verifyUser(id, password);
 
         if (loggedIn ==1 || loggedIn == 2 || loggedIn == 3) {
-
+        	LocalDateTime localDateTime = LocalDateTime.now(); 
+			 
             switch (loggedIn) {
                 // Student
                 case 1: {
                 	boolean isApproved = userInterface.verifyApproval(id);
                 	if(isApproved) {
-                		System.out.println("Student Has Been Logged In\n");
-                		StudentApplication studentApp = new StudentApplication();
+                		logger.info("Student Has Logged In at : " + localDateTime + " ->  Login Successful");
+                        StudentApplication studentApp = new StudentApplication();
                         studentApp.studentLoggedin(id);
                 	}else {
-                		System.out.println("You Have Not Been Approved By Admin");
+                		logger.warn("Failed to login, you have not been approved by the administration!");
                 	}
                     
                 }
                     break;
                     
                 case 2:
-       
+                	logger.info("Professor Has Logged In at : " + localDateTime + " ->  Login Successful");
                     ProfessorApplication professorApplication = new ProfessorApplication();
 					professorApplication.professorLoggedIn(id);
                     break;
                     
                 case 3:
+                	logger.info("Admin Has Logged In at : " + localDateTime + " ->  Login Successful");
                     AdminApplication adminCRS = new AdminApplication();
                     adminCRS.showMenu();
                     break;
             }
         }else {
-        	System.out.println("Wrong Id / Password... Try Again\n");
-        	return;
+				logger.error("Invalid Credentials!");
         }
     }
     
     public static void updatePassword() {
     	String id, password;
-        System.out.println("Enter id ");
+    	try {
+        logger.info("Enter id ");
         id = sc.next();
 
-        System.out.println("Enter New Password");
+        logger.info("Enter New Password");
         password = sc.next();
         
         boolean isUpdated = false;
@@ -151,9 +157,13 @@ public class CRSApplication {
         isUpdated = userInterface.updatePassword(id,password);
         
         if(isUpdated) 
-        	System.out.println("Password Updated Successfully");
+        	logger.info("Password Updated Successfully");
         else
-        	System.out.println("Not Updated");
+        	logger.error("Not Updated");
+    	}
+    	catch(Exception e){
+    		logger.error("Error Occured "+ex.getMessage());
+    	}
     }
 
 }
