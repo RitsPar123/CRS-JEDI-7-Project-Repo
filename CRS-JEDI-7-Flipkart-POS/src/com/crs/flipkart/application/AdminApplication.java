@@ -232,6 +232,7 @@ public class AdminApplication {
                     " Id -> " + c.getCourseId() + " Name -> " + c.getCourseName() + "  Seat Left -> " + c.getCount());
         }
         } 
+        
         logger.info("No courses found in course catalogue\n");
         System.out.println("************************************");
     }
