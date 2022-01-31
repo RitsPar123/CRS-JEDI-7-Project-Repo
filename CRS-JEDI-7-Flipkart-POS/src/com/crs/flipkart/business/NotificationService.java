@@ -52,9 +52,10 @@ public class NotificationService implements NotificationServiceInterface {
 		List<Notification> notification = notificationDaoOp.getNoti(id);
 		System.out.println("Notifications : ");
 		if(notification!=null && notification.size()>0) {
-			for(Notification noti: notification) {
-				System.out.println(noti.getMessage() + " ");
-			}
+			notification.forEach(noti->{System.out.println(noti.getMessage() + " ");});
+//			for(Notification noti: notification) {
+//				System.out.println(noti.getMessage() + " ");
+//			}
 		}
 		else {
 			logger.info("No Notifications are Present");

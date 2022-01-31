@@ -75,9 +75,10 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
     	
     	List<Course> availableCourses = adminDaoInterface.getAllCourse();
     	
-    	for(Course course: availableCourses) {
-    		System.out.println("Course ID: " + course.getCourseId() + " Course Name : " + course.getCourseName());
-    	}
+    	availableCourses.forEach(course->{System.out.println("Course ID: " + course.getCourseId() + " Course Name : " + course.getCourseName());});
+//    	for(Course course: availableCourses) {
+//    		System.out.println("Course ID: " + course.getCourseId() + " Course Name : " + course.getCourseName());
+//    	}
     	
     	System.out.println("-----------------------------------------------");  
     	System.out.println("-----------------------------------------------"); 
@@ -89,9 +90,10 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
     	System.out.println("You have selected the following courses!");
     	List<Course> selectedCourses = registeredCoursesDaoInterface.getSelectedCourses(semesterRegistration.getStudentId());
     	
-    	for(Course course: selectedCourses) {
-    		System.out.println("Course ID: " + course.getCourseId() + " Course Name: " + course.getCourseName());
-    	}
+    	selectedCourses.forEach(course->{System.out.println("Course ID: " + course.getCourseId() + " Course Name : " + course.getCourseName());});
+//    	for(Course course: selectedCourses) {
+//    		System.out.println("Course ID: " + course.getCourseId() + " Course Name: " + course.getCourseName());
+//    	}
     	
     	System.out.println("-----------------------------------------------");
     }
