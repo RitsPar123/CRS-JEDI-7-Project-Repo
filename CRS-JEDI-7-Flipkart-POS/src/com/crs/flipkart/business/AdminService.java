@@ -125,14 +125,6 @@ public class AdminService implements AdminServiceInterface {
 
 
 	@Override
-	public boolean deleteEntry(String studentId) {
-		// TODO Auto-generated method stub
-		logger.info("Deleting student's entry");
-		return adminDaoOp.deleteEntry(studentId);
-	}
-
-
-	@Override
 	public boolean updateCourse(Set<String> courseList) {
 		// TODO Auto-generated method stub
 		logger.info("Updating Courses in the list");

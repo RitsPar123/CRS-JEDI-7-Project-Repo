@@ -252,8 +252,6 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	                courseList.add(resultSet.getString("CourseId"));
 	            }
             
-//            else 
-//            	throw new StudentNotRegisteredException(studentId);
 //            //conn.close();
             
         } catch (SQLException e) {
@@ -309,7 +307,11 @@ public class AdminDaoOperation implements AdminDaoInterface {
 //	            pstmtP.setString(2, s2);
 	            pstmtP.setString(1, studentId);
 
-	            pstmtP.executeUpdate();
+	            int row = pstmtP.executeUpdate();
+	            
+//	            if(row == 0) {
+//	            	throw new StudentNotFoundForApprovalException(studentId);
+//	            }
 	            conn.close();
 	            
 	            return true;
@@ -465,28 +467,6 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		return courses;
 	}
 
-	@Override
-	public boolean deleteEntry(String studentId) {
-		// TODO Auto-generated method stub
-		
-		 Connection conn = CRSDb.getConnect();
-	        try {
-	            PreparedStatement pstmtP;
-	            pstmtP = conn.prepareStatement(SQLQueriesConstant.DELETE_ENTRY);
-
-	            pstmtP.setString(1, studentId);
-
-	            pstmtP.executeUpdate();
-	            //conn.close();
-	            return true;
-
-	        } catch (Exception e) {
-	            // TODO Auto-generated catch block
-	        	logger.error("Exception" + e.getMessage());
-	        }
-
-		return false;
-	}
 
 	@Override
 	public boolean updateCourse(Set<String> courseList) {

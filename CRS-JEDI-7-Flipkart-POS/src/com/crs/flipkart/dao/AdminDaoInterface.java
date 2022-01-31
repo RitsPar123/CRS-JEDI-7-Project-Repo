@@ -122,12 +122,7 @@ public interface AdminDaoInterface {
 	 * Method to delete registrations by a student using SQL commands
 	 * @param studentId
 	 */
-	public boolean deleteEntry(String studentId);
 
-	/**
-	 * Method to update seatcount of courses using SQL commands
-	 * @param courseList
-	 */
 	public boolean updateCourse(Set<String> courseList);
 
 	/**
