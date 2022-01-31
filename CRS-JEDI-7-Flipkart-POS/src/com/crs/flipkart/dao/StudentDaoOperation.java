@@ -81,7 +81,9 @@ public class StudentDaoOperation implements StudentDaoInterface {
 	}
 
 	
-	
+	/**
+	 * {@inheritDoc}
+	 */
 	public int getRegistrationStatus(String id) {
 		Connection connection = CRSDb.getConnect();
 		
