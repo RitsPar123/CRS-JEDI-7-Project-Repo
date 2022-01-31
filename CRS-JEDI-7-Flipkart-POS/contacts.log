@@ -605,3 +605,27 @@
 09:13:11,151  INFO AdminDaoOperation,main:362 - Grade Card Activated
 09:13:11,152  INFO AdminService,main:115 - Approving student registration
 09:13:11,156  INFO AdminDaoOperation,main:386 - Sem Registeration Approved
+10:53:09,935  INFO CRSApplication,main:71 - ----------Welcome to Course Management System---------
+10:53:09,964  INFO CRSApplication,main:72 - 1. Login
+10:53:09,965  INFO CRSApplication,main:73 - 2. Student Registration
+10:53:09,966  INFO CRSApplication,main:74 - 3. UpdatePassword
+10:53:09,967  INFO CRSApplication,main:75 - 4. Exit
+10:53:09,968  INFO CRSApplication,main:76 - Enter user input
+10:57:01,464  INFO CRSApplication,main:72 - ----------Welcome to Course Management System---------
+10:57:01,467  INFO CRSApplication,main:73 - 1. Login
+10:57:01,467  INFO CRSApplication,main:74 - 2. Student Registration
+10:57:01,468  INFO CRSApplication,main:75 - 3. UpdatePassword
+10:57:01,468  INFO CRSApplication,main:76 - 4. Exit
+10:57:01,468  INFO CRSApplication,main:77 - Enter user input
+10:57:04,313  INFO CRSApplication,main:84 - Enter Id:
+10:57:05,558  INFO CRSApplication,main:87 - Enter Name:
+10:57:06,462  INFO CRSApplication,main:90 - Enter Password:
+10:57:07,644  INFO CRSApplication,main:93 - Enter Branch:
+10:57:09,159  INFO StudentDaoOperation,main:57 - Student has signed up
+10:57:09,163  INFO CRSApplication,main:102 - Thankyou For Registration, Wait for the Admin Approval
+10:57:09,163  INFO CRSApplication,main:72 - ----------Welcome to Course Management System---------
+10:57:09,163  INFO CRSApplication,main:73 - 1. Login
+10:57:09,164  INFO CRSApplication,main:74 - 2. Student Registration
+10:57:09,164  INFO CRSApplication,main:75 - 3. UpdatePassword
+10:57:09,165  INFO CRSApplication,main:76 - 4. Exit
+10:57:09,165  INFO CRSApplication,main:77 - Enter user input

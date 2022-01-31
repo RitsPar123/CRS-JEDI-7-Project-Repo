@@ -18,6 +18,8 @@ import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.business.UserServiceInterface;
 import com.crs.flipkart.exception.CourseNotAddedException;
 import com.crs.flipkart.exception.CourseNotDeletedException;
+import com.crs.flipkart.exception.StudentNotRegisteredException;
+import com.crs.flipkart.exception.UserNotFoundException;
 
 /**
  * @author Abhinav
@@ -40,6 +42,8 @@ public class CRSApplication {
         menu();
         
         int userInput = sc.nextInt();
+        
+        try {
         while (userInput != 4) {
             switch (userInput) {
                 case 1:
@@ -60,6 +64,9 @@ public class CRSApplication {
             menu();
             userInput = sc.nextInt();
         }
+        }catch(Exception e) {
+        	logger.error("ERROR OCCURED" + e.getMessage());
+        }
     }
 
     public static void menu() {
@@ -73,6 +80,8 @@ public class CRSApplication {
 
     public static void registerStudent() {
 
+    	try{
+    	//input all the student details
         logger.info("Enter Id:");
         String id = sc.next();
 
@@ -92,12 +101,16 @@ public class CRSApplication {
         String newUserID = studentInterface.signup(id, password, branch, name, role);
         
         logger.info("Thankyou For Registration, Wait for the Admin Approval");
-    	
+    	}
+    	catch(StudentNotRegisteredException ex){
+			logger.error("Something went wrong! "+ex.getMessage() +" not registered. Please try again");
+		}
     }
 
     public static void loginUser() throws CourseNotAddedException, CourseNotDeletedException {
         String id, password;
 
+        try {
         logger.info("-----------------Login Menu------------------");
 
         logger.info("Enter id ");
@@ -142,6 +155,9 @@ public class CRSApplication {
             }
         }else {
 				logger.error("Invalid Credentials!");
+        }
+        }catch(UserNotFoundException ex) {
+        	logger.error(ex.getMessage());
         }
     }
     

@@ -4,6 +4,7 @@
 package com.crs.flipkart.business;
 
 import com.crs.flipkart.bean.User;
+import com.crs.flipkart.exception.UserNotFoundException;
 
 /**
  * @author hardik.kothari
@@ -16,7 +17,7 @@ import com.crs.flipkart.bean.User;
   */
 public interface UserServiceInterface {
 	
-	public int verifyUser(String id,String Password);
+	public int verifyUser(String id,String Password) throws UserNotFoundException;
 	public boolean userLogin(User u);
 	public boolean updatePassword(String id,String Password);
 	public void forgotPassword();
