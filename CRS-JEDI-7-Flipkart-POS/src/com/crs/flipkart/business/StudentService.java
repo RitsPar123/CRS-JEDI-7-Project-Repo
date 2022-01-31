@@ -154,9 +154,10 @@ public class StudentService implements StudentServiceInterface{
 		// Print RegisteredCourses
 		List<Course> courses = registeredCoursesDaoInterface.getApprovedCoursesById(id);
 		
-		for(Course course: courses) {
-			System.out.println("CourseId : " + course.getCourseId());
-		}
+		courses.forEach(course->{System.out.println("CourseId : " + course.getCourseId());});
+//		for(Course course: courses) {
+//			System.out.println("CourseId : " + course.getCourseId());
+//		}
 		
 		System.out.println("--------------------------------------------------");
 	}

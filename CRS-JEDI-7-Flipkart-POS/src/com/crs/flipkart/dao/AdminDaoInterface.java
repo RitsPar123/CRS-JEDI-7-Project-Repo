@@ -11,7 +11,14 @@ import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.bean.Student;
+import com.crs.flipkart.exception.CourseFoundException;
 import com.crs.flipkart.exception.CourseNotAddedException;
+import com.crs.flipkart.exception.CourseNotDeletedException;
+import com.crs.flipkart.exception.CourseNotFoundException;
+import com.crs.flipkart.exception.ProfessorNotAddedException;
+import com.crs.flipkart.exception.StudentNotFoundForApprovalException;
+import com.crs.flipkart.exception.UserIdAlreadyInUseException;
+import com.crs.flipkart.exception.UserNotAddedException;
 
 /**
  * @author Abhinav
@@ -23,22 +30,26 @@ public interface AdminDaoInterface {
 	 * Method to Add Course using SQL commands
 	 * @param course
 	 * @return true if successful / false if failure
+	 * @throws CourseFoundException 
 	 */
-	public boolean addCourse(Course course);
+	public boolean addCourse(Course course) throws CourseFoundException;
 
 	/**
 	 * Method to delete courses using SQL commands
 	 * @param id
 	 * @return true if successful / false if failure
+	 * @throws CourseNotFoundException, CourseNotDeletedException
 	 */
-	public boolean deleteCourse(String id);
+	public boolean deleteCourse(String id) throws CourseNotFoundException, CourseNotDeletedException;
 
 	/**
 	 * Method to allot professor to a course using SQL commands
 	 * @param professor
 	 * @return true if successful / false if failure
+	 * @throws ProfessorNotAddedException 
+	 * @throws UserIdAlreadyInUseException 
 	 */
-	public boolean addProfessor(Professor professor);
+	public boolean addProfessor(Professor professor) throws UserIdAlreadyInUseException, ProfessorNotAddedException;
 	
 	/**
 	 * Method to get all courses using SQL commands
@@ -50,8 +61,9 @@ public interface AdminDaoInterface {
 	 * Method to Approve student registration for fee payment using SQL commands
 	 * @param studentId
 	 * @return true if successful / false if failure
+	 * @throws StudentNotFoundForApprovalException 
 	 */
-	public boolean approveStudent(String studentId);
+	public boolean approveStudent(String studentId) throws StudentNotFoundForApprovalException;
 
 	/**
 	 * Method to View Pending Course registrations using SQL commands
@@ -110,12 +122,7 @@ public interface AdminDaoInterface {
 	 * Method to delete registrations by a student using SQL commands
 	 * @param studentId
 	 */
-	public boolean deleteEntry(String studentId);
 
-	/**
-	 * Method to update seatcount of courses using SQL commands
-	 * @param courseList
-	 */
 	public boolean updateCourse(Set<String> courseList);
 
 	/**
@@ -123,6 +130,8 @@ public interface AdminDaoInterface {
 	 * @param id
 	 * @param password
 	 * @param name
+	 * @throws UserIdAlreadyInUseException 
+	 * @throws UserNotAddedException 
 	 */
-	public boolean addUser(String id, String password, String name);
+	public boolean addUser(String id, String password, String name) throws UserNotAddedException, UserIdAlreadyInUseException;
 }
