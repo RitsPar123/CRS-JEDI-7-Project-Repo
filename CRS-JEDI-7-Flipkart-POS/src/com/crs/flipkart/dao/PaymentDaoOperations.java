@@ -4,6 +4,7 @@
 package com.crs.flipkart.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import org.apache.log4j.Logger;
 
@@ -19,7 +20,6 @@ import com.crs.flipkart.bean.Payment;
 public class PaymentDaoOperations implements PaymentDaoInterface {
 	java.util.Date date=new java.util.Date();
 	java.sql.Date sqlDate=new java.sql.Date(date.getTime());
-	 Connection conn = CRSDb.getConnect();
 	 private static Logger logger = Logger.getLogger(PaymentDaoOperations.class);
 
 	/**
@@ -27,7 +27,8 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
     */  
 	@Override
 	public boolean payFees(Payment pay) {
-		  try {
+		  try {	
+				Connection conn = CRSDb.getConnect();
 			    date = new java.util.Date();
 	            PreparedStatement stmt;
 	            stmt = conn.prepareStatement(SQLQueriesConstant.ADD_PAYMENT);
@@ -36,7 +37,7 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
 	            stmt.setString(3, pay.getPaymentMethod());
 	            stmt.setDouble(4, pay.getAmount());
 	            stmt.setDate(5, sqlDate);
-
+	            
 	            stmt.executeUpdate();
 	            conn.close();
 	            logger.info("Fee Payment Done");
@@ -48,6 +49,36 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
 	        }
 		  return false;
       
+	}
+
+	@Override
+	public boolean isPaid(String studentId) {
+		// TODO Auto-generated method stub
+		 Connection conn = CRSDb.getConnect();
+		  try {	
+	            PreparedStatement stmt;
+	            stmt = conn.prepareStatement(SQLQueriesConstant.CHECK_PAYMENT_STATUS);
+	            stmt.setString(1, studentId);
+
+	            ResultSet resultSet= stmt.executeQuery();
+	            resultSet.next();
+	            if(resultSet.getInt("isregistered")==1) 
+	            	return true;
+	            conn.close();
+	            
+	        } catch (Exception e) {
+	            // TODO Auto-generated catch block
+	        	logger.error("Exception" + e.getMessage());
+	        }
+		  	finally {
+		  		try {
+		  			conn.close();
+		  		}
+		  		catch(Exception e) {
+		  			logger.error("Exception : "+e.getMessage());
+		  		}
+		  	}
+		  return false;
 	}
 
 

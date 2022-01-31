@@ -43,7 +43,7 @@ public class StudentApplication {
 					studentService.register(id);
 					break;
 				case 2:
-					viewGradeCard(id);
+					studentService.viewReportCard(id);
 					break;
 				case 3:
 					studentService.viewRegisteredCourses(id);
@@ -73,27 +73,6 @@ public class StudentApplication {
 		
 	}
 	
-	private void viewGradeCard(String studentId) {
-		// TODO Auto-generated method stub
-        
-    	
-            Student stud = new Student();
-            stud = adminInterface.viewStudentData(studentId);
-            
-            System.out.println("Details are  ->");
-            System.out.println("Id -> " + stud.getId() + " Name -> " + stud.getUserName() + " Branch -> " + stud.getBranch());
-
-                List<RegisteredCourses> registeredCourses = adminInterface.activateGradeCard(studentId);
-     
-                if(stud.isReportApproved()) {
-                for(RegisteredCourses course:registeredCourses) {
-                	System.out.println("CourseId -> " + course.getCourseId() + " Grade ->  " + course.getGrade());
-         
-                }
-                }
-            	System.out.println("Student Report Card");
-       
-	}
 	
 	
 }

@@ -19,6 +19,8 @@ public interface StudentServiceInterface {
 
 		public void viewRegisteredCourses(String id);
 
+		public void viewReportCard(String id);
+		
 		public void register(String id);
 
 }

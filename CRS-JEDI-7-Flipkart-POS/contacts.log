@@ -458,3 +458,676 @@
 15:44:36,738  INFO AdminService,main:109 - Activating grade card
 15:44:36,739  INFO AdminDaoOperation,main:362 - Grade Card Activated
 15:44:43,433  INFO NotificationService,main:51 - Displaying notification 
+17:19:36,717  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:19:36,720  INFO CRSApplication,main:74 - 1. Login
+17:19:36,720  INFO CRSApplication,main:75 - 2. Student Registration
+17:19:36,721  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:19:36,721  INFO CRSApplication,main:77 - 4. Exit
+17:19:36,722  INFO CRSApplication,main:78 - Enter user input
+17:19:38,767  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:19:38,767  INFO CRSApplication,main:116 - Enter id 
+17:19:48,038  INFO CRSApplication,main:119 - Enter password
+17:19:50,005  INFO UserService,main:44 - Verifying User
+17:19:50,027  INFO StudentDaoOperation,main:47 - User Verified
+17:19:50,059  INFO UserService,main:68 - Verifying Approval
+17:19:50,065  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T17:19:50.058367200 ->  Login Successful
+17:19:52,792  INFO AdminService,main:110 - Viewing student data
+17:19:52,794  INFO AdminService,main:116 - Activating grade card
+17:19:52,801  INFO AdminDaoOperation,main:388 - Grade Card Activated
+17:20:07,227  INFO NotificationService,main:51 - Displaying notification 
+17:20:10,681  INFO PaymentService,main:33 - Displaying menu
+17:20:10,682  INFO RegisteredCoursesService,main:44 - Showing status
+17:20:16,727  INFO PaymentService,main:89 - Offline payment mehthod
+17:20:20,602 ERROR PaymentDaoOperations,main:47 - ExceptionNo operations allowed after connection closed.
+17:20:53,077  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:20:53,077  INFO CRSApplication,main:74 - 1. Login
+17:20:53,077  INFO CRSApplication,main:75 - 2. Student Registration
+17:20:53,078  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:20:53,078  INFO CRSApplication,main:77 - 4. Exit
+17:20:53,078  INFO CRSApplication,main:78 - Enter user input
+17:20:58,435  INFO CRSApplication,main:85 - Enter Id:
+17:21:01,796  INFO CRSApplication,main:88 - Enter Name:
+17:21:06,508  INFO CRSApplication,main:91 - Enter Password:
+17:21:10,105  INFO CRSApplication,main:94 - Enter Branch:
+17:21:14,536  INFO StudentDaoOperation,main:57 - Student has signed up
+17:21:14,537  INFO CRSApplication,main:103 - Thankyou For Registration, Wait for the Admin Approval
+17:21:14,537  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:21:14,538  INFO CRSApplication,main:74 - 1. Login
+17:21:14,538  INFO CRSApplication,main:75 - 2. Student Registration
+17:21:14,538  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:21:14,538  INFO CRSApplication,main:77 - 4. Exit
+17:21:14,539  INFO CRSApplication,main:78 - Enter user input
+17:21:17,578  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:21:17,578  INFO CRSApplication,main:116 - Enter id 
+17:21:19,006  INFO CRSApplication,main:119 - Enter password
+17:21:19,675  INFO UserService,main:44 - Verifying User
+17:21:19,686  INFO StudentDaoOperation,main:47 - User Verified
+17:21:19,686  INFO CRSApplication,main:151 - Admin Has Logged In at : 2022-01-31T17:21:19.686161500 ->  Login Successful
+17:21:23,505  INFO AdminService,main:70 - Showing pending approvals of students semester registration
+17:21:23,508  INFO AdminDaoOperation,main:188 - 1 Students in PendingQueue: 
+17:21:28,898  INFO AdminService,main:62 - Approving student
+17:21:28,904  INFO AdminDaoOperation,main:152 - Student Self Registration approved
+17:21:28,905  INFO NotificationService,main:39 - Sending notification
+17:21:28,950  INFO NotificationDaoOperation,main:50 - Notification Sent
+17:21:28,951  INFO AdminDaoOperation,main:210 - Student Registration is being Approved
+
+17:21:31,034  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:21:31,035  INFO CRSApplication,main:74 - 1. Login
+17:21:31,035  INFO CRSApplication,main:75 - 2. Student Registration
+17:21:31,035  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:21:31,035  INFO CRSApplication,main:77 - 4. Exit
+17:21:31,035  INFO CRSApplication,main:78 - Enter user input
+17:21:32,610  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:21:32,611  INFO CRSApplication,main:116 - Enter id 
+17:21:34,054  INFO CRSApplication,main:119 - Enter password
+17:21:34,633  INFO UserService,main:44 - Verifying User
+17:21:34,635  INFO StudentDaoOperation,main:47 - User Verified
+17:21:34,635  INFO UserService,main:68 - Verifying Approval
+17:21:34,637  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T17:21:34.635019400 ->  Login Successful
+17:21:36,868  INFO AdminService,main:110 - Viewing student data
+17:21:36,869  INFO AdminService,main:116 - Activating grade card
+17:21:36,869  INFO AdminDaoOperation,main:388 - Grade Card Activated
+17:28:33,577  INFO NotificationService,main:51 - Displaying notification 
+17:28:33,588  INFO NotificationService,main:61 - No Notifications are Present
+17:29:07,080  INFO PaymentService,main:33 - Displaying menu
+17:29:07,080  INFO RegisteredCoursesService,main:44 - Showing status
+17:29:14,140  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+17:29:19,705  INFO SemesterRegistrationService,main:80 - Showing Course
+17:29:57,140  INFO RegisteredCoursesService,main:31 - Getting selected courses
+17:29:57,147  INFO SemesterRegistrationService,main:33 - Adding course
+17:29:58,806 ERROR PaymentDaoOperations,main:78 - ExceptionCan not issue data manipulation statements with executeQuery().
+17:29:58,823  INFO PaymentDaoOperations,main:102 - Course added successfully!
+17:33:43,702  INFO SemesterRegistrationService,main:59 - Dropping Course
+17:34:02,825  INFO SemesterRegistrationService,main:100 - Showing selected courses
+17:37:31,199  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:37:31,203  INFO CRSApplication,main:74 - 1. Login
+17:37:31,204  INFO CRSApplication,main:75 - 2. Student Registration
+17:37:31,204  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:37:31,205  INFO CRSApplication,main:77 - 4. Exit
+17:37:31,205  INFO CRSApplication,main:78 - Enter user input
+17:37:40,004  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:37:40,004  INFO CRSApplication,main:116 - Enter id 
+17:37:41,248  INFO CRSApplication,main:119 - Enter password
+17:37:41,791  INFO UserService,main:44 - Verifying User
+17:37:41,803  INFO StudentDaoOperation,main:47 - User Verified
+17:37:41,811  INFO UserService,main:68 - Verifying Approval
+17:37:41,812  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T17:37:41.811437200 ->  Login Successful
+17:37:46,464  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+17:37:48,580  INFO SemesterRegistrationService,main:80 - Showing Course
+17:37:52,475  INFO SemesterRegistrationService,main:100 - Showing selected courses
+17:38:01,029  INFO SemesterRegistrationService,main:59 - Dropping Course
+17:38:07,677  INFO SemesterRegistrationService,main:100 - Showing selected courses
+17:38:07,684  INFO SemesterRegistrationService,main:111 - No selected courses to display
+17:38:34,650  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:38:34,651  INFO CRSApplication,main:74 - 1. Login
+17:38:34,651  INFO CRSApplication,main:75 - 2. Student Registration
+17:38:34,651  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:38:34,651  INFO CRSApplication,main:77 - 4. Exit
+17:38:34,651  INFO CRSApplication,main:78 - Enter user input
+17:38:36,366  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:38:36,366  INFO CRSApplication,main:116 - Enter id 
+17:38:37,804  INFO CRSApplication,main:119 - Enter password
+17:38:38,416  INFO UserService,main:44 - Verifying User
+17:38:38,426  INFO StudentDaoOperation,main:47 - User Verified
+17:38:38,426  INFO CRSApplication,main:151 - Admin Has Logged In at : 2022-01-31T17:38:38.426490 ->  Login Successful
+17:38:46,948  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:38:46,948  INFO CRSApplication,main:74 - 1. Login
+17:38:46,948  INFO CRSApplication,main:75 - 2. Student Registration
+17:38:46,948  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:38:46,949  INFO CRSApplication,main:77 - 4. Exit
+17:38:46,949  INFO CRSApplication,main:78 - Enter user input
+17:38:48,107  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:38:48,108  INFO CRSApplication,main:116 - Enter id 
+17:38:49,275  INFO CRSApplication,main:119 - Enter password
+17:38:49,841  INFO UserService,main:44 - Verifying User
+17:38:49,847  INFO StudentDaoOperation,main:47 - User Verified
+17:38:49,847  INFO UserService,main:68 - Verifying Approval
+17:38:49,848  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T17:38:49.847439100 ->  Login Successful
+17:38:51,314  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+17:38:52,359  INFO RegisteredCoursesService,main:31 - Getting selected courses
+17:38:52,370  INFO SemesterRegistrationService,main:33 - Adding course
+17:38:54,679 ERROR PaymentDaoOperations,main:78 - ExceptionCan not issue data manipulation statements with executeQuery().
+17:38:54,696  INFO PaymentDaoOperations,main:102 - Course added successfully!
+17:39:08,076  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:39:08,076  INFO CRSApplication,main:74 - 1. Login
+17:39:08,076  INFO CRSApplication,main:75 - 2. Student Registration
+17:39:08,076  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:39:08,076  INFO CRSApplication,main:77 - 4. Exit
+17:39:08,076  INFO CRSApplication,main:78 - Enter user input
+17:39:09,431  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:39:09,431  INFO CRSApplication,main:116 - Enter id 
+17:39:12,333  INFO CRSApplication,main:119 - Enter password
+17:39:13,224  INFO UserService,main:44 - Verifying User
+17:39:13,230  INFO StudentDaoOperation,main:47 - User Verified
+17:39:13,230  INFO CRSApplication,main:151 - Admin Has Logged In at : 2022-01-31T17:39:13.230282500 ->  Login Successful
+17:39:25,077  INFO AdminService,main:87 - Showing Selected Courses
+17:39:25,078  INFO AdminDaoOperation,main:287 - 
+Student Has Been Registered
+17:39:25,079  INFO AdminService,main:102 - Updating Student Registration
+17:39:25,081  INFO NotificationService,main:39 - Sending notification
+17:39:25,130  INFO NotificationDaoOperation,main:50 - Notification Sent
+17:39:40,315  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:39:40,316  INFO CRSApplication,main:74 - 1. Login
+17:39:40,316  INFO CRSApplication,main:75 - 2. Student Registration
+17:39:40,316  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:39:40,316  INFO CRSApplication,main:77 - 4. Exit
+17:39:40,316  INFO CRSApplication,main:78 - Enter user input
+17:39:41,178  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:39:41,179  INFO CRSApplication,main:116 - Enter id 
+17:39:42,966  INFO CRSApplication,main:119 - Enter password
+17:39:43,894  INFO UserService,main:44 - Verifying User
+17:39:43,894  INFO StudentDaoOperation,main:47 - User Verified
+17:39:43,894  INFO UserService,main:68 - Verifying Approval
+17:39:43,895  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T17:39:43.894735500 ->  Login Successful
+17:39:46,892  INFO NotificationService,main:51 - Displaying notification 
+17:39:57,558  INFO PaymentService,main:33 - Displaying menu
+17:39:57,558  INFO RegisteredCoursesService,main:44 - Showing status
+17:40:00,958  INFO PaymentService,main:65 - Online-payment method
+17:40:11,486  INFO PaymentDaoOperations,main:42 - Fee Payment Done
+17:40:11,486  INFO RegisteredCoursesService,main:51 - Updating status
+17:40:11,505  INFO PaymentDaoOperations,main:245 - Status Updated
+17:40:11,506  INFO NotificationService,main:39 - Sending notification
+17:40:11,523 ERROR NotificationDaoOperation,main:55 - ExceptionData truncation: Data too long for column 'Message' at row 1
+17:42:01,519  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:42:01,520  INFO CRSApplication,main:74 - 1. Login
+17:42:01,520  INFO CRSApplication,main:75 - 2. Student Registration
+17:42:01,520  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:42:01,521  INFO CRSApplication,main:77 - 4. Exit
+17:42:01,521  INFO CRSApplication,main:78 - Enter user input
+17:42:03,267  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:42:03,267  INFO CRSApplication,main:116 - Enter id 
+17:42:16,920  INFO CRSApplication,main:119 - Enter password
+17:42:18,354  INFO UserService,main:44 - Verifying User
+17:42:18,355  INFO StudentDaoOperation,main:47 - User Verified
+17:42:18,355  INFO CRSApplication,main:145 - Professor Has Logged In at : 2022-01-31T17:42:18.355528400 ->  Login Successful
+17:42:27,697  INFO ProfessorService,main:33 - Selecting the course
+17:42:27,698 ERROR ProfessorDaoOperation,main:54 - Course does not exist or already been taken
+17:42:27,698 ERROR ProfessorDaoOperation,main:65 - Exception:Course with courseid : 101 is not found
+17:43:56,397  INFO ProfessorService,main:33 - Selecting the course
+17:43:56,408  INFO ProfessorDaoOperation,main:59 - Course has been added Successfully
+17:44:16,061  INFO ProfessorService,main:33 - Selecting the course
+17:44:16,062 ERROR ProfessorDaoOperation,main:54 - Course does not exist or already been taken
+17:44:16,062 ERROR ProfessorDaoOperation,main:65 - Exception:Course with courseid : 106 is not found
+17:44:41,606  INFO ProfessorService,main:33 - Selecting the course
+17:44:41,608 ERROR ProfessorDaoOperation,main:54 - Course does not exist or already been taken
+17:44:41,608 ERROR ProfessorDaoOperation,main:65 - Exception:Course with courseid : 101 is not found
+17:46:52,767  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:46:52,771  INFO CRSApplication,main:74 - 1. Login
+17:46:52,771  INFO CRSApplication,main:75 - 2. Student Registration
+17:46:52,772  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:46:52,773  INFO CRSApplication,main:77 - 4. Exit
+17:46:52,773  INFO CRSApplication,main:78 - Enter user input
+17:47:03,545  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:47:03,546  INFO CRSApplication,main:116 - Enter id 
+17:47:05,499  INFO CRSApplication,main:119 - Enter password
+17:47:06,437  INFO UserService,main:44 - Verifying User
+17:47:06,463 ERROR CRSApplication,main:157 - Invalid Credentials!
+17:47:06,464  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:47:06,464  INFO CRSApplication,main:74 - 1. Login
+17:47:06,465  INFO CRSApplication,main:75 - 2. Student Registration
+17:47:06,465  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:47:06,466  INFO CRSApplication,main:77 - 4. Exit
+17:47:06,466  INFO CRSApplication,main:78 - Enter user input
+17:47:08,976  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:47:08,977  INFO CRSApplication,main:116 - Enter id 
+17:47:26,345  INFO CRSApplication,main:119 - Enter password
+17:47:30,526  INFO UserService,main:44 - Verifying User
+17:47:30,528  INFO StudentDaoOperation,main:47 - User Verified
+17:47:30,543  INFO CRSApplication,main:145 - Professor Has Logged In at : 2022-01-31T17:47:30.542342700 ->  Login Successful
+17:47:35,865  INFO ProfessorService,main:78 - Showing Courses
+17:47:35,866 ERROR ProfessorApplication,main:75 - Exception: No courses found in the database
+17:48:04,543  INFO ProfessorService,main:33 - Selecting the course
+17:48:04,545 ERROR ProfessorDaoOperation,main:55 - Course does not exist or already been taken
+17:48:04,546 ERROR ProfessorDaoOperation,main:66 - Exception : Course with id : 101  is already assigned
+17:49:47,663  INFO ProfessorService,main:43 - Viewing Registered Course
+17:50:45,437  INFO ProfessorService,main:68 - Adding grades of the student
+17:50:45,451  INFO ProfessorDaoOperation,main:148 - Sucessfully updated marks!!
+17:50:45,451 ERROR ProfessorDaoOperation,main:154 - ExceptionMarks for student with id : 101 and course with id: null cannot be added
+17:51:42,238  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:51:42,242  INFO CRSApplication,main:74 - 1. Login
+17:51:42,242  INFO CRSApplication,main:75 - 2. Student Registration
+17:51:42,244  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:51:42,245  INFO CRSApplication,main:77 - 4. Exit
+17:51:42,246  INFO CRSApplication,main:78 - Enter user input
+17:51:43,636  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:51:43,637  INFO CRSApplication,main:116 - Enter id 
+17:51:47,798  INFO CRSApplication,main:119 - Enter password
+17:51:55,597  INFO UserService,main:44 - Verifying User
+17:51:55,608  INFO StudentDaoOperation,main:47 - User Verified
+17:51:55,618  INFO CRSApplication,main:145 - Professor Has Logged In at : 2022-01-31T17:51:55.618272500 ->  Login Successful
+17:52:03,174  INFO ProfessorService,main:68 - Adding grades of the student
+17:52:06,542  INFO ProfessorDaoOperation,main:132 - Mark updation cancelled
+17:52:24,565  INFO ProfessorService,main:101 - Viewing Registered Courses
+17:52:30,502  INFO ProfessorService,main:78 - Showing Courses
+17:52:30,504 ERROR ProfessorApplication,main:75 - Exception: No courses found in the database
+17:52:38,264  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:52:38,264  INFO CRSApplication,main:74 - 1. Login
+17:52:38,265  INFO CRSApplication,main:75 - 2. Student Registration
+17:52:38,265  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:52:38,265  INFO CRSApplication,main:77 - 4. Exit
+17:52:38,265  INFO CRSApplication,main:78 - Enter user input
+17:52:40,154  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:52:40,155  INFO CRSApplication,main:116 - Enter id 
+17:52:42,091  INFO CRSApplication,main:119 - Enter password
+17:52:42,764  INFO UserService,main:44 - Verifying User
+17:52:42,765  INFO StudentDaoOperation,main:47 - User Verified
+17:52:42,766  INFO CRSApplication,main:151 - Admin Has Logged In at : 2022-01-31T17:52:42.766809400 ->  Login Successful
+17:52:49,156  INFO AdminService,main:110 - Viewing student data
+17:52:56,624  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:52:56,624  INFO CRSApplication,main:74 - 1. Login
+17:52:56,625  INFO CRSApplication,main:75 - 2. Student Registration
+17:52:56,625  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:52:56,625  INFO CRSApplication,main:77 - 4. Exit
+17:52:56,626  INFO CRSApplication,main:78 - Enter user input
+17:52:58,509  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:52:58,510  INFO CRSApplication,main:116 - Enter id 
+17:53:04,626  INFO CRSApplication,main:119 - Enter password
+17:53:21,808  INFO UserService,main:44 - Verifying User
+17:53:21,809  INFO StudentDaoOperation,main:47 - User Verified
+17:53:21,809  INFO UserService,main:68 - Verifying Approval
+17:53:21,810  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T17:53:21.809637 ->  Login Successful
+17:53:25,050  INFO AdminService,main:110 - Viewing student data
+17:53:25,051  INFO AdminService,main:116 - Activating grade card
+17:53:25,061  INFO AdminDaoOperation,main:388 - Grade Card Activated
+17:53:36,483  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:53:36,484  INFO CRSApplication,main:74 - 1. Login
+17:53:36,484  INFO CRSApplication,main:75 - 2. Student Registration
+17:53:36,484  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:53:36,484  INFO CRSApplication,main:77 - 4. Exit
+17:53:36,484  INFO CRSApplication,main:78 - Enter user input
+17:53:37,302  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:53:37,302  INFO CRSApplication,main:116 - Enter id 
+17:53:39,046  INFO CRSApplication,main:119 - Enter password
+17:53:45,194  INFO UserService,main:44 - Verifying User
+17:53:45,196  INFO StudentDaoOperation,main:47 - User Verified
+17:53:45,197  INFO UserService,main:68 - Verifying Approval
+17:53:45,199  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T17:53:45.196350500 ->  Login Successful
+17:53:48,939  INFO AdminService,main:110 - Viewing student data
+17:53:48,941  INFO AdminService,main:116 - Activating grade card
+17:53:48,941  INFO AdminDaoOperation,main:388 - Grade Card Activated
+17:53:52,872  INFO AdminService,main:110 - Viewing student data
+17:53:52,874  INFO AdminService,main:116 - Activating grade card
+17:53:52,875  INFO AdminDaoOperation,main:388 - Grade Card Activated
+17:58:13,505  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:58:13,505  INFO CRSApplication,main:74 - 1. Login
+17:58:13,506  INFO CRSApplication,main:75 - 2. Student Registration
+17:58:13,506  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:58:13,506  INFO CRSApplication,main:77 - 4. Exit
+17:58:13,507  INFO CRSApplication,main:78 - Enter user input
+17:58:14,467  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:58:14,467  INFO CRSApplication,main:116 - Enter id 
+17:58:16,047  INFO CRSApplication,main:119 - Enter password
+17:58:17,371  INFO UserService,main:44 - Verifying User
+17:58:17,373  INFO StudentDaoOperation,main:47 - User Verified
+17:58:17,374  INFO UserService,main:68 - Verifying Approval
+17:58:17,375  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T17:58:17.374101700 ->  Login Successful
+17:58:18,880  INFO PaymentService,main:33 - Displaying menu
+17:58:18,880  INFO RegisteredCoursesService,main:44 - Showing status
+17:58:22,772  INFO PaymentService,main:65 - Online-payment method
+17:58:27,566  INFO PaymentDaoOperations,main:42 - Fee Payment Done
+17:58:27,566  INFO RegisteredCoursesService,main:51 - Updating status
+17:58:27,575  INFO PaymentDaoOperations,main:245 - Status Updated
+17:58:27,576  INFO NotificationService,main:39 - Sending notification
+17:58:27,648 ERROR NotificationDaoOperation,main:55 - ExceptionData truncation: Data too long for column 'Message' at row 1
+17:59:52,558  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+17:59:52,562  INFO CRSApplication,main:74 - 1. Login
+17:59:52,563  INFO CRSApplication,main:75 - 2. Student Registration
+17:59:52,564  INFO CRSApplication,main:76 - 3. UpdatePassword
+17:59:52,565  INFO CRSApplication,main:77 - 4. Exit
+17:59:52,565  INFO CRSApplication,main:78 - Enter user input
+17:59:55,925  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+17:59:55,926  INFO CRSApplication,main:116 - Enter id 
+17:59:57,321  INFO CRSApplication,main:119 - Enter password
+17:59:57,755  INFO UserService,main:44 - Verifying User
+17:59:57,790  INFO StudentDaoOperation,main:47 - User Verified
+17:59:57,809  INFO UserService,main:68 - Verifying Approval
+17:59:57,810  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T17:59:57.808335900 ->  Login Successful
+17:59:59,636  INFO PaymentService,main:33 - Displaying menu
+17:59:59,637  INFO RegisteredCoursesService,main:44 - Showing status
+18:00:01,063  INFO PaymentService,main:65 - Online-payment method
+18:00:04,686  INFO PaymentDaoOperations,main:42 - Fee Payment Done
+18:00:04,686  INFO RegisteredCoursesService,main:51 - Updating status
+18:00:04,695  INFO PaymentDaoOperations,main:245 - Status Updated
+18:01:16,896  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:01:16,899  INFO CRSApplication,main:74 - 1. Login
+18:01:16,900  INFO CRSApplication,main:75 - 2. Student Registration
+18:01:16,901  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:01:16,901  INFO CRSApplication,main:77 - 4. Exit
+18:01:16,901  INFO CRSApplication,main:78 - Enter user input
+18:01:22,016  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:01:22,016  INFO CRSApplication,main:116 - Enter id 
+18:01:23,300  INFO CRSApplication,main:119 - Enter password
+18:01:24,062  INFO UserService,main:44 - Verifying User
+18:01:24,078  INFO StudentDaoOperation,main:47 - User Verified
+18:01:24,087  INFO UserService,main:68 - Verifying Approval
+18:01:24,088  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:01:24.087992300 ->  Login Successful
+18:01:25,713  INFO PaymentService,main:33 - Displaying menu
+18:01:25,714  INFO RegisteredCoursesService,main:44 - Showing status
+18:01:27,975  INFO PaymentService,main:65 - Online-payment method
+18:01:39,947  INFO PaymentDaoOperations,main:42 - Fee Payment Done
+18:01:39,948  INFO RegisteredCoursesService,main:51 - Updating status
+18:01:39,956  INFO PaymentDaoOperations,main:245 - Status Updated
+18:01:39,957  INFO NotificationService,main:39 - Sending notification
+18:01:39,999  INFO NotificationDaoOperation,main:50 - Notification Sent
+18:02:31,537  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:02:31,538  INFO CRSApplication,main:74 - 1. Login
+18:02:31,538  INFO CRSApplication,main:75 - 2. Student Registration
+18:02:31,538  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:02:31,538  INFO CRSApplication,main:77 - 4. Exit
+18:02:31,538  INFO CRSApplication,main:78 - Enter user input
+18:02:32,320  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:02:32,320  INFO CRSApplication,main:116 - Enter id 
+18:02:34,244  INFO CRSApplication,main:119 - Enter password
+18:02:35,800  INFO UserService,main:44 - Verifying User
+18:02:35,801  INFO StudentDaoOperation,main:47 - User Verified
+18:02:35,801  INFO UserService,main:68 - Verifying Approval
+18:02:35,802  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:02:35.801127200 ->  Login Successful
+18:02:37,395  INFO PaymentService,main:33 - Displaying menu
+18:02:37,396  INFO RegisteredCoursesService,main:44 - Showing status
+18:02:59,735  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+18:03:01,157  INFO RegisteredCoursesService,main:31 - Getting selected courses
+18:03:01,166  INFO SemesterRegistrationService,main:33 - Adding course
+18:03:03,341 ERROR PaymentDaoOperations,main:78 - ExceptionCan not issue data manipulation statements with executeQuery().
+18:03:03,367  INFO PaymentDaoOperations,main:102 - Course added successfully!
+18:03:18,626  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:03:18,626  INFO CRSApplication,main:74 - 1. Login
+18:03:18,626  INFO CRSApplication,main:75 - 2. Student Registration
+18:03:18,627  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:03:18,627  INFO CRSApplication,main:77 - 4. Exit
+18:03:18,627  INFO CRSApplication,main:78 - Enter user input
+18:03:19,471  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:03:19,471  INFO CRSApplication,main:116 - Enter id 
+18:03:20,830  INFO CRSApplication,main:119 - Enter password
+18:03:21,218  INFO UserService,main:44 - Verifying User
+18:03:21,231  INFO StudentDaoOperation,main:47 - User Verified
+18:03:21,231  INFO CRSApplication,main:151 - Admin Has Logged In at : 2022-01-31T18:03:21.231968400 ->  Login Successful
+18:03:26,320  INFO AdminService,main:87 - Showing Selected Courses
+18:03:26,322  INFO AdminDaoOperation,main:287 - 
+Student Has Been Registered
+18:03:26,322  INFO AdminService,main:102 - Updating Student Registration
+18:03:26,328  INFO NotificationService,main:39 - Sending notification
+18:03:26,340  INFO NotificationDaoOperation,main:50 - Notification Sent
+18:03:29,707  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:03:29,707  INFO CRSApplication,main:74 - 1. Login
+18:03:29,707  INFO CRSApplication,main:75 - 2. Student Registration
+18:03:29,707  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:03:29,708  INFO CRSApplication,main:77 - 4. Exit
+18:03:29,708  INFO CRSApplication,main:78 - Enter user input
+18:03:30,811  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:03:30,812  INFO CRSApplication,main:116 - Enter id 
+18:03:32,243  INFO CRSApplication,main:119 - Enter password
+18:03:33,677  INFO UserService,main:44 - Verifying User
+18:03:33,678  INFO StudentDaoOperation,main:47 - User Verified
+18:03:33,678  INFO UserService,main:68 - Verifying Approval
+18:03:33,679  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:03:33.678340600 ->  Login Successful
+18:03:35,435  INFO PaymentService,main:33 - Displaying menu
+18:03:35,436  INFO RegisteredCoursesService,main:44 - Showing status
+18:03:38,372  INFO PaymentService,main:65 - Online-payment method
+18:03:43,703  INFO PaymentDaoOperations,main:42 - Fee Payment Done
+18:03:43,703  INFO RegisteredCoursesService,main:51 - Updating status
+18:03:43,712  INFO PaymentDaoOperations,main:245 - Status Updated
+18:03:43,712  INFO NotificationService,main:39 - Sending notification
+18:03:43,715  INFO NotificationDaoOperation,main:50 - Notification Sent
+18:19:03,305  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:19:03,308  INFO CRSApplication,main:74 - 1. Login
+18:19:03,309  INFO CRSApplication,main:75 - 2. Student Registration
+18:19:03,309  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:19:03,309  INFO CRSApplication,main:77 - 4. Exit
+18:19:03,310  INFO CRSApplication,main:78 - Enter user input
+18:19:04,764  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:19:04,765  INFO CRSApplication,main:116 - Enter id 
+18:19:06,922  INFO CRSApplication,main:119 - Enter password
+18:19:08,797  INFO UserService,main:44 - Verifying User
+18:19:09,148  INFO StudentDaoOperation,main:47 - User Verified
+18:19:09,160  INFO UserService,main:68 - Verifying Approval
+18:19:09,164  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:19:09.160114400 ->  Login Successful
+18:19:11,535  INFO PaymentService,main:33 - Displaying menu
+18:19:11,535  INFO RegisteredCoursesService,main:44 - Showing status
+18:19:11,549 ERROR PaymentDaoOperations,main:70 - ExceptionUnknown column 'studentid' in 'where clause'
+18:19:28,788  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:19:28,791  INFO CRSApplication,main:74 - 1. Login
+18:19:28,792  INFO CRSApplication,main:75 - 2. Student Registration
+18:19:28,792  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:19:28,793  INFO CRSApplication,main:77 - 4. Exit
+18:19:28,794  INFO CRSApplication,main:78 - Enter user input
+18:19:30,357  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:19:30,358  INFO CRSApplication,main:116 - Enter id 
+18:19:31,910  INFO CRSApplication,main:119 - Enter password
+18:19:32,342  INFO UserService,main:44 - Verifying User
+18:19:32,909  INFO StudentDaoOperation,main:47 - User Verified
+18:19:32,929  INFO UserService,main:68 - Verifying Approval
+18:19:32,931  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:19:32.929529600 ->  Login Successful
+18:19:34,329  INFO PaymentService,main:33 - Displaying menu
+18:19:34,330  INFO RegisteredCoursesService,main:44 - Showing status
+18:19:34,340 ERROR PaymentDaoOperations,main:70 - ExceptionBefore start of result set
+18:19:35,536  INFO PaymentService,main:70 - Online-payment method
+18:20:34,694  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:20:34,697  INFO CRSApplication,main:74 - 1. Login
+18:20:34,698  INFO CRSApplication,main:75 - 2. Student Registration
+18:20:34,698  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:20:34,698  INFO CRSApplication,main:77 - 4. Exit
+18:20:34,699  INFO CRSApplication,main:78 - Enter user input
+18:20:36,417  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:20:36,418  INFO CRSApplication,main:116 - Enter id 
+18:20:38,533  INFO CRSApplication,main:119 - Enter password
+18:20:39,454  INFO UserService,main:44 - Verifying User
+18:20:39,900  INFO StudentDaoOperation,main:47 - User Verified
+18:20:39,910  INFO UserService,main:68 - Verifying Approval
+18:20:39,911  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:20:39.909324400 ->  Login Successful
+18:20:41,858  INFO PaymentService,main:33 - Displaying menu
+18:20:41,858  INFO RegisteredCoursesService,main:44 - Showing status
+18:20:41,866 ERROR PaymentDaoOperations,main:70 - ExceptionBefore start of result set
+18:21:41,405  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:21:41,409  INFO CRSApplication,main:74 - 1. Login
+18:21:41,409  INFO CRSApplication,main:75 - 2. Student Registration
+18:21:41,410  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:21:41,410  INFO CRSApplication,main:77 - 4. Exit
+18:21:41,410  INFO CRSApplication,main:78 - Enter user input
+18:21:43,788  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:21:43,788  INFO CRSApplication,main:116 - Enter id 
+18:21:45,072  INFO CRSApplication,main:119 - Enter password
+18:21:45,936  INFO UserService,main:44 - Verifying User
+18:21:46,268  INFO StudentDaoOperation,main:47 - User Verified
+18:21:46,278  INFO UserService,main:68 - Verifying Approval
+18:21:46,280  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:21:46.278700400 ->  Login Successful
+18:21:47,671  INFO PaymentService,main:33 - Displaying menu
+18:21:47,671  INFO RegisteredCoursesService,main:44 - Showing status
+18:21:47,677  INFO PaymentService,main:42 - Fee has been paid already
+18:22:24,921  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+18:22:29,848  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+18:22:33,530  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+18:22:47,141  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:22:47,141  INFO CRSApplication,main:74 - 1. Login
+18:22:47,141  INFO CRSApplication,main:75 - 2. Student Registration
+18:22:47,142  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:22:47,142  INFO CRSApplication,main:77 - 4. Exit
+18:22:47,142  INFO CRSApplication,main:78 - Enter user input
+18:22:48,614  INFO CRSApplication,main:85 - Enter Id:
+18:22:54,586  INFO CRSApplication,main:88 - Enter Name:
+18:22:56,504  INFO CRSApplication,main:91 - Enter Password:
+18:22:57,698  INFO CRSApplication,main:94 - Enter Branch:
+18:22:58,587  INFO StudentDaoOperation,main:57 - Student has signed up
+18:22:58,587  INFO CRSApplication,main:103 - Thankyou For Registration, Wait for the Admin Approval
+18:22:58,587  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:22:58,587  INFO CRSApplication,main:74 - 1. Login
+18:22:58,588  INFO CRSApplication,main:75 - 2. Student Registration
+18:22:58,588  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:22:58,588  INFO CRSApplication,main:77 - 4. Exit
+18:22:58,588  INFO CRSApplication,main:78 - Enter user input
+18:23:01,797  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:23:01,798  INFO CRSApplication,main:116 - Enter id 
+18:23:05,110  INFO CRSApplication,main:119 - Enter password
+18:23:06,016  INFO UserService,main:44 - Verifying User
+18:23:06,027  INFO StudentDaoOperation,main:47 - User Verified
+18:23:06,028  INFO UserService,main:68 - Verifying Approval
+18:23:06,029 ERROR StudentDaoOperation,main:120 - Exceptionuser with id : 1  could not be verified
+18:23:06,029  WARN CRSApplication,main:138 - Failed to login, you have not been approved by the administration!
+18:23:06,029  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:23:06,029  INFO CRSApplication,main:74 - 1. Login
+18:23:06,030  INFO CRSApplication,main:75 - 2. Student Registration
+18:23:06,030  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:23:06,030  INFO CRSApplication,main:77 - 4. Exit
+18:23:06,031  INFO CRSApplication,main:78 - Enter user input
+18:23:10,591  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:23:10,592  INFO CRSApplication,main:116 - Enter id 
+18:23:12,020  INFO CRSApplication,main:119 - Enter password
+18:23:12,498  INFO UserService,main:44 - Verifying User
+18:23:12,499  INFO StudentDaoOperation,main:47 - User Verified
+18:23:12,499  INFO CRSApplication,main:151 - Admin Has Logged In at : 2022-01-31T18:23:12.499309200 ->  Login Successful
+18:23:14,337  INFO AdminService,main:70 - Showing pending approvals of students semester registration
+18:23:14,338  INFO AdminDaoOperation,main:188 - 1 Students in PendingQueue: 
+18:23:17,477  INFO AdminService,main:62 - Approving student
+18:23:17,483  INFO AdminDaoOperation,main:152 - Student Self Registration approved
+18:23:17,483  INFO NotificationService,main:39 - Sending notification
+18:23:17,529  INFO NotificationDaoOperation,main:50 - Notification Sent
+18:23:17,529  INFO AdminDaoOperation,main:210 - Student Registration is being Approved
+
+18:23:18,916  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:23:18,916  INFO CRSApplication,main:74 - 1. Login
+18:23:18,916  INFO CRSApplication,main:75 - 2. Student Registration
+18:23:18,917  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:23:18,917  INFO CRSApplication,main:77 - 4. Exit
+18:23:18,917  INFO CRSApplication,main:78 - Enter user input
+18:23:20,459  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:23:20,459  INFO CRSApplication,main:116 - Enter id 
+18:23:21,239  INFO CRSApplication,main:119 - Enter password
+18:23:21,977  INFO UserService,main:44 - Verifying User
+18:23:21,978  INFO StudentDaoOperation,main:47 - User Verified
+18:23:21,978  INFO UserService,main:68 - Verifying Approval
+18:23:21,979  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:23:21.978828600 ->  Login Successful
+18:23:24,477  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+18:23:25,508  INFO RegisteredCoursesService,main:31 - Getting selected courses
+18:23:25,516  INFO SemesterRegistrationService,main:33 - Adding course
+18:23:28,788 ERROR PaymentDaoOperations,main:78 - ExceptionCan not issue data manipulation statements with executeQuery().
+18:23:28,804  INFO PaymentDaoOperations,main:102 - Course added successfully!
+18:27:27,479  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:27:27,489  INFO CRSApplication,main:74 - 1. Login
+18:27:27,490  INFO CRSApplication,main:75 - 2. Student Registration
+18:27:27,491  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:27:27,493  INFO CRSApplication,main:77 - 4. Exit
+18:27:27,493  INFO CRSApplication,main:78 - Enter user input
+18:27:29,157  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:27:29,159  INFO CRSApplication,main:116 - Enter id 
+18:27:30,887  INFO CRSApplication,main:119 - Enter password
+18:27:32,197  INFO UserService,main:44 - Verifying User
+18:27:32,774 ERROR CRSApplication,main:157 - Invalid Credentials!
+18:27:32,775  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:27:32,775  INFO CRSApplication,main:74 - 1. Login
+18:27:32,776  INFO CRSApplication,main:75 - 2. Student Registration
+18:27:32,776  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:27:32,777  INFO CRSApplication,main:77 - 4. Exit
+18:27:32,777  INFO CRSApplication,main:78 - Enter user input
+18:27:33,943  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:27:33,944  INFO CRSApplication,main:116 - Enter id 
+18:27:34,745  INFO CRSApplication,main:119 - Enter password
+18:27:35,341  INFO UserService,main:44 - Verifying User
+18:27:35,343  INFO StudentDaoOperation,main:47 - User Verified
+18:27:35,369  INFO UserService,main:68 - Verifying Approval
+18:27:35,371  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:27:35.368587200 ->  Login Successful
+18:27:36,781  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+18:27:38,716  INFO RegisteredCoursesService,main:31 - Getting selected courses
+18:27:38,756  INFO SemesterRegistrationService,main:33 - Adding course
+18:27:54,403 ERROR RegisteredCoursesDaoOperation,main:78 - ExceptionCan not issue data manipulation statements with executeQuery().
+18:27:54,432  INFO RegisteredCoursesDaoOperation,main:102 - Course added successfully!
+18:30:04,763  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:30:04,771  INFO CRSApplication,main:74 - 1. Login
+18:30:04,772  INFO CRSApplication,main:75 - 2. Student Registration
+18:30:04,772  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:30:04,772  INFO CRSApplication,main:77 - 4. Exit
+18:30:04,773  INFO CRSApplication,main:78 - Enter user input
+18:30:06,070  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:30:06,070  INFO CRSApplication,main:116 - Enter id 
+18:30:46,137  INFO CRSApplication,main:119 - Enter password
+18:30:46,760  INFO UserService,main:44 - Verifying User
+18:30:47,282  INFO StudentDaoOperation,main:47 - User Verified
+18:30:47,299  INFO UserService,main:68 - Verifying Approval
+18:30:47,300  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:30:47.298928100 ->  Login Successful
+18:30:48,545  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+18:30:49,524  INFO RegisteredCoursesService,main:31 - Getting selected courses
+18:30:49,555  INFO SemesterRegistrationService,main:33 - Adding course
+18:30:52,309 ERROR RegisteredCoursesDaoOperation,main:78 - ExceptionCan not issue data manipulation statements with executeQuery().
+18:30:52,334  INFO RegisteredCoursesDaoOperation,main:102 - Course added successfully!
+18:31:46,704  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:31:46,709  INFO CRSApplication,main:74 - 1. Login
+18:31:46,710  INFO CRSApplication,main:75 - 2. Student Registration
+18:31:46,710  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:31:46,711  INFO CRSApplication,main:77 - 4. Exit
+18:31:46,711  INFO CRSApplication,main:78 - Enter user input
+18:31:48,981  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:31:48,981  INFO CRSApplication,main:116 - Enter id 
+18:31:49,743  INFO CRSApplication,main:119 - Enter password
+18:31:50,646  INFO UserService,main:44 - Verifying User
+18:31:51,334  INFO StudentDaoOperation,main:47 - User Verified
+18:31:51,361  INFO UserService,main:68 - Verifying Approval
+18:31:51,363  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:31:51.361043700 ->  Login Successful
+18:31:52,381  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+18:31:53,860  INFO RegisteredCoursesService,main:31 - Getting selected courses
+18:31:53,883  INFO SemesterRegistrationService,main:33 - Adding course
+18:31:56,085  INFO RegisteredCoursesDaoOperation,main:102 - Course added successfully!
+18:33:19,449  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:33:19,457  INFO CRSApplication,main:74 - 1. Login
+18:33:19,458  INFO CRSApplication,main:75 - 2. Student Registration
+18:33:19,461  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:33:19,462  INFO CRSApplication,main:77 - 4. Exit
+18:33:19,463  INFO CRSApplication,main:78 - Enter user input
+18:33:35,818  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:33:35,820  INFO CRSApplication,main:116 - Enter id 
+18:33:36,431  INFO CRSApplication,main:119 - Enter password
+18:33:37,060  INFO UserService,main:44 - Verifying User
+18:33:37,814  INFO StudentDaoOperation,main:47 - User Verified
+18:33:37,847  INFO UserService,main:68 - Verifying Approval
+18:33:37,850  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:33:37.846599900 ->  Login Successful
+18:33:39,624  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+18:33:41,161  INFO RegisteredCoursesService,main:31 - Getting selected courses
+18:33:41,182  INFO SemesterRegistrationService,main:33 - Adding course
+18:33:45,164  INFO RegisteredCoursesDaoOperation,main:102 - Course added successfully!
+18:41:51,402  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:41:51,407  INFO CRSApplication,main:74 - 1. Login
+18:41:51,408  INFO CRSApplication,main:75 - 2. Student Registration
+18:41:51,409  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:41:51,409  INFO CRSApplication,main:77 - 4. Exit
+18:41:51,409  INFO CRSApplication,main:78 - Enter user input
+18:41:53,395  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:41:53,396  INFO CRSApplication,main:116 - Enter id 
+18:41:55,127  INFO CRSApplication,main:119 - Enter password
+18:41:55,805  INFO UserService,main:44 - Verifying User
+18:41:56,520  INFO StudentDaoOperation,main:47 - User Verified
+18:41:56,544  INFO UserService,main:68 - Verifying Approval
+18:41:56,546  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:41:56.543684 ->  Login Successful
+18:41:57,976  INFO AdminService,main:110 - Viewing student data
+18:41:57,986  INFO AdminService,main:116 - Activating grade card
+18:41:57,989  INFO AdminDaoOperation,main:388 - Grade Card Activated
+18:44:26,210  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:44:26,217  INFO CRSApplication,main:74 - 1. Login
+18:44:26,218  INFO CRSApplication,main:75 - 2. Student Registration
+18:44:26,219  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:44:26,221  INFO CRSApplication,main:77 - 4. Exit
+18:44:26,223  INFO CRSApplication,main:78 - Enter user input
+18:44:28,114  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:44:28,115  INFO CRSApplication,main:116 - Enter id 
+18:44:28,986  INFO CRSApplication,main:119 - Enter password
+18:44:29,612  INFO UserService,main:44 - Verifying User
+18:44:30,237  INFO StudentDaoOperation,main:47 - User Verified
+18:44:30,254  INFO UserService,main:68 - Verifying Approval
+18:44:30,256  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:44:30.253565200 ->  Login Successful
+18:44:31,522  INFO AdminService,main:110 - Viewing student data
+18:44:31,525  INFO AdminService,main:116 - Activating grade card
+18:44:31,527  INFO AdminDaoOperation,main:388 - Grade Card Activated
+18:45:21,385  INFO AdminService,main:110 - Viewing student data
+18:45:21,390 DEBUG StudentService,main:145 - Report card generation is not approved
+18:45:34,193  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+18:45:34,201  INFO CRSApplication,main:74 - 1. Login
+18:45:34,202  INFO CRSApplication,main:75 - 2. Student Registration
+18:45:34,203  INFO CRSApplication,main:76 - 3. UpdatePassword
+18:45:34,204  INFO CRSApplication,main:77 - 4. Exit
+18:45:34,204  INFO CRSApplication,main:78 - Enter user input
+18:45:36,402  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+18:45:36,403  INFO CRSApplication,main:116 - Enter id 
+18:45:37,856  INFO CRSApplication,main:119 - Enter password
+18:45:38,311  INFO UserService,main:44 - Verifying User
+18:45:39,116  INFO StudentDaoOperation,main:47 - User Verified
+18:45:39,143  INFO UserService,main:68 - Verifying Approval
+18:45:39,149  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T18:45:39.141347 ->  Login Successful
+18:45:40,877  INFO AdminService,main:110 - Viewing student data
+18:45:40,883  INFO AdminService,main:116 - Activating grade card
+18:45:40,885  INFO AdminDaoOperation,main:388 - Grade Card Activated

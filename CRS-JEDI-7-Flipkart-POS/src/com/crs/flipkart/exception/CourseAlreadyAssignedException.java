@@ -17,7 +17,7 @@ public class CourseAlreadyAssignedException extends Exception{
 	}
 	
 	public String getMessage() {
-		return "Course with id : "+ courseid+ "  is already assigned or does not exist";	
+		return "Course with id : "+ courseid+ " does not exist or already been taken";	
 		}
 	
 }

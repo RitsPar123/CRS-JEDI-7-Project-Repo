@@ -36,6 +36,9 @@ public class StudentService implements StudentServiceInterface{
 	StudentDaoInterface StudentDaoInterface = new StudentDaoOperation(); 
 	RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
 	NotificationDaoInterface notificationDaoInterface = new NotificationDaoOperation();
+	NotificationServiceInterface notificationService = new NotificationService();
+	PaymentServiceInterface paymentInterface = new PaymentService();
+	AdminServiceInterface adminInterface = new AdminService();
 	
 	Scanner sc = new Scanner(System.in);
 	
@@ -131,10 +134,26 @@ public class StudentService implements StudentServiceInterface{
 	 * @param id : Id of the student
 	 */
 	public void viewReportCard(String id) {
-		// RegisteredCourses -> Report card
-		// Print
-		ReportCardService reportcardservice = new ReportCardService();
-		reportcardservice.ViewReportCard(id);
+		 Student stud = new Student();
+         stud = adminInterface.viewStudentData(id);
+         
+         System.out.println("Details are  ->");
+         System.out.println("Id -> " + stud.getId() + " Name -> " + stud.getUserName() + " Branch -> " + stud.getBranch());
+         
+         if(!stud.isReportApproved()) {
+        	 logger.debug("Report card generation is not approved");
+        	 return;
+         }
+         
+             List<RegisteredCourses> registeredCourses = adminInterface.activateGradeCard(id);
+             
+             if(stud.isReportApproved()) {
+             for(RegisteredCourses course:registeredCourses) {
+             	System.out.println("CourseId -> " + course.getCourseId() + " Grade ->  " + course.getGrade());
+             	
+             }
+             }
+         	System.out.println("Student Report Card");
 	}
 
 	
@@ -147,7 +166,7 @@ public class StudentService implements StudentServiceInterface{
 		int isRegistered = StudentDaoInterface.getRegistrationStatus(id);
 		
 		if(isRegistered == 0) {
-			System.out.println("Registration in progrees or incomplete!");
+			logger.debug("Registration in progress or incomplete!");
 			return;
 		}
 		
@@ -172,6 +191,8 @@ public class StudentService implements StudentServiceInterface{
 		// TODO: Print all the messages of the student
 		logger.info("Fetching Notification");
 		notificationDaoInterface.getNoti(studentId);
-	}
+	} 
+	
+	
 	
 }

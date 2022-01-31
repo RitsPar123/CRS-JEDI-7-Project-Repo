@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.RegisteredCourses;
+import com.crs.flipkart.exception.CourseNotFoundException;
 
 /**
  * @author harsh
@@ -15,6 +16,7 @@ import com.crs.flipkart.bean.RegisteredCourses;
 public interface RegisteredCoursesDaoInterface {
 	
 	public List<Course> getApprovedCoursesById(String id);
+	public boolean isCourseAvailable(String courseid) throws CourseNotFoundException;
 	public boolean addCourse(String courseId,String SId);
 	public void dropCourse(String courseId,String SId);
 	public boolean hasCourse(String courseId,String Sid);
