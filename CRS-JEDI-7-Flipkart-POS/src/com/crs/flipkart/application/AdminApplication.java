@@ -245,28 +245,23 @@ public class AdminApplication {
             Student stud = new Student();
             stud = adminInterface.viewStudentData(studentId);
             
-            if(stud!=null) {
             System.out.println("Details are  ->");
             System.out.println("Id -> " + stud.getId() + " Name -> " + stud.getUserName() + " Branch -> " + stud.getBranch());
 
             if(!stud.isReportApproved()) {
                 List<RegisteredCourses> registeredCourses = adminInterface.activateGradeCard(studentId);
                 int count = 0;
-                if(registeredCourses!=null && registeredCourses.size()>0) {
+         
                 for(RegisteredCourses course:registeredCourses) {
                 	System.out.println("CourseId -> " + course.getCourseId() + " Grade " + course.getGrade());
                 	count++;
                 }
-                
-                if(count == 4) {
+            
                 	adminInterface.approveStudentRegistration(studentId);
                 	System.out.println("Student Report is Generated");
+
                 }
-                }
-            }else {
-            	System.out.println("Student Report is Already Generated");
-            }
-            }
+
 	}
 	
     private void studentCourseAllot() {
@@ -281,22 +276,22 @@ public class AdminApplication {
         int count = 0;
         
         String s1=null,s2=null;
-        if(courseList!=null) {
-	       for (String c : courseList) {
-	        		count++;
-	        		if(count>4) {
-	        			if(s1 == null) {
-	        				s1 = c;
-	        			}else {
-	        				s2 = c;
-	        			}
-	        		}
-	        }
-	       	System.out.println("Student Has Been Registered");
+//
+//	       for (String c : courseList) {
+//	        		count++;
+//	        		if(count>4) {
+//	        			if(s1 == null) {
+//	        				s1 = c;
+//	        			}else {
+//	        				s2 = c;
+//	        			}
+//	        		}
+//	        }
+	       	System.out.println("\nStudent Has Been Registered");
 	       	adminInterface.updateRegistered(studentId,s1,s2);
 	       	message = "Registered";
 	       	notificationService.sendNotification(studentId,message);
-        }
+        
 
         
 //        if(count>2) {

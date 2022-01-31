@@ -223,20 +223,17 @@ public class AdminDaoOperation implements AdminDaoInterface {
             
             Set<String> courseList = new HashSet();
             
-            if(resultSet.next()) {
+         
 	            while (resultSet.next()) {
 	                courseList.add(resultSet.getString("CourseId"));
 	            }
-            }
-            else 
-            	throw new StudentNotRegisteredException(studentId);
-            //conn.close();
+            
+//            else 
+//            	throw new StudentNotRegisteredException(studentId);
+//            //conn.close();
             
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-        	logger.error("Exception " + e.getMessage());
-        }
-        catch (StudentNotRegisteredException e) {
         	logger.error("Exception " + e.getMessage());
         }
         
@@ -284,9 +281,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	            PreparedStatement pstmtP;
 	            pstmtP = conn.prepareStatement(SQLQueriesConstant.APPROVE_STUDENT_REGISTRATION);
 
-	            pstmtP.setString(1, s1);
-	            pstmtP.setString(2, s2);
-	            pstmtP.setString(3, studentId);
+//	            pstmtP.setString(1, s1);
+//	            pstmtP.setString(2, s2);
+	            pstmtP.setString(1, studentId);
 
 	            pstmtP.executeUpdate();
 	            conn.close();
@@ -353,27 +350,23 @@ public class AdminDaoOperation implements AdminDaoInterface {
 
             List<RegisteredCourses> registeredCourse = new ArrayList<RegisteredCourses>();
             
-            if(resultSet.next()) {
+//            if(resultSet.next()) {
             while (resultSet.next()) {
             	RegisteredCourses course = new RegisteredCourses();
                 course.setCourseId(resultSet.getString("CourseId"));
                 course.setGrade(resultSet.getInt("Grade"));
 
                 registeredCourse.add(course);
-            }
+//            }
 
 //            conn.close();
             logger.info("Grade Card Activated");
             return registeredCourse;
             }
-            else 
-            	throw new StudentNotRegisteredException(studentId);
+            
         } catch (SQLException e) {
             // TODO Auto-generated catch block
         	logger.error("Exception" + e.getMessage());
-        } 
-        catch(StudentNotRegisteredException e) {
-        	logger.error("Exception "+e.getMessage());
         }
 		return null;
 	}
