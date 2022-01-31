@@ -370,3 +370,91 @@
 11:48:59,636  INFO RegisteredCoursesService,main:31 - Getting selected courses
 11:48:59,654  INFO SemesterRegistrationService,main:32 - Adding course
 11:49:02,524  INFO PaymentDaoOperations,main:75 - Course added successfully!
+15:40:51,461  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+15:40:51,515  INFO CRSApplication,main:74 - 1. Login
+15:40:51,517  INFO CRSApplication,main:75 - 2. Student Registration
+15:40:51,518  INFO CRSApplication,main:76 - 3. UpdatePassword
+15:40:51,519  INFO CRSApplication,main:77 - 4. Exit
+15:40:51,519  INFO CRSApplication,main:78 - Enter user input
+15:40:52,726  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+15:40:52,727  INFO CRSApplication,main:116 - Enter id 
+15:40:54,749  INFO CRSApplication,main:119 - Enter password
+15:40:55,273  INFO UserService,main:44 - Verifying User
+15:40:55,399  INFO StudentDaoOperation,main:47 - User Verified
+15:40:55,402  INFO CRSApplication,main:151 - Admin Has Logged In at : 2022-01-31T15:40:55.401495200 ->  Login Successful
+15:41:01,389  INFO AdminService,main:63 - Showing pending approvals of students semester registration
+15:41:23,751  INFO AdminService,main:63 - Showing pending approvals of students semester registration
+15:41:23,754  INFO AdminDaoOperation,main:221 - No pending Approval Requests
+15:41:45,726  INFO AdminService,main:55 - Approving student
+15:41:45,753  INFO AdminDaoOperation,main:128 - Student Self Registration approved
+15:41:45,757  INFO NotificationService,main:39 - Sending notification
+15:41:46,017  INFO NotificationDaoOperation,main:50 - Notification Sent
+15:41:53,076  INFO AdminService,main:55 - Approving student
+15:41:53,082 ERROR AdminDaoOperation,main:89 - Exception Student could not be found / approved
+15:42:06,579  INFO AdminService,main:71 - Showing courses from the course catalogue
+15:42:06,601  INFO AdminDaoOperation,main:236 - No courses found in course catalogue
+
+15:42:18,239  INFO AdminService,main:80 - Showing Selected Courses
+15:42:18,254  INFO AdminService,main:95 - Updating Student Registration
+15:42:18,261  INFO NotificationService,main:39 - Sending notification
+15:42:18,275  INFO NotificationDaoOperation,main:50 - Notification Sent
+15:42:42,579  INFO AdminService,main:103 - Viewing student data
+15:42:42,584  INFO AdminService,main:109 - Activating grade card
+15:42:42,600  INFO AdminDaoOperation,main:362 - Grade Card Activated
+15:42:42,601  INFO AdminService,main:115 - Approving student registration
+15:42:42,605  INFO AdminDaoOperation,main:386 - Sem Registeration Approved
+15:42:52,676  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+15:42:52,676  INFO CRSApplication,main:74 - 1. Login
+15:42:52,677  INFO CRSApplication,main:75 - 2. Student Registration
+15:42:52,677  INFO CRSApplication,main:76 - 3. UpdatePassword
+15:42:52,678  INFO CRSApplication,main:77 - 4. Exit
+15:42:52,678  INFO CRSApplication,main:78 - Enter user input
+15:43:22,514  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+15:43:22,514  INFO CRSApplication,main:116 - Enter id 
+15:43:25,331  INFO CRSApplication,main:119 - Enter password
+15:43:32,018  INFO UserService,main:44 - Verifying User
+15:43:32,030  INFO StudentDaoOperation,main:47 - User Verified
+15:43:32,030  INFO UserService,main:68 - Verifying Approval
+15:43:32,034 ERROR StudentDaoOperation,main:120 - Exceptionuser with id : 101  could not be verified
+15:43:32,034  WARN CRSApplication,main:138 - Failed to login, you have not been approved by the administration!
+15:43:32,035  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+15:43:32,035  INFO CRSApplication,main:74 - 1. Login
+15:43:32,035  INFO CRSApplication,main:75 - 2. Student Registration
+15:43:32,036  INFO CRSApplication,main:76 - 3. UpdatePassword
+15:43:32,036  INFO CRSApplication,main:77 - 4. Exit
+15:43:32,036  INFO CRSApplication,main:78 - Enter user input
+15:43:51,763  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+15:43:51,763  INFO CRSApplication,main:116 - Enter id 
+15:43:53,307  INFO CRSApplication,main:119 - Enter password
+15:43:53,728  INFO UserService,main:44 - Verifying User
+15:43:53,730  INFO StudentDaoOperation,main:47 - User Verified
+15:43:53,730  INFO CRSApplication,main:151 - Admin Has Logged In at : 2022-01-31T15:43:53.730322800 ->  Login Successful
+15:43:57,674  INFO AdminService,main:55 - Approving student
+15:43:57,681  INFO AdminDaoOperation,main:128 - Student Self Registration approved
+15:43:57,682  INFO NotificationService,main:39 - Sending notification
+15:43:57,684  INFO NotificationDaoOperation,main:50 - Notification Sent
+15:44:01,380  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+15:44:01,380  INFO CRSApplication,main:74 - 1. Login
+15:44:01,381  INFO CRSApplication,main:75 - 2. Student Registration
+15:44:01,381  INFO CRSApplication,main:76 - 3. UpdatePassword
+15:44:01,381  INFO CRSApplication,main:77 - 4. Exit
+15:44:01,382  INFO CRSApplication,main:78 - Enter user input
+15:44:02,548  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+15:44:02,548  INFO CRSApplication,main:116 - Enter id 
+15:44:04,787  INFO CRSApplication,main:119 - Enter password
+15:44:06,679  INFO UserService,main:44 - Verifying User
+15:44:06,680  INFO StudentDaoOperation,main:47 - User Verified
+15:44:06,680  INFO UserService,main:68 - Verifying Approval
+15:44:06,682  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T15:44:06.680726100 ->  Login Successful
+15:44:08,423  INFO PaymentService,main:33 - Displaying menu
+15:44:08,425  INFO RegisteredCoursesService,main:44 - Showing status
+15:44:11,226  INFO PaymentService,main:65 - Online-payment method
+15:44:15,450  INFO PaymentDaoOperations,main:42 - Fee Payment Done
+15:44:15,450  INFO RegisteredCoursesService,main:51 - Updating status
+15:44:15,463  INFO PaymentDaoOperations,main:217 - Status Updated
+15:44:15,464  INFO NotificationService,main:39 - Sending notification
+15:44:15,540 ERROR NotificationDaoOperation,main:55 - ExceptionData truncation: Data too long for column 'Message' at row 1
+15:44:36,736  INFO AdminService,main:103 - Viewing student data
+15:44:36,738  INFO AdminService,main:109 - Activating grade card
+15:44:36,739  INFO AdminDaoOperation,main:362 - Grade Card Activated
+15:44:43,433  INFO NotificationService,main:51 - Displaying notification 
