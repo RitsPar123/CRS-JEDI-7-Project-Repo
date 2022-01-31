@@ -241,3 +241,11 @@
 00:54:35,402  INFO CRSApplication,main:71 - Enter user input
 00:54:37,920  INFO CRSApplication,main:101 - -----------------Login Menu------------------
 00:54:37,921  INFO CRSApplication,main:103 - Enter id 
+10:47:15,336  INFO CRSApplication,main:66 - ----------Welcome to Course Management System---------
+10:47:15,343  INFO CRSApplication,main:67 - 1. Login
+10:47:15,344  INFO CRSApplication,main:68 - 2. Student Registration
+10:47:15,345  INFO CRSApplication,main:69 - 3. UpdatePassword
+10:47:15,345  INFO CRSApplication,main:70 - 4. Exit
+10:47:15,346  INFO CRSApplication,main:71 - Enter user input
+10:47:18,167  INFO CRSApplication,main:101 - -----------------Login Menu------------------
+10:47:18,168  INFO CRSApplication,main:103 - Enter id 
