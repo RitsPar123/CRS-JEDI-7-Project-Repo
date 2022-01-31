@@ -17,6 +17,8 @@ import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.exception.CourseNotFoundException;
 import com.crs.flipkart.exception.GradeNotAddedException;
+import com.crs.flipkart.exception.NoCourseFoundException;
+import com.crs.flipkart.exception.StudentNotFoundException;
 import com.crs.flipkart.utils.CRSDb;
 
 /**
@@ -213,7 +215,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
     * {@inheritDoc}
     */ 
 	@Override
-	public void viewRegisteredStudents(String id, String courseId) {
+	public void viewRegisteredStudents(String id, String courseId) throws StudentNotFoundException{
 		try {
 			if(isProfCourse( id,  courseId))
 				{
@@ -221,14 +223,17 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 					stmt = conn.prepareStatement(query);
 					stmt.setString(1, courseId);
 					ResultSet registeredStudents =  stmt.executeQuery();
-		
+						
+					if(registeredStudents.next()) {
 					while(registeredStudents.next()) {
 						
 						System.out.println("\tStudent Id:"+ registeredStudents.getString("id")+ "\tStudent Name :" + registeredStudents.getString("name"));
 						
 					   
 				    }
-					return ;
+					}
+					else
+						throw new StudentNotFoundException(courseId,1);
 				}
 			else{
 				logger.error("Professor Not Registered for given Course");

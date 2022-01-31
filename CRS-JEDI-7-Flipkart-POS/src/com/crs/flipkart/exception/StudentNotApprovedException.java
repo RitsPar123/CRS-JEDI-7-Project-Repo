@@ -24,7 +24,8 @@ public class StudentNotApprovedException extends Exception{
 	 * Message thrown by exception
 	 */
 	public String getMessage(){
-		return "Student with id : "+sid+" could not be found / approved";
+//		return "Student with id : "+sid+" could not be found / approved";
+		return "Student could not be found / approved";
 	}
 	
 }

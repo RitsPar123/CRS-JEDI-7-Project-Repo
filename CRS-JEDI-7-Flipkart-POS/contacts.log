@@ -249,3 +249,124 @@
 10:47:15,346  INFO CRSApplication,main:71 - Enter user input
 10:47:18,167  INFO CRSApplication,main:101 - -----------------Login Menu------------------
 10:47:18,168  INFO CRSApplication,main:103 - Enter id 
+11:09:35,073  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+11:09:35,075  INFO CRSApplication,main:74 - 1. Login
+11:09:35,076  INFO CRSApplication,main:75 - 2. Student Registration
+11:09:35,077  INFO CRSApplication,main:76 - 3. UpdatePassword
+11:09:35,077  INFO CRSApplication,main:77 - 4. Exit
+11:09:35,078  INFO CRSApplication,main:78 - Enter user input
+11:09:49,603  INFO CRSApplication,main:62 - Invalid Input
+11:09:49,603  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+11:09:49,604  INFO CRSApplication,main:74 - 1. Login
+11:09:49,604  INFO CRSApplication,main:75 - 2. Student Registration
+11:09:49,604  INFO CRSApplication,main:76 - 3. UpdatePassword
+11:09:49,604  INFO CRSApplication,main:77 - 4. Exit
+11:09:49,604  INFO CRSApplication,main:78 - Enter user input
+11:09:52,096  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+11:09:52,097  INFO CRSApplication,main:116 - Enter id 
+11:09:53,440  INFO CRSApplication,main:119 - Enter password
+11:09:54,233  INFO UserService,main:44 - Verifying User
+11:09:54,244  INFO StudentDaoOperation,main:47 - User Verified
+11:09:54,263  INFO CRSApplication,main:151 - Admin Has Logged In at : 2022-01-31T11:09:54.263003900 ->  Login Successful
+11:10:01,593  INFO AdminService,main:31 - Adding course in the course-catalogue
+11:10:01,605 ERROR AdminDaoOperation,main:54 - Exception Field 'PId' doesn't have a default value
+11:10:01,605 ERROR AdminDaoOperation,main:55 - Exception Course with courseId : 101 cannot be added
+11:10:09,576  INFO AdminService,main:39 - Deleting course in the course-catalogue
+11:10:09,577  INFO AdminDaoOperation,main:74 - Course Deleted
+11:11:15,213  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+11:11:15,215  INFO CRSApplication,main:74 - 1. Login
+11:11:15,215  INFO CRSApplication,main:75 - 2. Student Registration
+11:11:15,216  INFO CRSApplication,main:76 - 3. UpdatePassword
+11:11:15,216  INFO CRSApplication,main:77 - 4. Exit
+11:11:15,216  INFO CRSApplication,main:78 - Enter user input
+11:11:41,495  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+11:11:41,495  INFO CRSApplication,main:116 - Enter id 
+11:11:43,286  INFO CRSApplication,main:119 - Enter password
+11:11:45,800  INFO UserService,main:44 - Verifying User
+11:11:45,811  INFO StudentDaoOperation,main:47 - User Verified
+11:11:45,821  INFO CRSApplication,main:145 - Professor Has Logged In at : 2022-01-31T11:11:45.820680400 ->  Login Successful
+11:11:53,976  INFO ProfessorService,main:31 - Selecting the course
+11:11:53,977 ERROR ProfessorDaoOperation,main:52 - Course does not exist or already been taken
+11:11:53,978 ERROR ProfessorDaoOperation,main:63 - Exception:Course with courseid : 101 is not found
+11:12:00,842  INFO ProfessorService,main:73 - Showing Courses
+11:20:17,306  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+11:20:17,308  INFO CRSApplication,main:74 - 1. Login
+11:20:17,309  INFO CRSApplication,main:75 - 2. Student Registration
+11:20:17,309  INFO CRSApplication,main:76 - 3. UpdatePassword
+11:20:17,310  INFO CRSApplication,main:77 - 4. Exit
+11:20:17,310  INFO CRSApplication,main:78 - Enter user input
+11:20:19,040  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+11:20:19,041  INFO CRSApplication,main:116 - Enter id 
+11:20:20,875  INFO CRSApplication,main:119 - Enter password
+11:20:23,129  INFO UserService,main:44 - Verifying User
+11:20:23,141  INFO StudentDaoOperation,main:47 - User Verified
+11:20:23,150  INFO CRSApplication,main:145 - Professor Has Logged In at : 2022-01-31T11:20:23.149028100 ->  Login Successful
+11:20:25,369  INFO ProfessorService,main:74 - Showing Courses
+11:20:48,443  INFO ProfessorService,main:74 - Showing Courses
+11:20:48,444 ERROR ProfessorApplication,main:70 - Exception: No courses found in the database
+11:21:32,476  INFO ProfessorService,main:32 - Selecting the course
+11:21:32,483  INFO ProfessorDaoOperation,main:57 - Course has been added Successfully
+11:21:53,901  INFO ProfessorService,main:42 - Viewing Registered Course
+11:22:08,851  INFO ProfessorService,main:42 - Viewing Registered Course
+11:27:08,700  INFO ProfessorService,main:42 - Viewing Registered Course
+11:28:41,382  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+11:28:41,384  INFO CRSApplication,main:74 - 1. Login
+11:28:41,384  INFO CRSApplication,main:75 - 2. Student Registration
+11:28:41,385  INFO CRSApplication,main:76 - 3. UpdatePassword
+11:28:41,385  INFO CRSApplication,main:77 - 4. Exit
+11:28:41,385  INFO CRSApplication,main:78 - Enter user input
+11:28:42,916  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+11:28:42,916  INFO CRSApplication,main:116 - Enter id 
+11:28:45,133  INFO CRSApplication,main:119 - Enter password
+11:28:46,587  INFO UserService,main:44 - Verifying User
+11:28:46,597  INFO StudentDaoOperation,main:47 - User Verified
+11:28:46,606  INFO CRSApplication,main:145 - Professor Has Logged In at : 2022-01-31T11:28:46.605769100 ->  Login Successful
+11:28:48,470  INFO ProfessorService,main:42 - Viewing Registered Course
+11:28:48,471  INFO ProfessorApplication,main:53 - Exception: Professor with id: 103 has no registered courses
+11:29:03,455  INFO ProfessorService,main:67 - Adding grades of the student
+11:29:03,464 ERROR ProfessorDaoOperation,main:163 - Student does not exist / does not take the course 
+
+11:29:10,370  INFO ProfessorService,main:77 - Showing Courses
+11:29:10,371 ERROR ProfessorApplication,main:75 - Exception: No courses found in the database
+11:29:17,786  INFO ProfessorService,main:100 - Viewing Registered Courses
+11:29:17,788 ERROR ProfessorDaoOperation,main:234 - Professor Not Registered for given Course
+11:29:40,351  INFO ProfessorService,main:100 - Viewing Registered Courses
+11:29:57,171  INFO ProfessorService,main:67 - Adding grades of the student
+11:29:57,172 ERROR ProfessorDaoOperation,main:163 - Student does not exist / does not take the course 
+
+11:46:45,284  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+11:46:45,286  INFO CRSApplication,main:74 - 1. Login
+11:46:45,286  INFO CRSApplication,main:75 - 2. Student Registration
+11:46:45,287  INFO CRSApplication,main:76 - 3. UpdatePassword
+11:46:45,288  INFO CRSApplication,main:77 - 4. Exit
+11:46:45,288  INFO CRSApplication,main:78 - Enter user input
+11:46:47,349  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+11:46:47,350  INFO CRSApplication,main:116 - Enter id 
+11:46:49,989  INFO CRSApplication,main:119 - Enter password
+11:46:54,038  INFO UserService,main:44 - Verifying User
+11:46:54,077  INFO StudentDaoOperation,main:47 - User Verified
+11:46:54,099  INFO CRSApplication,main:145 - Professor Has Logged In at : 2022-01-31T11:46:54.098542800 ->  Login Successful
+11:46:58,819  INFO ProfessorService,main:101 - Viewing Registered Courses
+11:46:58,837  INFO ProfessorService,main:106 - Exception : No students are registered for course with id : 103
+11:47:27,060  INFO CRSApplication,main:73 - ----------Welcome to Course Management System---------
+11:47:27,064  INFO CRSApplication,main:74 - 1. Login
+11:47:27,064  INFO CRSApplication,main:75 - 2. Student Registration
+11:47:27,065  INFO CRSApplication,main:76 - 3. UpdatePassword
+11:47:27,065  INFO CRSApplication,main:77 - 4. Exit
+11:47:27,065  INFO CRSApplication,main:78 - Enter user input
+11:47:30,162  INFO CRSApplication,main:114 - -----------------Login Menu------------------
+11:47:30,163  INFO CRSApplication,main:116 - Enter id 
+11:48:29,997  INFO CRSApplication,main:119 - Enter password
+11:48:32,285  INFO UserService,main:44 - Verifying User
+11:48:32,339  INFO StudentDaoOperation,main:47 - User Verified
+11:48:32,369  INFO UserService,main:68 - Verifying Approval
+11:48:32,377  INFO CRSApplication,main:134 - Student Has Logged In at : 2022-01-31T11:48:32.368582700 ->  Login Successful
+11:48:35,317  INFO RegisteredCoursesService,main:36 - Showing approved Courses
+11:48:36,844  INFO RegisteredCoursesService,main:31 - Getting selected courses
+11:48:36,862  INFO SemesterRegistrationService,main:32 - Adding course
+11:48:40,135  INFO PaymentDaoOperations,main:75 - Course added successfully!
+11:48:45,021  INFO RegisteredCoursesService,main:31 - Getting selected courses
+11:48:45,052  INFO SemesterRegistrationService,main:32 - Adding course
+11:48:59,636  INFO RegisteredCoursesService,main:31 - Getting selected courses
+11:48:59,654  INFO SemesterRegistrationService,main:32 - Adding course
+11:49:02,524  INFO PaymentDaoOperations,main:75 - Course added successfully!

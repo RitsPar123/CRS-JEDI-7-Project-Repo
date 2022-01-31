@@ -5,7 +5,11 @@ package com.crs.flipkart.application;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
+import com.crs.flipkart.business.AdminService;
 import com.crs.flipkart.business.ProfessorService;
+import com.crs.flipkart.exception.NoCourseFoundException;
 
 /**
  * @author harsh
@@ -14,6 +18,8 @@ import com.crs.flipkart.business.ProfessorService;
 public class ProfessorApplication {
 	
 public void professorLoggedIn(String id) {
+		
+		Logger logger = Logger.getLogger(ProfessorApplication.class);
 		
 		ProfessorService professorService=new ProfessorService();
 		
@@ -40,7 +46,12 @@ public void professorLoggedIn(String id) {
 					//Status of allotment to be added whether alloted or not.
 					break;
 				case 2:
+					try {
 					professorService.viewRegisteredCourses(id);
+					} 
+					catch(NoCourseFoundException ex) {
+						logger.info("Exception: "+ ex.getMessagewithid());
+					}
 					break;
 				case 3:
 					System.out.println("Enter  course Id");
@@ -57,7 +68,12 @@ public void professorLoggedIn(String id) {
 					//Show successful grade allotment
 					break;
 				 case 4:
+					 try {
 					 professorService.showCourses();
+					 }
+					 catch(NoCourseFoundException ex) {
+						 logger.error("Exception: "+ex.getMessage());
+					 }
 					 //shows available courses that can be picked
 					break;
 				 case 5:

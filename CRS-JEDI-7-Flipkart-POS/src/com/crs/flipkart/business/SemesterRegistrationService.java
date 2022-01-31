@@ -56,6 +56,7 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
         	return;
         }
         
+
         registeredCoursesDaoInterface.dropCourse(courseId, semesterRegistration.getStudentId());
         
         System.out.println("Course with course id " + courseId + " deleted Successfully!");
