@@ -24,6 +24,7 @@ public class CRSDb {
 	        if (connection != null && !connection.isClosed()) {
 	            return connection;
 	        } else {
+	        
 	        	Properties prop = new Properties();
                 InputStream inputStream = CRSDb.class.getClassLoader().getResourceAsStream("./config.properties");
                 prop.load(inputStream);
@@ -33,6 +34,7 @@ public class CRSDb {
                 String password = prop.getProperty("password");
                 Class.forName(driver);
 	            connection = DriverManager.getConnection(url, user, password);
+	            return connection;
 	        }
 	    }catch (ClassNotFoundException e) {
             e.printStackTrace();

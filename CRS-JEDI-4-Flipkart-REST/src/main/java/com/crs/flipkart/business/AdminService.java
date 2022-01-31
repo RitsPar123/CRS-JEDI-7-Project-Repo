@@ -97,10 +97,10 @@ public class AdminService implements AdminServiceInterface {
 	}
 	/*Method to get student registered*/
 	@Override
-	public boolean updateRegistered(String studentId,String s1, String s2) {
+	public boolean updateRegistered(String studentId) {
 		// TODO Auto-generated method stub
 		logger.info("Updating Student Registration");
-		return adminDaoOp.updateRegistered(studentId,s1,s2);
+		return adminDaoOp.updateRegistered(studentId);
 	}
 	
 	/*Method to view Student Data using user and student table*/

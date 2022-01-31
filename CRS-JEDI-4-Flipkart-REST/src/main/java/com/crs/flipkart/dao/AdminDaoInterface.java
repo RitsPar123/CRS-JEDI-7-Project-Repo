@@ -96,7 +96,7 @@ public interface AdminDaoInterface {
 	 * @param studentId
 	 * @return true if successful / false if failure
 	 */
-	public boolean updateRegistered(String studentId, String s1, String s2);
+	public boolean updateRegistered(String studentId);
 
 	/**
 	 * Method to view details of a student using SQL commands

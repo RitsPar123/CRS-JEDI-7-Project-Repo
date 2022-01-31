@@ -201,7 +201,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
     @Override
     public List<Course> viewCourse() {
         // TODO Auto-generated method stub
-        Connection conn = CRSDb.getConnect();
+    	Connection conn = CRSDb.getConnect();
         try {
             PreparedStatement pstmtP;
             pstmtP = conn.prepareStatement(SQLQueriesConstant.VIEW_COURSES);
@@ -295,7 +295,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	}
 
 	@Override
-	public boolean updateRegistered(String studentId,String s1, String s2) {
+	public boolean updateRegistered(String studentId) {
 		// TODO Auto-generated method stub
 		
 		 Connection conn = CRSDb.getConnect();
@@ -303,8 +303,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	            PreparedStatement pstmtP;
 	            pstmtP = conn.prepareStatement(SQLQueriesConstant.APPROVE_STUDENT_REGISTRATION);
 
-//	            pstmtP.setString(1, s1);
-//	            pstmtP.setString(2, s2);
+
 	            pstmtP.setString(1, studentId);
 
 	            int row = pstmtP.executeUpdate();

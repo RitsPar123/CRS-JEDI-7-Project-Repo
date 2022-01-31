@@ -12,8 +12,8 @@ public class Course {
 	private String courseName;
 	private String courseId;
 	private String professor;
-	private boolean isOffered;
-	private double marks;
+//	private boolean isOffered;
+//	private double marks;
 
 	/**
 	 * Default Constructor
@@ -106,30 +106,30 @@ public class Course {
 	/**Method to get isOffered status
 	 * @return the isOffered
 	 */
-	public boolean isOffered() {
-		return isOffered;
-	}
-
-	/**Method to set isOffered status
-	 * @param isOffered the isOffered to set
-	 */
-	public void setOffered(boolean isOffered) {
-		this.isOffered = isOffered;
-	}
-
-	/**Method to get marks 
-	 * @return the marks
-	 */
-	public double getMarks() {
-		return marks;
-	}
-
-	/**Method to set marks
-	 * @param marks the marks to set
-	 */
-	public void setMarks(double marks) {
-		this.marks = marks;
-	}
+//	public boolean isOffered() {
+//		return isOffered;
+//	}
+//
+//	/**Method to set isOffered status
+//	 * @param isOffered the isOffered to set
+//	 */
+//	public void setOffered(boolean isOffered) {
+//		this.isOffered = isOffered;
+//	}
+//
+//	/**Method to get marks 
+//	 * @return the marks
+//	 */
+//	public double getMarks() {
+//		return marks;
+//	}
+//
+//	/**Method to set marks
+//	 * @param marks the marks to set
+//	 */
+//	public void setMarks(double marks) {
+//		this.marks = marks;
+//	}
 
 	
 	

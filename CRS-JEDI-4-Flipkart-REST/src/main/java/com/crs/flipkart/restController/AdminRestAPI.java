@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
-
 import org.apache.log4j.Logger;
 
 import javax.validation.Valid;
@@ -47,183 +46,175 @@ import com.crs.flipkart.exception.UserNotAddedException;
  *
  */
 
-
-
 @Path("/admin")
 public class AdminRestAPI {
 
-	
     AdminServiceInterface adminInterface = new AdminService();
     static NotificationServiceInterface notificationService = new NotificationService();
     Scanner sc = new Scanner(System.in);
-    private static Logger logger = Logger.getLogger(AdminDaoOperation.class);
+    public static Logger logger = Logger.getLogger(AdminDaoOperation.class);
 
-   
+    /**
+     * /admin/addCourse
+     * REST-service for adding a new course in catalog
+     * 
+     * @param course
+     * @return
+     */
+    @POST
+    @Path("/addCourse")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addCourse(@Valid Course course) throws CourseNotAddedException {
 
-	/**
-	 * /admin/addCourse
-	 * REST-service for adding a new course in catalog
-	 * @param course
-	 * @return
-	 */
-	@POST
-	@Path("/addCourse")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-    private Response addCourse(@Valid Course course) throws CourseNotAddedException{
-		
         try {
-			adminInterface.addCourse(course);
-			return Response.status(201).entity("Course with courseCode: " + course.getCourseId() + " added to catalog").build();
-		} catch (CourseFoundException e) {
-			// TODO Auto-generated catch block
-			return Response.status(409).entity(e.getMessage()).build();
-		}
+            adminInterface.addCourse(course);
+            return Response.status(201).entity("Course with courseCode: " + course.getCourseId() + " added to catalog")
+                    .build();
+        } catch (CourseFoundException e) {
+            // TODO Auto-generated catch block
+            return Response.status(409).entity(e.getMessage()).build();
+        }
 
     }
 
-	/**
-	 * /admin/deleteCourse
-	 * REST-services for dropping a course from catalog
-	 * @param courseCode
-	 * @return 
-	 * @return
-	 */
-	@PUT
-	@Path("/deleteCourse")
-	@Produces(MediaType.APPLICATION_JSON)
+    /**
+     * /admin/deleteCourse
+     * REST-services for dropping a course from catalog
+     * 
+     * @param courseCode
+     * @return
+     * @return
+     */
+    @PUT
+    @Path("/deleteCourse")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response deleteCourse(
-		@Size(min = 4 , max = 10 , message = "Course Code length should be between 4 and 10 character")
-		@NotNull
-		@QueryParam("courseCode") String courseCode) throws ValidationException{
+           @QueryParam("courseCode") String courseCode)
+            throws CourseNotFoundException {
         boolean deleted = false;
         try {
-			adminInterface.deleteCourse(courseCode);
-			return Response.status(201).entity("Course with courseCode: " + courseCode + " deleted from catalog").build();
-		} catch (CourseNotFoundException | CourseNotDeletedException e) {
-			// TODO Auto-generated catch block
-			return Response.status(409).entity(e.getMessage()).build();
-		} 
+            adminInterface.deleteCourse(courseCode);
+            return Response.status(201).entity("Course with courseCode: " + courseCode + " deleted from catalog")
+                    .build();
+        } catch (CourseNotFoundException | CourseNotDeletedException e) {
+            // TODO Auto-generated catch block
+            return Response.status(409).entity(e.getMessage()).build();
+        }
     }
-    
-	/**
-	 * /admin/addProfessor
-	 * REST-service for addding a new professor
-	 * @param professor
-	 * @return
-	 */
+
+    /**
+     * /admin/addProfessor
+     * REST-service for addding a new professor
+     * 
+     * @param professor
+     * @return
+     */
 
     @POST
-	@Path("/addProfessor")
-	@Consumes("application/json")
-	@Produces(MediaType.APPLICATION_JSON)
-    public Response addProfessor(@Valid Professor professor){
+    @Path("/addProfessor")
+    @Consumes("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addProfessor(@Valid Professor professor) {
 
-		try {
-			adminInterface.addProfessor(professor);
-			try {
-				boolean addUser = adminInterface.addUser(professor.getId(),professor.getPassword(),professor.getUserName());
-				
-				return Response.status(201).entity("Professor with professorId: " + professor.getId() + " added").build();
-			} catch (UserNotAddedException e) {
-				// TODO Auto-generated catch block
-				logger.error(e.getMessage());
-				return Response.status(409).entity(e.getMessage()).build();
-			}
-		} catch (UserIdAlreadyInUseException e) {
-			// TODO Auto-generated catch block
-			logger.error(e.getMessage());
-			return Response.status(409).entity(e.getMessage()).build();
-		} catch (ProfessorNotAddedException e) {
-			// TODO Auto-generated catch block
-			logger.error(e.getMessage());
-			return Response.status(409).entity(e.getMessage()).build();
-		}
-        
-    }
-    
-    
-    
-    private void approveRegistration() throws StudentNotApprovedException{
-        // TODO Auto-generated method stub
-        System.out.print("Enter Student's ID: ");
-        String studentUserId = sc.next();
+        try {
+            adminInterface.addProfessor(professor);
+            try {
+                boolean addUser = adminInterface.addUser(professor.getId(), professor.getPassword(),
+                        professor.getUserName());
 
-        boolean isApprove;
-		try {
-			adminInterface.approveStudent(studentUserId);
-			
-			notificationService.sendNotification(studentUserId,"Student Registration is being Approved");
-            logger.info("Student Registration is being Approved\n");
-		} catch (StudentNotFoundForApprovalException e) {
-			// TODO Auto-generated catch block
-			logger.error(e.getMessage());
-		}
+                return Response.status(201).entity("Professor with professorId: " + professor.getId() + " added")
+                        .build();
+            } catch (UserNotAddedException e) {
+                // TODO Auto-generated catch block
+                logger.error(e.getMessage());
+                return Response.status(409).entity(e.getMessage()).build();
+            }
+        } catch (UserIdAlreadyInUseException e) {
+            // TODO Auto-generated catch block
+            logger.error(e.getMessage());
+            return Response.status(409).entity(e.getMessage()).build();
+        } catch (ProfessorNotAddedException e) {
+            // TODO Auto-generated catch block
+            logger.error(e.getMessage());
+            return Response.status(409).entity(e.getMessage()).build();
+        }
+
     }
 
-    
-    @GET
-	@Path("/viewPendingAdmissions")
-	@Produces(MediaType.APPLICATION_JSON)
-    public List<Student> viewPendingApproval() {
-
-        return adminInterface.viewPendingApproval();
-    }
-
-    @GET
-	@Path("/viewCourses")
-	@Produces(MediaType.APPLICATION_JSON)
-    public List<Course> viewCourses() {
-        // TODO Auto-generated method stub
-//    	List<Course> cou = new ArrayList<Course>();
-       return  adminInterface.viewCourse();
-        
-    }
-    
-    
-	@PUT
-	@Path("/approveStudentReg")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response activateGradeCard(@Min(value = 1, message = "Student ID should not be less than 1")
-	@Max(value = 9999, message = "Student ID should be less than 10000")
-	@NotNull
-	@QueryParam("studentId") String studentId) {
-		// TODO Auto-generated method stub
-            
-                	adminInterface.approveStudentRegistration(studentId);
-                	return Response.status(201).entity("Student with studentId: " + studentId + " approved").build();
-
-                }
-
-	}
-	
 	/**
 	 * /admin/approveStudent
 	 * REST-service for approving the student admission
 	 * @param studentId
 	 * @return
 	 */
-//	@PUT
-//	@Path("/approveStudentCourse")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Response studentCourseAllot(
-//			@Min(value = 1, message = "Student ID should not be less than 1")
-//			@Max(value = 9999, message = "Student ID should be less than 10000")
-//			@NotNull
-//			@QueryParam("studentId") String studentId) {
-//		// TODO Auto-generated method stub
-//    
-//
-////	       	try {
-//	       	adminInterface.updateRegistered(studentId);
-//	        String  	message = "Success";
-//	       	notificationService.sendNotification(studentId,message);
-//	       	return Response.status(201).entity("Student with studentId: " + studentId + " approved").build();
-//	       	
-////	       	}catch{
-////	       		
-////	       	}
-//
-//	}
-	
+	@PUT
+	@Path("/approveStudentReg")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response approveRegistration(
+			@QueryParam("studentId") String studentId) throws StudentNotApprovedException {
+        // TODO Auto-generated method stub
+		
+        try {
+            adminInterface.approveStudent(studentId);
 
+            notificationService.sendNotification(studentId, "Student Registration is being Approved");
+            logger.info("Student Registration is being Approved\n");
+            return Response.status(201).entity("Student with studentId: " + studentId + " approved").build();
+        } catch (StudentNotFoundForApprovalException e) {
+            // TODO Auto-generated catch block
+        	return Response.status(409).entity(e.getMessage()).build();
+        }
+    }
+
+    @GET
+    @Path("/viewPendingAdmissions")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Student> viewPendingApproval() {
+
+        return adminInterface.viewPendingApproval();
+    }
+
+    @GET
+    @Path("/viewCourses")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Course> viewCourses() {
+        // TODO Auto-generated method stub
+        // List<Course> cou = new ArrayList<Course>();
+        return adminInterface.viewCourse();
+
+    }
+
+    @PUT
+    @Path("/approveStudentGrade")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response activateGradeCard(
+            @Min(value = 1, message = "Student ID should not be less than 1") @Max(value = 9999, message = "Student ID should be less than 10000") @NotNull @QueryParam("studentId") String studentId) {
+        // TODO Auto-generated method stub
+
+    	adminInterface.approveStudentRegistration(studentId);
+        return Response.status(201).entity("Student with studentId: " + studentId + " approved").build();
+
+    }
+
+    /**
+     * /admin/approveStudent
+     * REST-service for approving the student admission
+     * 
+     * @param studentId
+     * @return
+     */
+    @PUT
+    @Path("/approveStudentCourse")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response studentCourseAllot(
+            @Min(value = 1, message = "Student ID should not be less than 1") @Max(value = 9999, message = "Student ID should be less than 10000") @NotNull @QueryParam("studentId") String studentId) {
+        // TODO Auto-generated method stub
+
+        adminInterface.updateRegistered(studentId);
+        String message = "Success";
+        notificationService.sendNotification(studentId, message);
+        return Response.status(201).entity("Student with studentId: " + studentId + " approved").build();
+
+    }
+}
