@@ -11,7 +11,7 @@ import com.crs.flipkart.bean.Professor;
  */
 @SuppressWarnings("serial")
 public class ProfessorNotAddedException extends Exception{
-	
+	private String professorId;
 	Professor professor; 
 	
     /**
@@ -22,9 +22,39 @@ public class ProfessorNotAddedException extends Exception{
 		this.professor = prof;
 	}
 
-    public String getMessage(){
+    /**
+	 * @return the professorId
+	 */
+	public String getProfessorId() {
+		return professorId;
+	}
+
+	/**
+	 * @param professorId the professorId to set
+	 */
+	public void setProfessorId(String professorId) {
+		this.professorId = professorId;
+	}
+
+	/**
+	 * @return the professor
+	 */
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	/**
+	 * @param professor the professor to set
+	 */
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	public String getMessage(){
         return "Professor with id : "+professor.getId()+"/tDepartment: "+professor.getDepartment()+" cannot be created";
     }
 	
-	
+	public ProfessorNotAddedException(String professorId) {
+		this.professorId = professorId;
+	}
 }

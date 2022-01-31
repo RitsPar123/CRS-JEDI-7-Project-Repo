@@ -15,6 +15,13 @@ import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.dao.AdminDaoInterface;
 import com.crs.flipkart.dao.AdminDaoOperation;
 import com.crs.flipkart.dao.StudentDaoOperation;
+import com.crs.flipkart.exception.CourseFoundException;
+import com.crs.flipkart.exception.CourseNotDeletedException;
+import com.crs.flipkart.exception.CourseNotFoundException;
+import com.crs.flipkart.exception.ProfessorNotAddedException;
+import com.crs.flipkart.exception.StudentNotFoundForApprovalException;
+import com.crs.flipkart.exception.UserIdAlreadyInUseException;
+import com.crs.flipkart.exception.UserNotAddedException;
 
 /**
  * @author Abhinav
@@ -27,7 +34,7 @@ public class AdminService implements AdminServiceInterface {
 	AdminDaoInterface adminDaoOp = new AdminDaoOperation();
 	
 	/*Adding course in course table */    
-	public boolean addCourse(Course course) {
+	public boolean addCourse(Course course) throws CourseFoundException {
 		logger.info("Adding course in the course-catalogue");
 		return adminDaoOp.addCourse(course);
 	}
@@ -35,14 +42,14 @@ public class AdminService implements AdminServiceInterface {
 	
 	/* Deleting course from the course table using course id */
 	@Override
-	public boolean deleteCourse(String id) {
+	public boolean deleteCourse(String id) throws CourseNotFoundException, CourseNotDeletedException {
 		logger.info("Deleting course in the course-catalogue");
 		return adminDaoOp.deleteCourse(id);
 		// TODO Auto-generated method stub
 	}
 	
 	@Override
-	public boolean addProfessor(Professor professor) {
+	public boolean addProfessor(Professor professor) throws UserIdAlreadyInUseException, ProfessorNotAddedException {
 		// TODO Auto-generated method stub
 		logger.info("Adding professor");
 		return adminDaoOp.addProfessor(professor);
@@ -50,7 +57,7 @@ public class AdminService implements AdminServiceInterface {
 	
 	/*approves student using studentId in student table */
 	@Override
-	public boolean approveStudent(String studentId) {
+	public boolean approveStudent(String studentId) throws StudentNotFoundForApprovalException {
 		// TODO Auto-generated method stub
 		logger.info("Approving student");
 		return adminDaoOp.approveStudent(studentId);
@@ -134,7 +141,7 @@ public class AdminService implements AdminServiceInterface {
 
 
 	@Override
-	public boolean addUser(String id, String password,String name) {
+	public boolean addUser(String id, String password,String name) throws UserNotAddedException, UserIdAlreadyInUseException {
 		// TODO Auto-generated method stub
 		logger.info("Adding a new user");
 		return adminDaoOp.addUser(id,password,name);

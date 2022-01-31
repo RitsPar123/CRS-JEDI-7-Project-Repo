@@ -21,10 +21,16 @@ import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.constants.SQLQueriesConstant;
+import com.crs.flipkart.exception.CourseFoundException;
 import com.crs.flipkart.exception.CourseNotAddedException;
+import com.crs.flipkart.exception.CourseNotDeletedException;
 import com.crs.flipkart.exception.CourseNotFoundException;
+import com.crs.flipkart.exception.ProfessorNotAddedException;
 import com.crs.flipkart.exception.StudentNotFoundException;
+import com.crs.flipkart.exception.StudentNotFoundForApprovalException;
 import com.crs.flipkart.exception.StudentNotRegisteredException;
+import com.crs.flipkart.exception.UserIdAlreadyInUseException;
+import com.crs.flipkart.exception.UserNotAddedException;
 import com.crs.flipkart.utils.CRSDb;
 
 /**
@@ -36,7 +42,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	private static Logger logger = Logger.getLogger(AdminDaoOperation.class);
     
     
-    public boolean addCourse(Course course){
+    public boolean addCourse(Course course)  throws CourseFoundException{
     	Connection conn = CRSDb.getConnect();
         try {
             
@@ -45,8 +51,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
             stmt.setString(1, course.getCourseId());
             stmt.setString(2, course.getCourseName());
 
-            stmt.executeUpdate();
+            int row = stmt.executeUpdate();
             //conn.close();
+            if(row == 0) {
+				logger.error("Course with courseCode: " + course.getCourseId() + "not added to catalog.");
+				throw new CourseFoundException(course.getCourseName());
+			}
+			
             logger.info ("Course Added");
             return true;
 
@@ -61,7 +72,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
     * {@inheritDoc}
     */  
     @Override
-    public boolean deleteCourse(String id) {
+    public boolean deleteCourse(String id) throws CourseNotFoundException, CourseNotDeletedException{
         // TODO Auto-generated method stub
     	Connection conn = CRSDb.getConnect();
         try {
@@ -70,22 +81,26 @@ public class AdminDaoOperation implements AdminDaoInterface {
             stmt.setString(1, id);
 
             int row = stmt.executeUpdate();
+            
+            if(row == 0) {
+            	logger.error(id + " not in catalog!");
+				throw new CourseNotFoundException(id);
+            }
             //conn.close();
-            logger.info ("Course Deleted");
+            logger.info("Course with courseCode: " + id + " deleted.");
             return true;
 
         } catch (Exception e) {
         	logger.error("Exception" + e.getMessage());
+        	throw new CourseNotDeletedException(id);
         }
-        logger.info ("Course Not Deleted");
-        return false;
     }
 
     /**
     * {@inheritDoc}
     */  
     @Override
-    public boolean addProfessor(Professor professor) {
+    public boolean addProfessor(Professor professor) throws UserIdAlreadyInUseException, ProfessorNotAddedException {
         // TODO Auto-generated method stub
     	Connection conn = CRSDb.getConnect();
         try {
@@ -95,25 +110,27 @@ public class AdminDaoOperation implements AdminDaoInterface {
             pstmtP.setString(1, professor.getId());
             pstmtP.setString(2, professor.getDepartment());
 
-            pstmtP.executeUpdate();
+            int row = pstmtP.executeUpdate();
 
             //conn.close();
+            if(row == 0) {
+				logger.error("Professor with professorId: " + professor.getId() + " not added.");
+				throw new ProfessorNotAddedException(professor.getId());
+			}
+            
             logger.info ("Professor Added ");
             return true;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
         	logger.error("Exception" + e.getMessage());
+        	throw new UserIdAlreadyInUseException(professor.getId());
         }
-
-        return false;
     }
 
-    /**
-    * {@inheritDoc}
-    */  
+
     @Override
-    public boolean approveStudent(String SId) {
+    public boolean approveStudent(String SId) throws StudentNotFoundForApprovalException{
         // TODO Auto-generated method stub
         Connection conn = CRSDb.getConnect();
         try {
@@ -123,11 +140,18 @@ public class AdminDaoOperation implements AdminDaoInterface {
             pstmtP.setString(1, SId);
 
             int result = pstmtP.executeUpdate();
+            
+            if(result == 0) {
+				//logger.error("Student with studentId: " + studentId + " not found.");
+				throw new StudentNotFoundForApprovalException(SId);
+			}
+			
+            
             //conn.close();
-            if(result!=0) {
+           
             	logger.info ("Student Self Registration approved");
             	return true;
-            }
+            
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -161,7 +185,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
             }
 
             //conn.close();
-
+            logger.info(studentList.size() + " Students in PendingQueue: ");
             return studentList;
 
         } catch (Exception e) {
@@ -195,7 +219,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
             }
 
             //conn.close();
-
+            logger.info(courseList.size() + " courses in catalogId: ");
             return courseList;
 
         } catch (Exception e) {
@@ -490,7 +514,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	}
 
 	@Override
-	public boolean addUser(String id, String password,String name) {
+	public boolean addUser(String id, String password,String name) throws UserNotAddedException, UserIdAlreadyInUseException {
 		// TODO Auto-generated method stub
 		
 		Connection conn = CRSDb.getConnect();
@@ -502,21 +526,24 @@ public class AdminDaoOperation implements AdminDaoInterface {
             pstmtP.setString(2, name);
             pstmtP.setString(3, password);
 
-            pstmtP.executeUpdate();
+            int row  = pstmtP.executeUpdate();
 
             //conn.close();
             logger.info("User Added");
+            if(row == 0) {
+				logger.error("User with userId: " + id + " not added.");
+				throw new UserNotAddedException(id); 
+			}
+
             return true;
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
         	logger.error("Exception" + e.getMessage());
+        	throw new UserIdAlreadyInUseException(id);
         }
 
-		return false;
 	}
 
-
-	
 }
 
