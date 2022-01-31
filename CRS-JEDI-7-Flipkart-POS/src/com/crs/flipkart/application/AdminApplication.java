@@ -251,6 +251,7 @@ public class AdminApplication {
             if(!stud.isReportApproved()) {
                 List<RegisteredCourses> registeredCourses = adminInterface.activateGradeCard(studentId);
                 int count = 0;
+                System.out.println(registeredCourses.size() + "  %%%%%%%%5  ");
          
                 for(RegisteredCourses course:registeredCourses) {
                 	System.out.println("CourseId -> " + course.getCourseId() + " Grade " + course.getGrade());

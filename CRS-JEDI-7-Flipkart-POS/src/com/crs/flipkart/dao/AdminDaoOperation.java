@@ -349,20 +349,19 @@ public class AdminDaoOperation implements AdminDaoInterface {
             ResultSet resultSet = pstmtP.executeQuery();
 
             List<RegisteredCourses> registeredCourse = new ArrayList<RegisteredCourses>();
-            
-//            if(resultSet.next()) {
+
             while (resultSet.next()) {
             	RegisteredCourses course = new RegisteredCourses();
                 course.setCourseId(resultSet.getString("CourseId"));
                 course.setGrade(resultSet.getInt("Grade"));
 
                 registeredCourse.add(course);
-//            }
+            }
 
 //            conn.close();
             logger.info("Grade Card Activated");
             return registeredCourse;
-            }
+            
             
         } catch (SQLException e) {
             // TODO Auto-generated catch block

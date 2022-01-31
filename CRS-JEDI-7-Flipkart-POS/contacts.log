@@ -554,3 +554,54 @@
 09:04:26,711  INFO AdminDaoOperation,main:363 - Grade Card Activated
 09:04:26,711  INFO AdminService,main:115 - Approving student registration
 09:04:26,719  INFO AdminDaoOperation,main:387 - Sem Registeration Approved
+09:07:38,855  INFO CRSApplication,main:66 - ----------Welcome to Course Management System---------
+09:07:38,861  INFO CRSApplication,main:67 - 1. Login
+09:07:38,862  INFO CRSApplication,main:68 - 2. Student Registration
+09:07:38,863  INFO CRSApplication,main:69 - 3. UpdatePassword
+09:07:38,864  INFO CRSApplication,main:70 - 4. Exit
+09:07:38,865  INFO CRSApplication,main:71 - Enter user input
+09:07:42,115  INFO CRSApplication,main:101 - -----------------Login Menu------------------
+09:07:42,116  INFO CRSApplication,main:103 - Enter id 
+09:07:44,884  INFO CRSApplication,main:106 - Enter password
+09:07:46,373  INFO UserService,main:44 - Verifying User
+09:07:46,393  INFO StudentDaoOperation,main:47 - User Verified
+09:07:46,409  INFO CRSApplication,main:138 - Admin Has Logged In at : 2022-01-31T09:07:46.408917700 ->  Login Successful
+09:07:49,174  INFO AdminService,main:103 - Viewing student data
+09:07:49,176  INFO AdminService,main:109 - Activating grade card
+09:07:49,180  INFO AdminDaoOperation,main:363 - Grade Card Activated
+09:07:49,180  INFO AdminService,main:115 - Approving student registration
+09:07:49,189  INFO AdminDaoOperation,main:387 - Sem Registeration Approved
+09:09:04,212  INFO CRSApplication,main:66 - ----------Welcome to Course Management System---------
+09:09:04,214  INFO CRSApplication,main:67 - 1. Login
+09:09:04,215  INFO CRSApplication,main:68 - 2. Student Registration
+09:09:04,215  INFO CRSApplication,main:69 - 3. UpdatePassword
+09:09:04,215  INFO CRSApplication,main:70 - 4. Exit
+09:09:04,215  INFO CRSApplication,main:71 - Enter user input
+09:09:06,413  INFO CRSApplication,main:101 - -----------------Login Menu------------------
+09:09:06,414  INFO CRSApplication,main:103 - Enter id 
+09:09:07,027  INFO CRSApplication,main:106 - Enter password
+09:09:08,595  INFO UserService,main:44 - Verifying User
+09:09:08,615  INFO StudentDaoOperation,main:47 - User Verified
+09:09:08,633  INFO CRSApplication,main:138 - Admin Has Logged In at : 2022-01-31T09:09:08.631996500 ->  Login Successful
+09:09:12,228  INFO AdminService,main:103 - Viewing student data
+09:09:12,230  INFO AdminService,main:109 - Activating grade card
+09:09:12,232  INFO AdminDaoOperation,main:363 - Grade Card Activated
+09:09:12,233  INFO AdminService,main:115 - Approving student registration
+09:09:12,242  INFO AdminDaoOperation,main:387 - Sem Registeration Approved
+09:13:03,716  INFO CRSApplication,main:66 - ----------Welcome to Course Management System---------
+09:13:03,719  INFO CRSApplication,main:67 - 1. Login
+09:13:03,720  INFO CRSApplication,main:68 - 2. Student Registration
+09:13:03,720  INFO CRSApplication,main:69 - 3. UpdatePassword
+09:13:03,720  INFO CRSApplication,main:70 - 4. Exit
+09:13:03,721  INFO CRSApplication,main:71 - Enter user input
+09:13:05,035  INFO CRSApplication,main:101 - -----------------Login Menu------------------
+09:13:05,035  INFO CRSApplication,main:103 - Enter id 
+09:13:05,471  INFO CRSApplication,main:106 - Enter password
+09:13:08,164  INFO UserService,main:44 - Verifying User
+09:13:08,183  INFO StudentDaoOperation,main:47 - User Verified
+09:13:08,200  INFO CRSApplication,main:138 - Admin Has Logged In at : 2022-01-31T09:13:08.199613800 ->  Login Successful
+09:13:11,146  INFO AdminService,main:103 - Viewing student data
+09:13:11,148  INFO AdminService,main:109 - Activating grade card
+09:13:11,151  INFO AdminDaoOperation,main:362 - Grade Card Activated
+09:13:11,152  INFO AdminService,main:115 - Approving student registration
+09:13:11,156  INFO AdminDaoOperation,main:386 - Sem Registeration Approved
