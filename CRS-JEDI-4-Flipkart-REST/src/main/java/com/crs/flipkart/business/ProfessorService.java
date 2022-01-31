@@ -9,6 +9,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.dao.ProfessorDaoInterface;
 import com.crs.flipkart.dao.ProfessorDaoOperation;
 import com.crs.flipkart.exception.NoCourseFoundException;
@@ -18,7 +19,7 @@ import com.crs.flipkart.exception.StudentNotFoundException;
  * @author hardik.kothari
  *
  */
-public class ProfessorService {
+public class ProfessorService implements ProfessorServiceInterface{
 	private static Logger logger = Logger.getLogger(ProfessorService.class);
 	ProfessorDaoInterface professorDaoInterface = new ProfessorDaoOperation();
 
@@ -29,9 +30,9 @@ public class ProfessorService {
 	 * @param courseid
 	 * @param coursename
 	 */
-	public void selectCourse(String profId, String courseid, String coursename) {
+	public Boolean selectCourse(String profId, String courseid, String coursename) {
 		logger.info("Selecting the course");
-		professorDaoInterface.selectCourse(profId, courseid, coursename);
+		return professorDaoInterface.selectCourse(profId, courseid, coursename);
 		// table-course
 	}
 
@@ -39,7 +40,7 @@ public class ProfessorService {
 	 * Method that lets professor View Registered Courses
 	 * @param id: Professor's id
 	 */
-	public void viewRegisteredCourses(String id) throws NoCourseFoundException{
+	public List<Course> viewRegisteredCourses(String id) throws NoCourseFoundException{
 		logger.info("Viewing Registered Course");
 		List<Course> RegisteredCourse = new ArrayList<Course>();
 		RegisteredCourse = professorDaoInterface.viewRegisteredCourses(id);
@@ -54,6 +55,7 @@ public class ProfessorService {
 		else
 			throw new NoCourseFoundException(id);
 		// table-course
+		return RegisteredCourse;
 	}
 
 	/**
@@ -63,17 +65,17 @@ public class ProfessorService {
 	 * @param studentId : Id of the student to be added grade
 	 * @param grade
 	 */
-	public void addGrades(String professorId, String courseId, String studentId, int grade) {
+	public Boolean addGrades(String professorId, String courseId, String studentId, int grade) {
 
 		logger.info("Adding grades of the student");
-		professorDaoInterface.addGrades(professorId, courseId, studentId, grade);
+		return professorDaoInterface.addGrades(professorId, courseId, studentId, grade);
 		// table-grades
 	}
 
 	/**
 	 * Method that shows courses available for professor to select from
 	 */
-	public void showCourses() throws NoCourseFoundException{
+	public List<Course>  showCourses() throws NoCourseFoundException{
 
 		logger.info("Showing Courses");
 		List<Course> courseList = professorDaoInterface.showCourses();
@@ -88,6 +90,8 @@ public class ProfessorService {
 		}
 		else
 			throw new NoCourseFoundException();
+		
+		return courseList;
 		// table-course
 	}
 
@@ -97,13 +101,14 @@ public class ProfessorService {
 	 * @param id : professor id
 	 * @param courseId: id of the course
 	 */
-	public void viewRegisteredStudents(String id, String courseId) {
+	public List<Student>  viewRegisteredStudents(String id, String courseId) {
 		logger.info("Viewing Registered Courses");
 		try {
-		professorDaoInterface.viewRegisteredStudents(id, courseId);
+		return professorDaoInterface.viewRegisteredStudents(id, courseId);
 		} 
 		catch(StudentNotFoundException ex) {
 			logger.info("Exception : "+ex.getMessageWithCourse());
+			return null;
 		}
 	}
 

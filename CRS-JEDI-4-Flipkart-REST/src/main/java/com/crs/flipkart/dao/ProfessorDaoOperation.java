@@ -14,6 +14,7 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.exception.CourseNotFoundException;
 import com.crs.flipkart.exception.GradeNotAddedException;
@@ -215,7 +216,9 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
     * {@inheritDoc}
     */ 
 	@Override
-	public void viewRegisteredStudents(String id, String courseId) throws StudentNotFoundException{
+	public List<Student> viewRegisteredStudents(String id, String courseId) throws StudentNotFoundException{
+		
+		List<Student> studentList= new ArrayList<Student>()	;
 		try {
 			if(isProfCourse( id,  courseId))
 				{
@@ -223,13 +226,16 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 					stmt = conn.prepareStatement(query);
 					stmt.setString(1, courseId);
 					ResultSet registeredStudents =  stmt.executeQuery();
-						
+					
+					
 					if(registeredStudents.next()) {
 					while(registeredStudents.next()) {
 						
 						System.out.println("\tStudent Id:"+ registeredStudents.getString("id")+ "\tStudent Name :" + registeredStudents.getString("name"));
-						
-					   
+						Student st= new Student();
+						st.setId(registeredStudents.getString("id"));
+						st.setUserName(registeredStudents.getString("name"));
+						studentList.add(st);
 				    }
 					}
 					else
@@ -237,7 +243,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 				}
 			else{
 				logger.error("Professor Not Registered for given Course");
-				return ;
+				return studentList;
 			}
 		}
 		catch (SQLException e) {
@@ -245,7 +251,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			logger.error("Exception" + e.getMessage());
 		}
 		
-		return;
+		return studentList;
 	}
 	
 	

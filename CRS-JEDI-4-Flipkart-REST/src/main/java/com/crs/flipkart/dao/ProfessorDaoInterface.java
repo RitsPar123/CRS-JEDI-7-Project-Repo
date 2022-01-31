@@ -6,6 +6,7 @@ package com.crs.flipkart.dao;
 import java.util.List;
 
 import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.exception.StudentNotFoundException;
 
 /**
@@ -50,8 +51,9 @@ public interface ProfessorDaoInterface {
 	 * Method to view all registered students for a particular course using SQL commands
 	 * @param id
 	 * @param courseId
+	 * @return 
 	 * @throws StudentNotFoundException 
 	 */
-	public void viewRegisteredStudents(String id, String courseId) throws StudentNotFoundException;
+	public List<Student> viewRegisteredStudents(String id, String courseId) throws StudentNotFoundException;
 	
 }
