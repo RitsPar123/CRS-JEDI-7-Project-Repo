@@ -100,9 +100,11 @@ public class StudentRestAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response signup(@Valid Student student) {
 		String studentId = null;
-		studentId = studentDaoInterface.signup(student);
-		return Response.status(200).entity(studentId).build();
-
+		 boolean resp = studentDaoInterface.signup(student);
+		 if(resp)
+		{return Response.status(200).entity("student has been added successfully").build();}
+         
+		 return Response.status(400).entity("There has not been added or there is some internal error").build()
 	}
 
 	@POST
