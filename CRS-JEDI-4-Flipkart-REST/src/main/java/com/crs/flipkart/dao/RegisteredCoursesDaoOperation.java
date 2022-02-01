@@ -16,6 +16,7 @@ import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.constants.SQLQueriesConstant;
 import com.crs.flipkart.exception.CourseNotAddedException;
+import com.crs.flipkart.exception.CourseNotFoundException;
 import com.crs.flipkart.utils.CRSDb;
 
 /**
@@ -223,5 +224,33 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
         }
 		return false;
 	}
+	
+	public boolean isCourseAvailable(String courseid) throws CourseNotFoundException{
+		Connection connection = CRSDb.getConnect();
+
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.CHECK_COURSE_EXISTENCE);
+
+			pstmt.setString(1, courseid);
+
+			ResultSet resultSet = pstmt.executeQuery();
+
+			if(resultSet.next())
+				return true; 
+			else 
+				throw new CourseNotFoundException(courseid);
+
+		}catch (SQLException e) {
+			logger.error("Exception" + e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				logger.error("Exception" + e.getMessage());
+			}
+		}
+		return false;
+	}
+	
 
 }
