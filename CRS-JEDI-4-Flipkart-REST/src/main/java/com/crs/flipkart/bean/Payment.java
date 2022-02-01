@@ -17,6 +17,10 @@ public class Payment {
 	private String dateOfTransaction;
 	private Boolean status;
 	
+	public Payment()
+	{
+		
+	}
 	/**
 	 * Parameterized constructor
 	 * @param Id

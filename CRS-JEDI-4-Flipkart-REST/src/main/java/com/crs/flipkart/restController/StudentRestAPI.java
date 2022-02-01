@@ -19,6 +19,7 @@ import javax.ws.rs.core.Response;
 import com.crs.flipkart.business.AdminServiceInterface;
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Notification;
+import com.crs.flipkart.bean.Payment;
 import com.crs.flipkart.bean.RegisteredCourses;
 import com.crs.flipkart.bean.SemesterRegistration;
 import com.crs.flipkart.bean.Student;
@@ -31,6 +32,8 @@ import com.crs.flipkart.dao.AdminDaoInterface;
 import com.crs.flipkart.dao.AdminDaoOperation;
 import com.crs.flipkart.dao.NotificationDaoInterface;
 import com.crs.flipkart.dao.NotificationDaoOperation;
+import com.crs.flipkart.dao.PaymentDaoInterface;
+import com.crs.flipkart.dao.PaymentDaoOperations;
 import com.crs.flipkart.dao.RegisteredCoursesDaoInterface;
 import com.crs.flipkart.dao.RegisteredCoursesDaoOperation;
 import com.crs.flipkart.dao.StudentDaoInterface;
@@ -53,6 +56,7 @@ public class StudentRestAPI {
 	RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
 	NotificationDaoInterface notificationDaoInterface = new NotificationDaoOperation();
 	AdminDaoInterface adminDaoInterface = new AdminDaoOperation();
+	PaymentDaoInterface paymentDaoInterface = new PaymentDaoOperations();
 
 	@GET
 	@Path("/viewReportCard")
@@ -168,6 +172,21 @@ public class StudentRestAPI {
 			return Response.status(200).entity(selectedCourses).build();
 		}
 		return Response.status(200).entity("There are no courses selected for display").build();
+	}
+	@POST
+	@Path("/payment")
+	@Consumes("application/json")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response payment( @Valid Payment paymentobj)
+	{    
+		
+		boolean isPaid = paymentDaoInterface.payFees(paymentobj);
+		 
+		if(isPaid)
+		{
+			return Response.status(200).entity(paymentobj.getPaymentMethod()+ " Payment has been made").build();
+		}
+		return Response.status(200).entity("Fees Has Not Been Paid").build();
 	}
 
 }
