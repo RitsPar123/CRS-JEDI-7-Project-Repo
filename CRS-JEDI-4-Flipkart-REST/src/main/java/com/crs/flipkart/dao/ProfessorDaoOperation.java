@@ -220,7 +220,9 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		
 		List<Student> studentList= new ArrayList<Student>()	;
 		try {
+			
 			if(isProfCourse( id,  courseId))
+				
 				{
 					String query = SQLQueriesConstant.VIEW_REGISTERED_STUDENTS;
 					stmt = conn.prepareStatement(query);
@@ -228,18 +230,15 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 					ResultSet registeredStudents =  stmt.executeQuery();
 					
 					
-					if(registeredStudents.next()) {
-					while(registeredStudents.next()) {
-						
+					
+					while(registeredStudents.next()) {						
 						System.out.println("\tStudent Id:"+ registeredStudents.getString("id")+ "\tStudent Name :" + registeredStudents.getString("name"));
 						Student st= new Student();
 						st.setId(registeredStudents.getString("id"));
 						st.setUserName(registeredStudents.getString("name"));
 						studentList.add(st);
 				    }
-					}
-					else
-						throw new StudentNotFoundException(courseId,1);
+
 				}
 			else{
 				logger.error("Professor Not Registered for given Course");

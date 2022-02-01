@@ -16,7 +16,7 @@ public interface StudentDaoInterface {
 	 * @param student
 	 * @return studentid if successful / null if failure
 	 */
-	public String signup(Student student);
+	public boolean signup(Student student);
 
 	/**
 	 * Method to get registration status of student

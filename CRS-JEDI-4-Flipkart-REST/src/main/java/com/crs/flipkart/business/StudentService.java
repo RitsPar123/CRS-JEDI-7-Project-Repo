@@ -48,22 +48,9 @@ public class StudentService implements StudentServiceInterface{
 	 * @param  name : name of the student
 	 * @param role : signifies status in student table
 	 */
-	public String signup(String id,String password,String branch,String name,int role) {
-		String studentId = null;
-		
-		Student newStudent = new Student();
-		newStudent.setId(id);
-		newStudent.setPassword(password);
-		newStudent.setBranch(branch);
-		newStudent.setApproved(false);
-		newStudent.setRegistered(false);
-		newStudent.setReportApproved(false);
-		newStudent.setUserName(name);
-		newStudent.setRole(1);
-		
-		studentId = StudentDaoInterface.signup(newStudent);
-		
-		return studentId;
+	public boolean signup(Student newStudent) {
+
+		return StudentDaoInterface.signup(newStudent);
 	}
 
 	

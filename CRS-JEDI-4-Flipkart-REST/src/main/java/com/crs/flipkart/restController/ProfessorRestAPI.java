@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -21,6 +22,7 @@ import org.apache.log4j.Logger;
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.business.ProfessorService;
+import com.crs.flipkart.business.ProfessorServiceInterface;
 import com.crs.flipkart.dao.AdminDaoOperation;
 import com.crs.flipkart.exception.NoCourseFoundException;
 
@@ -35,7 +37,7 @@ import com.crs.flipkart.exception.NoCourseFoundException;
 @Path("/professor")
 public class ProfessorRestAPI {
 	
-	ProfessorService professorService=new ProfessorService();
+	ProfessorServiceInterface professorService=new ProfessorService();
     public static Logger logger = Logger.getLogger(ProfessorRestAPI.class);
 
 	/**
@@ -65,7 +67,13 @@ public class ProfessorRestAPI {
 							
 		 }
 
-		 
+		/**
+	     * /professor/viewRegisteredCourses
+	     * REST-service for viewing Registered Courses for a professor
+	     * 
+	     * @param profId
+	     * @return
+	     */ 
 	 
 	 	@GET
 		@Path("/viewRegisteredCourses")
@@ -84,8 +92,18 @@ public class ProfessorRestAPI {
 			 
 		 }
 		 
-		 
-		 	@GET
+	 	/**
+	     * /professor/addGrades
+	     * REST-service for adding grade for a specific Student by a professor
+	     * 
+	     * @param profId
+	     * @param courseId
+	     * @param studentId
+	     * @param grade
+	     * @return
+	     */ 
+	 	
+		 	@POST
 			@Path("/addGrades")
 		 	@Produces(MediaType.APPLICATION_JSON)
 			public Response addGrades(@NotNull @QueryParam("profId") String profId , @NotNull @QueryParam("courseId") String courseId,
@@ -104,7 +122,13 @@ public class ProfessorRestAPI {
 				 
 			 }
 		 
-	 
+		 	
+		 	/**
+		     * /professor/showCourses
+		     * REST-service for viewing  Courses a professor can  register for.
+		     * @return
+		     */ 
+		 	
 			 
 			@GET
 			@Path("/showCourses")
@@ -124,7 +148,17 @@ public class ProfessorRestAPI {
 					 
 					 
 			}
-				 
+				
+			
+			/**
+		     * /professor/viewRegisteredStudents
+		     * REST-service for viewing Registered Students in a specific Course taught by a professor
+		     * 
+		     * @param profId
+		     * @param courseId
+		     * @return
+		     */ 
+			
 				 
 			@GET
 			@Path("/viewRegisteredStudents")
