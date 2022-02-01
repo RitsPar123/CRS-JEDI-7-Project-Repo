@@ -52,7 +52,11 @@ public class UserRestAPI {
 	 	@Path("/updatePassword")
 	 	@Produces(MediaType.APPLICATION_JSON)
 	 	public Response updatePassword(
+	 			@NotNull
+				@Email(message = "Invalid User ID: Not in email format")
 				@QueryParam("id") String id,
+				@NotNull
+				@Size(min = 4 , max = 20 , message = "Password length should be between 4 and 20 characters")
 				@QueryParam("password") String password) {
 	    	
 	        if(userInterface.updatePassword(id,password)) 

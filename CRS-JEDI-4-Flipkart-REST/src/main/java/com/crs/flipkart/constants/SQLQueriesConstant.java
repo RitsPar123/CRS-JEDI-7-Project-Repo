@@ -45,7 +45,7 @@ public class SQLQueriesConstant {
 	public static final String  CHECK_GRADE_UPDATE_TYPE = "select * from registeredcourse where sid = ? and courseid = ? and grade is not null";
 	public static final String  CHECK_PROF_COURSE = "select * from course where pid = ? and courseid = ? ";
 	public static final String  COURSE_SELECTION_LIST ="Select CourseId,courseName,seatCount from course where pid is null";
-	public static final String  VIEW_REGISTERED_STUDENTS ="Select user.id ,user.name from (user INNER JOIN registeredcourse ON registeredcourse.sid = user.id ) where courseid = ? and IsRegistered = 1";
+	public static final String  VIEW_REGISTERED_STUDENTS ="Select user.id ,user.name from (user INNER JOIN registeredcourse ON registeredcourse.sid = user.id ) where registeredcourse.courseid = ? and registeredcourse.IsRegistered = 1";
 	public static final String  DELETE_ENTRY = "delete from registeredcourse where SId= ?";
 	public static final String  UPDATE_COURSE_ENTRY = "update course set SeatCount = SeatCount+1 where CourseId = ?";
 	public static final String	GET_STATUS = "select IsRegistered from registeredcourse where SId = ?";
