@@ -67,7 +67,13 @@ public class ProfessorRestAPI {
 							
 		 }
 
-		 
+		/**
+	     * /professor/viewRegisteredCourses
+	     * REST-service for viewing Registered Courses for a professor
+	     * 
+	     * @param profId
+	     * @return
+	     */ 
 	 
 	 	@GET
 		@Path("/viewRegisteredCourses")
@@ -86,7 +92,17 @@ public class ProfessorRestAPI {
 			 
 		 }
 		 
-		 
+	 	/**
+	     * /professor/addGrades
+	     * REST-service for adding grade for a specific Student by a professor
+	     * 
+	     * @param profId
+	     * @param courseId
+	     * @param studentId
+	     * @param grade
+	     * @return
+	     */ 
+	 	
 		 	@POST
 			@Path("/addGrades")
 		 	@Produces(MediaType.APPLICATION_JSON)
@@ -106,7 +122,13 @@ public class ProfessorRestAPI {
 				 
 			 }
 		 
-	 
+		 	
+		 	/**
+		     * /professor/showCourses
+		     * REST-service for viewing  Courses a professor can  register for.
+		     * @return
+		     */ 
+		 	
 			 
 			@GET
 			@Path("/showCourses")
@@ -126,7 +148,17 @@ public class ProfessorRestAPI {
 					 
 					 
 			}
-				 
+				
+			
+			/**
+		     * /professor/viewRegisteredStudents
+		     * REST-service for viewing Registered Students in a specific Course taught by a professor
+		     * 
+		     * @param profId
+		     * @param courseId
+		     * @return
+		     */ 
+			
 				 
 			@GET
 			@Path("/viewRegisteredStudents")
