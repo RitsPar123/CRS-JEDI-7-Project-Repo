@@ -43,6 +43,7 @@ import com.crs.flipkart.dao.NotificationDaoInterface;
  * @author nandini mehta
  *
  */
+@Path("/student")
 public class StudentRestAPI {
 
 	NotificationServiceInterface notificationService = new NotificationService();
@@ -104,7 +105,7 @@ public class StudentRestAPI {
 		 if(resp)
 		{return Response.status(200).entity("student has been added successfully").build();}
          
-		 return Response.status(400).entity("There has not been added or there is some internal error").build()
+		 return Response.status(400).entity("There has not been added or there is some internal error").build();
 	}
 
 	@POST
@@ -158,9 +159,10 @@ public class StudentRestAPI {
 	@GET
 	@Path("/showSelectedCourses")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response showSelectedCourses(@Valid SemesterRegistration semesterRegistration) {
+	public Response showSelectedCourses(@QueryParam("studentId") String studentId) {
+		System.out.println(studentId);
 		List<Course> selectedCourses = registeredCoursesDaoInterface
-				.getSelectedCourses(semesterRegistration.getStudentId());
+				.getSelectedCourses(studentId);
 
 		if (selectedCourses.size() > 0) {
 			return Response.status(200).entity(selectedCourses).build();

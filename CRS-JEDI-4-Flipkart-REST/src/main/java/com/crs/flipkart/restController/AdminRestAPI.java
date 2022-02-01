@@ -92,6 +92,7 @@ public class AdminRestAPI {
     public Response deleteCourse(
            @QueryParam("courseCode") String courseCode)
             throws CourseNotFoundException {
+    	System.out.println(courseCode);
         boolean deleted = false;
         try {
             adminInterface.deleteCourse(courseCode);

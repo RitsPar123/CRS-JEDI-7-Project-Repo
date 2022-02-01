@@ -5,11 +5,15 @@ public class SemesterRegistration {
     private String registrationDate;
     private boolean feepaid;
     
-
+    public SemesterRegistration()
+    {
+    	
+    }
     /**
      * Parameterized Constructor
      * @param studentId
      */
+    
     public SemesterRegistration(String studentId) {
         this.studentId = studentId;
     	this.registrationDate = (new java.sql.Date(System.currentTimeMillis())).toString();

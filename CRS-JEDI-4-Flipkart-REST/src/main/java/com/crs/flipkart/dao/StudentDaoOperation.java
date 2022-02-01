@@ -39,7 +39,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			pstmt.setString(1,student.getId());
 			pstmt.setString(2,student.getUserName());
 			pstmt.setString(3,student.getPassword());
-			pstmt.setInt(4,student.getRole());
+			pstmt.setInt(4,1);
 			
 	        int result = pstmt.executeUpdate();
 
