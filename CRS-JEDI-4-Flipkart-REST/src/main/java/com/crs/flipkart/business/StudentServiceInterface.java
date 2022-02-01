@@ -5,6 +5,7 @@ package com.crs.flipkart.business;
 
 import com.crs.flipkart.bean.CourseCatalog;
 import com.crs.flipkart.bean.Payment;
+import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.exception.StudentNotRegisteredException;
 
 /**
@@ -15,7 +16,7 @@ import com.crs.flipkart.exception.StudentNotRegisteredException;
  /*Interface containing method for student signup */
 public interface StudentServiceInterface {
 	
-		public String signup(String id,String password,String branch,String name,int role) throws StudentNotRegisteredException;
+		public boolean signup(Student s);
 
 		public void viewRegisteredCourses(String id);
 

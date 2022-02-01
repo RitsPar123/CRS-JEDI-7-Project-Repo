@@ -27,7 +27,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 	/**
 	 * {@inheritDoc}
 	 */
-	public String signup(Student student) {
+	public boolean signup(Student student) {
 		
 		Connection connection = CRSDb.getConnect();
 		
@@ -60,8 +60,8 @@ public class StudentDaoOperation implements StudentDaoInterface {
 				else{
 					throw new StudentNotFoundException(student.getId());
 				}
-
 	        }
+	        return true;
 			
 		}catch(StudentNotFoundException u){
 			logger.error("Exception" + u.getMessage());
@@ -77,7 +77,7 @@ public class StudentDaoOperation implements StudentDaoInterface {
 			}
 		}
         
-		return studentId;
+		return false;
 	}
 
 	

@@ -24,6 +24,7 @@ import javax.ws.rs.core.Response;
 import org.hibernate.validator.constraints.Email;
 
 import com.crs.flipkart.bean.CourseCatalog;
+import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.business.NotificationService;
 import com.crs.flipkart.business.NotificationServiceInterface;
 import com.crs.flipkart.business.StudentService;
@@ -48,12 +49,12 @@ public class UserRestAPI {
 	 * @return 
 	 * @return @return 201, if password is updated, else 500 in case of error
 	 */
-	 	@PUT
+	 	@POST
 	 	@Path("/updatePassword")
 	 	@Produces(MediaType.APPLICATION_JSON)
 	 	public Response updatePassword(
 	 			@NotNull
-				@Email(message = "Invalid User ID: Not in email format")
+				
 				@QueryParam("id") String id,
 				@NotNull
 				@Size(min = 4 , max = 20 , message = "Password length should be between 4 and 20 characters")
@@ -65,38 +66,18 @@ public class UserRestAPI {
 	        	return Response.status(500).entity("Something went wrong, please try again!").build();
 	    	}
 	    
-//	 	@POST
-//		@Path("/studentRegistration")
-//		@Consumes(MediaType.APPLICATION_JSON)
-//	 	public static void registerStudent() {
-//
-//	    	try{
-//	    	//input all the student details
-//	        logger.info("Enter Id:");
-//	        String id = sc.next();
-//
-//	        logger.info("Enter Name:");
-//	        String name = sc.next();
-//
-//	        logger.info("Enter Password:");
-//	        String password = sc.next();
-//
-//	        logger.info("Enter Branch:");
-//	        String branch = sc.next();
-//	        
-//	        int role = 1;
-//
-//	        
-//
-//	        String newUserID = studentInterface.signup(id, password, branch, name, role);
-//	        
-//	        logger.info("Thankyou For Registration, Wait for the Admin Approval");
-//	    	}
-//	    	catch(StudentNotRegisteredException ex){
-//				logger.error("Something went wrong! "+ex.getMessage() +" not registered. Please try again");
-//			}
-//	    }
-//	 	
+	 	@POST
+		@Path("/studentRegistration")
+		@Consumes(MediaType.APPLICATION_JSON)
+	 	public Response registerStudent(Student st) {
+		 	if(studentInterface.signup(st)) {
+		 		return Response.status(201).entity("Thankyou For Registration, Wait for the Admin Approval! ").build();
+		 	}else {
+		 		return Response.status(500).entity("Something went wrong, please try again!").build();
+		 	}
+	     
+	    }
+ 	
 	 	
 	 	/**
 		 * 
