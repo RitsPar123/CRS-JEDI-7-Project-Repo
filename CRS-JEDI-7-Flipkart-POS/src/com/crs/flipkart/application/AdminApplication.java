@@ -52,14 +52,8 @@ public class AdminApplication {
         while (userInput != 11) {
         	
             switch (userInput) {
-                case 1:
-                	try {
+                case 1:	
                     addCourse(); 
-                    }
-                	catch(CourseNotAddedException e) {
-                		logger.error("Exception "+e.getMessage());
-                	}
-                	 
                     break;
                 case 2:
                 	deleteCourse();
@@ -121,7 +115,7 @@ public class AdminApplication {
 
     }
 
-    private void addCourse() throws CourseNotAddedException{
+    private void addCourse(){
         System.out.println("Enter Course Code");
         String courseId = sc.next();
 
@@ -238,8 +232,6 @@ public class AdminApplication {
                     " Id -> " + c.getCourseId() + " Name -> " + c.getCourseName() + "  Seat Left -> " + c.getCount());
         }
         } 
-        
-        logger.info("No courses found in course catalogue\n");
         
     }
     

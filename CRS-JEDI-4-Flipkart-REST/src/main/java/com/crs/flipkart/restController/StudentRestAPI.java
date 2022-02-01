@@ -133,13 +133,13 @@ public class StudentRestAPI {
 	@DELETE
 	@Path("/dropCourse")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response dropCourse(@Valid SemesterRegistration semesterRegistration,
+	public Response dropCourse(@QueryParam("studentId") String studentId,
 			@QueryParam("courseId") String courseId) {
-		if (!registeredCoursesDaoInterface.hasCourse(courseId, semesterRegistration.getStudentId())) {
+		if (!registeredCoursesDaoInterface.hasCourse(courseId, studentId)) {
 			return Response.status(200).entity("You do not have this course added!").build();
 		}
 
-		registeredCoursesDaoInterface.dropCourse(courseId, semesterRegistration.getStudentId());
+		registeredCoursesDaoInterface.dropCourse(courseId, studentId);
 
 		return Response.status(200).entity("Course has been dropped successfully ").build();
 	}
