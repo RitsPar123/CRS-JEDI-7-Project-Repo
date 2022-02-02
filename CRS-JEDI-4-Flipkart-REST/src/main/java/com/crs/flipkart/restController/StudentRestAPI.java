@@ -28,6 +28,8 @@ import com.crs.flipkart.business.NotificationService;
 import com.crs.flipkart.business.NotificationServiceInterface;
 import com.crs.flipkart.business.PaymentService;
 import com.crs.flipkart.business.PaymentServiceInterface;
+import com.crs.flipkart.business.RegisteredCoursesService;
+import com.crs.flipkart.business.RegisteredCoursesServiceInterface;
 import com.crs.flipkart.dao.AdminDaoInterface;
 import com.crs.flipkart.dao.AdminDaoOperation;
 import com.crs.flipkart.dao.NotificationDaoInterface;
@@ -88,7 +90,7 @@ public class StudentRestAPI {
 	@Path("/addCourse")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addCourse(@Valid SemesterRegistration semesterRegistration,
+	public Response addCourse(@QueryParam("studentId") String studentId,
 			@QueryParam("courseId") String courseId) {
 		try {
 			registeredCoursesDaoInterface.isCourseAvailable(courseId);
@@ -96,12 +98,12 @@ public class StudentRestAPI {
 			return Response.status(400).entity("Course not found").build();
 		}
 
-		if (registeredCoursesDaoInterface.hasCourse(courseId, semesterRegistration.getStudentId())) {
+		if (registeredCoursesDaoInterface.hasCourse(courseId, studentId)) {
 
 			return Response.status(200).entity("You have this course added already!").build();
 		}
 
-		registeredCoursesDaoInterface.addCourse(courseId, semesterRegistration.getStudentId());
+		registeredCoursesDaoInterface.addCourse(courseId, studentId);
 		return Response.status(200).entity("Course has been added successfully ").build();
 
 	}
@@ -123,6 +125,7 @@ public class StudentRestAPI {
 	@GET
 	@Path("/showSelectedCourses")
 	@Produces(MediaType.APPLICATION_JSON)
+	
 	public Response showSelectedCourses(@QueryParam("studentId") String studentId) {
 		System.out.println(studentId);
 		List<Course> selectedCourses = registeredCoursesDaoInterface.getSelectedCourses(studentId);
@@ -138,11 +141,16 @@ public class StudentRestAPI {
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response payment(@Valid Payment paymentobj) {
-
+		String message = "Fees Has been paid with Account number  -> " + paymentobj.getPaymentId();
 		boolean isPaid = paymentDaoInterface.payFees(paymentobj);
-
+		RegisteredCoursesServiceInterface registerCourse = new RegisteredCoursesService();
+		
 		if (isPaid) {
+			registerCourse.updateStatus(paymentobj.getStudentId());
+			notificationService.sendNotification(paymentobj.getStudentId(),message);
 			return Response.status(200).entity(paymentobj.getPaymentMethod() + " Payment has been made").build();
+			
+
 		}
 		return Response.status(200).entity("Fees Has Not Been Paid").build();
 	}
