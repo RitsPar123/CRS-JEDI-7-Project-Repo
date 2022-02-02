@@ -48,6 +48,7 @@ public class AdminService implements AdminServiceInterface {
 		// TODO Auto-generated method stub
 	}
 	
+	/* Adding Professor*/
 	@Override
 	public boolean addProfessor(Professor professor) throws UserIdAlreadyInUseException, ProfessorNotAddedException {
 		// TODO Auto-generated method stub
@@ -116,6 +117,8 @@ public class AdminService implements AdminServiceInterface {
 		logger.info("Activating grade card");
 		return adminDaoOp.activateGradeCard(studentId);
 	}
+	
+	/*Method to approve Student Registration using student Id*/
 	@Override
 	public boolean approveStudentRegistration(String SId) {
 		// TODO Auto-generated method stub
@@ -123,7 +126,7 @@ public class AdminService implements AdminServiceInterface {
 		return adminDaoOp.approveStudentRegistration(SId);
 	}
 
-
+	/*Method to update course in course table*/
 	@Override
 	public boolean updateCourse(Set<String> courseList) {
 		// TODO Auto-generated method stub
@@ -131,7 +134,7 @@ public class AdminService implements AdminServiceInterface {
 		return adminDaoOp.updateCourse(courseList);
 	}
 
-
+	/*Method to add new user*/
 	@Override
 	public boolean addUser(String id, String password,String name) throws UserNotAddedException, UserIdAlreadyInUseException {
 		// TODO Auto-generated method stub

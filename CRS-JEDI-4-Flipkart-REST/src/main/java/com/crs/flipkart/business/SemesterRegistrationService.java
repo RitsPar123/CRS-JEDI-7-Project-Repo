@@ -86,6 +86,9 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
        
       }
     
+    /*
+    Student can see selected courses
+    */
     public void showSelectedCourses(SemesterRegistration semesterRegistration) {
     	
     	logger.info("Showing selected courses");

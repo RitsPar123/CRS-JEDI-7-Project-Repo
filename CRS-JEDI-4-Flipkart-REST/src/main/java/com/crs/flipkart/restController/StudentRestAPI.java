@@ -105,7 +105,14 @@ public class StudentRestAPI {
 		}
 
 	}
-
+	
+	/**
+	 * Rest service for drop course 
+	 * @param studentId
+	 * @param courseId
+	 * @return
+	 */
+	 
 	@DELETE
 	@Path("/dropCourse")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -124,6 +131,12 @@ public class StudentRestAPI {
 		return Response.status(200).entity("Course has been dropped successfully ").build();
 	}
 
+	/**
+	 * 
+	 * Rest service for showing selected courses of student with given student id
+	 * @param studentId
+	 * @return
+	 */
 	@GET
 	@Path("/showSelectedCourses")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -138,6 +151,12 @@ public class StudentRestAPI {
 		return Response.status(200).entity("There are no courses selected for display").build();
 	}
 
+	
+	/**
+	 * Rest service for payment process
+	 * @param paymentobj
+	 * @return
+	 */
 	@POST
 	@Path("/payment")
 	@Consumes("application/json")
@@ -178,7 +197,12 @@ public class StudentRestAPI {
 		}
 		
 	}
-
+	
+	/**
+	 * Rest service to show notification
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Path("/showNotification")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -190,7 +214,12 @@ public class StudentRestAPI {
 
 		return Response.status(200).entity("No Notifications are Present").build();
 	}
-
+	
+	/**
+	 * Rest service for viewing registered courses
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Path("/viewRegisteredCourses")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -203,7 +232,13 @@ public class StudentRestAPI {
 		}
 		return Response.status(200).entity(courses).build();
 	}
-
+	
+	
+	/**
+	 * Rest service to view report card with given student ID
+	 * @param studentId
+	 * @return
+	 */
 	@GET
 	@Path("/viewReportCard")
 	@Produces(MediaType.APPLICATION_JSON)
