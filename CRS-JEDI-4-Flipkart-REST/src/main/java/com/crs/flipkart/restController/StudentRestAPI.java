@@ -60,6 +60,13 @@ public class StudentRestAPI {
 	AdminDaoInterface adminDaoInterface = new AdminDaoOperation();
 	PaymentDaoInterface paymentDaoInterface = new PaymentDaoOperations();
 
+	
+	/**
+	 *  /student/signup
+	 *  Rest service for signing students
+	 * @param student
+	 * @return
+	 */
 	@POST
 	@Path("/signup")
 	@Consumes("application/json")
@@ -73,7 +80,13 @@ public class StudentRestAPI {
 
 		return Response.status(400).entity("There has not been added or there is some internal error").build();
 	}
-
+	
+	/**
+	 *  /student/showCourse
+	 * Rest service showing courses to students
+	 * @return
+	 */
+	
 	@GET
 	@Path("/showCourse")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -107,7 +120,14 @@ public class StudentRestAPI {
 		return Response.status(200).entity("Course has been added successfully ").build();
 
 	}
-
+	
+	/**
+	 * Rest service for drop course 
+	 * @param studentId
+	 * @param courseId
+	 * @return
+	 */
+	 
 	@DELETE
 	@Path("/dropCourse")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -122,6 +142,12 @@ public class StudentRestAPI {
 		return Response.status(200).entity("Course has been dropped successfully ").build();
 	}
 
+	/**
+	 * 
+	 * Rest service for showing selected courses of student with given student id
+	 * @param studentId
+	 * @return
+	 */
 	@GET
 	@Path("/showSelectedCourses")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -136,6 +162,12 @@ public class StudentRestAPI {
 		return Response.status(200).entity("There are no courses selected for display").build();
 	}
 
+	
+	/**
+	 * Rest service for payment process
+	 * @param paymentobj
+	 * @return
+	 */
 	@POST
 	@Path("/payment")
 	@Consumes("application/json")
@@ -154,7 +186,12 @@ public class StudentRestAPI {
 		}
 		return Response.status(200).entity("Fees Has Not Been Paid").build();
 	}
-
+	
+	/**
+	 * Rest service to show notification
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Path("/showNotification")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -166,7 +203,12 @@ public class StudentRestAPI {
 
 		return Response.status(200).entity("No Notifications are Present").build();
 	}
-
+	
+	/**
+	 * Rest service for viewing registered courses
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Path("/viewRegisteredCourses")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -179,7 +221,13 @@ public class StudentRestAPI {
 		List<Course> courses = registeredCoursesDaoInterface.getApprovedCoursesById(id);
 		return Response.status(200).entity(courses).build();
 	}
-
+	
+	
+	/**
+	 * Rest service to view report card with given student ID
+	 * @param studentId
+	 * @return
+	 */
 	@GET
 	@Path("/viewReportCard")
 	@Produces(MediaType.APPLICATION_JSON)

@@ -59,6 +59,10 @@ public class PaymentService implements PaymentServiceInterface {
 	                    System.out.println("Invalid Input");
 	            }
 	        }
+	
+	/*Method show online payment methods using student Id 
+	 @param StudentId : Id of the Student
+	 */
 
 	private void onlinePayment(String studentId) {
 		// TODO Auto-generated method stub
@@ -83,7 +87,10 @@ public class PaymentService implements PaymentServiceInterface {
 		}
 		
 	}
-
+	
+	/*Method show offline payment methods using student Id
+	 @param StudentId : Id of the Student
+	 */
 	private void offlinePayment(String studentId) {
 		// TODO Auto-generated method stub
 		logger.info("Offline payment mehthod");

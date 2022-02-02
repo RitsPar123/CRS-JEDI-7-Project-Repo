@@ -27,6 +27,10 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
 	Scanner sc = new Scanner(System.in);
     RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
     
+    
+    /*
+     Student can add course for Semester Registration
+     */
     public boolean addCourse(SemesterRegistration semesterRegistration) {
     	
     	logger.info("Adding course");
@@ -44,7 +48,10 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
         
         return registeredCoursesDaoInterface.addCourse(courseId,semesterRegistration.getStudentId());
     }
-
+    
+    /*
+    Student can drop course for Semester Registration
+    */
     public void dropCourse(SemesterRegistration semesterRegistration) {
     	
     	logger.info("Dropping Course");
@@ -65,7 +72,10 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
         System.out.println("-----------------------------------------------"); 
         
     }
-
+    
+    /*
+    Student can see course that are available 
+    */
     public void showCourse() {
     	
     	logger.info("Showing Course");
@@ -84,6 +94,9 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
     	System.out.println("-----------------------------------------------"); 
     }
     
+    /*
+    Student can see selected courses
+    */
     public void showSelectedCourses(SemesterRegistration semesterRegistration) {
     	
     	logger.info("Showing selected courses");

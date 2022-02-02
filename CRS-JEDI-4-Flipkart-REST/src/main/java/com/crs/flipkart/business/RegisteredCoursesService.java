@@ -44,7 +44,7 @@ public class RegisteredCoursesService implements RegisteredCoursesServiceInterfa
 		logger.info("Showing status");
 		return registeredCoursesDaoInterface.getStatus(studentId);
 	}
-
+	
 	@Override
 	public boolean updateStatus(String studentId) {
 		// TODO Auto-generated method stub

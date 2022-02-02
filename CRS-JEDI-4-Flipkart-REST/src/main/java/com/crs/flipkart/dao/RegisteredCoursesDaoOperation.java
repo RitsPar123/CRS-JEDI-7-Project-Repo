@@ -154,12 +154,13 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_STUDENT_SCOURSES_BY_ID);
 
 			pstmt.setString(1, id);
-
+		
 			ResultSet resultSet = pstmt.executeQuery();
 
 			while (resultSet.next()) {
 				Course course = new Course();
 				course.setCourseId(resultSet.getString("CourseId"));
+				
 				courses.add(course);
 			}
 
