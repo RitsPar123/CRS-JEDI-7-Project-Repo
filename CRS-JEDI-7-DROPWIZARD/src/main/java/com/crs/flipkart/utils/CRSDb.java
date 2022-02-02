@@ -25,24 +25,14 @@ public class CRSDb {
 	            return connection;
 	        } else {
 	        
-	        	Properties prop = new Properties();
-        /*        InputStream inputStream = CRSDb.class.getClassLoader().getResourceAsStream("./config.properties");
+	    /*    	Properties prop = new Properties();
+                InputStream inputStream = CRSDb.class.getClassLoader().getResourceAsStream("./config.properties");
                 prop.load(inputStream);
-                String driver = prop.getProperty("driver");
-                String url = prop.getProperty("url");
-                String user = prop.getProperty("user");
-                String password = prop.getProperty("password");
-*/
-
+          */
                 String driver = "com.mysql.jdbc.Driver";
                 String url = "jdbc:mysql://localhost:3306/crsdatabase";
                 String user = "root";
                 String password = "root";
-
-
-
-
-
                 Class.forName(driver);
 	            connection = DriverManager.getConnection(url, user, password);
 	            return connection;
@@ -52,11 +42,13 @@ public class CRSDb {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-	/*	catch (FileNotFoundException e) {
+		/*catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-	  */  return connection;
+
+		 */
+	    return connection;
 	}
 }

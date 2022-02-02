@@ -22,6 +22,7 @@ import com.crs.flipkart.exception.ProfessorNotAddedException;
 import com.crs.flipkart.exception.StudentNotFoundForApprovalException;
 import com.crs.flipkart.exception.UserIdAlreadyInUseException;
 import com.crs.flipkart.exception.UserNotAddedException;
+import com.crs.flipkart.validator.AdminValidator;
 
 /**
  * @author Abhinav
@@ -35,6 +36,14 @@ public class AdminService implements AdminServiceInterface {
 	
 	/*Adding course in course table */    
 	public boolean addCourse(Course course) throws CourseFoundException {
+		
+		List<Course> courseList = viewCourse();
+		if(!AdminValidator.isValidNewCourse(course, courseList)) {
+			logger.error("courseCode: " + course.getCourseId() + " already present in catalog!");
+			throw new CourseFoundException(course.getCourseId());
+		}
+		
+		
 		logger.info("Adding course in the course-catalogue");
 		return adminDaoOp.addCourse(course);
 	}
@@ -43,11 +52,20 @@ public class AdminService implements AdminServiceInterface {
 	/* Deleting course from the course table using course id */
 	@Override
 	public boolean deleteCourse(String id) throws CourseNotFoundException, CourseNotDeletedException {
+		List<Course> courseList = viewCourse();
+		
+		if(!AdminValidator.isValidDropCourse(id, courseList)) {
+			logger.error("courseCode: " + id + " not present in catalog!");
+			throw new CourseNotFoundException(id);
+		}
+		
+		
 		logger.info("Deleting course in the course-catalogue");
 		return adminDaoOp.deleteCourse(id);
 		// TODO Auto-generated method stub
 	}
 	
+	/* Adding Professor*/
 	@Override
 	public boolean addProfessor(Professor professor) throws UserIdAlreadyInUseException, ProfessorNotAddedException {
 		// TODO Auto-generated method stub
@@ -60,6 +78,7 @@ public class AdminService implements AdminServiceInterface {
 	public boolean approveStudent(String studentId) throws StudentNotFoundForApprovalException {
 		// TODO Auto-generated method stub
 		logger.info("Approving student");
+		
 		return adminDaoOp.approveStudent(studentId);
 	}
 	
@@ -116,6 +135,8 @@ public class AdminService implements AdminServiceInterface {
 		logger.info("Activating grade card");
 		return adminDaoOp.activateGradeCard(studentId);
 	}
+	
+	/*Method to approve Student Registration using student Id*/
 	@Override
 	public boolean approveStudentRegistration(String SId) {
 		// TODO Auto-generated method stub
@@ -123,7 +144,7 @@ public class AdminService implements AdminServiceInterface {
 		return adminDaoOp.approveStudentRegistration(SId);
 	}
 
-
+	/*Method to update course in course table*/
 	@Override
 	public boolean updateCourse(Set<String> courseList) {
 		// TODO Auto-generated method stub
@@ -131,7 +152,7 @@ public class AdminService implements AdminServiceInterface {
 		return adminDaoOp.updateCourse(courseList);
 	}
 
-
+	/*Method to add new user*/
 	@Override
 	public boolean addUser(String id, String password,String name) throws UserNotAddedException, UserIdAlreadyInUseException {
 		// TODO Auto-generated method stub

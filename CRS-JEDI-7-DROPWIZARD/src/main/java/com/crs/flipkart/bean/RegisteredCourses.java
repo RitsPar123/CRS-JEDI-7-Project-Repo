@@ -5,10 +5,13 @@ package com.crs.flipkart.bean;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * @author harsh
  *
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RegisteredCourses {
 	private String courseId;
 	private String studentId;

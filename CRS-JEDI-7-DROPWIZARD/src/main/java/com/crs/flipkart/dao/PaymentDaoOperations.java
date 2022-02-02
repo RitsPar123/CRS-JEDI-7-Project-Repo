@@ -19,7 +19,7 @@ import com.crs.flipkart.bean.Payment;
 public class PaymentDaoOperations implements PaymentDaoInterface {
 	java.util.Date date=new java.util.Date();
 	java.sql.Date sqlDate=new java.sql.Date(date.getTime());
-	 Connection conn = CRSDb.getConnect();
+	 
 	 private static Logger logger = Logger.getLogger(PaymentDaoOperations.class);
 
 	/**
@@ -27,6 +27,7 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
     */  
 	@Override
 	public boolean payFees(Payment pay) {
+			Connection conn = CRSDb.getConnect();
 		  try {
 			    date = new java.util.Date();
 	            PreparedStatement stmt;
@@ -36,9 +37,9 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
 	            stmt.setString(3, pay.getPaymentMethod());
 	            stmt.setDouble(4, pay.getAmount());
 	            stmt.setDate(5, sqlDate);
-
+	          
 	            stmt.executeUpdate();
-	            conn.close();
+//	            conn.close();
 	            logger.info("Fee Payment Done");
 	            return true;
 

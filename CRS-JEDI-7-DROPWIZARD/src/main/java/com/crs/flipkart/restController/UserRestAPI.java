@@ -95,7 +95,7 @@ public class UserRestAPI {
 				@QueryParam("password") String password) throws CourseNotAddedException, CourseNotDeletedException {
    
 	        try {
-	        	 int loggedIn = -1;
+	        	int loggedIn = -1;
 		        loggedIn = userInterface.verifyUser(id, password);
 	
 		        if (loggedIn ==1 || loggedIn == 2 || loggedIn == 3) { 

@@ -167,7 +167,11 @@ public class AdminRestAPI {
         	return Response.status(409).entity(e.getMessage()).build();
         }
     }
-
+	
+	/**
+	 * Rest service viewing pending admissions for approval
+	 * @return
+	 */
     @GET
     @Path("/viewPendingAdmissions")
     @Produces(MediaType.APPLICATION_JSON)
@@ -176,6 +180,12 @@ public class AdminRestAPI {
         return adminInterface.viewPendingApproval();
     }
 
+    
+    /**
+     * /admin/viewCourses
+     * Rest service for viewing courses
+     * @return
+     */
     @GET
     @Path("/viewCourses")
     @Produces(MediaType.APPLICATION_JSON)
@@ -185,7 +195,12 @@ public class AdminRestAPI {
         return adminInterface.viewCourse();
 
     }
-
+    
+    /**
+     * Rest service for approving student grades
+     * @param studentId
+     * @return
+     */
     @PUT
     @Path("/approveStudentGrade")
     @Produces(MediaType.APPLICATION_JSON)

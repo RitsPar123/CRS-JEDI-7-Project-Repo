@@ -24,22 +24,22 @@ public class ProfessorService implements ProfessorServiceInterface{
 	ProfessorDaoInterface professorDaoInterface = new ProfessorDaoOperation();
 
 
+
 	/**
-	 * Method that lets professor select a course with a particular courseid and coursename
-	 * @param profId
-	 * @param courseid
-	 * @param coursename
-	 */
+    * {@inheritDoc}
+    */  
+	@Override
 	public Boolean selectCourse(String profId, String courseid, String coursename) {
 		logger.info("Selecting the course");
 		return professorDaoInterface.selectCourse(profId, courseid, coursename);
 		// table-course
 	}
 
+
 	/**
-	 * Method that lets professor View Registered Courses
-	 * @param id: Professor's id
-	 */
+    * {@inheritDoc}
+    */  
+	@Override
 	public List<Course> viewRegisteredCourses(String id) throws NoCourseFoundException{
 		logger.info("Viewing Registered Course");
 		List<Course> RegisteredCourse = new ArrayList<Course>();
@@ -58,13 +58,11 @@ public class ProfessorService implements ProfessorServiceInterface{
 		return RegisteredCourse;
 	}
 
+
 	/**
-	 * Method which is used to add Grades by the professor
-	 * @param professorId : Id of the professor
-	 * @param courseId : Id of the course to be added grade
-	 * @param studentId : Id of the student to be added grade
-	 * @param grade
-	 */
+    * {@inheritDoc}
+    */  
+	@Override
 	public Boolean addGrades(String professorId, String courseId, String studentId, int grade) {
 
 		logger.info("Adding grades of the student");
@@ -72,9 +70,11 @@ public class ProfessorService implements ProfessorServiceInterface{
 		// table-grades
 	}
 
+
 	/**
-	 * Method that shows courses available for professor to select from
-	 */
+    * {@inheritDoc}
+    */  
+	@Override
 	public List<Course>  showCourses() throws NoCourseFoundException{
 
 		logger.info("Showing Courses");
@@ -96,13 +96,13 @@ public class ProfessorService implements ProfessorServiceInterface{
 	}
 
 	
-	/** 
-	 * Method that allows Professor to view students registered for a particular courseId
-	 * @param id : professor id
-	 * @param courseId: id of the course
-	 */
+
+	/**
+    * {@inheritDoc}
+    */  
+	@Override
 	public List<Student>  viewRegisteredStudents(String id, String courseId) {
-		logger.info("Viewing Registered Courses");
+		logger.info("Viewing Registered Student");
 		try {
 		return professorDaoInterface.viewRegisteredStudents(id, courseId);
 		} 

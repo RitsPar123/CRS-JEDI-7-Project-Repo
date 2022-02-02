@@ -8,19 +8,12 @@
   <url>http://maven.apache.org</url>
   
   <properties>
-<<<<<<< HEAD
     <dropwizard.version>1.0.0</dropwizard.version>
     <mysql-connector-java.version>5.1.49</mysql-connector-java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-=======
-       <dropwizard.version>1.0.0</dropwizard.version>
-       <mysql-connector-java.version>5.1.49</mysql-connector-java.version>
-       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>  
   
->>>>>>> 6ce117a293f810aefe388193abc006c0bd2cf82d
   <dependencies>
     
     <dependency>

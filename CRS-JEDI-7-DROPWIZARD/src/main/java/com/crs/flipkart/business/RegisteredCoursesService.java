@@ -19,13 +19,7 @@ public class RegisteredCoursesService implements RegisteredCoursesServiceInterfa
 	private static Logger logger = Logger.getLogger(RegisteredCoursesService.class);
 	RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
 
-	public void generateReportCard() {
-
-	}
-
-	public void calculateGpa() {
-
-	}
+	
 
 	public List<Course> getSelectedCourses(String studentId) {
 		logger.info("Getting selected courses");
@@ -44,7 +38,7 @@ public class RegisteredCoursesService implements RegisteredCoursesServiceInterfa
 		logger.info("Showing status");
 		return registeredCoursesDaoInterface.getStatus(studentId);
 	}
-
+	
 	@Override
 	public boolean updateStatus(String studentId) {
 		// TODO Auto-generated method stub

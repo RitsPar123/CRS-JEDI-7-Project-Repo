@@ -72,17 +72,18 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
 	       
 
 	            List<Notification> notificationList = new ArrayList<Notification>();
-	            if(resultSet.next()) {
+	 
 		            while (resultSet.next()) {
 		                Notification noti = new Notification();
-		                noti.setMessage(resultSet.getString(1));
+		                noti.setMessage(resultSet.getString("message"));
+		                noti.setStudentId(resultSet.getString("SId"));
 	
 		                notificationList.add(noti);
 		            }
 
 	            //conn.close();
 	            return notificationList;
-	            }
+	            
 	            
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block
