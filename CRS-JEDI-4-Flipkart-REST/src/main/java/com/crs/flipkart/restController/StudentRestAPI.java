@@ -151,7 +151,7 @@ public class StudentRestAPI {
 			return Response.status(200).entity("Your Course Allocation Registration is still pending").build();
 		}
 
-		if (mode.equals("online") || mode.equals("Online")) {
+		if (mode.equals("1")) {
 			try {
 
 				boolean isPaid = paymentInterface.onlinePayment(studentid);
@@ -163,7 +163,7 @@ public class StudentRestAPI {
 				return Response.status(400).entity("Fees not paid due to some internal error").build();
 			}
 
-		} else if (mode.equals("offline") || mode.equals("Offline")) {
+		} else  {
 			try {
 
 				boolean isPaid = paymentInterface.offlinePayment(studentid);
@@ -176,7 +176,7 @@ public class StudentRestAPI {
 			}
 
 		}
-		return Response.status(200).entity("This mode of payment is not supported").build();
+		
 	}
 
 	@GET
