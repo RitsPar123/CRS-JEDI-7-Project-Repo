@@ -36,6 +36,7 @@ public class SQLQueriesConstant {
 	public static final String APPROVE_REPORT = "update student set IsReportApproved = 1 where SId = ?";
 	public static final String GET_ALL_COURSES = "select * from course ";
 	public static final String CHECK_COURSE_EXISTENCE = "select * from course where courseid = ?";
+	public static final String CHECK_PAYMENT_STATUS = "select isregistered from student where sid = ?";
 	
 	public static final String  ASSIGN_COURSE_TO_PROF ="update course set PID = ? where courseID = ? and courseName = ? and PID is null";
 	public static final String  VIEW_PROF_COURSES = "select CourseId, CourseName from course where PId = ? ";

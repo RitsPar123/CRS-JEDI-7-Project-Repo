@@ -17,5 +17,6 @@ public interface PaymentDaoInterface {
 	 */
 	public boolean payFees(Payment pay);
 	
-
+	public boolean isPaid(String studentId);
+	
 }

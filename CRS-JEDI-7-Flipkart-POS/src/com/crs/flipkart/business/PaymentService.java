@@ -34,7 +34,12 @@ public class PaymentService implements PaymentServiceInterface {
 			int isRegister = registerCourse.getStatus(StudentId);
 			
 			if(isRegister ==  0) {
-				System.out.println("Your Course Allocation Registration is still pending\n");
+				logger.info("Your Course Allocation Registration is still pending");
+				return;
+			}
+			
+			if(paymentDao.isPaid(StudentId)) {
+				logger.info("Fee has been paid already");
 				return;
 			}
 		 	System.out.println("----------------Payment Options----------------\n");
@@ -73,7 +78,7 @@ public class PaymentService implements PaymentServiceInterface {
 		Payment payment = new Payment(studentId,paymentId,"Online",amount,"77777",true);
 		boolean isPaid = paymentDao.payFees(payment);
 		if(isPaid) {
-			String message = "Fees Has been paid with Account number  -> " + paymentId;
+			String message = "Fees Has been paid online";
 			registerCourse.updateStatus(studentId);
 			notificationService.sendNotification(studentId,message);
 			System.out.println(message);
@@ -97,7 +102,7 @@ public class PaymentService implements PaymentServiceInterface {
 		Payment payment = new Payment(studentId,paymentId,"Offline",amount,"77777",true);
 		boolean isPaid = paymentDao.payFees(payment);
 		if(isPaid) {
-			String message = "Fees Has been paid with RefrenceId  -> " + paymentId;
+			String message = "Fees Has been paid offline";
 			registerCourse.updateStatus(studentId);
 			notificationService.sendNotification(studentId,message);
 			System.out.println(message);
