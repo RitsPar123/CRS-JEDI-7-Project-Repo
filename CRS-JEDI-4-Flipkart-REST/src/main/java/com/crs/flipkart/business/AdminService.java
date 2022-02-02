@@ -22,6 +22,7 @@ import com.crs.flipkart.exception.ProfessorNotAddedException;
 import com.crs.flipkart.exception.StudentNotFoundForApprovalException;
 import com.crs.flipkart.exception.UserIdAlreadyInUseException;
 import com.crs.flipkart.exception.UserNotAddedException;
+import com.crs.flipkart.validator.AdminValidator;
 
 /**
  * @author Abhinav
@@ -35,6 +36,14 @@ public class AdminService implements AdminServiceInterface {
 	
 	/*Adding course in course table */    
 	public boolean addCourse(Course course) throws CourseFoundException {
+		
+		List<Course> courseList = viewCourse();
+		if(!AdminValidator.isValidNewCourse(course, courseList)) {
+			logger.error("courseCode: " + course.getCourseId() + " already present in catalog!");
+			throw new CourseFoundException(course.getCourseId());
+		}
+		
+		
 		logger.info("Adding course in the course-catalogue");
 		return adminDaoOp.addCourse(course);
 	}
@@ -43,6 +52,14 @@ public class AdminService implements AdminServiceInterface {
 	/* Deleting course from the course table using course id */
 	@Override
 	public boolean deleteCourse(String id) throws CourseNotFoundException, CourseNotDeletedException {
+		List<Course> courseList = viewCourse();
+		
+		if(!AdminValidator.isValidDropCourse(id, courseList)) {
+			logger.error("courseCode: " + id + " not present in catalog!");
+			throw new CourseNotFoundException(id);
+		}
+		
+		
 		logger.info("Deleting course in the course-catalogue");
 		return adminDaoOp.deleteCourse(id);
 		// TODO Auto-generated method stub
