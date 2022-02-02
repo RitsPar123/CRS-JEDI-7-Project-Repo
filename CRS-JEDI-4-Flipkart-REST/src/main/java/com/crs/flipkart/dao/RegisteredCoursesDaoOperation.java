@@ -42,6 +42,8 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 			while (resultSet.next()) {
 				Course course = new Course();
 				course.setCourseId(resultSet.getString("CourseId"));
+				course.setCourseName(resultSet.getString("CourseName"));
+				course.setProfessor(resultSet.getString("PId"));
 				courses.add(course);
 			}
 
@@ -94,7 +96,7 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 		return false;
 	}
 
-	public void dropCourse(String courseId, String studentId) {
+	public void dropCourse(String courseId, String studentId) throws Exception {
 		Connection connection = CRSDb.getConnect();
 
 		try {
@@ -107,7 +109,7 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 			pstmt.executeUpdate();
 		
 		} catch (Exception e) {
-			logger.error("Exception" + e.getMessage());
+	      	throw e;
 		} finally {
 			try {
 				connection.close();
@@ -154,12 +156,14 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 			PreparedStatement pstmt = connection.prepareStatement(SQLQueriesConstant.GET_STUDENT_SCOURSES_BY_ID);
 
 			pstmt.setString(1, id);
-
+		
 			ResultSet resultSet = pstmt.executeQuery();
 
 			while (resultSet.next()) {
 				Course course = new Course();
 				course.setCourseId(resultSet.getString("CourseId"));
+				course.setCourseName(resultSet.getString("CourseName"));
+				course.setProfessor(resultSet.getString("PId"));
 				courses.add(course);
 			}
 

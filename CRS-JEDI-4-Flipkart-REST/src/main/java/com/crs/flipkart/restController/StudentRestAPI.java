@@ -30,6 +30,10 @@ import com.crs.flipkart.business.PaymentService;
 import com.crs.flipkart.business.PaymentServiceInterface;
 import com.crs.flipkart.business.RegisteredCoursesService;
 import com.crs.flipkart.business.RegisteredCoursesServiceInterface;
+import com.crs.flipkart.business.SemesterRegistrationService;
+import com.crs.flipkart.business.SemesterRegistrationServiceInterface;
+import com.crs.flipkart.business.StudentService;
+import com.crs.flipkart.business.StudentServiceInterface;
 import com.crs.flipkart.dao.AdminDaoInterface;
 import com.crs.flipkart.dao.AdminDaoOperation;
 import com.crs.flipkart.dao.NotificationDaoInterface;
@@ -51,34 +55,30 @@ import com.crs.flipkart.dao.NotificationDaoInterface;
 @Path("/student")
 public class StudentRestAPI {
 
-	NotificationServiceInterface notificationService = new NotificationService();
+	NotificationServiceInterface notificationInterface = new NotificationService();
 	PaymentServiceInterface paymentInterface = new PaymentService();
 	AdminServiceInterface adminInterface = new AdminService();
+	SemesterRegistrationServiceInterface semesterRegistrationInterface = new SemesterRegistrationService();
 	StudentDaoInterface studentDaoInterface = new StudentDaoOperation();
 	RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
+	RegisteredCoursesServiceInterface registeredCoursesInterface = new RegisteredCoursesService();
 	NotificationDaoInterface notificationDaoInterface = new NotificationDaoOperation();
 	AdminDaoInterface adminDaoInterface = new AdminDaoOperation();
 	PaymentDaoInterface paymentDaoInterface = new PaymentDaoOperations();
-
-	@POST
-	@Path("/signup")
-	@Consumes("application/json")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response signup(@Valid Student student) {
-
-		boolean resp = studentDaoInterface.signup(student);
-		if (resp) {
-			return Response.status(200).entity("student has been added successfully").build();
-		}
-
-		return Response.status(400).entity("There has not been added or there is some internal error").build();
-	}
+	StudentServiceInterface studentInterface = new StudentService();
 
 	@GET
 	@Path("/showCourse")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response showCourse() {
-		List<Course> availableCourses = adminDaoInterface.getAllCourse();
+
+		/**
+		 * Method to showCourse
+		 * 
+		 * @return
+		 */
+
+		List<Course> availableCourses = semesterRegistrationInterface.showCourse();
 
 		if (availableCourses.size() > 0) {
 			return Response.status(200).entity(availableCourses).build();
@@ -90,45 +90,60 @@ public class StudentRestAPI {
 	@Path("/addCourse")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addCourse(@QueryParam("studentId") String studentId,
-			@QueryParam("courseId") String courseId) {
+	public Response addCourse(@QueryParam("studentId") String studentId, @QueryParam("courseId") String courseId)
+			throws CourseNotFoundException {
 		try {
-			registeredCoursesDaoInterface.isCourseAvailable(courseId);
+			boolean a = semesterRegistrationInterface.addCourse(studentId, courseId);
+
+			if (a == false) {
+				return Response.status(200).entity("Course has already been added").build();
+
+			}
+			return Response.status(200).entity("Course has been added successfully").build();
 		} catch (CourseNotFoundException ex) {
 			return Response.status(400).entity("Course not found").build();
 		}
 
-		if (registeredCoursesDaoInterface.hasCourse(courseId, studentId)) {
-
-			return Response.status(200).entity("You have this course added already!").build();
-		}
-
-		registeredCoursesDaoInterface.addCourse(courseId, studentId);
-		return Response.status(200).entity("Course has been added successfully ").build();
-
 	}
-
+	
+	/**
+	 * Rest service for drop course 
+	 * @param studentId
+	 * @param courseId
+	 * @return
+	 */
+	 
 	@DELETE
 	@Path("/dropCourse")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response dropCourse(@QueryParam("studentId") String studentId,
-			@QueryParam("courseId") String courseId) {
+	public Response dropCourse(@QueryParam("studentId") String studentId, @QueryParam("courseId") String courseId) {
+
 		if (!registeredCoursesDaoInterface.hasCourse(courseId, studentId)) {
 			return Response.status(200).entity("You do not have this course added!").build();
 		}
 
-		registeredCoursesDaoInterface.dropCourse(courseId, studentId);
+		try {
+			semesterRegistrationInterface.dropCourse(courseId, studentId);
+		} catch (Exception ex) {
+			return Response.status(400).entity("Course not deleted due to internal error").build();
+		}
 
 		return Response.status(200).entity("Course has been dropped successfully ").build();
 	}
 
+	/**
+	 * 
+	 * Rest service for showing selected courses of student with given student id
+	 * @param studentId
+	 * @return
+	 */
 	@GET
 	@Path("/showSelectedCourses")
 	@Produces(MediaType.APPLICATION_JSON)
-	
+
 	public Response showSelectedCourses(@QueryParam("studentId") String studentId) {
-		System.out.println(studentId);
-		List<Course> selectedCourses = registeredCoursesDaoInterface.getSelectedCourses(studentId);
+
+		List<Course> selectedCourses = registeredCoursesInterface.getSelectedCourses(studentId);
 
 		if (selectedCourses.size() > 0) {
 			return Response.status(200).entity(selectedCourses).build();
@@ -136,61 +151,103 @@ public class StudentRestAPI {
 		return Response.status(200).entity("There are no courses selected for display").build();
 	}
 
+	
+	/**
+	 * Rest service for payment process
+	 * @param paymentobj
+	 * @return
+	 */
 	@POST
 	@Path("/payment")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response payment(@Valid Payment paymentobj) {
-		String message = "Fees Has been paid with Account number  -> " + paymentobj.getPaymentId();
-		boolean isPaid = paymentDaoInterface.payFees(paymentobj);
-		RegisteredCoursesServiceInterface registerCourse = new RegisteredCoursesService();
-		
-		if (isPaid) {
-			registerCourse.updateStatus(paymentobj.getStudentId());
-			notificationService.sendNotification(paymentobj.getStudentId(),message);
-			return Response.status(200).entity(paymentobj.getPaymentMethod() + " Payment has been made").build();
-			
+	public Response payment(@QueryParam("studentid") String studentid, @QueryParam("mode") String mode) {
+
+		int isRegister = registeredCoursesInterface.getStatus(studentid);
+
+		if (isRegister == 0) {
+
+			return Response.status(200).entity("Your Course Allocation Registration is still pending").build();
+		}
+
+		if (mode.equals("1")) {
+			try {
+
+				boolean isPaid = paymentInterface.onlinePayment(studentid);
+				if (isPaid) {
+					return Response.status(200).entity("Fees has been successfully paid through online mode").build();
+				}
+				return Response.status(200).entity("Fees cannot be paid").build();
+			} catch (Exception ex) {
+				return Response.status(400).entity("Fees not paid due to some internal error").build();
+			}
+
+		} else  {
+			try {
+
+				boolean isPaid = paymentInterface.offlinePayment(studentid);
+				if (isPaid) {
+					return Response.status(200).entity("Fees has been successfully paid through offline mode").build();
+				}
+				return Response.status(200).entity("Fees cannot be paid").build();
+			} catch (Exception ex) {
+				return Response.status(400).entity("Fees not paid due to some internal error").build();
+			}
 
 		}
-		return Response.status(200).entity("Fees Has Not Been Paid").build();
+		
 	}
-
+	
+	/**
+	 * Rest service to show notification
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Path("/showNotification")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response showNotifications(@QueryParam("id") String id) {
-		List<Notification> notification = notificationDaoInterface.getNoti(id);
+		List<Notification> notification = notificationInterface.showNotifications(id);
 		if (notification != null && notification.size() > 0) {
 			return Response.status(200).entity(notification).build();
 		}
 
 		return Response.status(200).entity("No Notifications are Present").build();
 	}
-
+	
+	/**
+	 * Rest service for viewing registered courses
+	 * @param id
+	 * @return
+	 */
 	@GET
 	@Path("/viewRegisteredCourses")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response viewRegisteredCourses(@QueryParam("id") String id) {
-		int isRegistered = studentDaoInterface.getRegistrationStatus(id);
 
-		if (isRegistered == 0) {
-			return Response.status(200).entity("Registration in progress or incomplete!").build();
+		List<Course> courses = studentInterface.viewRegisteredCourses(id);
+		if (courses == null) {
+
+			return Response.status(200).entity("approval still pending").build();
 		}
-		List<Course> courses = registeredCoursesDaoInterface.getApprovedCoursesById(id);
 		return Response.status(200).entity(courses).build();
 	}
-
+	
+	
+	/**
+	 * Rest service to view report card with given student ID
+	 * @param studentId
+	 * @return
+	 */
 	@GET
 	@Path("/viewReportCard")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response viewReportCard(@QueryParam("studentId") String studentId) {
-		Student stud = new Student();
-		stud = adminInterface.viewStudentData(studentId);
+		List<RegisteredCourses> registeredCourses = studentInterface.viewReportCard(studentId);
 
-		if (!stud.isReportApproved()) {
-			return Response.status(200).entity("The report card has not been generated").build();
+		if (registeredCourses == null) {
+			return Response.status(200).entity("Report card still not generated").build();
 		}
-		List<RegisteredCourses> registeredCourses = adminInterface.activateGradeCard(studentId);
 
 		return Response.status(200).entity(registeredCourses).build();
 

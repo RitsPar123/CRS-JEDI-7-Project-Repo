@@ -15,6 +15,7 @@ import com.crs.flipkart.dao.AdminDaoInterface;
 import com.crs.flipkart.dao.AdminDaoOperation;
 import com.crs.flipkart.dao.RegisteredCoursesDaoInterface;
 import com.crs.flipkart.dao.RegisteredCoursesDaoOperation;
+import com.crs.flipkart.exception.CourseNotFoundException;
 
 /**
  * @author harsh
@@ -27,63 +28,67 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
 	Scanner sc = new Scanner(System.in);
     RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
     
-    public boolean addCourse(SemesterRegistration semesterRegistration) {
+    public boolean addCourse(String studentId, String courseId)  throws CourseNotFoundException {
+    	
     	
     	logger.info("Adding course");
-        System.out.println("Enter the course ID");
-        String courseId = sc.next();
-        
-        if(registeredCoursesDaoInterface.hasCourse(courseId,semesterRegistration.getStudentId())) {
-        	System.out.println("You have this course added already!");
+    	
+    	try
+    	{
+    		registeredCoursesDaoInterface.isCourseAvailable(courseId);
+    	}
+    	catch(CourseNotFoundException ex)
+    	{
+    		throw ex;
+    	}
+  
+        if(registeredCoursesDaoInterface.hasCourse(courseId,studentId)) {
+  
         	return false;
         }
         
-        System.out.println("Course with course id " + courseId + " added successfully!");
-        System.out.println("-----------------------------------------------"); 
-        System.out.println("-----------------------------------------------"); 
         
-        return registeredCoursesDaoInterface.addCourse(courseId,semesterRegistration.getStudentId());
+        return registeredCoursesDaoInterface.addCourse(courseId,studentId);
     }
 
-    public void dropCourse(SemesterRegistration semesterRegistration) {
+    public boolean dropCourse(String studentId, String courseId) throws Exception
+    {
     	
     	logger.info("Dropping Course");
-        System.out.println("Enter the course ID that you want to delete");
-        String courseId = sc.next();
+      
         
-        if(!registeredCoursesDaoInterface.hasCourse(courseId,semesterRegistration.getStudentId())) {
-        	System.out.println("You do not have this course added!");
-        	return;
+        if(!registeredCoursesDaoInterface.hasCourse(courseId,studentId)) 
+        {
+        	
+        	return false;
         }
         
+      try{
+        registeredCoursesDaoInterface.dropCourse(courseId, studentId);
+      }
+      catch(Exception ex)
+      {
+    	  throw ex;
+      } 
+      
+    return true;}
 
-        registeredCoursesDaoInterface.dropCourse(courseId, semesterRegistration.getStudentId());
-        
-        System.out.println("Course with course id " + courseId + " deleted Successfully!");
-        
-        System.out.println("-----------------------------------------------"); 
-        System.out.println("-----------------------------------------------"); 
-        
-    }
-
-    public void showCourse() {
+    public  List<Course> showCourse() 
+    {
     	
     	logger.info("Showing Course");
-    	System.out.println("Courses offered in this semester are: ");
+    	//System.out.println("Courses offered in this semester are: ");
     	// Fetch courses from course catalog
+    	
     	AdminDaoInterface adminDaoInterface = new AdminDaoOperation();
-    	
     	List<Course> availableCourses = adminDaoInterface.getAllCourse();
-    	
-    	availableCourses.forEach(course->{System.out.println("Course ID: " + course.getCourseId() + " Course Name : " + course.getCourseName());});
-//    	for(Course course: availableCourses) {
-//    		System.out.println("Course ID: " + course.getCourseId() + " Course Name : " + course.getCourseName());
-//    	}
-    	
-    	System.out.println("-----------------------------------------------");  
-    	System.out.println("-----------------------------------------------"); 
-    }
+    	return availableCourses;
+       
+      }
     
+    /*
+    Student can see selected courses
+    */
     public void showSelectedCourses(SemesterRegistration semesterRegistration) {
     	
     	logger.info("Showing selected courses");
@@ -97,5 +102,11 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
     	
     	System.out.println("-----------------------------------------------");
     }
+
+	//@Override
+	/*public boolean addCourse(SemesterRegistration semesterRegistration) {
+		// TODO Auto-generated method stub
+		return false;
+	}*/
     
 }

@@ -3,8 +3,12 @@
  */
 package com.crs.flipkart.business;
 
+import java.util.List;
+
+import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.CourseCatalog;
 import com.crs.flipkart.bean.SemesterRegistration;
+import com.crs.flipkart.exception.CourseNotFoundException;
 
 /**
  * @author Abhinav
@@ -15,9 +19,9 @@ import com.crs.flipkart.bean.SemesterRegistration;
   *by adding ,droping and showing courses available for selection .
   */
 public interface SemesterRegistrationServiceInterface {
-	public boolean addCourse(SemesterRegistration semesterRegistration);
+	public boolean addCourse(String studentId, String courseId) throws CourseNotFoundException;
 	
-	public void dropCourse(SemesterRegistration semesterRegistration);
+	public boolean dropCourse(String studentId, String courseId) throws Exception;
 	
-	public void showCourse();
+	public List<Course> showCourse();
 }

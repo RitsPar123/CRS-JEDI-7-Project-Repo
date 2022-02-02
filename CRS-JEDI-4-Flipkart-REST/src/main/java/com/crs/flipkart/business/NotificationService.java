@@ -46,21 +46,13 @@ public class NotificationService implements NotificationServiceInterface {
 	 * @param id : id of the student
 	 */
 	@Override
-	public void showNotifications(String id) {
+	public List<Notification> showNotifications(String id) {
 		// TODO Auto-generated method stub
 		logger.info("Displaying notification ");
 		List<Notification> notification = notificationDaoOp.getNoti(id);
-		System.out.println("Notifications : ");
-		if(notification!=null && notification.size()>0) {
-			notification.forEach(noti->{System.out.println(noti.getMessage() + " ");});
-//			for(Notification noti: notification) {
-//				System.out.println(noti.getMessage() + " ");
-//			}
-		}
-		else {
-			logger.info("No Notifications are Present");
-		}
+		
+		return notification;
 	
-		System.out.println("--------------------------------------------------");
+		
 	}
 	}
