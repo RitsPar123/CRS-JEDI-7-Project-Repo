@@ -124,17 +124,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 			if(CheckGradeUpdateType(studentId , courseId)) {
 				
-				System.out.println("Record already exists\n");
-				System.out.print("Press N if you donot want to overwrite :  ");
-				Scanner sc = new Scanner(System.in);
-				String choice = sc.next();
-				System.out.println();
-				
-				if(choice.equalsIgnoreCase("N")) {
-					logger.info("Mark updation cancelled");
-					return true;	
-				}
-				
+				logger.info("Record already exists\n");
 			}
 			try {
 				query = SQLQueriesConstant.ADD_GRADES;

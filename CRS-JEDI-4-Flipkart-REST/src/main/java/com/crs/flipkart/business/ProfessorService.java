@@ -102,7 +102,7 @@ public class ProfessorService implements ProfessorServiceInterface{
     */  
 	@Override
 	public List<Student>  viewRegisteredStudents(String id, String courseId) {
-		logger.info("Viewing Registered Courses");
+		logger.info("Viewing Registered Student");
 		try {
 		return professorDaoInterface.viewRegisteredStudents(id, courseId);
 		} 
