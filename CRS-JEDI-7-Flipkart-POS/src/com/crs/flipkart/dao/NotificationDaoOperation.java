@@ -72,7 +72,7 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
 	       
 
 	            List<Notification> notificationList = new ArrayList<Notification>();
-	            if(resultSet.next()) {
+	          
 		            while (resultSet.next()) {
 		                Notification noti = new Notification();
 		                noti.setMessage(resultSet.getString(1));
@@ -82,7 +82,7 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
 
 	            //conn.close();
 	            return notificationList;
-	            }
+	            
 	            
 	        } catch (Exception e) {
 	            // TODO Auto-generated catch block

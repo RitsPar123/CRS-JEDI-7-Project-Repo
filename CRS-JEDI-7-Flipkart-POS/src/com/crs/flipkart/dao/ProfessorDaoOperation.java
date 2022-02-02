@@ -226,16 +226,15 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 					stmt.setString(1, courseId);
 					ResultSet registeredStudents =  stmt.executeQuery();
 						
-					if(registeredStudents.next()) {
+				
 					while(registeredStudents.next()) {
 						
 						System.out.println("\tStudent Id:"+ registeredStudents.getString("id")+ "\tStudent Name :" + registeredStudents.getString("name"));
 						
 					   
 				    }
-					}
-					else
-						throw new StudentNotFoundException(courseId,1);
+					
+				
 				}
 			else{
 				logger.error("Professor Not Registered for given Course");
