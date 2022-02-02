@@ -57,11 +57,11 @@ public class ProfessorRestAPI {
 				
 			 if(professorService.selectCourse(profId ,courseId,courseName))
 				{
-					return Response.status(201).entity("Professor alloted couseId " + courseId ).build();
+					return Response.status(201).entity("Professor alloted courseId " + courseId ).build();
 				}
 			else
 				{
-					return Response.status(201).entity(" Unable to alloted couseId " + courseId ).build();
+					return Response.status(409).entity(" Unable to alloted courseId " + courseId ).build();
 				}
 			
 							
@@ -117,7 +117,7 @@ public class ProfessorRestAPI {
 				+ studentId +"in CourseId  "+ courseId ).build();
 				}else
 				{
-					return Response.status(201).entity("Unable to add grades").build();
+					return Response.status(409).entity("Unable to add grades").build();
 				}
 				 
 			 }
