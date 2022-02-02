@@ -92,11 +92,12 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 				while(rc.next()) {
 					
 					String cid  = rc.getString("CourseId");
-			        	String cname = rc.getString("CourseName");
-			         
+			        String cname = rc.getString("CourseName");
+			        int count = rc.getInt("SeatCount"); 
 			        	Course c= new Course();
 			        	c.setCourseId(cid);
 			        	c.setCourseName(cname);
+			        	c.setCount(count);
 			        
 			        	RegisteredCourses.add(c);
 			        
@@ -123,17 +124,7 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 			
 			if(CheckGradeUpdateType(studentId , courseId)) {
 				
-				System.out.println("Record already exists\n");
-				System.out.print("Press N if you donot want to overwrite :  ");
-				Scanner sc = new Scanner(System.in);
-				String choice = sc.next();
-				System.out.println();
-				
-				if(choice.equalsIgnoreCase("N")) {
-					logger.info("Mark updation cancelled");
-					return true;	
-				}
-				
+				logger.info("Record already exists\n");
 			}
 			try {
 				query = SQLQueriesConstant.ADD_GRADES;
@@ -236,6 +227,9 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 						Student st= new Student();
 						st.setId(registeredStudents.getString("id"));
 						st.setUserName(registeredStudents.getString("name"));
+						st.setApproved(registeredStudents.getBoolean("IsApproved"));
+						st.setRegistered(registeredStudents.getBoolean("IsRegistered"));
+						st.setReportApproved(registeredStudents.getBoolean("IsReportApproved"));
 						studentList.add(st);
 				    }
 
