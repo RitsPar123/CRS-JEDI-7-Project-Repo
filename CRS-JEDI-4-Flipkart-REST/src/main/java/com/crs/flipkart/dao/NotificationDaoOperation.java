@@ -75,7 +75,8 @@ public class NotificationDaoOperation implements NotificationDaoInterface {
 	 
 		            while (resultSet.next()) {
 		                Notification noti = new Notification();
-		                noti.setMessage(resultSet.getString(1));
+		                noti.setMessage(resultSet.getString("message"));
+		                noti.setStudentId(resultSet.getString("SId"));
 	
 		                notificationList.add(noti);
 		            }
