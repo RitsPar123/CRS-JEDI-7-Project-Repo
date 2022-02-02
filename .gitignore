@@ -1,5 +1,6 @@
 /.metadata/
 .classpath
+.project
 contacts.log
 /.metadata/
 /bin/
@@ -15,4 +16,4 @@ CRS-JEDI-7-Flipkart-REST/contact.log
 CRS-JEDI-7-Flipkart-REST/src/main/java/config.properties
 CRS-JEDI-7-Flipkart-REST/src/main/java/com/crs/flipkart/utils/CRSDb.java
 CRS-JEDI-7-Flipkart-REST/Java Resources/src/config.properties
-Servers/
+Servers
