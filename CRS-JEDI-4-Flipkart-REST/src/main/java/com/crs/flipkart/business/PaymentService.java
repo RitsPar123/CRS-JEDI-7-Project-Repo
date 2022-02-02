@@ -41,19 +41,8 @@ public class PaymentService implements PaymentServiceInterface {
 		/**System.out.println("----------------Payment Options----------------\n");
 		System.out.println("  Amount to be Paid is 1000");
 
-<<<<<<< HEAD
-	                default:
-	                    System.out.println("Invalid Input");
-	            }
-	        }
-	
-	/*Method show online payment methods using student Id 
-	 @param StudentId : Id of the Student
-	 */
-=======
 		System.out.println("1  Online Payment");
 		System.out.println("2  Offline Payment");
->>>>>>> e9b5fdbe3ee8397574058a021af33ff3856ffe0c
 
 		System.out.println("\nEnter Your Choice");
 		int userInput = sc.nextInt();
@@ -96,16 +85,8 @@ public class PaymentService implements PaymentServiceInterface {
 		}
 
 	}
-<<<<<<< HEAD
-	
-	/*Method show offline payment methods using student Id
-	 @param StudentId : Id of the Student
-	 */
-	private void offlinePayment(String studentId) {
-=======
 
 	public boolean offlinePayment(String studentId) {
->>>>>>> e9b5fdbe3ee8397574058a021af33ff3856ffe0c
 		// TODO Auto-generated method stub
 		logger.info("Offline payment mehthod");
 		String paymentId;

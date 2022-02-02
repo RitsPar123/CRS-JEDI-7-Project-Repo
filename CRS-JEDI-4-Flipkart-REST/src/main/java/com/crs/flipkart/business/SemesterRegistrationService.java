@@ -28,16 +28,8 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
 	Scanner sc = new Scanner(System.in);
     RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
     
-<<<<<<< HEAD
-    
-    /*
-     Student can add course for Semester Registration
-     */
-    public boolean addCourse(SemesterRegistration semesterRegistration) {
-=======
     public boolean addCourse(String studentId, String courseId)  throws CourseNotFoundException {
     	
->>>>>>> e9b5fdbe3ee8397574058a021af33ff3856ffe0c
     	
     	logger.info("Adding course");
     	
@@ -58,17 +50,9 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
         
         return registeredCoursesDaoInterface.addCourse(courseId,studentId);
     }
-<<<<<<< HEAD
-    
-    /*
-    Student can drop course for Semester Registration
-    */
-    public void dropCourse(SemesterRegistration semesterRegistration) {
-=======
 
     public boolean dropCourse(String studentId, String courseId) throws Exception
     {
->>>>>>> e9b5fdbe3ee8397574058a021af33ff3856ffe0c
     	
     	logger.info("Dropping Course");
       
@@ -89,24 +73,8 @@ public class SemesterRegistrationService implements SemesterRegistrationServiceI
       
     return true;}
 
-<<<<<<< HEAD
-        registeredCoursesDaoInterface.dropCourse(courseId, semesterRegistration.getStudentId());
-        
-        System.out.println("Course with course id " + courseId + " deleted Successfully!");
-        
-        System.out.println("-----------------------------------------------"); 
-        System.out.println("-----------------------------------------------"); 
-        
-    }
-    
-    /*
-    Student can see course that are available 
-    */
-    public void showCourse() {
-=======
     public  List<Course> showCourse() 
     {
->>>>>>> e9b5fdbe3ee8397574058a021af33ff3856ffe0c
     	
     	logger.info("Showing Course");
     	//System.out.println("Courses offered in this semester are: ");

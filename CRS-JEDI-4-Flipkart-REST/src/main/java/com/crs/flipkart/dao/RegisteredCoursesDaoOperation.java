@@ -162,12 +162,8 @@ public class RegisteredCoursesDaoOperation implements RegisteredCoursesDaoInterf
 			while (resultSet.next()) {
 				Course course = new Course();
 				course.setCourseId(resultSet.getString("CourseId"));
-<<<<<<< HEAD
-				
-=======
 				course.setCourseName(resultSet.getString("CourseName"));
 				course.setProfessor(resultSet.getString("PId"));
->>>>>>> e9b5fdbe3ee8397574058a021af33ff3856ffe0c
 				courses.add(course);
 			}
 

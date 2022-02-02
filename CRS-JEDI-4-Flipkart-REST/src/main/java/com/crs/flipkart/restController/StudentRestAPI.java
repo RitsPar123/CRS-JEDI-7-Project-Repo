@@ -65,39 +65,8 @@ public class StudentRestAPI {
 	NotificationDaoInterface notificationDaoInterface = new NotificationDaoOperation();
 	AdminDaoInterface adminDaoInterface = new AdminDaoOperation();
 	PaymentDaoInterface paymentDaoInterface = new PaymentDaoOperations();
-<<<<<<< HEAD
-
-	
-	/**
-	 *  /student/signup
-	 *  Rest service for signing students
-	 * @param student
-	 * @return
-	 */
-	@POST
-	@Path("/signup")
-	@Consumes("application/json")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response signup(@Valid Student student) {
-
-		boolean resp = studentDaoInterface.signup(student);
-		if (resp) {
-			return Response.status(200).entity("student has been added successfully").build();
-		}
-
-		return Response.status(400).entity("There has not been added or there is some internal error").build();
-	}
-	
-	/**
-	 *  /student/showCourse
-	 * Rest service showing courses to students
-	 * @return
-	 */
-	
-=======
 	StudentServiceInterface studentInterface = new StudentService();
 
->>>>>>> e9b5fdbe3ee8397574058a021af33ff3856ffe0c
 	@GET
 	@Path("/showCourse")
 	@Produces(MediaType.APPLICATION_JSON)
