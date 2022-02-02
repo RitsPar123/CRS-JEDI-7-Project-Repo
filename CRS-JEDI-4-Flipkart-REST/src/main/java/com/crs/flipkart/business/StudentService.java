@@ -36,7 +36,6 @@ public class StudentService implements StudentServiceInterface {
 	NotificationDaoInterface notificationDaoInterface = new NotificationDaoOperation();
 	AdminServiceInterface adminInterface = new AdminService();
 
-	Scanner sc = new Scanner(System.in);
 
 	/*
 	 * Method lets student sign up into the CRS system

@@ -78,6 +78,7 @@ public class AdminService implements AdminServiceInterface {
 	public boolean approveStudent(String studentId) throws StudentNotFoundForApprovalException {
 		// TODO Auto-generated method stub
 		logger.info("Approving student");
+		
 		return adminDaoOp.approveStudent(studentId);
 	}
 	

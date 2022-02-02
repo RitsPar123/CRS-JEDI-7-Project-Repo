@@ -163,21 +163,14 @@ public class StudentRestAPI {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response payment(@QueryParam("studentid") String studentid, @QueryParam("mode") String mode) {
 
-		int isRegister = registeredCoursesInterface.getStatus(studentid);
-
-		if (isRegister == 0) {
-
-			return Response.status(200).entity("Your Course Allocation Registration is still pending").build();
-		}
+		
 
 		if (mode.equals("1")) {
 			try {
 
-				boolean isPaid = paymentInterface.onlinePayment(studentid);
-				if (isPaid) {
+				   boolean isPaid = paymentInterface.onlinePayment(studentid);
 					return Response.status(200).entity("Fees has been successfully paid through online mode").build();
-				}
-				return Response.status(200).entity("Fees cannot be paid").build();
+				
 			} catch (Exception ex) {
 				return Response.status(400).entity("Fees not paid due to some internal error").build();
 			}

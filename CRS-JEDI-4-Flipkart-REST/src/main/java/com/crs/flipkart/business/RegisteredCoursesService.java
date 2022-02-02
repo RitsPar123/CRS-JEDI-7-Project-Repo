@@ -19,13 +19,7 @@ public class RegisteredCoursesService implements RegisteredCoursesServiceInterfa
 	private static Logger logger = Logger.getLogger(RegisteredCoursesService.class);
 	RegisteredCoursesDaoInterface registeredCoursesDaoInterface = new RegisteredCoursesDaoOperation();
 
-	public void generateReportCard() {
-
-	}
-
-	public void calculateGpa() {
-
-	}
+	
 
 	public List<Course> getSelectedCourses(String studentId) {
 		logger.info("Getting selected courses");

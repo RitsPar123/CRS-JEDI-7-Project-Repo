@@ -36,7 +36,7 @@ public class PaymentDaoOperations implements PaymentDaoInterface {
 	            stmt.setString(3, pay.getPaymentMethod());
 	            stmt.setDouble(4, pay.getAmount());
 	            stmt.setDate(5, sqlDate);
-
+	          
 	            stmt.executeUpdate();
 	            conn.close();
 	            logger.info("Fee Payment Done");
