@@ -14,7 +14,7 @@ public class User {
 	private String id;
 	private String userName;
 	private String password;
-	private Integer role;
+	private int role;
 
 	/**
 	 * Parameterized constructor
