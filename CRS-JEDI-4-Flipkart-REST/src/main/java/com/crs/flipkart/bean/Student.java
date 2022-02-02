@@ -3,10 +3,14 @@
  */
 package com.crs.flipkart.bean;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * @author harsh
  *
  */
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Student extends User {
 	private String branch;
 	private boolean isApproved;

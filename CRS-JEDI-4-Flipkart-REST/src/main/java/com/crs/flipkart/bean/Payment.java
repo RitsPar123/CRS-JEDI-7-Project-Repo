@@ -3,10 +3,13 @@
  */
 package com.crs.flipkart.bean;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * @author hardik.kothari
  *
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Payment {
 
 	

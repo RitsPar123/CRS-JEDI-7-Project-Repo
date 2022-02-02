@@ -6,10 +6,13 @@ package com.crs.flipkart.bean;
 import java.util.HashMap;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * @author harsh
  *
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ReportCard {
 	// id
 	// String , double

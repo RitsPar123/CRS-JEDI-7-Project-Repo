@@ -3,10 +3,13 @@
  */
 package com.crs.flipkart.bean;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * @author harsh
  *
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 	private String id;
 	private String userName;

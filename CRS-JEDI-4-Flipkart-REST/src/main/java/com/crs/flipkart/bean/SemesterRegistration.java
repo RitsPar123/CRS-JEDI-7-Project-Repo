@@ -1,5 +1,8 @@
 package com.crs.flipkart.bean;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SemesterRegistration {
     private String studentId;
     private String registrationDate;
